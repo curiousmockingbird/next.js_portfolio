@@ -15,6 +15,15 @@ const config: Config = {
       },
     },
   },
+  colors: {
+    'tahiti': '#3ab7bf',
+    'orange': '#fb923c',
+    'gray': '#f9fafb',
+    'transparent': 'rgba(255, 255, 255, 0)',
+    'white': '#f8fafc',
+    'black': '#000000',
+    'red': '#ef4444'
+  },
   plugins: [],
 }
 export default config
