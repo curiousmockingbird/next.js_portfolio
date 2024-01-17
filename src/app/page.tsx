@@ -1,9 +1,10 @@
-// import Image from 'next/image'
 // import Link from 'next/link'
 'use client'
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
+import Header from './components/Header';
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -13,8 +14,9 @@ export default function Home() {
     }, []);
 
   return (
-    <main className='flex items-center justify-center h-screen'>
-          <div className='grid lg:grid-cols-2 mx-auto w-full lg:w-4/5'>
+    <main className='flex flex-col h-screen'>
+          <Header/>
+          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5' style={{ height: '75vh' }}>
           <Transition
           show={isMounted}
           enter="transition-opacity duration-700"
@@ -62,7 +64,7 @@ export default function Home() {
           sectionName='Contact'
           description='Some Full-Stack Development projects I am proud to show off.'/>
           </Transition>
-          </div>
+          </div>           
     </main>
   )
 }
