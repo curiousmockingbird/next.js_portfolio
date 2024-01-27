@@ -1,6 +1,6 @@
 // import Link from 'next/link'
 'use client'
-import Image from 'next/image'
+// import Image from 'next/image'
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
@@ -14,7 +14,7 @@ export default function Home() {
     }, []);
 
   return (
-    <main className='flex flex-col h-screen'>
+    <main className='flex flex-col h-screen bg-black'>
           <Header/>
           <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5' style={{ height: '75vh' }}>
           <Transition
