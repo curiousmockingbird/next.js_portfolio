@@ -48,7 +48,7 @@ export default function Home() {
           enterFrom="opacity-0"
           enterTo="opacity-100">         
           <MyTransition 
-          redirectTo=''
+          redirectTo='/blog'
           sectionName='My blog'
           description='Some Full-Stack Development projects I am proud to show off.'/>
           </Transition>

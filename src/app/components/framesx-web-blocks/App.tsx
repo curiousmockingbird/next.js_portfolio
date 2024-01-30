@@ -39,10 +39,10 @@ function ColorSchemeToggle() {
       variant="soft"
       color="neutral"
       onClick={() => {
-        if (mode === 'light') {
-          setMode('dark');
-        } else {
+        if (mode === 'dark') {
           setMode('light');
+        } else {
+          setMode('dark');
         }
       }}
       sx={{
