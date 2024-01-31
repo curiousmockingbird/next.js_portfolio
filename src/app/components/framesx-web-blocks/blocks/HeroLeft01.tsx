@@ -22,7 +22,7 @@ export default function HeroLeft01() {
       >
         Graphic Design Portfolio
       </Typography>
-      <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
+      <Typography fontSize="lg" lineHeight="lg">
       A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TansStack, and NodeMailer to provide an engaging user experience.
       </Typography>
       <Button size='lg' component="a" href="#as-link" startDecorator={<ArrowForward fontSize='large' />}>
