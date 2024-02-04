@@ -6,6 +6,7 @@ import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from '../components/TwoSidedLayout';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Dialog from './../components/Dialog'
 
 export default function HeroLeft01() {
   return (
@@ -31,9 +32,10 @@ export default function HeroLeft01() {
       <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" startDecorator={<GitHubIcon fontSize="large" />}>
       Github repo
       </Button>
-      <Typography>
+      {/* <Typography>
         Already a member? <Link fontWeight="lg">Sign in</Link>
-      </Typography>
+      </Typography> */}
+      <Dialog/>
     </TwoSidedLayout>
   );
 }

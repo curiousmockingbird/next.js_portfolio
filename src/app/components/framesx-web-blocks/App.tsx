@@ -6,7 +6,7 @@ import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
-
+import Dialog from './components/Dialog'
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
