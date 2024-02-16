@@ -12,15 +12,15 @@ import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
 import framesxTheme from './theme';
 import HeroLeft01 from './blocks/HeroLeft01';
-import HeroLeft02 from './blocks/HeroLeft02';
-import HeroLeft03 from './blocks/HeroLeft03';
-import HeroLeft04 from './blocks/HeroLeft04';
-import HeroLeft05 from './blocks/HeroLeft05';
-import HeroLeft06 from './blocks/HeroLeft06';
-import HeroLeft07 from './blocks/HeroLeft07';
-import HeroLeft08 from './blocks/HeroLeft08';
-import HeroLeft09 from './blocks/HeroLeft09';
-import HeroLeft10 from './blocks/HeroLeft10';
+// import HeroLeft02 from './blocks/HeroLeft02';
+// import HeroLeft03 from './blocks/HeroLeft03';
+// import HeroLeft04 from './blocks/HeroLeft04';
+// import HeroLeft05 from './blocks/HeroLeft05';
+// import HeroLeft06 from './blocks/HeroLeft06';
+// import HeroLeft07 from './blocks/HeroLeft07';
+// import HeroLeft08 from './blocks/HeroLeft08';
+// import HeroLeft09 from './blocks/HeroLeft09';
+// import HeroLeft10 from './blocks/HeroLeft10';
 
 function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();
@@ -87,7 +87,7 @@ export default function TeamExample() {
         }}
       >
         <HeroLeft01 />
-        <HeroLeft02 />
+        {/* <HeroLeft02 />
         <HeroLeft03 />
         <HeroLeft04 />
         <HeroLeft05 />
@@ -95,7 +95,7 @@ export default function TeamExample() {
         <HeroLeft07 />
         <HeroLeft08 />
         <HeroLeft09 />
-        <HeroLeft10 />
+        <HeroLeft10 /> */}
       </Box>
     </CssVarsProvider>
   );
