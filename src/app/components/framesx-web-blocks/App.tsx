@@ -54,7 +54,7 @@ function ColorSchemeToggle() {
         boxShadow: 'sm',
       }}
     >
-      {mode === 'light' ? <DarkModeRoundedIcon /> : <LightModeRoundedIcon />}
+      {mode === 'dark' ? <DarkModeRoundedIcon /> : <LightModeRoundedIcon />}
     </IconButton>
     <Typography
     level="body-xs"
