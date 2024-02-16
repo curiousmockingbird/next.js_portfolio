@@ -14,7 +14,7 @@ export default function HeroLeft01() {
     img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1705882205/samples/graphic_design_work/devProjects/Screenshot_2024-01-21_at_6.09.04_PM_bj2omh.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-        harolDesiger.art
+        treysavege.art
       </Typography>
       <Typography
         level="h1"

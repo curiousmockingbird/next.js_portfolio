@@ -6,21 +6,13 @@ import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
-import Dialog from './components/Dialog'
+// import Dialog from './components/Dialog'
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
 import framesxTheme from './theme';
 import HeroLeft01 from './blocks/HeroLeft01';
-// import HeroLeft02 from './blocks/HeroLeft02';
-// import HeroLeft03 from './blocks/HeroLeft03';
-// import HeroLeft04 from './blocks/HeroLeft04';
-// import HeroLeft05 from './blocks/HeroLeft05';
-// import HeroLeft06 from './blocks/HeroLeft06';
-// import HeroLeft07 from './blocks/HeroLeft07';
-// import HeroLeft08 from './blocks/HeroLeft08';
-// import HeroLeft09 from './blocks/HeroLeft09';
-// import HeroLeft10 from './blocks/HeroLeft10';
+import HeroLeft02 from './blocks/HeroLeft02';
 
 function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();
@@ -72,8 +64,17 @@ function ColorSchemeToggle() {
 }
 
 export default function TeamExample() {
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const pages = [<HeroLeft01 />, <HeroLeft02 />]; // Add your pages here
+  
+  const handleScroll = (e:any) => {
+    const { scrollTop, clientHeight } = e.currentTarget;
+    const pageIndex = Math.round(scrollTop / clientHeight);
+    setCurrentPage(pageIndex);
+  };
+  
   return (
-    <CssVarsProvider disableTransitionOnChange theme={framesxTheme}>
+    <CssVarsProvider disableTransitionOnChange theme={framesxTheme} defaultMode='dark'>
       <CssBaseline />
       <ColorSchemeToggle />
       <Box
@@ -85,17 +86,34 @@ export default function TeamExample() {
             scrollSnapAlign: 'start',
           },
         }}
+        onScroll={handleScroll}
       >
-        <HeroLeft01 />
-        {/* <HeroLeft02 />
-        <HeroLeft03 />
-        <HeroLeft04 />
-        <HeroLeft05 />
-        <HeroLeft06 />
-        <HeroLeft07 />
-        <HeroLeft08 />
-        <HeroLeft09 />
-        <HeroLeft10 /> */}
+        {pages}
+      </Box>
+      <Box
+        sx={{
+          position: 'fixed',
+          top: '50%',
+          right: '10px',
+          transform: 'translateY(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        {pages.map((_, index) => (
+          <Box
+            key={index}
+            sx={{
+              width: 8,
+              height: 8,
+              bgcolor: currentPage === index ? '#3ab7bf' : '#fb923c',
+              borderRadius: '50%',
+              margin: '4px 0',
+              transition: 'background-color 0.3s',
+            }}
+          />
+        ))}
       </Box>
     </CssVarsProvider>
   );
