@@ -65,8 +65,11 @@ function ColorSchemeToggle() {
 
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
-  const pages = [<HeroLeft01 />, <HeroLeft02 />]; // Add your pages here
-  
+  const pages = [
+    <HeroLeft01 key="HeroLeft01" />,
+    <HeroLeft02 key="HeroLeft02" />,
+    // Add more components as needed, each with a unique key
+  ];  
   const handleScroll = (e:any) => {
     const { scrollTop, clientHeight } = e.currentTarget;
     const pageIndex = Math.round(scrollTop / clientHeight);

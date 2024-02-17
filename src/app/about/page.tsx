@@ -42,7 +42,7 @@ export default function About() {
                         enterFrom="opacity-0"
                         enterTo="opacity-100"
                     >
-                        <section className="">
+                        <section>
                             <h2 className="text-3xl text-white mb-4">Our Mission</h2>
                             <p className='mb-4'>
                                 With a passion for building scalable web applications and engaging user experiences, I have honed my skills in React and full-stack development. My journey in the tech industry has equipped me with a solid foundation in both frontend and backend technologies, allowing me to deliver comprehensive solutions that meet and exceed project requirements.
@@ -56,10 +56,10 @@ export default function About() {
                         enterFrom="opacity-0"
                         enterTo="opacity-100"
                     >
-                        <section className="">
+                        <section>
                             <h2 className="text-3xl text-white mb-4">Our Values</h2>
                             <p className='mb-4'>
-                                Starting from a deep interest in web technologies, I've grown into a proficient full-stack developer, embracing the challenges and innovations in the field. My projects range from single-page applications using React to complex full-stack applications, integrating modern backend technologies.
+                                Starting from a deep interest in web technologies, I have grown into a proficient full-stack developer, embracing the challenges and innovations in the field. My projects range from single-page applications using React to complex full-stack applications, integrating modern backend technologies.
                             </p>
                         </section>
                     </Transition>
