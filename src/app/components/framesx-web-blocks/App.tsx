@@ -70,7 +70,7 @@ export default function TeamExample() {
     <HeroLeft02 key="HeroLeft02" />,
     // Add more components as needed, each with a unique key
   ];  
-  const handleScroll = (e:any) => {
+  const handleScroll = (e:React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight } = e.currentTarget;
     const pageIndex = Math.round(scrollTop / clientHeight);
     setCurrentPage(pageIndex);
