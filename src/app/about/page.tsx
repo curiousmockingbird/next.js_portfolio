@@ -16,8 +16,7 @@ export default function About() {
     }, []);
 
     return (
-
-        <Box sx={{ height: '100vh' }}>
+            <>
             <Typography
                 level="body-xs"
                 sx={{
@@ -29,9 +28,10 @@ export default function About() {
             >
                 <Link href={'/'}> <ArrowBack sx={{ fontSize: 40 }} /> </Link>
             </Typography>
+        <Box sx={{ height: '100vh' }} id='0'>
             <div className='mx-32'>
-                    <Box className='flex justify-center items-center' sx={{ height: '20vh' }}>
-                        <div className=''>
+                <Box className='flex justify-center items-center' sx={{ height: '20vh' }} id='1'>
+                    <div>
                         <Transition
                             show={isMounted}
                             enter="transition-opacity duration-700 delay-300"
@@ -40,14 +40,14 @@ export default function About() {
                         >
 
                             <h1 className="text-4xl font-bold text-center mb-2">Hola, I am {'<HM/>'} </h1>
-                            
+
                             <p className="text-xl text-center">
                                 Equipped with a comprehensive skill set in both frontend and backend development,<br /> I build full-fledged applications from the ground up.
                             </p>
                         </Transition>
-                </div>
-                    </Box>
-                <Box className='flex items-center' sx={{ height: '60vh' }}>
+                    </div>
+                </Box>
+                <Box className='flex items-center' sx={{ height: '60vh' }} id='2'>
                     <div className="grid lg:grid-cols-2 gap-4">
                         <div className=''>
                             <div>
@@ -83,24 +83,30 @@ export default function About() {
                         </div>
                     </div>
                 </Box>
-                <Box sx={{ height: '10vh' }}>
-                    <div className='grid grid-cols-4'>
+                <Transition id='3'
+                        show={isMounted}
+                        enter="transition-opacity duration-700 delay-700"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                    >
+                <Box className='flex items-center justify-evenly' sx={{ height: '20vh' }}>
                         <div className='flex justify-center'>
-                            <Image src='/next-js.svg' width={100} height={100} alt='My Pic' />
+                            <Image src='/next-js.svg' width={60} height={60} alt='My Pic' />
                         </div>
                         <div className='flex justify-center'>
-                            <Image src='/javascript.svg' width={100} height={100} alt='My Pic' />
+                            <Image src='/javascript.svg' width={60} height={60} alt='My Pic' />
                         </div>
                         <div className='flex justify-center'>
-                            <Image src='/react.svg' width={100} height={100} alt='My Pic' />
+                            <Image src='/react.svg' width={60} height={60} alt='My Pic' />
                         </div>
                         <div className='flex justify-center'>
-                            <Image src='/wordpress.svg' width={100} height={100} alt='My Pic' />
+                            <Image src='/wordpress.svg' width={60} height={60} alt='My Pic' />
                         </div>
-                    </div>
                 </Box>
+                </Transition>
             </div>
         </Box>
+            </>
     );
 };
 
