@@ -11,7 +11,7 @@ import Dialog from './../components/Dialog'
 export default function HeroLeft01() {
   return (
     <TwoSidedLayout 
-    img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1705882205/samples/graphic_design_work/devProjects/Screenshot_2024-01-21_at_6.09.04_PM_bj2omh.png"
+    img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712174355/samples/graphic_design_work/devProjects/Screenshot_2024-04-03_at_2.56.15_PM_dfhyk5.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
         harolDesiger.art
