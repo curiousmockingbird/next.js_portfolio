@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const ResponsivePage = dynamic(() => import('./components/Test'), { ssr: false });
+const ResponsivePage = dynamic(() => import('./components/ResponsivePage'), { ssr: false });
 
 export default function About() {
 

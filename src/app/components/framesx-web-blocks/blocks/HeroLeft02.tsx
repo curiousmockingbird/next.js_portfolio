@@ -11,7 +11,7 @@ import Dialog from './../components/Dialog'
 export default function HeroLeft01() {
   return (
     <TwoSidedLayout 
-    img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1705882205/samples/graphic_design_work/devProjects/Screenshot_2024-01-21_at_6.09.04_PM_bj2omh.png"
+    img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712418900/samples/graphic_design_work/devProjects/Screenshot_2024-04-06_at_10.54.44_AM_fwohzv.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
         treysavege.art
@@ -21,15 +21,15 @@ export default function HeroLeft01() {
         fontWeight="xl"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Graphic Design Portfolio
+        Visual Artist Portfolio
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-      A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TansStack, and NodeMailer to provide an engaging user experience.
+      A dynamic showcase built with Next.js. This portfolio highlights the work of Trey Savage, an emerging artist born and raised in Milwaukee, Wisconsin.
       </Typography>
-      <Button size='lg' component="a" href="#as-link" startDecorator={<ArrowForward fontSize='large' />}>
+      <Button size='lg' component="a" href="https://treysavage.vercel.app/" startDecorator={<ArrowForward fontSize='large' />}>
       Visit!
       </Button>
-      <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" startDecorator={<GitHubIcon fontSize="large" />}>
+      <Button size='lg' component="a" href="https://github.com/curiousmockingbird/treysavage.git" startDecorator={<GitHubIcon fontSize="large" />}>
       Github repo
       </Button>
       {/* <Typography>

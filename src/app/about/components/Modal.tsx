@@ -5,7 +5,9 @@ import ModalClose from '@mui/joy/ModalClose';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 
-export default function BasicModal() {
+export default function BasicModal({
+  width,
+}: React.PropsWithChildren<{ width: number}>) {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
@@ -22,7 +24,7 @@ export default function BasicModal() {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: 500,
+            maxWidth: {width},
             borderRadius: 'md',
             p: 3,
             boxShadow: 'lg',
@@ -39,24 +41,24 @@ export default function BasicModal() {
           >
             Technologies used:
           </Typography> */}
-          <Typography id="modal-desc" color="success" mt={3}>
-            <Typography level='h4'>Frontend--<br/> </Typography> 
+          <Typography id="modal-desc" color="primary" mt={3} sx={{textAlign:'center'}}>
+            <Typography level='h3'>Frontend--<br/> </Typography> 
             JavaScript (Advanced)<br/>
             TypeScript (Advanced)<br/>
             Tailwind CSS (Advanced)<br/>
             JSX (Experienced)
           </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Backend--<br/></Typography> 
+          <Typography id="modal-desc" color="primary" sx={{textAlign:'center'}}>
+            <Typography level='h3'>Backend--<br/></Typography> 
             Node.js (Experienced)
           </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Database--<br/></Typography> 
+          <Typography id="modal-desc" color="primary" sx={{textAlign:'center'}}>
+            <Typography level='h3'>Database--<br/></Typography> 
             MongoDB (Advanced)<br/>
             MySQL (Intermediate)
           </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Frameworks--<br/></Typography> 
+          <Typography id="modal-desc" color="primary" sx={{textAlign:'center'}}>
+            <Typography level='h3'>Frameworks--<br/></Typography> 
             Next.js (Advanced)<br/>
             Remix (Intermediate)<br/>
             Gatsby (Intermediate)<br/>

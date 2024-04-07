@@ -97,7 +97,7 @@ export default function TeamExample() {
         sx={{
           position: 'fixed',
           top: '50%',
-          right: '10px',
+          right: '40px',
           transform: 'translateY(-50%)',
           display: 'flex',
           flexDirection: 'column',
@@ -112,7 +112,7 @@ export default function TeamExample() {
               height: 8,
               bgcolor: currentPage === index ? '#3ab7bf' : '#fb923c',
               borderRadius: '50%',
-              margin: '4px 0',
+              margin: '8px 0',
               transition: 'background-color 0.3s',
             }}
           />

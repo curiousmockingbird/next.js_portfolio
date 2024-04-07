@@ -26,7 +26,7 @@ export default function HeroLeft01() {
       <Typography fontSize="lg" lineHeight="lg">
       A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TansStack, and NodeMailer to provide an engaging user experience.
       </Typography>
-      <Button size='lg' component="a" href="#as-link" startDecorator={<ArrowForward fontSize='large' />}>
+      <Button size='lg' component="a" href="https://www.haroldesigner.art/" startDecorator={<ArrowForward fontSize='large' />}>
       Visit!
       </Button>
       <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" startDecorator={<GitHubIcon fontSize="large" />}>
