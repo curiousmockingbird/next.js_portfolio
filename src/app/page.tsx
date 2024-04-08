@@ -60,7 +60,7 @@ export default function Home() {
           enterTo="opacity-100"
           >   
           <MyTransition 
-          redirectTo=''
+          redirectTo='/contact'
           sectionName='Contact'
           description='Some Full-Stack Development projects I am proud to show off.'/>
           </Transition>

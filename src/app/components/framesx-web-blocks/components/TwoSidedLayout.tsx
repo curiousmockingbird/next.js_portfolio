@@ -17,7 +17,7 @@ export default function TwoSidedLayout({
         display: 'flex',
         flexDirection: reversed ? 'column-reverse' : 'column',
         alignItems: 'center',
-        py: 10,
+        py: 5,
         gap: 4,
         [theme.breakpoints.up(834)]: {
           flexDirection: 'row',
@@ -50,19 +50,17 @@ export default function TwoSidedLayout({
         {children}
       </Box>
       <AspectRatio
-        ratio={600 / 400}
+        ratio={400/300}
         variant="outlined"
-        maxHeight={300}
+        maxHeight={400}
         sx={(theme) => ({
           minWidth: 300,
           alignSelf: 'stretch',
           [theme.breakpoints.up(834)]: {
             alignSelf: 'initial',
             flexGrow: 1,
-            '--AspectRatio-maxHeight': '520px',
-            '--AspectRatio-minHeight': '400px',
           },
-          borderRadius: 'sm',
+          borderRadius: 'lg',
           bgcolor: 'background.level2',
           flexBasis: '50%',
         })}
