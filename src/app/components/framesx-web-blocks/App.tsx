@@ -5,7 +5,7 @@ import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
-import Toggle from './components/Toggle'
+// import Toggle from './components/Toggle'
 
 import framesxTheme from './theme';
 import HeroLeft01 from './blocks/HeroLeft01';
@@ -21,7 +21,7 @@ function ColorSchemeToggle() {
   }
   return (
     <>
-    <Toggle/>
+    {/* <Toggle/> */}
       <Typography
         level="body-xs"
         className="fixed z-50 top-8 left-8 lg:left-16" // Adjusted classes based on Tailwind's scale

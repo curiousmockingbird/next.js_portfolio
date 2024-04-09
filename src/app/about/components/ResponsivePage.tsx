@@ -30,7 +30,7 @@ const ResponsivePage = () => {
                                 enterTo="opacity-100"
                             >
 
-                                <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">Hola, I am {'<HM/>'}</h1>
+                                <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">Hola, I am Harold Mesa</h1>
                                 <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
                                 <p className="text-base md:text-xl text-center">
                                     Equipped with a comprehensive skill set in both frontend and backend development, I build full-fledged applications from the ground up.
@@ -106,7 +106,7 @@ const ResponsivePage = () => {
                                     enterFrom="opacity-0"
                                     enterTo="opacity-100"
                                 >
-                                    <h1 className="text-4xl font-bold text-center mb-2">Hi, {"I'm"} {'<HM/>'} </h1>
+                                    <h1 className="text-4xl font-bold text-center mb-2">Hi, {"I'm"} Harold Mesa </h1>
                                     <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
                                     <p className="text-xl text-center">
                                         Equipped with a comprehensive skill set in both frontend and backend development, I build full-fledged applications from the ground up.
@@ -187,7 +187,7 @@ const ResponsivePage = () => {
                                     enterTo="opacity-100"
                                 >
 
-                                    <h1 className="text-4xl font-bold text-center">Hola, I am {'<HM/>'} </h1>
+                                    <h1 className="text-4xl font-bold text-center">Hola, I am Harold Mesa </h1>
                                     <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
                                     <p className="text-xl text-center">
                                         Equipped with a comprehensive skill set in both frontend and backend development,<br /> I build full-fledged applications from the ground up.

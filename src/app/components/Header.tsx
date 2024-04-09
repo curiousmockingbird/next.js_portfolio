@@ -5,7 +5,7 @@ export default function Header () {
             <div>
             <Image src="/hm.svg" alt="Your SVG" width={200} height={200} />
             </div>
-            <h1 className={'text-#ef4444'}>Harold Mesa — Full-Stack</h1>
+            <h1 className={'text-#ef4444'}>harolDeveloper — Full-Stack</h1>
         </div>
     )
 }

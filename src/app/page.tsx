@@ -26,7 +26,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/devProjects'
           sectionName='Dev Projects'
-          description='Some Full-Stack Development projects I am proud to show off.'
+          description='Showcasing My Full-Stack Expertise: Projects That Define My Craft'
           />            
           </Transition>
           
@@ -39,7 +39,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/about'
           sectionName='About Me'
-          description='Some Full-Stack Development projects I am proud to show off.'/>         
+          description='I Am a Full-Stack Developer For Voces de la Frontera in Milwuakee, WI'/>         
           </Transition>
 
           <Transition
@@ -50,7 +50,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/blog'
           sectionName='My blog'
-          description='Some Full-Stack Development projects I am proud to show off.'/>
+          description='Insights Unleashed: Navigating the Digital Odyssey Through My Lens'/>
           </Transition>
 
           <Transition
@@ -62,7 +62,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/contact'
           sectionName='Contact'
-          description='Some Full-Stack Development projects I am proud to show off.'/>
+          description=' Have a question or want to work together?'/>
           </Transition>
           </div>           
     </main>
