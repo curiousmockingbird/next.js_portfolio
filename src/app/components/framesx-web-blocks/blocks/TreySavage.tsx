@@ -6,9 +6,9 @@ import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from '../components/TwoSidedLayout';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import Dialog from './../components/Dialog'
+import Dialog from '../components/Dialog'
 
-export default function HeroLeft01() {
+export default function TreySavage() {
   return (
     <TwoSidedLayout 
     img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712418900/samples/graphic_design_work/devProjects/Screenshot_2024-04-06_at_10.54.44_AM_fwohzv.png"
@@ -21,7 +21,8 @@ export default function HeroLeft01() {
         fontWeight="xl"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Visual Artist Portfolio
+        Visual Artist Portfolio<br/>
+        <Typography level='h3'>(Demo)</Typography>
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
       A dynamic showcase built with Next.js. This portfolio highlights the work of Trey Savage, an emerging artist born and raised in Milwaukee, Wisconsin.

@@ -8,8 +8,9 @@ import Link from '@mui/joy/Link';
 // import Toggle from './components/Toggle'
 
 import framesxTheme from './theme';
-import HeroLeft01 from './blocks/HeroLeft01';
-import HeroLeft02 from './blocks/HeroLeft02';
+import Project01 from './blocks/Vdlf'
+import Project02 from './blocks/HarolDesigner';
+import Project03 from './blocks/TreySavage';
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -35,8 +36,9 @@ function ColorSchemeToggle() {
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
-    <HeroLeft01 key="HeroLeft01" />,
-    <HeroLeft02 key="HeroLeft02" />,
+    <Project01 key="Project01" />,
+    <Project02 key="Project02" />,
+    <Project03 key="Project03" />,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
