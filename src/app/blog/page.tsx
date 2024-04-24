@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Typography from '@mui/joy/Typography';
-import ArrowBack from '@mui/icons-material/ArrowBack';
+// import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 
