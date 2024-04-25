@@ -64,6 +64,14 @@ export default function Home() {
           sectionName='Contact'
           description=' Have a question or want to work together?'/>
           </Transition>
+
+          <Transition
+          show={isMounted}
+          enter="transition-opacity duration-700 delay-700"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          >   
+          </Transition>
           </div>           
     </main>
   )

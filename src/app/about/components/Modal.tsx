@@ -12,7 +12,7 @@ export default function BasicModal({
   return (
     <React.Fragment>
       <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
-        See full list
+        Full Tech Stack
       </Button>
       <Modal
         aria-labelledby="modal-title"

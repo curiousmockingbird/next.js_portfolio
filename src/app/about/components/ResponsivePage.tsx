@@ -7,6 +7,7 @@ import Image from 'next/image';
 import './../style.css'
 import Box from '@mui/system/Box';
 import Modal from './Modal';
+import StatsModal from './StatsModal';
 
 const ResponsivePage = () => {
     const theme = useTheme();
@@ -252,6 +253,9 @@ const ResponsivePage = () => {
                                 </div>
                                 <div>
                                     <Modal width={650}/>
+                                </div>
+                                <div>
+                                    <StatsModal width={450}/>
                                 </div>
                             </Box>
                         </Transition>
