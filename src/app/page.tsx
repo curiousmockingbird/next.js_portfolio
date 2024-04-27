@@ -5,6 +5,10 @@ import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
 import Header from './components/Header';
+import CodeIcon from '@mui/icons-material/Code';
+import InfoIcon from '@mui/icons-material/Info';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,6 +27,9 @@ export default function Home() {
           enterFrom="opacity-0"
           enterTo="opacity-100"
           >
+          <div className='flex flex-col items-center py-2'>
+          <CodeIcon sx={{ fontSize: 40 }}/>
+          </div>
           <MyTransition 
           redirectTo='/devProjects'
           sectionName='Dev Projects'
@@ -36,6 +43,9 @@ export default function Home() {
                 enterFrom="opacity-0"
                 enterTo="opacity-100"
             >
+          <div className='flex flex-col items-center py-2'>
+          <InfoIcon sx={{ fontSize: 40 }}/>
+          </div>
           <MyTransition 
           redirectTo='/about'
           sectionName='About Me'
@@ -46,7 +56,10 @@ export default function Home() {
           show={isMounted}
           enter="transition-opacity duration-700 delay-500"
           enterFrom="opacity-0"
-          enterTo="opacity-100">         
+          enterTo="opacity-100">
+          <div className='flex flex-col items-center py-2'>
+          <EditNoteIcon sx={{ fontSize: 40 }}/>
+          </div>         
           <MyTransition 
           redirectTo='/blog'
           sectionName='My blog'
@@ -58,7 +71,10 @@ export default function Home() {
           enter="transition-opacity duration-700 delay-700"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          >   
+          >
+          <div className='flex flex-col items-center py-2'>
+          <AlternateEmailIcon sx={{ fontSize: 40 }}/>
+          </div>   
           <MyTransition 
           redirectTo='/contact'
           sectionName='Contact'

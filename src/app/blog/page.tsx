@@ -54,13 +54,10 @@ export default function Home() {
         setLoading(false);
     };
 
-
-
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return `${date.toLocaleDateString()}`;
     };
-
     return (
         <>
             <div>

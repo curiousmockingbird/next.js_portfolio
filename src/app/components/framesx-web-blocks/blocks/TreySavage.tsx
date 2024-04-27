@@ -36,7 +36,7 @@ export default function TreySavage() {
       {/* <Typography>
         Already a member? <Link fontWeight="lg">Sign in</Link>
       </Typography> */}
-      <Dialog/>
+      {/* <Dialog/> */}
     </TwoSidedLayout>
   );
 }

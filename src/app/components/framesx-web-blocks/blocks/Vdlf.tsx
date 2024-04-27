@@ -16,7 +16,7 @@ const BasicModal: React.FC = () =>{
   return (
     <React.Fragment>
       <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-        Technologies used
+      Technologies used
       </Button>
       <Modal
         aria-labelledby="modal-title"
@@ -43,17 +43,16 @@ const BasicModal: React.FC = () =>{
             fontWeight="lg"
             mb={1}
           >
-            Technologies used:
+          Technologies used:
           </Typography>
           <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Analytics and Tracking:</Typography> Google Analytics
+            <Typography level='h4'>Analytics and Tracking:</Typography> Google Analytics, EveryAction CRM
           </Typography>
           <Typography id="modal-desc" color="success">
             <Typography level='h4'>WordPress plugins & features:</Typography> Elementor, YOAST
           </Typography>
           <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Axios:</Typography> on the modal dialog with an
-            optional <code>aria-describedby</code> attribute.
+            <Typography level='h4'>JavaScript Libraries:</Typography> JQuery, Vue, Webpack
           </Typography>
         </Sheet>
       </Modal>
@@ -74,7 +73,7 @@ export default function Vdlf() {
         fontWeight="xl"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Wisconsin’s leading grassroots immigrant rights organization
+        Voces de la Frontera: Wisconsin’s leading grassroots immigrant rights organization
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
         Integrating various WordPress plugins to enhance functionality, such as event management, multilingual support, donation processing, and SEO optimization.

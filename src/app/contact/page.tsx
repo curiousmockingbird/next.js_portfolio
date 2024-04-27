@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import InstagramIcon from '@mui/icons-material/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
@@ -68,8 +69,8 @@ const Contact = () => {
                     <div className='flex flex-col justify-center items-center'>
                         <div className='pb-2 lg:pb-0'><h2>You can also find me on:</h2></div>
                         <div className='flex justify-center items-center'>
-                            <a href="https://www.instagram.com/harold_designer/" target="_blank" rel="noopener noreferrer">
-                                <InstagramIcon sx={{ fontSize: 40 }} />
+                            <a href="https://github.com/curiousmockingbird" target="_blank" rel="noopener noreferrer">
+                                <GitHubIcon sx={{ fontSize: 40 }} />
                             </a>
                             <a href="https://www.linkedin.com/in/haroldmesa93/" target="_blank" rel="noopener noreferrer">
                                 <LinkedInIcon sx={{ fontSize: 40 }} />
