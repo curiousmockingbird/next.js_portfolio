@@ -10,7 +10,8 @@ import Dialog from '../components/Dialog'
 
 export default function TreySavage() {
   return (
-    <TwoSidedLayout 
+    <TwoSidedLayout
+    alt="Image of Artist Portfolio" 
     img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712418900/samples/graphic_design_work/devProjects/Screenshot_2024-04-06_at_10.54.44_AM_fwohzv.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
