@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   title: 'HarolDeveloper',
   description: 'Full-stack developer',
   openGraph: {
+    url: 'https://haroldeveloper.tech', // Replace with your website URL
+    type: 'website', // Commonly "website" or "article"
     title: 'HarolDeveloper',
     description: 'Full-stack developer',
     images: [
@@ -22,14 +24,9 @@ export const metadata: Metadata = {
       },
     ],
     siteName: 'HarolDeveloper',
-  },
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   title: 'HarolDeveloper',
-  //   description: 'Full-stack developer',
-  //   images: ['/path/to/your/image.jpg'], // Path to your image in the public directory
-  // },
+  }
 };
+
 
 
 export default function RootLayout({
