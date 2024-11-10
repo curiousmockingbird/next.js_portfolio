@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   title: 'HarolDeveloper',
   description: 'Full-stack developer',
   openGraph: {
-    url: 'https://www.haroldeveloper.tech', // Replace with your website URL
+    url: 'https://haroldeveloper.tech', // Replace with your website URL
     type: 'website', // Commonly "website" or "article"
     title: 'HarolDeveloper',
     description: 'Full-stack developer',
     images: [
       {
-        url: '/profile_pic.jpg',  // Path to your image in the public directory
+        url: 'https://haroldeveloper.tech/profile_pic.jpg',  // Path to your image in the public directory
         width: 1200,
         height: 630,
         alt: 'HarolDeveloper Thumbnail',
