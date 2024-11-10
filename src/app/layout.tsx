@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: 'Full-stack developer',
     images: [
       {
-        url: '/profile_pic.jpg',  // Path to your image in the public directory
+        url: 'https://haroldeveloper-lydc0kqjr-curiousmockingbirds-projects.vercel.app/profile_pic.jpg',  // Path to your image in the public directory
         width: 1200,
         height: 630,
         alt: 'HarolDeveloper Thumbnail',
