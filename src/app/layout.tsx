@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'HarolDeveloper',
   description: 'Full-stack developer',
   openGraph: {
-    url: 'https://haroldeveloper-lydc0kqjr-curiousmockingbirds-projects.vercel.app/profile_pic.jpg', // Replace with your website URL
+    url: 'https://www.haroldeveloper.tech', // Replace with your website URL
     type: 'website', // Commonly "website" or "article"
     title: 'HarolDeveloper',
     description: 'Full-stack developer',
