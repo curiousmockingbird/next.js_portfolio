@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   title: 'HarolDeveloper',
   description: 'Full-stack developer',
   openGraph: {
-    url: 'https://haroldeveloper.tech', // Replace with your website URL
+    url: 'https://haroldeveloper-lydc0kqjr-curiousmockingbirds-projects.vercel.app/profile_pic.jpg', // Replace with your website URL
     type: 'website', // Commonly "website" or "article"
     title: 'HarolDeveloper',
     description: 'Full-stack developer',
     images: [
       {
-        url: 'https://haroldeveloper-lydc0kqjr-curiousmockingbirds-projects.vercel.app/profile_pic.jpg',  // Path to your image in the public directory
+        url: '/profile_pic.jpg',  // Path to your image in the public directory
         width: 1200,
         height: 630,
         alt: 'HarolDeveloper Thumbnail',
