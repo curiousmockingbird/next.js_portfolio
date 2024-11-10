@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/profile_pic.jpg',  // Path to your image in the public directory
-        width: 1000,
-        height: 1000,
+        width: 1200,
+        height: 630,
         alt: 'HarolDeveloper Thumbnail',
       },
     ],
