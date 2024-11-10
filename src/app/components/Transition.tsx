@@ -40,7 +40,7 @@ export default function Example({ redirectTo, sectionName, description }: { redi
                 }}
         className="backface-visibility-hidden flex transform items-center rounded-full bg-black/20 px-3 py-2 text-sm font-medium text-white transition hover:scale-105 hover:bg-black/30 focus:outline-none active:bg-black/40">
         <div className="group rounded-lg border border-transparent transition-colors">
-          <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+          <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
           <h2 className={`text-2xl font-semibold`}>
             {sectionName}{' '}-&gt;
           </h2>

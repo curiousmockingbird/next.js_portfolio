@@ -11,12 +11,12 @@ import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import Sheet from '@mui/joy/Sheet';
 
-const BasicModal: React.FC = () =>{
+const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
       <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-      Technologies used
+        Learn More
       </Button>
       <Modal
         aria-labelledby="modal-title"
@@ -38,21 +38,24 @@ const BasicModal: React.FC = () =>{
           <Typography
             component="h2"
             id="modal-title"
-            level="h4"
+            level="h2"
             textColor="inherit"
             fontWeight="lg"
             mb={1}
           >
-          Technologies used:
+            The solution involved:
           </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Analytics and Tracking:</Typography> Google Analytics, EveryAction CRM
-          </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>WordPress plugins & features:</Typography> Elementor, YOAST
-          </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>JavaScript Libraries:</Typography> JQuery, Vue, Webpack
+          <Typography id="modal-desc">
+            <Typography level='h4'>Serverless Function Setup:</Typography>
+            <br></br>Developed a serverless API endpoint using Vercel to send emails via Nodemailer. This allowed a seamless communication channel between the site visitors and the organization’s team members.
+          </Typography><br></br>
+          <Typography id="modal-desc">
+            <Typography level='h4'>Cross-Origin Resource Sharing (CORS) Configuration:</Typography>
+            <br></br>Implemented proper CORS handling to ensure secure and successful API requests from the WordPress site to the Vercel-hosted backend. Utilized custom CORS middleware for flexibility and consistency across requests.
+          </Typography><br></br>
+          <Typography id="modal-desc">
+            <Typography level='h4'>Frontend Integration:</Typography>
+            <br></br>Modified the Vue.js contact form on the WordPress site to interact with the Vercel API, ensuring the payload structure matched and implementing error handling for smoother user experience.
           </Typography>
         </Sheet>
       </Modal>
@@ -62,8 +65,9 @@ const BasicModal: React.FC = () =>{
 
 export default function Vdlf() {
   return (
-    <TwoSidedLayout 
-    img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712678845/samples/graphic_design_work/devProjects/Screenshot_2024-04-09_at_11.07.06_AM_mj1mkq.png"
+    <TwoSidedLayout
+      alt="Contact form screenshot"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1730684442/samples/graphic_design_work/devProjects/Screenshot_2024-11-03_at_7.39.08_PM_h8wohn.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
         vdlf.org
@@ -71,17 +75,17 @@ export default function Vdlf() {
       <Typography
         level="h1"
         fontWeight="xl"
+        lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Voces de la Frontera: Wisconsin’s leading grassroots immigrant rights organization
+        Contact Form Integration
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Integrating various WordPress plugins to enhance functionality, such as event management, multilingual support, donation processing, and SEO optimization.
-      </Typography>
-      <Button size='lg' component="a" href="https://www.vdlf.org/" startDecorator={<ArrowForward fontSize='large' />}>
-      Visit!
+        Implemented a Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend.      </Typography>
+      <BasicModal />
+      <Button size='lg' component="a" href="https://vdlf.org/team" target="_blank" startDecorator={<ArrowForward fontSize='large' />}>
+        Visit
       </Button>
-      <BasicModal/>
     </TwoSidedLayout>
   );
 }
