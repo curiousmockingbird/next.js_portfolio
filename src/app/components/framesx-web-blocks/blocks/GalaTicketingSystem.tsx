@@ -63,7 +63,7 @@ const BasicModal: React.FC = () => {
   );
 }
 
-export default function Vdlf() {
+export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
       box1logo="wordpress-black.svg"
