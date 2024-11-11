@@ -53,7 +53,7 @@ const BasicModal: React.FC = () => {
           </Typography><br></br>
           <Typography id="modal-desc">
             <Typography level='h4'>Data Processing and Validation with Google Apps Script:</Typography>
-            <br></br>Developed server-side functions in Google Apps Script to extract and validate ticket IDs directly from QR codes. The script accessed Google Sheets to match each scanned ticket ID, checked the attendee's status, and updated the "Attendance" field upon check-in. 
+            <br></br>Developed server-side functions in Google Apps Script to extract and validate ticket IDs directly from QR codes. The script accessed Google Sheets to match each scanned ticket ID, checked the attendee&apos;s status, and updated the &quot;Attendance&quot; field upon check-in. 
           </Typography><br></br>
           <Typography id="modal-desc">
             <Typography level='h4'>Optimizing Code for Efficiency:</Typography>
