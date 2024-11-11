@@ -29,6 +29,8 @@ const BasicModal: React.FC = () => {
           variant="outlined"
           sx={{
             maxWidth: 500,
+            maxHeight: '85vh', // Set a maximum height for the modal
+            overflowY: 'auto', // Enable vertical scrolling if content exceeds maxHeight
             borderRadius: 'md',
             p: 3,
             boxShadow: 'lg',
@@ -46,16 +48,20 @@ const BasicModal: React.FC = () => {
             The solution involved:
           </Typography>
           <Typography id="modal-desc">
-            <Typography level='h4'>Serverless Function Setup:</Typography>
-            <br></br>Developed a serverless API endpoint using Vercel to send emails via Nodemailer. This allowed a seamless communication channel between the site visitors and the organization’s team members.
+            <Typography level='h4'>QR Code Scanning Interface:</Typography>
+            <br></br>Integrated the HTML5 QR Code library to enable seamless, camera-based QR code scanning from a phone. The goal was to allow attendees to conveniently present their QR codes for quick scanning and check-in.
           </Typography><br></br>
           <Typography id="modal-desc">
-            <Typography level='h4'>Cross-Origin Resource Sharing (CORS) Configuration:</Typography>
-            <br></br>Implemented proper CORS handling to ensure secure and successful API requests from the WordPress site to the Vercel-hosted backend. Utilized custom CORS middleware for flexibility and consistency across requests.
+            <Typography level='h4'>Data Processing and Validation with Google Apps Script:</Typography>
+            <br></br>Developed server-side functions in Google Apps Script to extract and validate ticket IDs directly from QR codes. The script accessed Google Sheets to match each scanned ticket ID, checked the attendee's status, and updated the "Attendance" field upon check-in. 
           </Typography><br></br>
           <Typography id="modal-desc">
-            <Typography level='h4'>Frontend Integration:</Typography>
-            <br></br>Modified the Vue.js contact form on the WordPress site to interact with the Vercel API, ensuring the payload structure matched and implementing error handling for smoother user experience.
+            <Typography level='h4'>Optimizing Code for Efficiency:</Typography>
+            <br></br>Implemented debouncing to prevent multiple executions during rapid QR code scans and modified the script to dynamically search for ticket ID and attendance columns across multiple sheets within the Google Sheets document, enhancing scalability
+          </Typography><br></br>
+          <Typography id="modal-desc">
+            <Typography level='h4'>User Experience (UX):</Typography>
+            <br></br>Added visual indicators, such as success and error messages, along with a loading spinner during data processing.
           </Typography>
         </Sheet>
       </Modal>
@@ -66,15 +72,15 @@ const BasicModal: React.FC = () => {
 export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
-      box1logo="wordpress-black.svg"
-      box2logo="vercel_logo_black.svg"
-      box3logo="node.png"
-      box4logo="vue-js.svg"
-      alt="Contact form screenshot"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1730684442/samples/graphic_design_work/devProjects/Screenshot_2024-11-03_at_7.39.08_PM_h8wohn.png"
+      box1logo="qr.svg"
+      box2logo="apps_script.svg"
+      box3logo="sendgrid.svg"
+      box4logo="everyaction.png"
+      alt="QR ticket (screenshot)"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1731358461/samples/graphic_design_work/devProjects/gala_ticket_hhjcgc.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-        vdlf.org
+        Voces de la Frontera Annual Gala 2024
       </Typography>
       <Typography
         level="h1"
@@ -82,10 +88,10 @@ export default function GalaTicketingSystem() {
         lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Contact Form Integration
+        Event Registration System
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Implemented a Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend built with Vue.js.      </Typography>
+      Registration system to streamline the check-in process at an event using QR codes. I developed the entire event ticketing system, including ticket generation, successful delivery, and QR code scanning app for check-in.      </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://vdlf.org/team" target="_blank" startDecorator={<ArrowForward fontSize='large' />}>
         Visit

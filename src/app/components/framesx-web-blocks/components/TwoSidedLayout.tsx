@@ -22,7 +22,7 @@ export default function TwoSidedLayout({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center', // Center content vertically
+        justifyContent: 'center',
         py: 5,
         gap: 4,
         [theme.breakpoints.up('md')]: {
@@ -31,7 +31,6 @@ export default function TwoSidedLayout({
         },
       })}
     >
-      {/* Row containing text and image columns */}
       <Box
         sx={(theme) => ({
           display: 'flex',
@@ -45,7 +44,6 @@ export default function TwoSidedLayout({
           },
         })}
       >
-        {/* Text Column */}
         <Box
           sx={(theme) => ({
             display: 'flex',
@@ -69,14 +67,12 @@ export default function TwoSidedLayout({
           {children}
         </Box>
 
-        {/* Image Column */}
         <AspectRatio
           ratio={520 / 300}
           variant="outlined"
-          maxHeight={400}
           sx={(theme) => ({
             width: '100%',
-            maxWidth: 300,
+            maxWidth: { xs: 200, md: 300 }, // Adjust maxWidth for mobile
             alignSelf: 'center',
             [theme.breakpoints.up('md')]: {
               alignSelf: 'initial',
@@ -88,77 +84,47 @@ export default function TwoSidedLayout({
             flexBasis: '50%',
           })}
         >
-          <img src={img} alt={alt} />
+          <img src={img} alt={alt} style={{ width: '100%', height: 'auto' }} />
         </AspectRatio>
       </Box>
 
-      {/* Container with technologies logos below the two columns */}
       <Container
         sx={{
           backgroundImage: "linear-gradient(to right, #fde68a , #fb923c, #d97706, #92400e)",
           borderRadius: "10px",
           display: 'flex',
           width: '100%',
-          height: '10vh', // Adjust height as needed
+          height: '10vh',
           justifyContent: 'space-evenly',
-          flexWrap: 'wrap', // Allow wrapping if boxes don't fit in a single row
+          alignItems: 'center',
+          flexWrap: 'wrap',
         }}
       >
         <Box
           sx={{
-            width: { xs: '8vh', sm: '8vh', md: '10vh' },
-            height: { xs: '8vh', sm: '8vh', md: '10vh' },
+            width: { xs: '6vh', sm: '8vh', md: '10vh' }, // Adjust width for mobile
+            height: { xs: '6vh', sm: '8vh', md: '10vh' }, // Adjust height for mobile
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <p className='text-black underline'>Technologies:</p>
+          <p className='text-black underline text-xs'>Technologies:</p>
         </Box>
-            <Box
-              sx={{
-                width: { xs: '8vh', sm: '8vh', md: '10vh' },
-                height: { xs: '8vh', sm: '8vh', md: '10vh' },
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <img src={box4logo} alt="Icon" width="72" height="72" />
-            </Box>
-        <Box
-          sx={{
-            width: { xs: '8vh', sm: '8vh', md: '10vh' },
-            height: { xs: '8vh', sm: '8vh', md: '10vh' },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img src={box3logo} alt="Icon" width="52" height="52" />
-        </Box>
-        <Box
-          sx={{
-            width: { xs: '8vh', sm: '8vh', md: '10vh' },
-            height: { xs: '8vh', sm: '8vh', md: '10vh' },
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img src={box1logo} alt="Icon" width="52" height="52" />
-        </Box>
+        {[box4logo, box3logo, box1logo, box2logo].map((logo, index) => (
           <Box
+            key={index}
             sx={{
-              width: { xs: '8vh', sm: '8vh', md: '10vh' },
-              height: { xs: '8vh', sm: '8vh', md: '10vh' },
+              width: { xs: '6vh', sm: '8vh', md: '10vh' }, // Adjust width for mobile
+              height: { xs: '6vh', sm: '8vh', md: '10vh' }, // Adjust height for mobile
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <img src={box2logo} alt="Icon" width="72" height="72" />
+            <img src={logo} alt="Icon" style={{ width: '80%', height: 'auto' }} />
           </Box>
+        ))}
       </Container>
     </Container>
   );

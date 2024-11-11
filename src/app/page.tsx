@@ -49,7 +49,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/about'
           sectionName='About Me'
-          description='I Am a Full-Stack Developer For Voces de la Frontera in Milwuakee, WI'/>         
+          description='I am a full-Stack developer based in Milwuakee, WI'/>         
           </Transition>
 
           <Transition

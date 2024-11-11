@@ -10,7 +10,7 @@ import Link from '@mui/joy/Link';
 import framesxTheme from './theme';
 import Project01 from './blocks/Vdlf';
 import Project02 from './blocks/GalaTicketingSystem';
-// import Project03 from './blocks/HarolDesigner';
+import Project03 from './blocks/HarolDesigner';
 // import Project04 from './blocks/TreySavage';
 
 function ColorSchemeToggle() {
@@ -39,7 +39,7 @@ export default function TeamExample() {
   const pages = [
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
-    // <Project03 key="Project03" />,
+    <Project03 key="Project03" />,
     // <Project04 key="Project04" />,
     // Add more components as needed, each with a unique key
   ];
