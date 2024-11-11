@@ -135,7 +135,7 @@ export default function TwoSidedLayout({
             justifyContent: 'center',
           }}
         >
-          <img src={box3logo} alt="Icon" width="62" height="62" />
+          <img src={box3logo} alt="Icon" width="52" height="52" />
         </Box>
         <Box
           sx={{
@@ -146,7 +146,7 @@ export default function TwoSidedLayout({
             justifyContent: 'center',
           }}
         >
-          <img src={box1logo} alt="Icon" width="72" height="72" />
+          <img src={box1logo} alt="Icon" width="52" height="52" />
         </Box>
           <Box
             sx={{

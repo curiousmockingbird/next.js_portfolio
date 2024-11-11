@@ -39,8 +39,8 @@ export default function TeamExample() {
   const pages = [
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
-    <Project03 key="Project03" />,
-    <Project04 key="Project04" />,
+    // <Project03 key="Project03" />,
+    // <Project04 key="Project04" />,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
