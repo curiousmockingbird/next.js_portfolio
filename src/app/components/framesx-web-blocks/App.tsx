@@ -10,8 +10,8 @@ import Link from '@mui/joy/Link';
 import framesxTheme from './theme';
 import Project01 from './blocks/Vdlf';
 import Project02 from './blocks/GalaTicketingSystem';
-import Project03 from './blocks/HarolDesigner';
-import Project04 from './blocks/TreySavage';
+// import Project03 from './blocks/HarolDesigner';
+// import Project04 from './blocks/TreySavage';
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
