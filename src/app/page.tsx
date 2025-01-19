@@ -9,6 +9,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import InfoIcon from '@mui/icons-material/Info';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import Toggle from '@/app/components/Toggle';
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,8 +19,8 @@ export default function Home() {
     }, []);
 
   return (
-    <main className='flex flex-col h-screen bg-black'>
-          <Header/>
+    <main className='flex flex-col h-screen'>
+          <Toggle/>
           <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5' style={{ height: '75vh' }}>
           <Transition
           show={isMounted}
@@ -49,7 +50,7 @@ export default function Home() {
           <MyTransition 
           redirectTo='/about'
           sectionName='About Me'
-          description='I am a full-Stack developer based in Milwuakee, WI'/>         
+          description='I am a full-Stack developer based in Milwaukee, WI'/>         
           </Transition>
 
           <Transition
