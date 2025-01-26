@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/app/components/Header";
+import { FaToggleOn, FaToggleOff } from "react-icons/fa6"; // Import the toggle icons
 
 const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -25,18 +26,24 @@ const ThemeToggle: React.FC = () => {
     localStorage.setItem("theme", newTheme);
   };
 
+  // Determine image source based on theme
+  const imageSrc = theme === "dark" ? "/hm.svg" : "/hm_black.svg";
+
   return (
-    <div className="theme-toggle flex flex-col items-center justify-center">
-      <Header/>
-      <label className="toggle">
-        <input
-          type="checkbox"
-          checked={theme === "light"}
-          onChange={handleToggle}
-          aria-label="Toggle Light/Dark Theme"
-        />
-        <span className="slider"></span>
-      </label>
+    <div className="flex flex-col items-center justify-center">
+      {/* Pass the dynamically determined imageSrc to Header */}
+      <Header imageSrc={imageSrc} />
+      <button
+        onClick={handleToggle}
+        aria-label="Toggle Light/Dark Theme"
+        className="flex items-center justify-center p-2 rounded-md text-xl focus:outline-none"
+      >
+        {theme === "light" ? (
+          <FaToggleOn className="text-green-500 text-4xl" />
+        ) : (
+          <FaToggleOff className="text-gray-500 text-4xl" />
+        )}
+      </button>
     </div>
   );
 };

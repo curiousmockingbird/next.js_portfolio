@@ -37,7 +37,7 @@ export default function Example({ redirectTo, sectionName, description }: { redi
                     setIsShowing(false)
                     handleClick()
                 }}
-        className="backface-visibility-hidden flex transform items-center rounded-full px-3 py-2 text-sm font-medium transition hover:scale-105 focus:outline-none active:bg-black/40">
+        className="backface-visibility-hidden flex transform items-center rounded-full px-3 py-2 text-sm font-medium transition hover:scale-105 focus:outline-none">
         <div className="group rounded-lg border border-transparent transition-colors">
           <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 ">
           <h2 className={`text-2xl font-semibold`}>
