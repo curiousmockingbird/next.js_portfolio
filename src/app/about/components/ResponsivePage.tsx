@@ -1,269 +1,61 @@
-// ResponsiveNavbar.js
-'use client'
-import { useMediaQuery, useTheme } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { Transition } from '@headlessui/react';
-import Image from 'next/image';
-import './../style.css'
-import Box from '@mui/system/Box';
-import Modal from './Modal';
-import StatsModal from './StatsModal';
+"use client";
+
+import React, { useEffect, useState, useCallback } from "react";
+import { useTheme } from "@mui/material";
+import MobileLayout from "./MobileLayout";
+import TabletLayout from "./TabletLayout";
+import DesktopLayout from "./DesktopLayout";
+
+// Utility debounce function (defined outside the component)
+const debounce = (func: () => void, delay: number) => {
+  let timeoutId: NodeJS.Timeout;
+  return () => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  };
+};
 
 const ResponsivePage = () => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
-    const [isMounted, setIsMounted] = useState(false);
+  const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    return (
-        <>
-            {isMobile ? (
-                <div className='mx-4 mt-8'>
-                    <Box className='flex justify-center items-center' id='1'>
-                        <div>
-                            <Transition
-                                show={isMounted}
-                                enter="transition-opacity duration-700 delay-300"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                            >
+  // Memoized resize handler
+  const handleResize = useCallback(
+    debounce(() => {
+      const mobile = window.matchMedia(theme.breakpoints.down("sm")).matches;
+      const tablet = window.matchMedia(theme.breakpoints.between("sm", "lg")).matches;
 
-                                <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">Hola, I am Harold Mesa</h1>
-                                <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
-                                <p className="text-base md:text-xl text-center">
-                                    Equipped with a comprehensive skill set in both frontend and backend development, I build full-fledged applications from the ground up.
-                                </p>
-                            </Transition>
-                        </div>
-                    </Box>
-                    <Box>
-                        <div className='flex items-center justify-center mt-2'>
-                            <Transition
-                                show={isMounted}
-                                enter="transition-opacity duration-700 delay-700"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                            >
-                                <div className='circularImageMobile'>
-                                    <Image src='/profile_pic.jpg' width={200} height={200} alt='My Pic' className='md:w-400 md:h-400' />
-                                </div>
-                            </Transition>
-                        </div>
-                        <Transition id='3'
-                            show={isMounted}
-                            enter="transition-opacity duration-700 delay-700"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                        >
-                            <Box className='flex flex-wrap items-center justify-evenly' >
-                                <div className='flex justify-center m-2'>
-                                    <Image src='/next-js.svg' width={60} height={60} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center m-2'>
-                                    <Image src='/javascript.svg' width={60} height={60} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center m-2'>
-                                    <Image src='/react.svg' width={60} height={60} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center m-2'>
-                                    <Image src='/wordpress.svg' width={60} height={60} alt='My Pic' />
-                                </div>
-                                <div>
-                                    <Modal width={500}/>
-                                </div>
-                            </Box>
-                        </Transition>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <Transition
-                                    show={isMounted}
-                                    enter="transition-opacity duration-700 delay-500"
-                                    enterFrom="opacity-0"
-                                    enterTo="opacity-100"
-                                >
-                                    <section className='bg-indigo-500 p-4 m-4 rounded-lg'>
-                                    <p className='mb-4'>
-                                    I am a full-stack developer specializing in JavaScript, working with Wisconsin&apos;s leading grassroots immigrant rights organization, <span className='font-bold underline'><a href='https://vdlf.org'>Voces de la Frontera</a></span>, and <span className='font-bold underline'><a href='https://slingshotcontent.com/'>Slingshot Content</a></span>, a consultancy and marketing agency. My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
-                                    </p>
-                                    <p className='mb-4'>
-                                    My approach combines problem-solving skills with a keen attention to detail and creativity, enabling me to tackle complex challenges effectively. I prioritize collaboration and clear communication, which enhances my ability to work within diverse teams. Committed to continuous learning, I keep up-to-date with the latest web development trends and best practices.
-                                    </p>
-                                    </section>
-                                </Transition>
-                            </div>
-                        </div>
-                    </Box>
-                </div>
-            ) : isTablet ? (
-                    <div className='mx-16 mt-8'>
-                        <Box className='flex justify-center items-center'>
-                            <div className='mx-32'>
-                                <Transition
-                                    show={isMounted}
-                                    enter="transition-opacity duration-700 delay-300"
-                                    enterFrom="opacity-0"
-                                    enterTo="opacity-100"
-                                >
-                                    <h1 className="text-4xl font-bold text-center mb-2">Hi, {"I'm"} Harold Mesa </h1>
-                                    <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
-                                    <p className="text-xl text-center">
-                                        Equipped with a comprehensive skill set in both frontend and backend development, I build full-fledged applications from the ground up.
-                                    </p>
-                                </Transition>
-                            </div>
-                        </Box>
-                        <div className='flex items-center justify-center mt-8'>
-                                    <Transition
-                                        show={isMounted}
-                                        enter="transition-opacity duration-700 delay-700"
-                                        enterFrom="opacity-0"
-                                        enterTo="opacity-100"
-                                    >
-                                        <div className='circularImage'>
-                                            <Image src='/profile_pic.jpg' width={400} height={400} alt='My Pic' />
-                                        </div>
-                                    </Transition>
-                                </div>
-                                <Transition id='3'
-                            show={isMounted}
-                            enter="transition-opacity duration-700 delay-700"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                        >
-                            <Box className='flex items-center justify-evenly my-8'>
-                                <div className='flex justify-center'>
-                                    <Image src='/next-js.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/javascript.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/react.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/wordpress.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div>
-                                    <Modal width={500}/>
-                                </div>
-                            </Box>
-                        </Transition>
-                        <Box className='flex items-center'>
-                            <div className="">
-                                <div className=''>
-                                    <div>
-                                        <Transition
-                                            show={isMounted}
-                                            enter="transition-opacity duration-700 delay-500"
-                                            enterFrom="opacity-0"
-                                            enterTo="opacity-100"
-                                        >
-                                            <section className='bg-indigo-500 p-8 rounded-lg'>
-                                                {/* <h2 className="text-3xl text-white mb-4">Our Mission</h2> */}
-                                                <p className='mb-4'>
-                                                I am a full-stack developer specializing in JavaScript, working with Wisconsin&apos;s leading grassroots immigrant rights organization, <span className='font-bold underline'><a href='https://vdlf.org'>Voces de la Frontera</a></span>, and <span className='font-bold underline'><a href='https://slingshotcontent.com/'>Slingshot Content</a></span>, a consultancy and marketing agency. My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
-                                                </p>
-                                                <p className='mb-4'>
-                                                My approach combines problem-solving skills with a keen attention to detail and creativity, enabling me to tackle complex challenges effectively. I prioritize collaboration and clear communication, which enhances my ability to work within diverse teams. Committed to continuous learning, I keep up-to-date with the latest web development trends and best practices.
-                                                </p>
-                                            </section>
-                                        </Transition>
-                                    </div>
-                                </div>
-                            </div>
-                        </Box>
-                    </div>
-            ) : (
-                <Box sx={{ height: '100vh' }} id='0'>
-                    <div className='mx-32'>
-                        <Box className='flex justify-center items-center' sx={{ height: '20vh' }} id='1'>
-                            <div>
-                                <Transition
-                                    show={isMounted}
-                                    enter="transition-opacity duration-700 delay-300"
-                                    enterFrom="opacity-0"
-                                    enterTo="opacity-100"
-                                >
+      setIsMobile(mobile);
+      setIsTablet(tablet);
+    }, 200), // Adjust the debounce delay here
+    [theme] // Dependencies for useCallback
+  );
 
-                                    <h1 className="text-4xl font-bold text-center">Hola, I am Harold Mesa </h1>
-                                    <p className='text-center mb-4 tracking-widest'>Full-stack developer</p>
-                                    <p className="text-xl text-center">
-                                        Equipped with a comprehensive skill set in both frontend and backend development,<br /> I build full-fledged applications from the ground up.
-                                    </p>
-                                </Transition>
-                            </div>
-                        </Box>
-                        <Box className='flex items-center' sx={{ height: '60vh' }} id='2'>
-                            <div className="grid lg:grid-cols-2 gap-4">
-                                <div className=''>
-                                    <div>
-                                        <Transition
-                                            show={isMounted}
-                                            enter="transition-opacity duration-700 delay-500"
-                                            enterFrom="opacity-0"
-                                            enterTo="opacity-100"
-                                        >
-                                            <section className='bg-indigo-500 p-8 rounded-lg'>
-                                                {/* <h2 className="text-3xl text-white mb-4">Our Mission</h2> */}
-                                                <p className='mb-4'>
-                                                I am a full-stack developer specializing in JavaScript, working with Wisconsin&apos;s leading grassroots immigrant rights organization, <span className='font-bold underline'><a href='https://vdlf.org'>Voces de la Frontera</a></span>, and <span className='font-bold underline'><a href='https://slingshotcontent.com/'>Slingshot Content</a></span>, a consultancy and marketing agency. My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
-                                                </p>
-                                                <p className='mb-4'>
-                                                My approach combines problem-solving skills with a keen attention to detail and creativity, enabling me to tackle complex challenges effectively. I prioritize collaboration and clear communication, which enhances my ability to work within diverse teams. Committed to continuous learning, I keep up-to-date with the latest web development trends and best practices.
-                                                </p>
-                                            </section>
-                                        </Transition>
-                                    </div>
-                                </div>
-                                <div className='flex items-center justify-center '>
-                                    <Transition
-                                        show={isMounted}
-                                        enter="transition-opacity duration-700 delay-700"
-                                        enterFrom="opacity-0"
-                                        enterTo="opacity-100"
-                                    >
-                                        <div className='circularImage'>
-                                            <Image src='/profile_pic.jpg' width={400} height={400} alt='My Pic' />
-                                        </div>
-                                    </Transition>
-                                </div>
-                            </div>
-                        </Box>
-                        <Transition id='3'
-                            show={isMounted}
-                            enter="transition-opacity duration-700 delay-700"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                        >
-                            <Box className='flex items-center justify-evenly' sx={{ height: '20vh' }}>
-                                <div className='flex justify-center'>
-                                    <Image src='/next-js.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/javascript.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/react.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <Image src='/wordpress.svg' width={90} height={90} alt='My Pic' />
-                                </div>
-                                <div>
-                                    <Modal width={650}/>
-                                </div>
-                                <div>
-                                    <StatsModal width={450}/>
-                                </div>
-                            </Box>
-                        </Transition>
-                    </div>
-                </Box>
-            )}
-        </>
-    );
+  // Initialize and listen to resize events
+  useEffect(() => {
+    setIsMounted(true); // Mount the component
+
+    // Set initial state
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleResize]); // Add handleResize as a dependency
+
+  return (
+    <>
+      {isMobile && <MobileLayout isMounted={isMounted} />}
+      {isTablet && <TabletLayout isMounted={isMounted} />}
+      {!isMobile && !isTablet && <DesktopLayout isMounted={isMounted} />}
+    </>
+  );
 };
 
 export default ResponsivePage;
