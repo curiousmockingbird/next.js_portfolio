@@ -62,8 +62,8 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <div className="circularImage">
-            <Image src="/profile_pic.jpg" width={400} height={400} alt="My Pic" />
+          <div>
+            <Image className="rounded-full" src="/profile_pic.jpg" width={400} height={400} alt="My Pic" />
           </div>
         </Transition>
       </div>

@@ -4,6 +4,7 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Box from "@mui/system/Box";
 import Modal from "./Modal";
+// import style.css
 
 const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
   <div className="mx-4 mt-8">
@@ -37,8 +38,9 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <div className="circularImageMobile">
+          <div>
             <Image
+              className="rounded-full"
               src="/profile_pic.jpg"
               width={200}
               height={200}
