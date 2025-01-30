@@ -8,7 +8,7 @@ import Modal from "./Modal";
 
 const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
   <div className="mx-4 mt-8">
-    <Box className="flex justify-center items-center" id="1">
+    {/* <Box className="flex justify-center items-center" id="1">
       <div>
         <Transition
           show={isMounted}
@@ -28,7 +28,7 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
           </p>
         </Transition>
       </div>
-    </Box>
+    </Box> */}
 
     <Box>
       <div className="flex items-center justify-center mt-2">

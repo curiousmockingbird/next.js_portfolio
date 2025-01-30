@@ -4,11 +4,13 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Box from "@mui/system/Box";
 import Modal from "./Modal";
+import Toggle from "./../../components/Toggle";
+
 
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
   <div className="mx-16 mt-8">
-    {/* Header Section */}
-    <Box className="flex justify-center items-center">
+    <Toggle />
+    {/* <Box className="flex justify-center items-center">
       <div className="mx-32">
         <Transition
           show={isMounted}
@@ -23,7 +25,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           </p>
         </Transition>
       </div>
-    </Box>
+    </Box> */}
 
     {/* Two-Column Grid Section */}
     <Box className="grid md:grid-cols-2 gap-6 mt-8 items-center">
@@ -35,17 +37,13 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <section className="bg-indigo-500 p-6 rounded-lg">
+          <section className="p-6 rounded-lg">
             <p className="mb-4">
               I am a full-stack developer specializing in JavaScript, working with Wisconsin&apos;s leading grassroots immigrant rights organization,{" "}
               <span className="font-bold underline">
                 <a href="https://vdlf.org">Voces de la Frontera</a>
               </span>
-              , and{" "}
-              <span className="font-bold underline">
-                <a href="https://slingshotcontent.com/">Slingshot Content</a>
-              </span>
-              , a consultancy and marketing agency. My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
+              . My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
             </p>
             <p className="mb-4">
               My approach combines problem-solving skills with a keen attention to detail and creativity, enabling me to tackle complex challenges effectively. I prioritize collaboration and clear communication, which enhances my ability to work within diverse teams. Committed to continuous learning, I keep up-to-date with the latest web development trends and best practices.
@@ -80,7 +78,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
       <Box className="flex items-center justify-evenly my-8">
         {["next-js.svg", "javascript.svg", "react.svg", "wordpress.svg"].map((icon) => (
           <div key={icon} className="flex justify-center">
-            <Image src={`/${icon}`} width={90} height={90} alt={icon} />
+            <Image src={`/${icon}`} width={60} height={60} alt={icon} />
           </div>
         ))}
         <Modal width={500} />

@@ -1,3 +1,5 @@
+'use client'
+
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';

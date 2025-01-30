@@ -6,6 +6,7 @@ import MobileLayout from "./MobileLayout";
 import TabletLayout from "./TabletLayout";
 import DesktopLayout from "./DesktopLayout";
 
+
 const ResponsivePage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
