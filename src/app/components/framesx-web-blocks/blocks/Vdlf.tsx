@@ -5,7 +5,7 @@ import Button from '@mui/joy/Button';
 import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from '../components/TwoSidedLayout';
-// import GitHubIcon from '@mui/icons-material/GitHub';
+import GitHubIcon from '@mui/icons-material/GitHub';
 // import Dialog from '../components/Dialog'
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
@@ -15,7 +15,14 @@ const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
+      <Button 
+        variant="outlined" 
+        color="neutral" 
+        onClick={() => {
+          console.log("🟢 'Learn More' button clicked");
+          setOpen(true);
+        }}
+      >
         Learn More
       </Button>
       <Modal
@@ -66,10 +73,10 @@ const BasicModal: React.FC = () => {
 export default function Vdlf() {
   return (
     <TwoSidedLayout
-      box4logo="vue-js.svg"
-      box3logo="node.png"
-      box1logo="wordpress-black.svg"
-      box2logo="vercel_logo_black.svg"
+      box4logo="/vue-js.svg"
+      box3logo="/node.png"
+      box1logo="/wordpress-black.svg"
+      box2logo="/vercel_logo_black.svg"
       alt="Contact form screenshot"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1730684442/samples/graphic_design_work/devProjects/Screenshot_2024-11-03_at_7.39.08_PM_h8wohn.png"
     >
@@ -85,10 +92,27 @@ export default function Vdlf() {
         Contact Form Integration
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Implemented a Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend built with Vue.js.      </Typography>
+        A Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend built with Vue.js.      </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://vdlf.org/team" target="_blank" startDecorator={<ArrowForward fontSize='large' />}>
-        Visit
+      <Button 
+        size="lg" 
+        component="a" 
+        href="https://vdlf.org/team" 
+        target="_blank" 
+        startDecorator={<ArrowForward fontSize="large" />} 
+        onClick={() => console.log("🔵 'Deployment (form)' button clicked")}
+      >
+        Deployment (form)
+      </Button>
+      <Button 
+        size="lg" 
+        component="a" 
+        href="https://github.com/harold-voces/contact_form_last" 
+        target="_blank" 
+        startDecorator={<GitHubIcon fontSize="large" />} 
+        onClick={() => console.log("⚫ 'Repo (serverless function)' button clicked")}
+      >
+        Repo (serverless function)
       </Button>
     </TwoSidedLayout>
   );

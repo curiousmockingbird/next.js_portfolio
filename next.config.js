@@ -4,6 +4,7 @@ const nextConfig = {
         remotePatterns: [
           {hostname: 'cdn.hashnode.com'},
         ],
+        domains: ["res.cloudinary.com"], // Add Cloudinary domain
   },
 }
 

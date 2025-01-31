@@ -8,6 +8,8 @@ import Typography from '@mui/joy/Typography';
 // import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import Toggle from './../components/Toggle';
+
 
 export default function Home() {
     // Added schema of Api querry to get the data from hashnode.
@@ -61,19 +63,9 @@ export default function Home() {
     return (
         <>
             <div>
-            <Typography
-                level="body-xs"
-                sx={{
-                    position: 'fixed',
-                    zIndex: 999,
-                    top: '2rem',
-                    left: '1rem',
-                }}
-            >
-                <Link href={'/'}> <ArrowCircleLeftIcon sx={{ fontSize: 40 }} /> </Link>
-            </Typography>
+            <Toggle />
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                <h1 className="text-center items-center justify-center p-10 mt-10 top-36 text-3xl lg:text-4xl font-bold">Blog posts by Harold Mesa</h1>
+                <h1 className="text-center items-center justify-center p-10 top-36 text-3xl lg:text-4xl font-bold">My blog on Hashnode</h1>
                 {loading && (<div className="p-10 mt-10">
                     <Skeleton height={500} count={1} />
                 </div>)}

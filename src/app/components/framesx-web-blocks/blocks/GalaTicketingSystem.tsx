@@ -72,10 +72,10 @@ const BasicModal: React.FC = () => {
 export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
-      box1logo="qr.svg"
-      box2logo="apps_script.svg"
-      box3logo="sendgrid.svg"
-      box4logo="everyaction.png"
+      box1logo="/qr.svg"
+      box2logo="/apps_script.svg"
+      box3logo="/sendgrid.svg"
+      box4logo="/everyaction.png"
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1731358461/samples/graphic_design_work/devProjects/gala_ticket_hhjcgc.png"
     >
