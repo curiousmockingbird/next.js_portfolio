@@ -19,8 +19,11 @@ const RotatingImage: React.FC = () => {
 
       setTimeout(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        setFade(true); // Fade back in after image update
       }, 500); // Wait for fade-out to complete (500ms)
+
+      setTimeout(() => {
+        setFade(true); // Fade back in only AFTER image source updates
+      }, 600); // Wait slightly longer (100ms buffer) to ensure smooth transition
 
     }, 5000); // Change image every 5 seconds
 
@@ -35,6 +38,7 @@ const RotatingImage: React.FC = () => {
         width={300}
         height={300}
         alt="Profile"
+        priority // Ensures images load fast
       />
     </div>
   );

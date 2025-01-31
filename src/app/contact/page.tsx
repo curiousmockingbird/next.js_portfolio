@@ -4,12 +4,12 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import InstagramIcon from '@mui/icons-material/Instagram';
+// import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Typography from '@mui/joy/Typography';
-import ArrowBack from '@mui/icons-material/ArrowBack';
-import Link from '@mui/joy/Link';
+// import Typography from '@mui/joy/Typography';
+// import ArrowBack from '@mui/icons-material/ArrowBack';
+// import Link from '@mui/joy/Link';
 import Toggle from './../components/Toggle';
 
 const Contact = () => {
