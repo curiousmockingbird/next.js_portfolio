@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeaderProps {
   imageSrc: string;
@@ -6,11 +7,11 @@ interface HeaderProps {
 
 export default function Header({ imageSrc }: HeaderProps) {
   return (
-    <div className="flex flex-col items-center justify-center" style={{ height: "25vh" }}>
+    <Link href="/" className="flex flex-col items-center justify-center" style={{ height: "25vh" }}>
       <div>
         <Image src={imageSrc} alt="Your SVG" width={200} height={200} />
       </div>
       <h1>harolDeveloper — Full-Stack</h1>
-    </div>
+    </Link>
   );
 }

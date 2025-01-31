@@ -10,6 +10,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Typography from '@mui/joy/Typography';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Link from '@mui/joy/Link';
+import Toggle from './../components/Toggle';
 
 const Contact = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -53,7 +54,7 @@ const Contact = () => {
 
     return (
         <>
-            <Typography
+            {/* <Typography
                 level="body-xs"
                 sx={{
                     position: 'fixed',
@@ -63,8 +64,9 @@ const Contact = () => {
                 }}
             >
                 <Link href={'/'}> <ArrowBack sx={{ fontSize: 40 }} /> </Link>
-            </Typography>
-            <div className='h-screen'>
+            </Typography> */}
+            <div >
+                <Toggle />
                 <main className='h-full main grid lg:grid-cols-2'>
                     <div className='flex flex-col justify-center items-center'>
                         <div className='pb-2 lg:pb-0'><h2>You can also find me on:</h2></div>

@@ -13,7 +13,7 @@ export default function About() {
 
     return (
             <>
-            <Typography
+            {/* <Typography
                 level="body-xs"
                 sx={{
                     position: 'fixed',
@@ -23,7 +23,7 @@ export default function About() {
                 }}
             >
                 <Link href={'/'}> <ArrowBack sx={{ fontSize: 40 }} /> </Link>
-            </Typography>
+            </Typography> */}
             <ResponsivePage/>
             </>
     );

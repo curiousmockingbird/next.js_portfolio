@@ -6,27 +6,12 @@ import Box from "@mui/system/Box";
 import Modal from "./Modal";
 import Toggle from "./../../components/Toggle";
 import StatsModal from "./StatsModal";
+import RotatingImage from "./RotatingImage";
 
 
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
   <div className="mx-16 mt-8">
     <Toggle />
-    {/* <Box className="flex justify-center items-center">
-      <div className="mx-32">
-        <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          <h1 className="text-4xl font-bold text-center mb-2">Hi, {"I'm"} Harold Mesa</h1>
-          <p className="text-center mb-4 tracking-widest">Full-stack developer</p>
-          <p className="text-xl text-center">
-            Equipped with a comprehensive skill set in both frontend and backend development, I build full-fledged applications from the ground up.
-          </p>
-        </Transition>
-      </div>
-    </Box> */}
 
     {/* Two-Column Grid Section */}
     <Box className="grid md:grid-cols-2 gap-6 mt-8 items-center">
@@ -61,9 +46,8 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <div>
-            <Image className="rounded-full" src="/profile_pic.jpg" width={400} height={400} alt="My Pic" />
-          </div>
+        <RotatingImage />
+
         </Transition>
       </div>
     </Box>
