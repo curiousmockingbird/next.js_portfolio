@@ -1,16 +1,22 @@
-export default async function handler(req: any, res:any) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
-  }
+import { NextResponse } from "next/server";
 
-  const { buttonName } = req.body;
+export async function POST(request: Request) {
+    if (request.method !== "POST") {
+        return new Response(null, { status: 404, statusText: "Not Found" });
+    }
 
-  if (!buttonName) {
-    return res.status(400).json({ message: "Missing button name" });
-  }
+    try {
+        const { buttonName } = await request.json();
 
-  // Log button click to Vercel's function logs
-  console.log(`🔘 Button Click Logged: ${buttonName}`);
+        if (!buttonName) {
+            return new Response("Missing button name", { status: 400 });
+        }
 
-  return res.status(200).json({ message: `Button click logged: ${buttonName}` });
+        // Log button click to Vercel logs
+        console.log(`🔘 Button Click Logged: ${buttonName}`);
+
+        return NextResponse.json({ status: 200, message: `Button click logged: ${buttonName}` });
+    } catch (error: any) {
+        return new Response(error.message, { status: 500 });
+    }
 }

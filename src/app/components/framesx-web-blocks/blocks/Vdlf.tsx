@@ -72,7 +72,7 @@ const BasicModal: React.FC = () => {
 
 const logButtonClick = async (buttonName: string) => {
   try {
-    await fetch("/api/logs", {
+    await fetch("/api/log-button-click", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ buttonName }),
