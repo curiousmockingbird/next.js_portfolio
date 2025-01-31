@@ -3,6 +3,6 @@ export interface GithubStatsData {
     following: number;
     publicRepos: number;
     publicGists: number;
-    commits: string;
+    commits: number;
   }
   

@@ -37,7 +37,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
           >
             <section className="p-8 rounded-lg">
               <p className="mb-4">
-                I am a full-stack developer specializing in JavaScript, working
+                I am a full-stack developer specializing in JavaScript, currently working
                 with Wisconsin&apos;s leading grassroots immigrant rights
                 organization,{" "}
                 <span className="font-bold underline">

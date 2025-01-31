@@ -5,6 +5,7 @@ import Image from "next/image";
 import Box from "@mui/system/Box";
 import Modal from "./Modal";
 import Toggle from "./../../components/Toggle";
+import StatsModal from "./StatsModal";
 
 
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
@@ -39,7 +40,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
         >
           <section className="p-6 rounded-lg">
             <p className="mb-4">
-              I am a full-stack developer specializing in JavaScript, working with Wisconsin&apos;s leading grassroots immigrant rights organization,{" "}
+              I am a full-stack developer specializing in JavaScript, currently working with Wisconsin&apos;s leading grassroots immigrant rights organization,{" "}
               <span className="font-bold underline">
                 <a href="https://vdlf.org">Voces de la Frontera</a>
               </span>
@@ -82,6 +83,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           </div>
         ))}
         <Modal width={500} />
+          <StatsModal width={450} />
       </Box>
     </Transition>
   </div>

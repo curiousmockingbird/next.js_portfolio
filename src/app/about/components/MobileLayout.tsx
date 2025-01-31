@@ -4,31 +4,12 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Box from "@mui/system/Box";
 import Modal from "./Modal";
-// import style.css
+import Toggle from "./../../components/Toggle";
+import StatsModal from "./StatsModal";
 
 const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
   <div className="mx-4 mt-8">
-    {/* <Box className="flex justify-center items-center" id="1">
-      <div>
-        <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          <h1 className="text-2xl md:text-4xl font-bold text-center mb-2">
-            Hola, I am Harold Mesa
-          </h1>
-          <p className="text-center mb-4 tracking-widest">
-            Full-stack developer
-          </p>
-          <p className="text-base md:text-xl text-center">
-            Equipped with a comprehensive skill set in both frontend and backend
-            development, I build full-fledged applications from the ground up.
-          </p>
-        </Transition>
-      </div>
-    </Box> */}
+    <Toggle />
 
     <Box>
       <div className="flex items-center justify-center mt-2">
@@ -65,6 +46,7 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
             )
           )}
           <Modal width={500} />
+          <StatsModal width={450} />
         </Box>
       </Transition>
     </Box>
@@ -77,9 +59,9 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <section className="bg-indigo-500 p-4 rounded-lg">
+          <section className="p-4 rounded-lg">
             <p className="mb-4">
-              I am a full-stack developer specializing in JavaScript, working
+              I am a full-stack developer specializing in JavaScript, currently working
               with Wisconsin&apos;s leading grassroots immigrant rights
               organization,{" "}
               <span className="font-bold underline">

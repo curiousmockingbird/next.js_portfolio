@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
-import Typography from '@mui/joy/Typography';
+// import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 import GithubStats from './../../components/GithubStats';
 
@@ -12,9 +12,13 @@ export default function BasicModal({
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button variant="outlined" color="success" onClick={() => setOpen(true)}>
-        Github Stats
-      </Button>
+      <Button
+  variant="outlined"
+  color="success"
+  onClick={() => window.open('https://github.com/curiousmockingbird', '_blank')}
+>
+  Github account
+</Button>
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
