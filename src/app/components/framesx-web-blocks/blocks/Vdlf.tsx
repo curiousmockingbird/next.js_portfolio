@@ -70,6 +70,18 @@ const BasicModal: React.FC = () => {
   );
 }
 
+const logButtonClick = async (buttonName: string) => {
+  try {
+    await fetch("/api/logs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ buttonName }),
+    });
+  } catch (error) {
+    console.error("Error logging button click:", error);
+  }
+};
+
 export default function Vdlf() {
   return (
     <TwoSidedLayout
@@ -95,25 +107,26 @@ export default function Vdlf() {
         A Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend built with Vue.js.      </Typography>
       <BasicModal />
       <Button 
-        size="lg" 
-        component="a" 
-        href="https://vdlf.org/team" 
-        target="_blank" 
-        startDecorator={<ArrowForward fontSize="large" />} 
-        onClick={() => console.log("🔵 'Deployment (form)' button clicked")}
-      >
-        Deployment (form)
-      </Button>
-      <Button 
-        size="lg" 
-        component="a" 
-        href="https://github.com/harold-voces/contact_form_last" 
-        target="_blank" 
-        startDecorator={<GitHubIcon fontSize="large" />} 
-        onClick={() => console.log("⚫ 'Repo (serverless function)' button clicked")}
-      >
-        Repo (serverless function)
-      </Button>
+  size="lg" 
+  component="a" 
+  href="https://vdlf.org/team" 
+  target="_blank" 
+  startDecorator={<ArrowForward fontSize="large" />} 
+  onClick={() => logButtonClick("Deployment (form)")}
+>
+  Deployment (form)
+</Button>
+
+<Button 
+  size="lg" 
+  component="a" 
+  href="https://github.com/harold-voces/contact_form_last" 
+  target="_blank" 
+  startDecorator={<GitHubIcon fontSize="large" />} 
+  onClick={() => logButtonClick("Repo (serverless function)")}
+>
+  Repo (serverless function)
+</Button>
     </TwoSidedLayout>
   );
 }
