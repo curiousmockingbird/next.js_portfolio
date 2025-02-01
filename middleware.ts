@@ -11,22 +11,22 @@ export async function middleware(request: NextRequest) {
   // Log visitor info to Vercel logs
   console.log(`🌍 Visitor Info: IP: ${ip}, Country: ${country}, Region: ${region}, Device: ${userAgent}`);
 
-  // // Send logs to BetterStack (Logtail)
-  // await fetch("https://in.logtail.com", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "Authorization": `Bearer ${process.env.LOGTAIL_TOKEN}`, // Store in .env.local
-  //   },
-  //   body: JSON.stringify({
-  //     message: `Visitor on Home Page`,
-  //     ip,
-  //     country,
-  //     region,
-  //     userAgent,
-  //     timestamp: new Date(),
-  //   }),
-  // });
+  // Send logs to BetterStack (Logtail)
+  await fetch("https://in.logtail.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.BETTERSTACK_KEY}`, // Store in .env.local
+    },
+    body: JSON.stringify({
+      message: `Visitor on Home Page`,
+      ip,
+      country,
+      region,
+      userAgent,
+      timestamp: new Date(),
+    }),
+  });
 
   // Continue request handling
   const response = NextResponse.next();
