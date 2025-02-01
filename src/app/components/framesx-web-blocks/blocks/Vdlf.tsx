@@ -19,7 +19,7 @@ const BasicModal: React.FC = () => {
         variant="outlined" 
         color="neutral" 
         onClick={() => {
-          console.log("🟢 'Learn More' button clicked");
+          logButtonClick("Learn more");
           setOpen(true);
         }}
       >
