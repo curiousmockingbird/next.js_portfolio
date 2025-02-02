@@ -82,7 +82,22 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
+const logVisitorLocation = async () => {
+  try {
+    await fetch("/api/location", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("Error logging visitor location:", error);
+  }
+};
+
 export default function Vdlf() {
+  React.useEffect(() => {
+    logVisitorLocation(); // Log visitor info when component mounts
+  }, []);
+  
   return (
     <TwoSidedLayout
       box4logo="/vue-js.svg"

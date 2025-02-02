@@ -15,15 +15,15 @@ export async function POST(request: Request) {
         // Log button click to Vercel logs
         console.log(`🔘 Button Click Logged: ${buttonName}`);
 
-        // Extract visitor details
-        const ip = request.headers.get("x-forwarded-for") || "Unknown IP";
-        const country = request.headers.get("x-vercel-ip-country") || "Unknown Country";
-        const region = request.headers.get("x-vercel-ip-country-region") || "Unknown Region";
-        const userAgent = request.headers.get("user-agent") || "Unknown User-Agent";
+        // // Extract visitor details
+        // const ip = request.headers.get("x-forwarded-for") || "Unknown IP";
+        // const country = request.headers.get("x-vercel-ip-country") || "Unknown Country";
+        // const region = request.headers.get("x-vercel-ip-country-region") || "Unknown Region";
+        // const userAgent = request.headers.get("user-agent") || "Unknown User-Agent";
 
         // Log button click & visitor info to Vercel logs
         console.log(`🔘 Button Click Logged: ${buttonName}`);
-        console.log(`🌍 Visitor Info: IP=${ip}, Country=${country}, Region=${region}, Device=${userAgent}`);
+        // console.log(`🌍 Visitor Info: IP=${ip}, Country=${country}, Region=${region}, Device=${userAgent}`);
 
         return NextResponse.json({ status: 200, message: `Button click logged: ${buttonName}` });
     } catch (error: any) {
