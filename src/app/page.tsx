@@ -4,19 +4,44 @@
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
-import Header from './components/Header';
+// import Header from './components/Header';
 import CodeIcon from '@mui/icons-material/Code';
 import InfoIcon from '@mui/icons-material/Info';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import Toggle from '@/app/components/Toggle';
 
+const logVisitorLocation = async () => {
+  try {
+    const response = await fetch('/api/location', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    console.log('📍 Visitor location logged successfully');
+  } catch (error) {
+    console.error('⚠️ Error logging visitor location:', error);
+  }
+};
+
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+  useEffect(() => {
+    setIsMounted(true);
+
+    // Check if the visitor location has already been logged
+    const hasLogged = sessionStorage.getItem('hasLoggedVisitorLocation');
+
+    if (!hasLogged) {
+      logVisitorLocation();
+      sessionStorage.setItem('hasLoggedVisitorLocation', 'true'); // Mark as logged
+    }
+  }, []);
 
   return (
     <main className='flex flex-col h-screen'>
