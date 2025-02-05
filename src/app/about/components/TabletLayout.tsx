@@ -24,16 +24,24 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterTo="opacity-100"
         >
           <section className="p-6 rounded-lg">
-            <p className="mb-4">
-              I am a full-stack developer specializing in JavaScript, currently working with Wisconsin&apos;s leading grassroots immigrant rights organization,{" "}
-              <span className="font-bold underline">
-                <a href="https://vdlf.org">Voces de la Frontera</a>
-              </span>
-              . My technical proficiency covers a range from core JavaScript and frameworks like React and Node.js, to responsive web design with HTML and CSS.
-            </p>
-            <p className="mb-4">
-              My approach combines problem-solving skills with a keen attention to detail and creativity, enabling me to tackle complex challenges effectively. I prioritize collaboration and clear communication, which enhances my ability to work within diverse teams. Committed to continuous learning, I keep up-to-date with the latest web development trends and best practices.
-            </p>
+          <p className="mb-4">
+                I am a full-stack developer specializing in JavaScript, with a
+                deep passion for crafting intuitive, high-performance web
+                applications. Currently, I work with Wisconsin&apos;s leading
+                grassroots immigrant rights organization,{" "}
+                <span className="font-bold underline">
+                  <a href="https://vdlf.org">Voces de la Frontera</a>
+                </span>
+                , where I build and maintain digital solutions that empower
+                communities and drive social change.
+              </p>
+              <p className="mb-4">
+                With a strong foundation in JavaScript, React, and Node.js, I
+                bring ideas to life through scalable, responsive, and accessible
+                web experiences. My expertise extends to HTML, CSS, WordPress,
+                and serverless architectures, allowing me to build dynamic and
+                adaptable solutions for a variety of needs.
+              </p>
           </section>
         </Transition>
       </div>
