@@ -1,23 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import * as React from 'react';
-import Button from '@mui/joy/Button';
+import * as React from "react";
+import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
-import Typography from '@mui/joy/Typography';
-import ArrowForward from '@mui/icons-material/ArrowForward';
-import TwoSidedLayout from '../components/TwoSidedLayout';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import Typography from "@mui/joy/Typography";
+import ArrowForward from "@mui/icons-material/ArrowForward";
+import TwoSidedLayout from "../components/TwoSidedLayout";
+import GitHubIcon from "@mui/icons-material/GitHub";
 // import Dialog from '../components/Dialog'
-import Modal from '@mui/joy/Modal';
-import ModalClose from '@mui/joy/ModalClose';
-import Sheet from '@mui/joy/Sheet';
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import Sheet from "@mui/joy/Sheet";
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button 
-        variant="outlined" 
-        color="neutral" 
+      <Button
+        variant="outlined"
+        color="neutral"
         onClick={() => {
           logButtonClick("Learn more");
           setOpen(true);
@@ -30,15 +30,15 @@ const BasicModal: React.FC = () => {
         aria-describedby="modal-desc"
         open={open}
         onClose={() => setOpen(false)}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Sheet
           variant="outlined"
           sx={{
             maxWidth: 500,
-            borderRadius: 'md',
+            borderRadius: "md",
             p: 3,
-            boxShadow: 'lg',
+            boxShadow: "lg",
           }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
@@ -53,22 +53,33 @@ const BasicModal: React.FC = () => {
             The solution involved:
           </Typography>
           <Typography id="modal-desc">
-            <Typography level='h4'>Serverless Function Setup:</Typography>
-            <br></br>Developed a serverless API endpoint using Vercel to send emails via Nodemailer. This allowed a seamless communication channel between the site visitors and the organization’s team members.
-          </Typography><br></br>
+            <Typography level="h4">Serverless Function Setup:</Typography>
+            <br></br>Developed a serverless API endpoint using Vercel to send
+            emails via Nodemailer. This allowed a seamless communication channel
+            between the site visitors and the organization’s team members.
+          </Typography>
+          <br></br>
           <Typography id="modal-desc">
-            <Typography level='h4'>Cross-Origin Resource Sharing (CORS) Configuration:</Typography>
-            <br></br>Implemented proper CORS handling to ensure secure and successful API requests from the WordPress site to the Vercel-hosted backend. Utilized custom CORS middleware for flexibility and consistency across requests.
-          </Typography><br></br>
+            <Typography level="h4">
+              Cross-Origin Resource Sharing (CORS) Configuration:
+            </Typography>
+            <br></br>Implemented proper CORS handling to ensure secure and
+            successful API requests from the WordPress site to the Vercel-hosted
+            backend. Utilized custom CORS middleware for flexibility and
+            consistency across requests.
+          </Typography>
+          <br></br>
           <Typography id="modal-desc">
-            <Typography level='h4'>Frontend Integration:</Typography>
-            <br></br>Modified the Vue.js contact form on the WordPress site to interact with the Vercel API, ensuring the payload structure matched and implementing error handling for smoother user experience.
+            <Typography level="h4">Frontend Integration:</Typography>
+            <br></br>Modified the Vue.js contact form on the WordPress site to
+            interact with the Vercel API, ensuring the payload structure matched
+            and implementing error handling for smoother user experience.
           </Typography>
         </Sheet>
       </Modal>
     </React.Fragment>
   );
-}
+};
 
 const logButtonClick = async (buttonName: string) => {
   try {
@@ -82,9 +93,7 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
-
 export default function Vdlf() {
-
   return (
     <TwoSidedLayout
       box4logo="/vue-js.svg"
@@ -106,29 +115,41 @@ export default function Vdlf() {
         Contact Form Integration
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        A Node.js serverless function hosted on Vercel to handle contact form submissions from a WordPress frontend built with Vue.js.      </Typography>
+        A Node.js serverless function hosted on Vercel to handle contact form
+        submissions from a WordPress frontend built with Vue.js.{" "}
+      </Typography>
       <BasicModal />
-      <Button 
-  size="lg" 
-  component="a" 
-  href="https://vdlf.org/team" 
-  target="_blank" 
-  startDecorator={<ArrowForward fontSize="large" />} 
-  onClick={() => logButtonClick("Deployment (form)")}
->
-  Deployment (form)
-</Button>
+      <Button
+        size="lg"
+        component="a"
+        href="https://vdlf.org/team"
+        target="_blank"
+        startDecorator={<ArrowForward fontSize="large" />}
+        onClick={() => logButtonClick("Deployment (form)")}
+      >
+        Deployment
+      </Button>
+      <Button
+        size="lg"
+        component="a"
+        href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/StaffBoard.vue"
+        target="_blank"
+        startDecorator={<GitHubIcon fontSize="large" />}
+        onClick={() => logButtonClick("Repo (form)")}
+      >
+        Repo (form)
+      </Button>
 
-<Button 
-  size="lg" 
-  component="a" 
-  href="https://github.com/harold-voces/contact_form_last" 
-  target="_blank" 
-  startDecorator={<GitHubIcon fontSize="large" />} 
-  onClick={() => logButtonClick("Repo (serverless function)")}
->
-  Repo (serverless function)
-</Button>
+      <Button
+        size="lg"
+        component="a"
+        href="https://github.com/harold-voces/contact_form_last"
+        target="_blank"
+        startDecorator={<GitHubIcon fontSize="large" />}
+        onClick={() => logButtonClick("Repo (serverless function)")}
+      >
+        Repo (serverless function)
+      </Button>
     </TwoSidedLayout>
   );
 }

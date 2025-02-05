@@ -6,6 +6,18 @@ import ModalClose from '@mui/joy/ModalClose';
 import Sheet from '@mui/joy/Sheet';
 import GithubStats from './../../components/GithubStats';
 
+const logButtonClick = async (buttonName: string) => {
+  try {
+    await fetch("/api/logs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ buttonName }),
+    });
+  } catch (error) {
+    console.error("Error logging button click:", error);
+  }
+};
+
 export default function BasicModal({
   width,
 }: React.PropsWithChildren<{ width: number}>) {
@@ -15,7 +27,9 @@ export default function BasicModal({
       <Button
   variant="outlined"
   color="success"
-  onClick={() => window.open('https://github.com/curiousmockingbird', '_blank')}
+  onClick={() => {window.open('https://github.com/curiousmockingbird', '_blank');
+    logButtonClick("Github");
+  }}
 >
   Github account
 </Button>

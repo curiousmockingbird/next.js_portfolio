@@ -8,14 +8,33 @@ import Divider from "@mui/joy/Divider";
 import Link from "@mui/joy/Link";
 import Box from "@mui/joy/Box";
 
+const logButtonClick = async (buttonName: string) => {
+  try {
+    await fetch("/api/logs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ buttonName }),
+    });
+  } catch (error) {
+    console.error("Error logging button click:", error);
+  }
+};
+
 export default function ResumeModal({ width }: { width: number }) {
   const [open, setOpen] = React.useState<boolean>(false);
 
   return (
     <React.Fragment>
-      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
-        View Full Resume
-      </Button>
+      <Button 
+  variant="outlined" 
+  color="primary" 
+  onClick={() => {
+    setOpen(true); 
+    logButtonClick("Resume");
+  }}
+>
+  View Full Resume
+</Button>
       <Modal
         aria-labelledby="resume-title"
         aria-describedby="resume-desc"
@@ -94,24 +113,40 @@ export default function ResumeModal({ width }: { width: number }) {
             VOCES DE LA FRONTERA | Feb 2023 - Present | Milwaukee, WI
           </Typography>
           <Typography fontSize="sm" sx={{ pl: 2 }}>
-            - Application Lifecycle Management: Overseeing projects from conception to deployment, ensuring robust backend functionality and engaging front-ends.
-            <br />- API Integration & Performance Optimization: Enhancing application efficiency and user experience.
-            <br />- Project Coordination: Aligning technology with broader organizational goals.
+            - Application Lifecycle Management: Overseeing projects from
+            conception to deployment, ensuring robust backend functionality and
+            engaging front-ends.
+            <br />- API Integration & Performance Optimization: Enhancing
+            application efficiency and user experience.
+            <br />- Project Coordination: Aligning technology with broader
+            organizational goals.
           </Typography>
 
-          <Typography fontSize="sm" fontWeight="md" sx={{ color: "blue" }} mt={2}>
-          SLINGSHOT CONTENT | Jan 2024 - Present | Remote
+          <Typography
+            fontSize="sm"
+            fontWeight="md"
+            sx={{ color: "blue" }}
+            mt={2}
+          >
+            SLINGSHOT CONTENT | Jan 2024 - Present | Remote
           </Typography>
           <Typography fontSize="sm" sx={{ pl: 2 }}>
-            - Website Management: Overseeing design, development, and administration for seamless online presence.
+            - Website Management: Overseeing design, development, and
+            administration for seamless online presence.
           </Typography>
 
-          <Typography fontSize="sm" fontWeight="md" sx={{ color: "blue" }} mt={2}>
+          <Typography
+            fontSize="sm"
+            fontWeight="md"
+            sx={{ color: "blue" }}
+            mt={2}
+          >
             NOMBOLO | Jan 2022 - Mar 2022 | Portland, OR
           </Typography>
           <Typography fontSize="sm" sx={{ pl: 2 }}>
             - React Native UI Development: Designed and built a rewards system.
-            <br />- AWS Backend Troubleshooting: Optimized data fetching and resolved API issues.
+            <br />- AWS Backend Troubleshooting: Optimized data fetching and
+            resolved API issues.
           </Typography>
 
           <Divider sx={{ my: 2 }} />
@@ -123,7 +158,9 @@ export default function ResumeModal({ width }: { width: number }) {
           <Typography fontSize="sm" fontWeight="md">
             B.A. Visual Communication Design
           </Typography>
-          <Typography fontSize="sm">University of Havana, ISDI, Cuba</Typography>
+          <Typography fontSize="sm">
+            University of Havana, ISDI, Cuba
+          </Typography>
 
           <Typography fontSize="sm" fontWeight="md" mt={1}>
             M.A. Integrated Design
@@ -154,7 +191,9 @@ export default function ResumeModal({ width }: { width: number }) {
           <Typography fontSize="sm" fontWeight="md" mt={1}>
             Design Thinking:
           </Typography>
-          <Typography fontSize="sm">UI/UX Design, Wireframing, Prototyping</Typography>
+          <Typography fontSize="sm">
+            UI/UX Design, Wireframing, Prototyping
+          </Typography>
 
           <Divider sx={{ my: 2 }} />
 
