@@ -137,7 +137,7 @@ export default function Vdlf() {
         startDecorator={<GitHubIcon fontSize="large" />}
         onClick={() => logButtonClick("Repo (form)")}
       >
-        Repo (form)
+        Repo (Vue.js form)
       </Button>
 
       <Button

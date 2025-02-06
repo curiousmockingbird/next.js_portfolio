@@ -107,7 +107,7 @@ export default function TwoSidedLayout({
       <Container
         sx={{
           backgroundImage:
-            "linear-gradient(to right, #fde68a , #fb923c, #d97706, #92400e)",
+            "linear-gradient(to right, #fde68a , #fb923c, #d97706)",
           borderRadius: "10px",
           display: "flex",
           width: "100%",
