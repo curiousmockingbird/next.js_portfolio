@@ -15,9 +15,9 @@ const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
+      {/* <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
         Learn more
-      </Button>
+      </Button> */}
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"

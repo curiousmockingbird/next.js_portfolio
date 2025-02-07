@@ -3,7 +3,7 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
-import ArrowForward from "@mui/icons-material/ArrowForward";
+import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from "../components/TwoSidedLayout";
 import GitHubIcon from "@mui/icons-material/GitHub";
 // import Dialog from '../components/Dialog'
@@ -19,8 +19,8 @@ const BasicModal: React.FC = () => {
         variant="outlined"
         color="neutral"
         onClick={() => {
-          logButtonClick("Learn more");
           setOpen(true);
+          logButtonClick("Learn More (EveryAction Events)");
         }}
       >
         Learn More
@@ -36,6 +36,8 @@ const BasicModal: React.FC = () => {
           variant="outlined"
           sx={{
             maxWidth: 500,
+            maxHeight: "85vh", // Set a maximum height for the modal
+            overflowY: "auto", // Enable vertical scrolling if content exceeds maxHeight
             borderRadius: "md",
             p: 3,
             boxShadow: "lg",
@@ -53,27 +55,33 @@ const BasicModal: React.FC = () => {
             The solution involved:
           </Typography>
           <Typography id="modal-desc">
-            <Typography level="h4">Serverless Function Setup:</Typography>
-            <br></br>Developed a serverless API endpoint using Vercel to send
-            emails via Nodemailer. This allowed a seamless communication channel
-            between the site visitors and the organization’s team members.
+            <Typography level="h4">
+              Chronological Ordering and Data Retrieval:
+            </Typography>
+            <br></br>Created a proxy server endpoint to securely fetch event
+            data from the EveryAction API. The API response was then sorted by
+            the startDate field, ensuring that events appear in chronological
+            order and providing a clear sequence for users.
           </Typography>
           <br></br>
           <Typography id="modal-desc">
             <Typography level="h4">
-              Cross-Origin Resource Sharing (CORS) Configuration:
+              Pagination and “Load More” Logic:
             </Typography>
-            <br></br>Implemented proper CORS handling to ensure secure and
-            successful API requests from the WordPress site to the Vercel-hosted
-            backend. Utilized custom CORS middleware for flexibility and
-            consistency across requests.
+            <br></br>Implemented a “Load More” feature in the Vue.js component
+            to control how many events are displayed at once. This included
+            tracking the current page state, determining if more data was
+            available, and appending new events incrementally to improve
+            performance and user navigation.
           </Typography>
           <br></br>
           <Typography id="modal-desc">
-            <Typography level="h4">Frontend Integration:</Typography>
-            <br></br>Modified the Vue.js contact form on the WordPress site to
-            interact with the Vercel API, ensuring the payload structure matched
-            and implementing error handling for smoother user experience.
+            <Typography level="h4">Enhanced User Experience (UX):</Typography>
+            <br></br>Included meaningful loading states, error handling, and
+            minimal but informative styling. Buttons and text markers guide
+            users through potential actions—such as viewing more events or
+            retrying a failed data fetch—while preserving the overall flow of
+            the page.
           </Typography>
         </Sheet>
       </Modal>
@@ -93,18 +101,18 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
-export default function Vdlf() {
+export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
-      box4logo="/vue-js.svg"
-      box3logo="/node.png"
-      box1logo="/wordpress-black.svg"
-      box2logo="/vercel_logo_black.svg"
-      alt="Contact form screenshot"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1730684442/samples/graphic_design_work/devProjects/Screenshot_2024-11-03_at_7.39.08_PM_h8wohn.png"
+      box1logo="/tailwind.svg"
+      box2logo="/vercel.svg"
+      box3logo="/vue-js.svg"
+      box4logo="/everyaction.png"
+      alt="QR ticket (screenshot)"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738898438/samples/graphic_design_work/devProjects/Screenshot_2025-02-06_at_9.20.20_PM_rsybzx.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-        vdlf.org/team
+      vdlf.org/events
       </Typography>
       <Typography
         level="h1"
@@ -112,43 +120,41 @@ export default function Vdlf() {
         lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Contact Form Integration
+        Event List
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        A Node.js serverless function hosted on Vercel to handle contact form
-        submissions from a WordPress frontend built with Vue.js.{" "}
+      Implemented pagination in a Vue.js application that fetches event data from the EveryAction API via a proxy endpoint. Users can load and browse events in smaller, more manageable batches—improving both performance and user experience.{" "}
       </Typography>
       <BasicModal />
-      <Button
+      {/* <Button
         size="lg"
         component="a"
-        href="https://vdlf.org/team"
+        href="https://vdlf.org/events"
         target="_blank"
         startDecorator={<ArrowForward fontSize="large" />}
-        onClick={() => logButtonClick("Deployment (form)")}
+        onClick={() => logButtonClick("Deployment (Events)")}
       >
         Deployment
+      </Button> */}
+      <Button
+        size="lg"
+        component="a"
+        href="https://github.com/curiousmockingbird/proxy_server"
+        target="_blank"
+        startDecorator={<GitHubIcon fontSize="large" />}
+        onClick={() => logButtonClick("Repo (Proxy server)")}
+      >
+        Repo (Proxy server)
       </Button>
       <Button
         size="lg"
         component="a"
-        href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/StaffBoard.vue"
+        href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/EventList.vue"
         target="_blank"
         startDecorator={<GitHubIcon fontSize="large" />}
-        onClick={() => logButtonClick("Repo (form)")}
+        onClick={() => logButtonClick("Repo (EventList.vue)")}
       >
-        Repo (Vue.js form)
-      </Button>
-
-      <Button
-        size="lg"
-        component="a"
-        href="https://github.com/harold-voces/contact_form_last"
-        target="_blank"
-        startDecorator={<GitHubIcon fontSize="large" />}
-        onClick={() => logButtonClick("Repo (serverless function)")}
-      >
-        Repo (serverless function)
+        Repo (Event List component)
       </Button>
     </TwoSidedLayout>
   );

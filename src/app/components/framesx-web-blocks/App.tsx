@@ -11,7 +11,7 @@ import framesxTheme from './theme';
 import Project01 from './blocks/Vdlf';
 import Project02 from './blocks/GalaTicketingSystem';
 import Project03 from './blocks/HarolDesigner';
-// import Project04 from './blocks/TreySavage';
+import Project04 from './blocks/EveryActionEvents';
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -38,9 +38,9 @@ export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
     <Project01 key="Project01" />,
+    <Project04 key="Project04" />,
     <Project02 key="Project02" />,
     <Project03 key="Project03" />,
-    // <Project04 key="Project04" />,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
