@@ -66,9 +66,9 @@ const BasicModal: React.FC = () => {
           <br></br>
           <Typography id="modal-desc">
             <Typography level="h4">
-              Pagination and “Load More” Logic:
+              Pagination Logic:
             </Typography>
-            <br></br>Implemented a “Load More” feature in the Vue.js component
+            <br></br>Implemented a pagination feature in the Vue.js component
             to control how many events are displayed at once. This included
             tracking the current page state, determining if more data was
             available, and appending new events incrementally to improve
@@ -109,10 +109,10 @@ export default function GalaTicketingSystem() {
       box3logo="/vue-js.svg"
       box4logo="/everyaction.png"
       alt="QR ticket (screenshot)"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738898438/samples/graphic_design_work/devProjects/Screenshot_2025-02-06_at_9.20.20_PM_rsybzx.png"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1739043867/samples/graphic_design_work/devProjects/Screenshot_2025-02-08_at_1.43.54_PM_rewlhb.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-      vdlf.org/events
+      vdlf.org#event-list
       </Typography>
       <Typography
         level="h1"
@@ -123,19 +123,19 @@ export default function GalaTicketingSystem() {
         Event List
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-      Implemented pagination in a Vue.js application that fetches event data from the EveryAction API via a proxy endpoint. Users can load and browse events in smaller, more manageable batches—improving both performance and user experience.{" "}
+      Implemented pagination in a Vue.js component that fetches event data from the EveryAction API via a proxy endpoint. Users can load and browse events in smaller, more manageable batches—improving both performance and user experience.{" "}
       </Typography>
       <BasicModal />
-      {/* <Button
+      <Button
         size="lg"
         component="a"
-        href="https://vdlf.org/events"
+        href="https://vdlf.org#event-list"
         target="_blank"
         startDecorator={<ArrowForward fontSize="large" />}
         onClick={() => logButtonClick("Deployment (Events)")}
       >
         Deployment
-      </Button> */}
+      </Button>
       <Button
         size="lg"
         component="a"
@@ -149,7 +149,7 @@ export default function GalaTicketingSystem() {
       <Button
         size="lg"
         component="a"
-        href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/EventList.vue"
+        href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/EventListHome.vue"
         target="_blank"
         startDecorator={<GitHubIcon fontSize="large" />}
         onClick={() => logButtonClick("Repo (EventList.vue)")}
