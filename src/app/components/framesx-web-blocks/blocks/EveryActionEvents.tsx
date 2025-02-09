@@ -107,7 +107,7 @@ export default function GalaTicketingSystem() {
       box1logo="/tailwind.svg"
       box2logo="/vercel.svg"
       box3logo="/vue-js.svg"
-      box4logo="/everyaction.png"
+      box4logo="/EA.png"
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1739043867/samples/graphic_design_work/devProjects/Screenshot_2025-02-08_at_1.43.54_PM_rewlhb.png"
     >
