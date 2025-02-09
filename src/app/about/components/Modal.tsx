@@ -128,7 +128,7 @@ export default function ResumeModal({ width }: { width: number }) {
             sx={{ color: "blue" }}
             mt={2}
           >
-            SLINGSHOT CONTENT | Jan 2024 - Present | Remote
+            SLINGSHOT CONTENT | Jan 2024 - Present | Remote, Part-time
           </Typography>
           <Typography fontSize="sm" sx={{ pl: 2 }}>
             - Website Management: Overseeing design, development, and
@@ -155,12 +155,10 @@ export default function ResumeModal({ width }: { width: number }) {
           <Typography level="h4" fontWeight="lg">
             Education
           </Typography>
-          <Typography fontSize="sm" fontWeight="md">
-            B.A. Visual Communication Design
+          <Typography fontSize="sm" fontWeight="md" mt={1}>
+            Full-Stack Web Development
           </Typography>
-          <Typography fontSize="sm">
-            University of Havana, ISDI, Cuba
-          </Typography>
+          <Typography fontSize="sm">Epicodus, Portland, OR</Typography>
 
           <Typography fontSize="sm" fontWeight="md" mt={1}>
             M.A. Integrated Design
@@ -170,9 +168,13 @@ export default function ResumeModal({ width }: { width: number }) {
           </Typography>
 
           <Typography fontSize="sm" fontWeight="md" mt={1}>
-            Full-Stack Web Development
+            B.A. Visual Communication Design
           </Typography>
-          <Typography fontSize="sm">Epicodus, Portland, OR</Typography>
+          <Typography fontSize="sm">
+            University of Havana, ISDI, Cuba
+          </Typography>
+
+
 
           <Divider sx={{ my: 2 }} />
 
@@ -184,15 +186,15 @@ export default function ResumeModal({ width }: { width: number }) {
             Web Development:
           </Typography>
           <Typography fontSize="sm">
-            HTML • CSS • JavaScript • Figma • React • Next.js • C# • ASP.NET •
-            Apollo GraphQL • MySQL
+            HTML • CSS • JavaScript • React • Next.js • C# • ASP.NET •
+            Apollo GraphQL • MySQL • Figma • Mongo DB • Node.js • Express
           </Typography>
 
           <Typography fontSize="sm" fontWeight="md" mt={1}>
-            Design Thinking:
+            Design Thinking: 
           </Typography>
           <Typography fontSize="sm">
-            UI/UX Design, Wireframing, Prototyping
+            UI/UX Design • Wireframing • Prototyping • User Research
           </Typography>
 
           <Divider sx={{ my: 2 }} />
