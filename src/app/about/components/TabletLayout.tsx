@@ -25,8 +25,8 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
         >
           <section className="p-6 rounded-lg">
           <p className="mb-4">
-                I am a full-stack developer specializing in JavaScript, with a
-                deep passion for crafting intuitive, high-performance web
+                I am a graphic designer and full-stack developer specializing in JavaScript, with a
+                passion for crafting intuitive, high-performance web
                 applications. Currently, I work with Wisconsin&apos;s leading
                 grassroots immigrant rights organization,{" "}
                 <span className="font-bold underline">
@@ -38,9 +38,8 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
               <p className="mb-4">
                 With a strong foundation in JavaScript, React, and Node.js, I
                 bring ideas to life through scalable, responsive, and accessible
-                web experiences. My expertise extends to HTML, CSS, WordPress,
-                and serverless architectures, allowing me to build dynamic and
-                adaptable solutions for a variety of needs.
+                web experiences. My expertise extends to the MEARN stack, serverless architecture, WordPress,
+                and Git, allowing me to build dynamic and adaptable solutions for a variety of needs.
               </p>
           </section>
         </Transition>

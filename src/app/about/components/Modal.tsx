@@ -29,11 +29,11 @@ export default function ResumeModal({ width }: { width: number }) {
   variant="outlined" 
   color="primary" 
   onClick={() => {
-    setOpen(true); 
-    logButtonClick("Resume");
+    window.open("https://www.linkedin.com/in/haroldmesa93/", "_blank"); 
+    logButtonClick("LinkedIn");
   }}
 >
-  View Full Resume
+  My LinkedIn
 </Button>
       <Modal
         aria-labelledby="resume-title"

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const images = [
   "/profile_pic.jpg",
-  "/home.jpg",
   "/curious_mockingbird_pic.jpg",
 ];
 
