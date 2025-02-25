@@ -101,9 +101,10 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
-export default function GalaTicketingSystem() {
+export default function EveryActionEvents() {
   return (
     <TwoSidedLayout
+      id="events-list"
       box1logo="/tailwind.svg"
       box2logo="/vercel.svg"
       box3logo="/vue-js.svg"

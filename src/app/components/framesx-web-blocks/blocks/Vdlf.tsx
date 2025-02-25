@@ -96,6 +96,7 @@ const logButtonClick = async (buttonName: string) => {
 export default function Vdlf() {
   return (
     <TwoSidedLayout
+      id="vdlf"
       box4logo="/vue-js.svg"
       box3logo="/node.png"
       box1logo="/wordpress-black.svg"

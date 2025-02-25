@@ -22,6 +22,7 @@ export default function TwoSidedLayout({
   box2logo: string;
   box3logo: string;
   box4logo: string;
+  id: string;
 }>) {
   return (
     <Container

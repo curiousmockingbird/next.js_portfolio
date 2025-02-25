@@ -107,6 +107,7 @@ const logButtonClick = async (buttonName: string) => {
 export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
+      id="gala-ticketing-system"
       box1logo="/qr.svg"
       box2logo="/apps_script.svg"
       box3logo="/sendgrid.svg"

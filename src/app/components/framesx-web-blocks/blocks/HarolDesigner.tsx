@@ -76,7 +76,8 @@ const logButtonClick = async (buttonName: string) => {
 export default function HarolDesigner() {
   return (
     <TwoSidedLayout
-    box1logo="/next-js.svg"
+      id="harolDesigner"
+      box1logo="/next-js.svg"
       box2logo="/tan_stack.png"
       box3logo="/sendgrid.svg"
       box4logo="/node.png"
