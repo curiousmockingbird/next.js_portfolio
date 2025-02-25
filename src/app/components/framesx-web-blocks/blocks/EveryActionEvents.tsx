@@ -104,7 +104,6 @@ const logButtonClick = async (buttonName: string) => {
 export default function EveryActionEvents() {
   return (
     <TwoSidedLayout
-      id="events-list"
       box1logo="/tailwind.svg"
       box2logo="/vercel.svg"
       box3logo="/vue-js.svg"
@@ -112,6 +111,7 @@ export default function EveryActionEvents() {
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1739043867/samples/graphic_design_work/devProjects/Screenshot_2025-02-08_at_1.43.54_PM_rewlhb.png"
     >
+      <div id="events-list">
       <Typography color="primary" fontSize="lg" fontWeight="lg">
       vdlf.org#event-list
       </Typography>
@@ -157,6 +157,7 @@ export default function EveryActionEvents() {
       >
         Repo (Event List component)
       </Button>
+      </div>
     </TwoSidedLayout>
   );
 }

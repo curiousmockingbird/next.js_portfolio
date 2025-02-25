@@ -120,7 +120,6 @@ const logButtonClick = async (buttonName: string) => {
 export default function HarolDesigner() {
   return (
     <TwoSidedLayout
-      id="treysavage"
       box1logo="/next-js.svg"
       box2logo="/tan_stack.png"
       box3logo="/sendgrid.svg"
