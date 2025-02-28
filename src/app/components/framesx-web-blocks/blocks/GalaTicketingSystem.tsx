@@ -107,10 +107,10 @@ const logButtonClick = async (buttonName: string) => {
 export default function GalaTicketingSystem() {
   return (
     <TwoSidedLayout
-      box1logo="/qr.svg"
-      box2logo="/apps_script.svg"
-      box3logo="/sendgrid.svg"
-      box4logo="/EA.png"
+      // box1logo="/qr.svg"
+      // box2logo="/apps_script.svg"
+      // box3logo="/sendgrid.svg"
+      // box4logo="/EA.png"
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738809253/samples/graphic_design_work/devProjects/Gala_wh3xyo.jpg"
     >

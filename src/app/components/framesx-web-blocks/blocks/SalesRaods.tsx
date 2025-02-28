@@ -4,9 +4,8 @@ import Button from '@mui/joy/Button';
 // import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import TwoSidedLayout from '../components/TwoSidedLayout';
+import ForWordPress from '../components/ForWordPress';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import Dialog from '../components/Dialog'
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import Sheet from '@mui/joy/Sheet';
@@ -73,18 +72,14 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
-export default function HarolDesigner() {
+export default function SalesRoads() {
   return (
-    <TwoSidedLayout
-      // box1logo="/next-js.svg"
-      // box2logo="/tan_stack.png"
-      // box3logo="/sendgrid.svg"
-      // box4logo="/node.png"
-      alt="Image of Graphic Design Portfolio"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712663883/samples/graphic_design_work/devProjects/Screenshot_2024-04-09_at_6.57.05_AM_fiz3qo.png"
+    <ForWordPress
+      alt="Screenshot of homepage of Big Lake Data"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740782336/samples/graphic_design_work/devProjects/salesroads_s5gyyb.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-        harolDesigner.art
+      salesroads.com
       </Typography>
       <Typography
         level="h1"
@@ -92,18 +87,18 @@ export default function HarolDesigner() {
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
         lineHeight="2.5rem"
       >
-        Graphic Design Portfolio
+        Sales Outsourcing Agency
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TanStack, and NodeMailer to provide an engaging user experience.
+      For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://www.haroldesigner.art/" target="_blank" startDecorator={<ArrowForward fontSize='large' />} onClick={() => logButtonClick("Deployment (GD Portfolio)")}>
-        Deployment
+      <Button size='lg' component="a" href="https://salesroads.com/" target="_blank" startDecorator={<ArrowForward fontSize='large' />} onClick={() => logButtonClick("Visit (SalesRoads)")}>
+        Visit
       </Button>
-      <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" target="_blank" startDecorator={<GitHubIcon fontSize="large"/>} onClick={() => logButtonClick("Repo (GD Portfolio)")}>
-        Github repo
+      <Button size='sm' >
+        Technology: Wordpress
       </Button>
-    </TwoSidedLayout>
+    </ForWordPress>
   );
 }

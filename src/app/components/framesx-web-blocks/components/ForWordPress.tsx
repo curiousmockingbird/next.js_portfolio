@@ -5,23 +5,15 @@ import Container from "@mui/joy/Container";
 import { typographyClasses } from "@mui/joy/Typography";
 import Image from "next/image";
 
-export default function TwoSidedLayout({
+export default function ForWordPress({
   children,
   reversed,
   img,
   alt,
-  // box1logo,
-  // box2logo,
-  // box3logo,
-  // box4logo,
 }: React.PropsWithChildren<{
   reversed?: boolean;
   img: string;
   alt: string;
-  // box1logo: string;
-  // box2logo: string;
-  // box3logo: string;
-  // box4logo: string;
 }>) {
   return (
     <Container
@@ -103,53 +95,6 @@ export default function TwoSidedLayout({
           />
         </AspectRatio>
       </Box>
-
-      {/* <Container
-        sx={{
-          backgroundImage:
-            "linear-gradient(to right, #fde68a , #fb923c, #d97706)",
-          borderRadius: "10px",
-          display: "flex",
-          width: "100%",
-          height: "10vh",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <Box
-          sx={{
-            width: { xs: "6vh", sm: "8vh", md: "10vh" }, // Adjust width for mobile
-            height: { xs: "6vh", sm: "8vh", md: "10vh" }, // Adjust height for mobile
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <p className="text-black underline text-xs">Technologies:</p>
-        </Box>
-        {[box4logo, box3logo, box1logo, box2logo].map((logo, index) => (
-          <Box
-            key={index}
-            sx={{
-              width: { xs: "6vh", sm: "8vh", md: "7vh" }, // Adjust width for mobile
-              height: { xs: "6vh", sm: "8vh", md: "7vh" }, // Adjust height for mobile
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              src={logo}
-              alt={alt}
-              width={500}
-              height={300}
-              style={{ width: "100%", height: "auto" }}
-              priority // Loads the image faster if it's important
-            />
-          </Box>
-        ))}
-      </Container> */}
     </Container>
   );
 }

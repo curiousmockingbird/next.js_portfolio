@@ -25,7 +25,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
         >
           <section className="p-6 rounded-lg">
           <p className="mb-4">
-                I am a graphic full-stack developer specializing in JavaScript, with a
+                I am a full-stack developer specializing in JavaScript, with a
                 passion for crafting intuitive, high-performance web
                 applications. Currently, I work with Wisconsin&apos;s leading
                 grassroots immigrant rights organization,{" "}

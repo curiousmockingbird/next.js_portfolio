@@ -13,6 +13,8 @@ import Project02 from './blocks/GalaTicketingSystem';
 import Project03 from './blocks/HarolDesigner';
 import Project04 from './blocks/EveryActionEvents';
 import Project05 from './blocks/TreySavage';
+import Project06 from './blocks/BigLakeData';
+import Project07 from './blocks/SalesRaods'
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -43,6 +45,8 @@ export default function TeamExample() {
     <Project02 key="Project02" />,
     <Project03 key="Project03" />,
     <Project05 key="Project05" />,
+    <Project06 key="Project06"/>,
+    <Project07 key="Project07"/>,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {

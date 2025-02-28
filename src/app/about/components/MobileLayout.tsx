@@ -61,7 +61,7 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
         >
           <section className="p-4 rounded-lg">
           <p className="mb-4">
-                I a full-stack developer specializing in JavaScript, with a
+                I am full-stack developer specializing in JavaScript, with a
                 passion for crafting intuitive, high-performance web
                 applications. Currently, I work with Wisconsin&apos;s leading
                 grassroots immigrant rights organization,{" "}
