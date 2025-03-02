@@ -10,18 +10,10 @@ export default function TwoSidedLayout({
   reversed,
   img,
   alt,
-  // box1logo,
-  // box2logo,
-  // box3logo,
-  // box4logo,
 }: React.PropsWithChildren<{
   reversed?: boolean;
   img: string;
   alt: string;
-  // box1logo: string;
-  // box2logo: string;
-  // box3logo: string;
-  // box4logo: string;
 }>) {
   return (
     <Container
@@ -35,7 +27,7 @@ export default function TwoSidedLayout({
         py: 5,
         gap: 4,
         [theme.breakpoints.up("md")]: {
-          flexDirection: "column",
+          flexDirection: reversed ? "row-reverse" : "row", // Use row layout on desktop
           gap: 6,
         },
       })}
@@ -63,8 +55,7 @@ export default function TwoSidedLayout({
             textAlign: "center",
             flexShrink: 999,
             [theme.breakpoints.up("md")]: {
-              minWidth: 420,
-              maxWidth: "40ch",
+              maxWidth: "40ch", // Use ch units for better readability
               alignItems: "flex-start",
               textAlign: "initial",
             },
@@ -81,7 +72,7 @@ export default function TwoSidedLayout({
           variant="outlined"
           sx={(theme) => ({
             width: "100%",
-            maxWidth: { xs: 200, md: 300 }, // Adjust maxWidth for mobile
+            maxWidth: { xs: "90%", md: "50%" }, // Use relative units for better scaling
             alignSelf: "center",
             [theme.breakpoints.up("md")]: {
               alignSelf: "initial",
@@ -96,60 +87,12 @@ export default function TwoSidedLayout({
           <Image
             src={img}
             alt={alt}
-            width={500}
-            height={300}
-            style={{ width: "100%", height: "auto" }}
+            fill // Use fill to make the image responsive
+            style={{ objectFit: "cover" }} // Ensure the image covers the container
             priority // Loads the image faster if it's important
           />
         </AspectRatio>
       </Box>
-
-      {/* <Container
-        sx={{
-          backgroundImage:
-            "linear-gradient(to right, #fde68a , #fb923c, #d97706)",
-          borderRadius: "10px",
-          display: "flex",
-          width: "100%",
-          height: "10vh",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <Box
-          sx={{
-            width: { xs: "6vh", sm: "8vh", md: "10vh" }, // Adjust width for mobile
-            height: { xs: "6vh", sm: "8vh", md: "10vh" }, // Adjust height for mobile
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <p className="text-black underline text-xs">Technologies:</p>
-        </Box>
-        {[box4logo, box3logo, box1logo, box2logo].map((logo, index) => (
-          <Box
-            key={index}
-            sx={{
-              width: { xs: "6vh", sm: "8vh", md: "7vh" }, // Adjust width for mobile
-              height: { xs: "6vh", sm: "8vh", md: "7vh" }, // Adjust height for mobile
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Image
-              src={logo}
-              alt={alt}
-              width={500}
-              height={300}
-              style={{ width: "100%", height: "auto" }}
-              priority // Loads the image faster if it's important
-            />
-          </Box>
-        ))}
-      </Container> */}
     </Container>
   );
 }

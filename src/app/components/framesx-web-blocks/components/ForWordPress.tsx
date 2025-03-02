@@ -27,7 +27,7 @@ export default function ForWordPress({
         py: 5,
         gap: 4,
         [theme.breakpoints.up("md")]: {
-          flexDirection: "column",
+          flexDirection: reversed ? "row-reverse" : "row",
           gap: 6,
         },
       })}
@@ -55,8 +55,7 @@ export default function ForWordPress({
             textAlign: "center",
             flexShrink: 999,
             [theme.breakpoints.up("md")]: {
-              minWidth: 420,
-              maxWidth: "40ch",
+              maxWidth: "40ch", // Use ch units for better readability
               alignItems: "flex-start",
               textAlign: "initial",
             },
@@ -73,7 +72,7 @@ export default function ForWordPress({
           variant="outlined"
           sx={(theme) => ({
             width: "100%",
-            maxWidth: { xs: 200, md: 300 }, // Adjust maxWidth for mobile
+            maxWidth: { xs: "90%", md: "50%" }, // Adjust maxWidth for mobile
             alignSelf: "center",
             [theme.breakpoints.up("md")]: {
               alignSelf: "initial",
@@ -88,10 +87,9 @@ export default function ForWordPress({
           <Image
             src={img}
             alt={alt}
-            width={500}
-            height={300}
-            style={{ width: "100%", height: "auto" }}
-            priority // Loads the image faster if it's important
+            fill // Use fill to make the image responsive within the AspectRatio container
+            style={{ objectFit: "cover" }} // Ensure the image covers the container
+            priority
           />
         </AspectRatio>
       </Box>

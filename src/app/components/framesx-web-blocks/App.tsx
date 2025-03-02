@@ -49,7 +49,7 @@ export default function TeamExample() {
     <Project05 key="Project05" />,
     <Project06 key="Project06"/>,
     <Project07 key="Project07"/>,
-    <Project08 key="Project08"/>,
+    // <Project08 key="Project08"/>,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
