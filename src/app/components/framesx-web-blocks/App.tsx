@@ -16,7 +16,7 @@ import Project05 from './blocks/TreySavage';
 import Project06 from './blocks/BigLakeData';
 import Project07 from './blocks/SalesRaods';
 import Project08 from './blocks/gtm';
-
+import Project09 from './blocks/VDLFA'
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -42,6 +42,7 @@ function ColorSchemeToggle() {
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
+    <Project09 key="Project09" />,
     <Project01 key="Project01" />,
     <Project04 key="Project04" />,
     <Project02 key="Project02" />,
@@ -49,7 +50,7 @@ export default function TeamExample() {
     <Project05 key="Project05" />,
     <Project06 key="Project06"/>,
     <Project07 key="Project07"/>,
-    // <Project08 key="Project08"/>,
+    <Project08 key="Project08"/>,
     // Add more components as needed, each with a unique key
   ];
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {

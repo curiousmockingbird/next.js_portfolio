@@ -81,14 +81,14 @@ export default function gtm() {
       <Typography color="primary" fontSize="lg" fontWeight="lg">
       gtmdifferent.com
       </Typography>
-      {/* <Typography
+      <Typography
         level="h1"
         fontWeight="xl"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
         lineHeight="2.5rem"
       >
-        Milwaukee-based Analytics Team
-      </Typography> */}
+        Content Tank Platform
+      </Typography>
       <Typography fontSize="lg" lineHeight="lg">
       For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
