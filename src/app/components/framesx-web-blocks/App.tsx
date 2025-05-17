@@ -42,10 +42,10 @@ function ColorSchemeToggle() {
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
-    <Project09 key="Project09" />,
     <Project01 key="Project01" />,
     <Project04 key="Project04" />,
     <Project02 key="Project02" />,
+    <Project09 key="Project09" />,
     <Project03 key="Project03" />,
     <Project05 key="Project05" />,
     <Project06 key="Project06"/>,
