@@ -65,7 +65,7 @@ export default function Home() {
             <div>
             <Toggle />
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                <h1 className="text-center items-center justify-center p-10 top-36 text-3xl lg:text-4xl font-bold">My blog on Hashnode</h1>
+                <h1 className="text-center items-center justify-center p-10 top-36 text-lg lg:text-lg font-bold">I enjoy writing about what I learn and about my journey as a developer in <a href="https://hashnode.com/"><span className="underline underline-offset-8">Hashnode</span></a></h1>
                 {loading && (<div className="p-10 mt-10">
                     <Skeleton height={500} count={1} />
                 </div>)}
