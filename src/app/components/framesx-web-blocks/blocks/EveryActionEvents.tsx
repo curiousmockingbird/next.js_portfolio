@@ -109,11 +109,11 @@ export default function EveryActionEvents() {
       // box2logo="/vercel.svg"
       // box3logo="/vue-js.svg"
       // box4logo="/EA.png"
-      alt="QR ticket (screenshot)"
+      alt="Event list component (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1739043867/samples/graphic_design_work/devProjects/Screenshot_2025-02-08_at_1.43.54_PM_rewlhb.png"
     >
       <Typography color="primary" fontSize="lg" fontWeight="lg">
-      vdlf.org#event-list
+      vdlf.org/#event-list
       </Typography>
       <Typography
         level="h1"
@@ -130,7 +130,7 @@ export default function EveryActionEvents() {
       <Button
         size="lg"
         component="a"
-        href="https://vdlf.org#event-list"
+        href="https://vdlf.org/#event-list"
         target="_blank"
         startDecorator={<ArrowForward fontSize="large" />}
         onClick={() => logButtonClick("Deployment (Events)")}
