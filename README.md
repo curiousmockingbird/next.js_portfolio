@@ -1,5 +1,6 @@
 # Portfolio
 
+
 This repository contains my personal portfolio website. It showcases projects, a blog and a contact form while pulling live data from the GitHub and Hashnode APIs. The site is built with **Next.js**, **TypeScript**, **Tailwind CSS** and **Material UI**, featuring:
 
 - Responsive layouts with light/dark theme toggle
@@ -8,6 +9,7 @@ This repository contains my personal portfolio website. It showcases projects, a
 - Blog section fetching posts from Hashnode
 - Contact form that sends confirmation emails through Nodemailer
 - Optional logging middleware for visitor analytics
+
 
 ## Prerequisites
 

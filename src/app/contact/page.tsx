@@ -12,12 +12,18 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 // import Link from '@mui/joy/Link';
 import Toggle from './../components/Toggle';
 
+interface FormValues {
+    name: string;
+    email: string;
+    message: string;
+}
+
 const Contact = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
     let [isOpen, setIsOpen] = useState(false);
 
     const mutation = useMutation({
-        mutationFn: async (data) => {
+        mutationFn: async (data: FormValues) => {
             const response = await axios.post('/api/contact', data);
             if (response.status !== 200) {
                 throw new Error(`Error: ${response.statusText}`);
@@ -35,7 +41,7 @@ const Contact = () => {
         retry: 2, // Retry the mutation 2 times in case of failure
     });
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: FormValues) => {
         if (Object.keys(errors).length === 0) { // Check if there are no errors
             mutation.mutate(data); // Trigger the mutation
             openModal(); // Open the modal only if mutation is triggered
