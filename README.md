@@ -1,6 +1,15 @@
 # Portfolio
 
-This project contains a personal portfolio built with **Next.js**, **TypeScript** and **Tailwind CSS**.
+
+This repository contains my personal portfolio website. It showcases projects, a blog and a contact form while pulling live data from the GitHub and Hashnode APIs. The site is built with **Next.js**, **TypeScript**, **Tailwind CSS** and **Material UI**, featuring:
+
+- Responsive layouts with light/dark theme toggle
+- Animated transitions powered by Headless UI and Framer Motion
+- GitHub statistics component authenticated via a personal access token
+- Blog section fetching posts from Hashnode
+- Contact form that sends confirmation emails through Nodemailer
+- Optional logging middleware for visitor analytics
+
 
 ## Prerequisites
 
