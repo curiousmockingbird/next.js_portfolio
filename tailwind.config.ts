@@ -15,17 +15,17 @@ const config: Config = {
       },
       zIndex: {
         '999': '999',
-      }
+      },
+      colors: {
+        tahiti: '#3ab7bf',
+        orange: '#fb923c',
+        gray: '#f9fafb',
+        transparent: 'rgba(255, 255, 255, 0)',
+        white: '#f8fafc',
+        black: '#000000',
+        red: '#ef4444',
+      },
     },
-  },
-  colors: {
-    'tahiti': '#3ab7bf',
-    'orange': '#fb923c',
-    'gray': '#f9fafb',
-    'transparent': 'rgba(255, 255, 255, 0)',
-    'white': '#f8fafc',
-    'black': '#000000',
-    'red': '#ef4444'
   },
   plugins: [],
 }
