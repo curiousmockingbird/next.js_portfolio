@@ -3,7 +3,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useState } from 'react'
 
-const TranStackProvider = ({children}:{children: React.ReactNode}) => {
+const TanStackProvider = ({children}:{children: React.ReactNode}) => {
     const [queryClient] = useState(() => new QueryClient())
     return (
         <QueryClientProvider client={queryClient}>
@@ -13,4 +13,4 @@ const TranStackProvider = ({children}:{children: React.ReactNode}) => {
     )
 }
 
-export default TranStackProvider
+export default TanStackProvider

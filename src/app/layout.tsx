@@ -2,7 +2,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import TranStackProvider from './components/providers/TanStackProvider'
+import TanStackProvider from './components/providers/TanStackProvider'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -38,9 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TranStackProvider>
+        <TanStackProvider>
         {children}
-        </TranStackProvider>
+        </TanStackProvider>
         <Analytics />
         <SpeedInsights />
         </body>
