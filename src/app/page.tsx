@@ -9,14 +9,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <h1 className="text-2xl font-bold mb-6">My Spotify Dashboard</h1>
-
-      {/* Server-rendered widget */}
-      <LastPlayed />
-
-      {/* Client component for any interactive bits */}
+      <section>
       <HomeClient />
-    </>
+      <h1 className="text-2xl font-bold mb-6">My Spotify Dashboard</h1>
+      <LastPlayed />
+      </section>
   );
 }
