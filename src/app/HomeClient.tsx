@@ -44,9 +44,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='flex flex-col h-screen'>
+    <main className='flex flex-col flex-1'>
           <Toggle/>
-          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5' style={{ height: '80vh' }}>
+          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5 flex-grow'>
           <Transition
           show={isMounted}
           enter="transition-opacity duration-700"
