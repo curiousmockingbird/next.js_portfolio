@@ -7,6 +7,11 @@ export async function getLastPlayed() {
       cache: 'no-store',
     },
   );
+  if (!res.ok) {
+    const text = await res.text();
+    console.error('[LAST_PLAYED_HTTP]', res.status, text);
+    return null;
+  }
   return (await res.json()).items?.[0] ?? null;
 }
 
