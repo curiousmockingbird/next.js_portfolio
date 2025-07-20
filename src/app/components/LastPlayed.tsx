@@ -8,7 +8,6 @@ export default async function LastPlayed() {
   const { track, played_at } = item;
 
   return (
-    <div className="overflow-hidden w-full">
       <div className="flex gap-4 items-center whitespace-nowrap">
         <img
           src={track.album.images[1].url}
@@ -27,6 +26,5 @@ export default async function LastPlayed() {
           </p>
         </div>
       </div>
-    </div>
   );
 }

@@ -7,19 +7,14 @@ export default async function TopTechHeadline() {
   const img = item.multimedia?.[0];
 
   return (
-    <a
-      href={item.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block p-4 rounded-lg bg-gray-800 hover:bg-gray-700"
-    >
+    <div className='flex gap-4 items-center whitespace-nowrap'>
       {img && (
         <img
           src={img.url}
           alt={item.title}
           width={64}
           height={64}
-          className="mb-3 rounded"
+          className="rounded"
         />
       )}
 
@@ -28,6 +23,6 @@ export default async function TopTechHeadline() {
       <p className="text-xs text-gray-500">
         {new Date(item.published_date).toLocaleString()}
       </p>
-    </a>
+    </div>
   );
 }
