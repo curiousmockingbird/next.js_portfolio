@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
 import LastPlayed from './components/LastPlayed';
+import TopTechHeadline from './components/TopTechHeadline';
 
 export const metadata: Metadata = {
   title: 'Home | HarolDeveloper',
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-      <section className="flex flex-col h-screen">
-        <HomeClient />
-        <div>
-          <h1 className="text-2xl font-bold mb-6">My Spotify Dashboard</h1>
-          <LastPlayed />
-        </div>
-      </section>
+    <section className="flex flex-col h-screen">
+      <HomeClient />
+      <div className="animate-marquee flex flex-row items-center gap-6">
+        <LastPlayed />
+        <TopTechHeadline />
+      </div>
+    </section>
   );
 }

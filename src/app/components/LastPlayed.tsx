@@ -9,7 +9,7 @@ export default async function LastPlayed() {
 
   return (
     <div className="overflow-hidden w-full">
-      <div className="flex gap-4 items-center whitespace-nowrap animate-marquee">
+      <div className="flex gap-4 items-center whitespace-nowrap">
         <img
           src={track.album.images[1].url}
           alt=""
