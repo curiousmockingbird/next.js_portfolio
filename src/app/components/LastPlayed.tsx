@@ -16,7 +16,6 @@ export default async function LastPlayed() {
           height={64}
           className="rounded"
         />
-        <div>
           <p className="font-semibold">{track.name}</p>
           <p className="text-sm text-gray-600">
             {track.artists.map((a: any) => a.name).join(', ')}
@@ -24,7 +23,6 @@ export default async function LastPlayed() {
           <p className="text-xs text-gray-500">
             Played {new Date(played_at).toLocaleString()}
           </p>
-        </div>
       </div>
   );
 }
