@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
-import LastPlayed from './components/LastPlayed';
-import TopTechHeadline from './components/TopTechHeadline';
+// import LastPlayed from './components/LastPlayed';
+// import TopTechHeadline from './components/TopTechHeadline';
 
 export const metadata: Metadata = {
   title: 'Home | HarolDeveloper',
@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <section className="flex flex-col h-screen">
       <HomeClient />
-      <div className="animate-marquee flex flex-row items-center gap-6">
+      {/* <div className="animate-marquee flex flex-row items-center gap-6">
         <LastPlayed />
         <TopTechHeadline />
-      </div>
+      </div> */}
     </section>
   );
 }
