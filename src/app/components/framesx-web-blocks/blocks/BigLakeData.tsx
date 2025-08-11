@@ -74,6 +74,7 @@ const logButtonClick = async (buttonName: string) => {
 
 export default function BigLake() {
   return (
+    <div id='big-lake-data'>
     <ForWordPress
       alt="Screenshot of homepage of Big Lake Data"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740781865/samples/graphic_design_work/devProjects/bld2_puywfo.png"
@@ -97,8 +98,9 @@ export default function BigLake() {
         Visit
       </Button>
       <Button size='sm' >
-        Technology: Wordpress
+        Technology: Squarespace
       </Button>
     </ForWordPress>
+    </div>
   );
 }

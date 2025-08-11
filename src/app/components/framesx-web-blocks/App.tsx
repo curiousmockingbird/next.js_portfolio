@@ -48,8 +48,8 @@ export default function TeamExample() {
     <Project09 key="Project09" />,
     <Project05 key="Project05" />,
     <Project03 key="Project03" />,
-    <Project06 key="Project06"/>,
     <Project07 key="Project07"/>,
+    <Project06 key="Project06"/>,
     <Project08 key="Project08"/>,
     // Add more components as needed, each with a unique key
   ];
