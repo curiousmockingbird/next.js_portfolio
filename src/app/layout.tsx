@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import TanStackProvider from './components/providers/TanStackProvider'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ThemeProvider } from './components/HeaderClient';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,12 +39,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TanStackProvider>
-        {children}
-        </TanStackProvider>
+        <ThemeProvider>
+          <TanStackProvider>
+            {children}
+          </TanStackProvider>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        </body>
+      </body>
     </html>
   )
 }

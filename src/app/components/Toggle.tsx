@@ -1,30 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa6"; // Import the toggle icons
+import { useTheme } from "./HeaderClient";
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    // Check localStorage for saved theme
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.body.classList.add(savedTheme);
-      document.cookie = `theme=${savedTheme}; path=/; max-age=31536000`;
-    }
-  }, []);
+  const { theme, setTheme } = useTheme();
 
   const handleToggle = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-
-    // Update body class
-    document.body.classList.remove(theme);
-    document.body.classList.add(newTheme);
-
-    // Save preference to localStorage
-    localStorage.setItem("theme", newTheme);
-    document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
   };
 
   return (
