@@ -68,7 +68,8 @@ LOGTAIL_SOURCE_TOKEN=your_logtail_token
 
 ## Testing
 
-This repository currently does not include automated tests. If a test suite is added in the future, you can run it using:
+This project uses **Jest** and **React Testing Library** for unit tests. The configuration is in `jest.config.js` and `jest.setup.ts` enables custom matchers from `@testing-library/jest-dom`.
+Run the test suite with:
 
 ```bash
 npm test
