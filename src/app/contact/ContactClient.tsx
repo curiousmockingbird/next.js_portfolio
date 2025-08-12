@@ -60,17 +60,6 @@ const Contact = () => {
 
     return (
         <>
-            {/* <Typography
-                level="body-xs"
-                sx={{
-                    position: 'fixed',
-                    zIndex: 999,
-                    top: '2rem',
-                    left: '1rem',
-                }}
-            >
-                <Link href={'/'}> <ArrowBack sx={{ fontSize: 40 }} /> </Link>
-            </Typography> */}
             <div >
                 <Toggle />
                 <main className='h-full main grid lg:grid-cols-2'>

@@ -60,7 +60,7 @@ const RotatingImage: React.FC = () => {
       setTimeout(() => setFade(true), 600);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
     <div className="flex justify-center items-center h-full relative">
@@ -87,7 +87,7 @@ const AboutText = () => (
       solutions for a variety of needs.
     </p>
     <p className="mb-4">
-      Currently, I work with Wisconsin&apos;s leading grassroots immigrant rights organization,{' '}
+      Currently, I work as a contractor with Wisconsin&apos;s leading grassroots immigrant rights organization,{' '}
       <span className="font-bold underline">
         <a href="https://vdlf.org">Voces de la Frontera</a>
       </span>
@@ -97,7 +97,7 @@ const AboutText = () => (
 );
 
 const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
-  <Box sx={{ height: '100vh' }} id="0">
+  <main className='h-full' id="0">
     <div className="mx-32">
       <Box className="flex justify-center items-center" id="1">
         <Toggle />
@@ -150,7 +150,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
         </Box>
       </Transition>
     </div>
-  </Box>
+  </main>
 );
 
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
