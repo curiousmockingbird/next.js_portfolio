@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "@/app/components/Header";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa6"; // Import the toggle icons
 
 const ThemeToggle: React.FC = () => {
@@ -11,6 +10,7 @@ const ThemeToggle: React.FC = () => {
     if (savedTheme) {
       setTheme(savedTheme);
       document.body.classList.add(savedTheme);
+      document.cookie = `theme=${savedTheme}; path=/; max-age=31536000`;
     }
   }, []);
 
@@ -24,15 +24,11 @@ const ThemeToggle: React.FC = () => {
 
     // Save preference to localStorage
     localStorage.setItem("theme", newTheme);
+    document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
   };
-
-  // Determine image source based on theme
-  const imageSrc = theme === "dark" ? "/hm.svg" : "/hm_black.svg";
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* Pass the dynamically determined imageSrc to Header */}
-      <Header imageSrc={imageSrc} />
       <button
         onClick={handleToggle}
         aria-label="Toggle Light/Dark Theme"
