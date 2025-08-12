@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ContactClient from './ContactClient';
+import HeaderClient from '@/app/components/HeaderClient';
 
 export const metadata: Metadata = {
   title: 'Contact | HarolDeveloper',
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactClient />;
+  return(
+    <>
+      <HeaderClient />
+      <ContactClient />
+    </>
+  );
 }
