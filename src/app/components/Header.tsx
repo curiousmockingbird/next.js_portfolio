@@ -9,7 +9,7 @@ export default function Header({ imageSrc }: HeaderProps) {
   return (
     <Link href="/" className="flex flex-col items-center justify-center" style={{ height: "25vh" }}>
       <div>
-        <Image src={imageSrc} alt="Your SVG" width={200} height={200} />
+        <Image src={imageSrc} alt="Your SVG" width={200} height={200} priority loading="eager" />
       </div>
       <h1>harolDeveloper — Full-Stack</h1>
     </Link>
