@@ -3,9 +3,8 @@ import * as React from 'react';
 import Button from '@mui/joy/Button';
 // import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
-import ArrowForward from '@mui/icons-material/ArrowForward';
+import { MdArrowForward } from 'react-icons/md';
 import ForWordPress from '../components/ForWordPress';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
 import Sheet from '@mui/joy/Sheet';
@@ -94,7 +93,7 @@ export default function SalesRoads() {
       For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://salesroads.com/" target="_blank" startDecorator={<ArrowForward fontSize='large' />} onClick={() => logButtonClick("Visit (SalesRoads)")}>
+      <Button size='lg' component="a" href="https://salesroads.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (SalesRoads)")}> 
         Visit
       </Button>
       <Button size='sm' >

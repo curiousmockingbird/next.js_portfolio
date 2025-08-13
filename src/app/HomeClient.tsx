@@ -5,10 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
 // import Header from './components/Header';
-import CodeIcon from '@mui/icons-material/Code';
-import InfoIcon from '@mui/icons-material/Info';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from 'react-icons/md';
 import Toggle from '@/app/components/Toggle';
 
 const logVisitorLocation = () => {
@@ -59,7 +56,7 @@ export default function Home() {
           enterTo="opacity-100"
           >
           <div className='flex flex-col items-center py-2'>
-          <CodeIcon sx={{ fontSize: 40 }}/>
+          <MdCode size={40} />
           </div>
           <MyTransition 
           redirectTo='/devProjects'
@@ -75,7 +72,7 @@ export default function Home() {
                 enterTo="opacity-100"
             >
           <div className='flex flex-col items-center py-2'>
-          <InfoIcon sx={{ fontSize: 40 }}/>
+          <MdInfo size={40} />
           </div>
           <MyTransition 
           redirectTo='/about'
@@ -89,8 +86,8 @@ export default function Home() {
           enterFrom="opacity-0"
           enterTo="opacity-100">
           <div className='flex flex-col items-center py-2'>
-          <EditNoteIcon sx={{ fontSize: 40 }}/>
-          </div>         
+          <MdEditNote size={40} />
+          </div>
           <MyTransition 
           redirectTo='/blog'
           sectionName='My blog'
@@ -104,8 +101,8 @@ export default function Home() {
           enterTo="opacity-100"
           >
           <div className='flex flex-col items-center py-2'>
-          <AlternateEmailIcon sx={{ fontSize: 40 }}/>
-          </div>   
+          <MdAlternateEmail size={40} />
+          </div>
           <MyTransition 
           redirectTo='/contact'
           sectionName='Contact'

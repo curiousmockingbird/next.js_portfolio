@@ -3,9 +3,8 @@ import * as React from 'react';
 import Button from '@mui/joy/Button';
 // import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
-// import ArrowForward from '@mui/icons-material/ArrowForward';
 import TwoSidedLayout from '../components/TwoSidedLayout';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import { FaGithub } from 'react-icons/fa';
 // import Dialog from '../components/Dialog'
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
@@ -133,7 +132,7 @@ export default function GalaTicketingSystem() {
         component="a"
         href="https://github.com/curiousmockingbird/QRgenerator_for_gala"
         target="_blank"
-        startDecorator={<GitHubIcon fontSize="large" />}
+        startDecorator={<FaGithub size={35} />}
         onClick={() => logButtonClick("Repo (QR generator)")}
       >
         Repo (QR generator)
@@ -143,7 +142,7 @@ export default function GalaTicketingSystem() {
         component="a"
         href="https://github.com/curiousmockingbird/QRscanner_for_gala"
         target="_blank"
-        startDecorator={<GitHubIcon fontSize="large" />}
+        startDecorator={<FaGithub size={35} />}
         onClick={() => logButtonClick("Repo (QR scanner)")}
       >
         Repo (QR scanner)

@@ -3,9 +3,9 @@ import * as React from 'react';
 import Button from '@mui/joy/Button';
 // import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
-import ArrowForward from '@mui/icons-material/ArrowForward';
+import { MdArrowForward } from 'react-icons/md';
 import TwoSidedLayout from '../components/TwoSidedLayout';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import { FaGithub } from 'react-icons/fa';
 import Dialog from '../components/Dialog'
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
@@ -98,10 +98,10 @@ export default function HarolDesigner() {
         A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TanStack, and NodeMailer to provide an engaging user experience.
       </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://www.haroldesigner.art/" target="_blank" startDecorator={<ArrowForward fontSize='large' />} onClick={() => logButtonClick("Deployment (GD Portfolio)")}>
+      <Button size='lg' component="a" href="https://www.haroldesigner.art/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Deployment (GD Portfolio)")}> 
         Deployment
       </Button>
-      <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" target="_blank" startDecorator={<GitHubIcon fontSize="large"/>} onClick={() => logButtonClick("Repo (GD Portfolio)")}>
+      <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" target="_blank" startDecorator={<FaGithub size={35} />} onClick={() => logButtonClick("Repo (GD Portfolio)")}> 
         Github repo
       </Button>
     </TwoSidedLayout>
