@@ -11,15 +11,12 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import Toggle from '@/app/components/Toggle';
 
-const logVisitorLocation = async () => {
+const logVisitorLocation = () => {
   try {
-    const response = await fetch('/api/location', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const success = navigator.sendBeacon('/api/location');
 
-    if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status}`);
+    if (!success) {
+      throw new Error('sendBeacon failed');
     }
 
     console.log('📍 Visitor location logged successfully');
@@ -38,8 +35,16 @@ export default function Home() {
     const hasLogged = sessionStorage.getItem('hasLoggedVisitorLocation');
 
     if (!hasLogged) {
-      logVisitorLocation();
-      sessionStorage.setItem('hasLoggedVisitorLocation', 'true'); // Mark as logged
+      const log = () => {
+        logVisitorLocation();
+        sessionStorage.setItem('hasLoggedVisitorLocation', 'true'); // Mark as logged
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(log);
+      } else {
+        setTimeout(log, 0);
+      }
     }
   }, []);
 
