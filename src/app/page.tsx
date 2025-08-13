@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
-import HomeClient from './HomeClient';
-import HeaderClient from './components/HeaderClient';
+import dynamic from 'next/dynamic';
+
+const HeaderClient = dynamic(() => import('./components/HeaderClient'));
+const HomeClient = dynamic(() => import('./HomeClient'));
 // import LastPlayed from './components/LastPlayed';
 // import TopTechHeadline from './components/TopTechHeadline';
 
