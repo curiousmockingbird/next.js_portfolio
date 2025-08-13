@@ -3,9 +3,9 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
-import ArrowForward from '@mui/icons-material/ArrowForward';
+import { MdArrowForward } from 'react-icons/md';
 import TwoSidedLayout from "../components/TwoSidedLayout";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { FaGithub } from 'react-icons/fa';
 // import Dialog from '../components/Dialog'
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
@@ -132,7 +132,7 @@ export default function EveryActionEvents() {
         component="a"
         href="https://vdlf.org/#event-list"
         target="_blank"
-        startDecorator={<ArrowForward fontSize="large" />}
+        startDecorator={<MdArrowForward size={35} />}
         onClick={() => logButtonClick("Deployment (Events)")}
       >
         Deployment
@@ -142,7 +142,7 @@ export default function EveryActionEvents() {
         component="a"
         href="https://github.com/curiousmockingbird/proxy_server"
         target="_blank"
-        startDecorator={<GitHubIcon fontSize="large" />}
+        startDecorator={<FaGithub size={35} />}
         onClick={() => logButtonClick("Repo (Proxy server)")}
       >
         Repo (Proxy server)
@@ -152,7 +152,7 @@ export default function EveryActionEvents() {
         component="a"
         href="https://github.com/curiousmockingbird/vdlf/blob/master/resources/scripts/components/EventListHome.vue"
         target="_blank"
-        startDecorator={<GitHubIcon fontSize="large" />}
+        startDecorator={<FaGithub size={35} />}
         onClick={() => logButtonClick("Repo (EventList.vue)")}
       >
         Repo (Event List component)

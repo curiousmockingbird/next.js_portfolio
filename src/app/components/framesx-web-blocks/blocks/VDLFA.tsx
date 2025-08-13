@@ -3,9 +3,8 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
-import ArrowForward from "@mui/icons-material/ArrowForward";
+import { MdArrowForward, MdHandyman } from 'react-icons/md';
 import TwoSidedLayout from "../components/TwoSidedLayout";
-import HandymanIcon from '@mui/icons-material/Handyman';
 // import Dialog from '../components/Dialog'
 // import Modal from "@mui/joy/Modal";
 // import ModalClose from "@mui/joy/ModalClose";
@@ -123,7 +122,7 @@ export default function Vdlfa() {
         component="a"
         href="https://vdlfa.org"
         target="_blank"
-        startDecorator={<ArrowForward fontSize="large" />}
+        startDecorator={<MdArrowForward size={35} />}
         onClick={() => logButtonClick("Deployment (Vdlfa)")}
       >
         Deployment
@@ -133,7 +132,7 @@ export default function Vdlfa() {
         component="a"
         href="https://www.figma.com/design/5urnCwdh6PiW4S5JF4trd9/VDLFA?node-id=1-2&p=f"
         target="_blank"
-        startDecorator={<HandymanIcon fontSize="large" />}
+        startDecorator={<MdHandyman size={35} />}
         onClick={() => logButtonClick("Prototype (Figma)")}
       >
         Prototype (Figma)

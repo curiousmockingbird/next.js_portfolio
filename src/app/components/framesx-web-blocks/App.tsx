@@ -3,7 +3,7 @@ import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import Box from '@mui/joy/Box';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
-import ArrowBack from '@mui/icons-material/ArrowBack';
+import { MdArrowBack } from 'react-icons/md';
 import Link from '@mui/joy/Link';
 // import Toggle from './components/Toggle'
 
@@ -33,7 +33,7 @@ function ColorSchemeToggle() {
         level="body-xs"
         className="fixed z-50 top-8 left-8 lg:left-16" // Adjusted classes based on Tailwind's scale
       >
-        <Link href={'/'}> <ArrowBack sx={{ fontSize: 40 }} /> </Link>
+        <Link href={'/'}> <MdArrowBack size={40} /> </Link>
       </Typography>
     </>
   );
