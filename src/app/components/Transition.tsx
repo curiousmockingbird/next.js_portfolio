@@ -1,12 +1,11 @@
-'use client'
-import { Transition } from '@headlessui/react'
+"use client";
 import { useState } from 'react'
 // import { useTimeoutFn } from 'react-use'
 // import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
 export default function Example({ redirectTo, sectionName, description }: { redirectTo: string, sectionName: string, description: string }) {
-    let [isShowing, setIsShowing] = useState(true)
+    const [isShowing, setIsShowing] = useState(true)
     const router = useRouter();
     // let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500)
 
@@ -19,18 +18,7 @@ export default function Example({ redirectTo, sectionName, description }: { redi
 
     return (
         <div className="flex flex-col items-center py-2">
-            <div>
-                <Transition
-                    as="div"
-                    show={isShowing}
-                    enter="transform transition duration-[400ms]"
-                    enterFrom="opacity-0 rotate-[-120deg] scale-50"
-                    enterTo="opacity-100 rotate-0 scale-100"
-                    leave="transform duration-400 transition ease-in-out"
-                    leaveFrom="opacity-100 rotate-0 scale-100 "
-                    leaveTo="opacity-0 scale-95 "
-                >
-                        
+            <div className={`transition duration-[400ms] ease-in-out transform ${isShowing ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>                
             <div>
             <button
                 onClick={() => {
@@ -49,10 +37,9 @@ export default function Example({ redirectTo, sectionName, description }: { redi
           </span>
         </div>
         </div>
-        
+
             </button>
             </div>
-                </Transition>
             </div>
         </div>
     )
