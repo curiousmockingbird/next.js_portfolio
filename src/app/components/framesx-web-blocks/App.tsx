@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { CssVarsProvider } from '@mui/joy/styles';
-import Box from '@mui/joy/Box';
-import CssBaseline from '@mui/joy/CssBaseline';
-import Typography from '@mui/joy/Typography';
-import { MdArrowBack } from 'react-icons/md';
-import Link from '@mui/joy/Link';
+import * as React from "react";
+import { CssVarsProvider } from "@mui/joy/styles";
+import Box from "@mui/joy/Box";
+import CssBaseline from "@mui/joy/CssBaseline";
+import Typography from "@mui/joy/Typography";
+import { MdArrowBack } from "react-icons/md";
+import Link from "@mui/joy/Link";
 // import Toggle from './components/Toggle'
 
-import framesxTheme from './theme';
-import Project01 from './blocks/Vdlf';
-import Project02 from './blocks/GalaTicketingSystem';
-import Project03 from './blocks/HarolDesigner';
-import Project04 from './blocks/EveryActionEvents';
-import Project05 from './blocks/TreySavage';
-import Project06 from './blocks/BigLakeData';
-import Project07 from './blocks/SalesRaods';
-import Project08 from './blocks/gtm';
-import Project09 from './blocks/VDLFA'
+import framesxTheme from "./theme";
+import Project01 from "./blocks/Vdlf";
+import Project02 from "./blocks/GalaTicketingSystem";
+import Project03 from "./blocks/HarolDesigner";
+import Project04 from "./blocks/EveryActionEvents";
+import Project05 from "./blocks/TreySavage";
+import Project06 from "./blocks/BigLakeData";
+import Project07 from "./blocks/SalesRaods";
+import Project08 from "./blocks/gtm";
+import Project09 from "./blocks/VDLFA";
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -28,12 +28,15 @@ function ColorSchemeToggle() {
   }
   return (
     <>
-    {/* <Toggle/> */}
+      {/* <Toggle/> */}
       <Typography
         level="body-xs"
         className="fixed z-50 top-8 left-8 lg:left-16" // Adjusted classes based on Tailwind's scale
       >
-        <Link href={'/'}> <MdArrowBack size={40} /> </Link>
+        <Link href={"/"}>
+          {" "}
+          <MdArrowBack size={40} />{" "}
+        </Link>
       </Typography>
     </>
   );
@@ -48,18 +51,17 @@ export default function TeamExample() {
     <Project09 key="Project09" />,
     <Project05 key="Project05" />,
     <Project03 key="Project03" />,
-    <Project07 key="Project07"/>,
-    <Project06 key="Project06"/>,
-    <Project08 key="Project08"/>,
+    <Project07 key="Project07" />,
+    <Project06 key="Project06" />,
+    <Project08 key="Project08" />,
     // Add more components as needed, each with a unique key
   ];
 
-  const pageColors = [
-    'blue', 'blue', 'blue', 'blue',
-    'red', 'red', 'red',
-    'green', 'green',
-  ];
-  const backgroundColor = pageColors[currentPage] || 'blue';
+  const backgroundColor = React.useMemo(() => {
+    if (currentPage < 4) return "oklch(12.9% 0.042 264.695)";
+    if (currentPage < 6) return "oklch(28.3% 0.141 291.089)";
+    return "oklch(27.7% 0.046 192.524)";
+  }, [currentPage]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight } = e.currentTarget;
@@ -68,27 +70,27 @@ export default function TeamExample() {
   };
 
   // src/app/components/framesx-web-blocks/App.tsx
-React.useEffect(() => {
-  document.body.classList.add('framesx-app');
-  return () => document.body.classList.remove('framesx-app');
-}, []);
-
+  React.useEffect(() => {
+    document.body.classList.add("framesx-app");
+    return () => document.body.classList.remove("framesx-app");
+  }, []);
 
   return (
-    <CssVarsProvider disableTransitionOnChange theme={framesxTheme} defaultMode='dark'>
-<CssBaseline
-        sx={{
-          body: { backgroundColor },
-        }}
-      />      
+    <CssVarsProvider
+      disableTransitionOnChange
+      theme={framesxTheme}
+      defaultMode="dark"
+    >
+      <CssBaseline />
       <ColorSchemeToggle />
       <Box
         sx={{
-          height: '100vh',
-          overflowY: 'scroll',
-          scrollSnapType: 'y mandatory',
-          '& > div': {
-            scrollSnapAlign: 'start',
+          backgroundColor: backgroundColor,
+          height: "100vh",
+          overflowY: "scroll",
+          scrollSnapType: "y mandatory",
+          "& > div": {
+            scrollSnapAlign: "start",
           },
         }}
         onScroll={handleScroll}
@@ -97,13 +99,13 @@ React.useEffect(() => {
       </Box>
       <Box
         sx={{
-          position: 'fixed',
-          top: '50%',
-          right: '40px',
-          transform: 'translateY(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          position: "fixed",
+          top: "50%",
+          right: "40px",
+          transform: "translateY(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         {pages.map((_, index) => (
@@ -112,10 +114,10 @@ React.useEffect(() => {
             sx={{
               width: 8,
               height: 8,
-              bgcolor: currentPage === index ? '#3ab7bf' : '#fb923c',
-              borderRadius: '50%',
-              margin: '8px 0',
-              transition: 'background-color 0.3s',
+              bgcolor: currentPage === index ? "#3ab7bf" : "#fb923c",
+              borderRadius: "50%",
+              margin: "8px 0",
+              transition: "background-color 0.3s",
             }}
           />
         ))}
