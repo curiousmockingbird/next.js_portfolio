@@ -79,19 +79,21 @@ const RotatingImage: React.FC = () => {
 const AboutText = () => (
   <>
     <p className="mb-4">
-      I am Harold Mesa, full-stack developer specializing in JavaScript, with a
-      passion for crafting intuitive, high-performance web applications. With a strong
-      foundation in JavaScript, React, and Node.js, I bring ideas to life through scalable,
-      responsive, and accessible web experiences. My expertise extends to the MEARN stack,
-      serverless architecture, WordPress, and Git, allowing me to build dynamic and adaptable
-      solutions for a variety of needs.
+      Full-stack JavaScript developer with a strong design foundation and a
+      record of shipping accessible, fast, production apps.I’ve delivered tech
+      solutions across small startups, consulting agencies, and statewide
+      nonprofits. I work across React/Next.js, TypeScript, Node/Express, and
+      modern deployments (Vercel, WP Engine), pairing clean UX with reliable
+      engineering.
     </p>
     <p className="mb-4">
-      Currently, I work as a contractor with Wisconsin&apos;s leading grassroots immigrant rights organization,{' '}
+      Currently, I work as a contractor with Wisconsin&apos;s leading grassroots
+      immigrant rights organization,{" "}
       <span className="font-bold underline">
         <a href="https://vdlf.org">Voces de la Frontera</a>
       </span>
-      , where I build and maintain digital solutions that empower communities and drive social change.
+      , where I build and maintain digital solutions that empower communities
+      and drive social change.
     </p>
   </>
 );
