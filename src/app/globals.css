@@ -8,14 +8,21 @@
   --accent-color: #1e90ff;
 }
 
+/* src/app/globals.css */
 body {
-  background-color: var(--background-color);  
+  background-color: inherit;
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Light Mode */
-body.light {
+/* Apply your CSS-variable background only on pages that aren't using framesx */
+body:not(.framesx-app) {
+  background-color: var(--background-color);
+}
+
+/* Light-mode overrides stay scoped as well */
+body.light:not(.framesx-app) {
   --background-color: #fff;
   --text-color: #000;
 }
+

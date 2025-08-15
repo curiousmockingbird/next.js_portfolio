@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles';
 import Box from '@mui/joy/Box';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
@@ -53,15 +53,34 @@ export default function TeamExample() {
     <Project08 key="Project08"/>,
     // Add more components as needed, each with a unique key
   ];
+
+  const pageColors = [
+    'blue', 'blue', 'blue', 'blue',
+    'red', 'red', 'red',
+    'green', 'green',
+  ];
+  const backgroundColor = pageColors[currentPage] || 'blue';
+
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight } = e.currentTarget;
     const pageIndex = Math.round(scrollTop / clientHeight);
     setCurrentPage(pageIndex);
   };
 
+  // src/app/components/framesx-web-blocks/App.tsx
+React.useEffect(() => {
+  document.body.classList.add('framesx-app');
+  return () => document.body.classList.remove('framesx-app');
+}, []);
+
+
   return (
     <CssVarsProvider disableTransitionOnChange theme={framesxTheme} defaultMode='dark'>
-      <CssBaseline />
+<CssBaseline
+        sx={{
+          body: { backgroundColor },
+        }}
+      />      
       <ColorSchemeToggle />
       <Box
         sx={{
