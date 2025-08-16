@@ -19,16 +19,18 @@ export default function TwoSidedLayout({
     <Container
       sx={(theme) => ({
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "auto",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         py: 5,
         gap: 4,
         [theme.breakpoints.up("md")]: {
           flexDirection: reversed ? "row-reverse" : "row", // Use row layout on desktop
           gap: 6,
+          minHeight: "100vh",
+          justifyContent: "center",
         },
       })}
     >
