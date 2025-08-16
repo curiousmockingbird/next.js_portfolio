@@ -77,9 +77,10 @@ export default function gtm() {
       alt="Screenshot of homepage of Big Lake Data"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740850093/samples/graphic_design_work/devProjects/gtm.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       gtmdifferent.com
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"
@@ -87,9 +88,6 @@ export default function gtm() {
         lineHeight="2.5rem"
       >
         Content Tank Platform
-      </Typography>
-      <Typography fontSize="lg" lineHeight="lg">
-      For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://gtmdifferent.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (BLD)")}> 

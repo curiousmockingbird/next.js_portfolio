@@ -112,9 +112,9 @@ export default function EveryActionEvents() {
       alt="Event list component (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1739043867/samples/graphic_design_work/devProjects/Screenshot_2025-02-08_at_1.43.54_PM_rewlhb.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       vdlf.org/#event-list
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

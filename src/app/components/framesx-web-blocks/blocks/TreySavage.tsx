@@ -83,9 +83,9 @@ export default function HarolDesigner() {
       alt="Image of Graphic Design Portfolio"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712418900/samples/graphic_design_work/devProjects/Screenshot_2024-04-06_at_10.54.44_AM_fwohzv.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       treysavege.art
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

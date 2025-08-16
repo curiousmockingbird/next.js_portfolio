@@ -103,9 +103,9 @@ export default function Vdlf() {
       alt="Contact form screenshot"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1730684442/samples/graphic_design_work/devProjects/Screenshot_2024-11-03_at_7.39.08_PM_h8wohn.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
         vdlf.org/team
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

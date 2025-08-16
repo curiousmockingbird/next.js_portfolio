@@ -102,9 +102,9 @@ export default function Vdlfa() {
       alt="Contact form screenshot"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1743780926/samples/graphic_design_work/devProjects/revamp_lkrkua.jpg"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
         vdlfa.org/
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

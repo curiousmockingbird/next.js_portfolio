@@ -78,9 +78,9 @@ export default function BigLake() {
       alt="Screenshot of homepage of Big Lake Data"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740781865/samples/graphic_design_work/devProjects/bld2_puywfo.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       biglakedata.com
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"
@@ -88,9 +88,6 @@ export default function BigLake() {
         lineHeight="2.5rem"
       >
         Milwaukee-based Analytics Team
-      </Typography>
-      <Typography fontSize="lg" lineHeight="lg">
-      For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://www.biglakedata.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (BLD)")}> 

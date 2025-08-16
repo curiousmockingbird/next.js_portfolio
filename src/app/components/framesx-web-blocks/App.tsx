@@ -49,18 +49,24 @@ export default function TeamExample() {
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
     <Project09 key="Project09" />,
-    <Project05 key="Project05" />,
-    <Project03 key="Project03" />,
     <Project07 key="Project07" />,
     <Project06 key="Project06" />,
     <Project08 key="Project08" />,
+    <Project05 key="Project05" />,
+    <Project03 key="Project03" />,
     // Add more components as needed, each with a unique key
   ];
 
   const backgroundColor = React.useMemo(() => {
     if (currentPage < 4) return "oklch(12.9% 0.042 264.695)";
-    if (currentPage < 6) return "oklch(28.3% 0.141 291.089)";
+    if (currentPage < 7) return "oklch(28.3% 0.141 291.089)";
     return "oklch(27.7% 0.046 192.524)";
+  }, [currentPage]);
+
+  const clientName = React.useMemo(() => {
+    if (currentPage < 4) return "Client: Voces de la Frontera";
+    if (currentPage < 7) return "Client: Slingshot Content";
+    return "Personal Projects";
   }, [currentPage]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
@@ -95,6 +101,38 @@ export default function TeamExample() {
         }}
         onScroll={handleScroll}
       >
+        <div
+        style={{
+          position: 'absolute',
+          top: 40,
+          left: 0,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          pointerEvents: 'none',
+          zIndex: 10,
+          padding: '0 1rem',
+          boxSizing: 'border-box',
+        }}
+      >
+        <Typography
+          level="h2"
+          sx={{
+        px: { xs: 2, sm: 8 },
+        py: { xs: 1, sm: 2 },
+        borderRadius: 2,
+        fontSize: { xs: '1.1rem', sm: '1.5rem' },
+        boxShadow: { xs: 1, sm: 0 },
+        maxWidth: { xs: '100%', sm: '80%' },
+        textAlign: 'center',
+          }}
+        >
+          {clientName}
+        </Typography>
+      </div>
+
         {pages}
       </Box>
       <Box

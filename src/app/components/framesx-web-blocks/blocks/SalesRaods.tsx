@@ -74,13 +74,14 @@ const logButtonClick = async (buttonName: string) => {
 export default function SalesRoads() {
   return (
     <div id='sales-roads'>
+      
     <ForWordPress
       alt="Screenshot of homepage of Big Lake Data"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740782336/samples/graphic_design_work/devProjects/salesroads_s5gyyb.png"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       salesroads.com
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"
@@ -88,9 +89,6 @@ export default function SalesRoads() {
         lineHeight="2.5rem"
       >
         Sales Outsourcing Agency
-      </Typography>
-      <Typography fontSize="lg" lineHeight="lg">
-      For <a href='https://slingshotcontent.com'>Slingshot Content</a> 
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://salesroads.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (SalesRoads)")}> 

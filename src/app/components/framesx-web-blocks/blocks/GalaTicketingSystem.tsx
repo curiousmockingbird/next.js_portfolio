@@ -113,9 +113,9 @@ export default function GalaTicketingSystem() {
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738809253/samples/graphic_design_work/devProjects/Gala_wh3xyo.jpg"
     >
-      <Typography color="primary" fontSize="lg" fontWeight="lg">
+      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
         Voces de la Frontera Annual Gala 2024
-      </Typography>
+      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"
