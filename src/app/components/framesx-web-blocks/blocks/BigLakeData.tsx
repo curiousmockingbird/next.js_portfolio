@@ -76,7 +76,7 @@ export default function BigLake() {
     <div id='big-lake-data'>
     <ForWordPress
       alt="Screenshot of homepage of Big Lake Data"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1740781865/samples/graphic_design_work/devProjects/bld2_puywfo.png"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1755880583/samples/graphic_design_work/devProjects/Screenshot_2025-08-22_at_12.35.41_PM_grebwk.png"
     >
       {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
       biglakedata.com
