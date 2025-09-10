@@ -61,9 +61,9 @@ export default function TeamExample() {
 
   const backgroundColor = React.useMemo(() => {
     if (currentPage === 0) return "#5c24c9;";
-    if (currentPage > 0 && currentPage < 5) return "#c9a524";
-    if (currentPage >= 5 && currentPage  < 8) return "#24c95c";
-    return "#c9245c";
+    if (currentPage > 0 && currentPage < 5) return "#eb4e6a";
+    if (currentPage >= 5 && currentPage  < 8) return "#00b145";
+    return "#2841b1";
   }, [currentPage]);
 
   const clientName = React.useMemo(() => {
