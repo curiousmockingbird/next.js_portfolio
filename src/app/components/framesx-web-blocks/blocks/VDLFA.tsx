@@ -95,16 +95,11 @@ const logButtonClick = async (buttonName: string) => {
 export default function Vdlfa() {
   return (
     <TwoSidedLayout
-      // box4logo="/vue-js.svg"
-      // box3logo="/node.png"
-      // box1logo="/wordpress-black.svg"
-      // box2logo="/vercel_logo_black.svg"
+      technologies={['WordPress', 'Vue', 'typescript', 'Vercel', 'node.js', 'Figma']}
       alt="Contact form screenshot"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1743780926/samples/graphic_design_work/devProjects/revamp_lkrkua.jpg"
     >
-      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
-        vdlfa.org/
-      </Typography> */}
+
       <Typography
         level="h1"
         fontWeight="xl"

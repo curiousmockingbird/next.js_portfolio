@@ -110,12 +110,10 @@ export default function GalaTicketingSystem() {
       // box2logo="/apps_script.svg"
       // box3logo="/sendgrid.svg"
       // box4logo="/EA.png"
+      technologies={['HTML5 QR Code', 'Google Apps Script', 'sendrgrid']}
       alt="QR ticket (screenshot)"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738809253/samples/graphic_design_work/devProjects/Gala_wh3xyo.jpg"
     >
-      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
-        Voces de la Frontera Annual Gala 2024
-      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

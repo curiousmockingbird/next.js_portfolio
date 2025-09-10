@@ -2,7 +2,7 @@ import * as React from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
-import { typographyClasses } from "@mui/joy/Typography";
+import Typography, { typographyClasses } from "@mui/joy/Typography";
 import Image from "next/image";
 
 export default function TwoSidedLayout({
@@ -10,10 +10,12 @@ export default function TwoSidedLayout({
   reversed,
   img,
   alt,
+  technologies,
 }: React.PropsWithChildren<{
   reversed?: boolean;
   img: string;
   alt: string;
+  technologies?: string[];
 }>) {
   return (
     <Container
@@ -27,7 +29,7 @@ export default function TwoSidedLayout({
         py: 5,
         gap: 4,
         [theme.breakpoints.up("md")]: {
-          flexDirection: reversed ? "row-reverse" : "row", // Use row layout on desktop
+          // Keep vertical stacking; inner Box handles row switch
           gap: 6,
         },
       })}
@@ -93,6 +95,37 @@ export default function TwoSidedLayout({
           />
         </AspectRatio>
       </Box>
+      {Array.isArray(technologies) && technologies.length > 0 && (
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            gap: 1.5,
+            flexShrink: 0,
+          }}
+        >
+          {technologies.map((tech) => (
+            <Typography
+              key={tech}
+              level="body-sm"
+              sx={{
+                px: 1.25,
+                py: 0.5,
+                borderRadius: "sm",
+                bgcolor: "background.level1",
+                border: "1px solid",
+                borderColor: "divider",
+                letterSpacing: 0.2,
+                textTransform: "capitalize",
+              }}
+            >
+              {tech}
+            </Typography>
+          ))}
+        </Box>
+      )}
     </Container>
   );
 }

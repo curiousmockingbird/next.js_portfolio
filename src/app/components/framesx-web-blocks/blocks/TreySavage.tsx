@@ -76,16 +76,10 @@ const logButtonClick = async (buttonName: string) => {
 export default function HarolDesigner() {
   return (
     <TwoSidedLayout
-      // box1logo="/next-js.svg"
-      // box2logo="/tan_stack.png"
-      // box3logo="/sendgrid.svg"
-      // box4logo="/node.png"
+    technologies={['Next.js', 'TypeScript', 'Cloudinary', 'TanStack', 'Axios']}
       alt="Image of Graphic Design Portfolio"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1712418900/samples/graphic_design_work/devProjects/Screenshot_2024-04-06_at_10.54.44_AM_fwohzv.png"
     >
-      {/* <Typography color="primary" fontSize="lg" fontWeight="lg">
-      treysavege.art
-      </Typography> */}
       <Typography
         level="h1"
         fontWeight="xl"

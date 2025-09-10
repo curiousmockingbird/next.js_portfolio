@@ -59,15 +59,14 @@ export default function TeamExample() {
     // Add more components as needed, each with a unique key
   ];
 
-  const backgroundColor = React.useMemo(() => {
-    if (currentPage === 0) return "#5c24c9;";
-    if (currentPage > 0 && currentPage < 5) return "#eb4e6a";
-    if (currentPage >= 5 && currentPage  < 8) return "#00b145";
-    return "#2841b1";
-  }, [currentPage]);
+  //   // if (currentPage === 0) return "#5c24c9;";
+  //   // if (currentPage > 0 && currentPage < 5) return "#eb4e6a";
+  //   // if (currentPage >= 5 && currentPage  < 8) return "#00b145";
+  //   return "#2841b1";
+  // }, );
 
   const clientName = React.useMemo(() => {
-    if (currentPage === 0) return "Nombolo"
+    if (currentPage === 0) return "Client: Nombolo"
     if (currentPage > 0 && currentPage < 5) return "Client: Voces de la Frontera";
     if (currentPage >= 5 && currentPage  < 8) return "Client: Slingshot Content";
     return "Personal Projects";
@@ -95,7 +94,7 @@ export default function TeamExample() {
       <ColorSchemeToggle />
       <Box
         sx={{
-          backgroundColor: backgroundColor,
+          backgroundColor: '#03082e',
           height: "100vh",
           overflowY: "scroll",
           scrollSnapType: "y mandatory",
