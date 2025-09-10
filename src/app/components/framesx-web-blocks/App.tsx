@@ -17,6 +17,7 @@ import Project06 from "./blocks/BigLakeData";
 import Project07 from "./blocks/SalesRaods";
 import Project08 from "./blocks/gtm";
 import Project09 from "./blocks/VDLFA";
+import Project10 from "./blocks/Nombolo";
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -45,6 +46,7 @@ function ColorSchemeToggle() {
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
+    <Project10 key="Project10" />,
     <Project04 key="Project04" />,
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
@@ -58,14 +60,16 @@ export default function TeamExample() {
   ];
 
   const backgroundColor = React.useMemo(() => {
-    if (currentPage < 4) return "oklch(12.9% 0.042 264.695)";
-    if (currentPage < 7) return "oklch(28.3% 0.141 291.089)";
-    return "oklch(27.7% 0.046 192.524)";
+    if (currentPage === 0) return "#5c24c9;";
+    if (currentPage > 0 && currentPage < 5) return "#c9a524";
+    if (currentPage >= 5 && currentPage  < 8) return "#24c95c";
+    return "#c9245c";
   }, [currentPage]);
 
   const clientName = React.useMemo(() => {
-    if (currentPage < 4) return "Client: Voces de la Frontera";
-    if (currentPage < 7) return "Client: Slingshot Content";
+    if (currentPage === 0) return "Nombolo"
+    if (currentPage > 0 && currentPage < 5) return "Client: Voces de la Frontera";
+    if (currentPage >= 5 && currentPage  < 8) return "Client: Slingshot Content";
     return "Personal Projects";
   }, [currentPage]);
 

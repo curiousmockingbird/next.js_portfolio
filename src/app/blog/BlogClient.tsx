@@ -30,8 +30,8 @@ export default function Home() {
         const result = await response.json();
         result.sort(
           (a: any, b: any) =>
-            new Date(b.node.publishedAt ?? 0).getTime() -
-            new Date(a.node.publishedAt ?? 0).getTime()
+            new Date(a.node.publishedAt ?? 0).getTime() -
+            new Date(b.node.publishedAt ?? 0).getTime()
         );
         setPosts(result);
       } catch (error) {
@@ -50,7 +50,7 @@ export default function Home() {
   }, []);
 
   const PostCard = ({ post }: { post: any }) => (
-    <div className="p-4 w-full lg:w-1/2">
+    <div className="p-4 w-full ">
       <a
         href={post.url || "#"}
         className="block"
@@ -63,8 +63,8 @@ export default function Home() {
               className="lg:h-52 w-full object-cover object-center"
               src={post.coverImage.url}
               alt={post.title || "Article cover"}
-              width={450}
-              height={350}
+              width={950}
+              height={850}
             />
           ) : (
             <Skeleton height={208} />
