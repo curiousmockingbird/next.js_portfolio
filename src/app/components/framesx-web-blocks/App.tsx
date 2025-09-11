@@ -18,6 +18,7 @@ import Project07 from "./blocks/SalesRaods";
 import Project08 from "./blocks/gtm";
 import Project09 from "./blocks/VDLFA";
 import Project10 from "./blocks/Nombolo";
+import Project11 from "./blocks/Zip3";
 
 function ColorSchemeToggle() {
   const [mounted, setMounted] = React.useState(false);
@@ -47,15 +48,16 @@ export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
     <Project10 key="Project10" />,
+    <Project11 key="Project11" />,
     <Project04 key="Project04" />,
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
     <Project09 key="Project09" />,
+    <Project05 key="Project05" />,
+    <Project03 key="Project03" />,
     <Project07 key="Project07" />,
     <Project06 key="Project06" />,
     <Project08 key="Project08" />,
-    <Project05 key="Project05" />,
-    <Project03 key="Project03" />,
     // Add more components as needed, each with a unique key
   ];
 
@@ -67,9 +69,9 @@ export default function TeamExample() {
 
   const clientName = React.useMemo(() => {
     if (currentPage === 0) return "Client: Nombolo"
-    if (currentPage > 0 && currentPage < 5) return "Client: Voces de la Frontera";
-    if (currentPage >= 5 && currentPage  < 8) return "Client: Slingshot Content";
-    return "Personal Projects";
+    if (currentPage > 0 && currentPage < 6) return "Client: Voces de la Frontera";
+    if (currentPage >= 6 && currentPage  < 8) return "Personal Projects";
+    return "Client: Slingshot Content";
   }, [currentPage]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
