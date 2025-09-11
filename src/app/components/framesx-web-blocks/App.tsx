@@ -47,12 +47,12 @@ function ColorSchemeToggle() {
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const pages = [
-    <Project10 key="Project10" />,
     <Project11 key="Project11" />,
     <Project04 key="Project04" />,
     <Project01 key="Project01" />,
     <Project02 key="Project02" />,
     <Project09 key="Project09" />,
+    <Project10 key="Project10" />,
     <Project05 key="Project05" />,
     <Project03 key="Project03" />,
     <Project07 key="Project07" />,
@@ -68,8 +68,8 @@ export default function TeamExample() {
   // }, );
 
   const clientName = React.useMemo(() => {
-    if (currentPage === 0) return "Client: Nombolo"
-    if (currentPage > 0 && currentPage < 6) return "Client: Voces de la Frontera";
+    if (currentPage >= 0 && currentPage < 5) return "Client: Voces de la Frontera";
+    if (currentPage === 5) return "Client: Nombolo";
     if (currentPage >= 6 && currentPage  < 8) return "Personal Projects";
     return "Client: Slingshot Content";
   }, [currentPage]);
