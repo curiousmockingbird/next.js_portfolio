@@ -71,7 +71,7 @@ export default function TeamExample() {
       { label: "VDLFA" },
       { label: "Nombolo" },
       { label: "Trey Savage" },
-      { label: "Harol Designer" },
+      { label: "Harold Designer" },
       { label: "Sales Raods" },
       { label: "Big Lake Data" },
       { label: "GTM" },

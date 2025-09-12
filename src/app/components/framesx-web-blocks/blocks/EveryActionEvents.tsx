@@ -53,7 +53,6 @@ const BasicModal: React.FC = () => {
             sx={{
               px: 3,
               py: 2.25,
-              bgcolor: 'primary.softBg',
               borderBottom: '1px solid',
               borderColor: 'divider',
             }}
