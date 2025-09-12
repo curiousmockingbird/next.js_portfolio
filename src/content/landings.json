@@ -15,7 +15,7 @@
           "eyebrow": "Services",
           "heading": "HubSpot done right",
           "subheading": "From data model to forms and workflows — shipped with clarity and maintainability.",
-          "cta": { "label": "Book a call", "href": "/contact" }
+          "cta": { "label": "View related projects", "href": "/hubspot/projects" }
         },
         {
           "type": "bullets",
@@ -26,8 +26,9 @@
             { "title": "Forms & Tracking", "text": "Conversion-safe forms with attribution and privacy in mind." }
           ]
         },
-        { "type": "cta", "heading": "Have a HubSpot backlog?", "cta": { "label": "Let’s prioritize it", "href": "/contact" } }
-      ]
+        { "type": "cta", "heading": "See how I build it", "cta": { "label": "Explore projects", "href": "/hubspot/projects" } }
+      ],
+      "projects": ["EveryActionEvents", "GalaTicketingSystem", "gtm"]
     },
     "dataviz": {
       "title": "Data Visualization & Maps",
@@ -40,7 +41,7 @@
           "eyebrow": "Case studies",
           "heading": "Readable, interactive dataviz",
           "subheading": "Choropleths, centerline labeling, and zoomable maps using D3 v7 + SVG.",
-          "cta": { "label": "See projects", "href": "/devProjects" }
+          "cta": { "label": "See projects", "href": "/dataviz/projects" }
         },
         {
           "type": "bullets",
@@ -51,8 +52,9 @@
             { "title": "Lean stack", "text": "Vite + ES modules, D3 v7, and plain CSS." }
           ]
         },
-        { "type": "cta", "heading": "Have a dataset to explain?", "cta": { "label": "Let’s map it", "href": "/contact" } }
-      ]
+        { "type": "cta", "heading": "Have a dataset to explain?", "cta": { "label": "Explore dataviz work", "href": "/dataviz/projects" } }
+      ],
+      "projects": ["Dogs", "Zip3"]
     },
     "ui-dev": {
       "title": "UI Development & Prototyping",
@@ -65,7 +67,7 @@
           "eyebrow": "Frontend",
           "heading": "Interfaces with momentum",
           "subheading": "Fast iteration with component registries, data-driven rendering, and accessible defaults.",
-          "cta": { "label": "View UI work", "href": "/devProjects" }
+          "cta": { "label": "View UI projects", "href": "/ui-dev/projects" }
         },
         {
           "type": "bullets",
@@ -76,9 +78,9 @@
             { "title": "A11y by default", "text": "Keyboard behavior, aria labels, and contrast baked in." }
           ]
         },
-        { "type": "cta", "heading": "Need a working prototype?", "cta": { "label": "Start a sprint", "href": "/contact" } }
-      ]
+        { "type": "cta", "heading": "Need a working prototype?", "cta": { "label": "Explore UI work", "href": "/ui-dev/projects" } }
+      ],
+      "projects": ["Vdlf", "EveryActionEvents", "GalaTicketingSystem"]
     }
   }
 }
-
