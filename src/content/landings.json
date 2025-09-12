@@ -1,0 +1,84 @@
+{
+  "site": {
+    "baseUrl": "https://haroldeveloper.tech",
+    "brand": "Harol Developer"
+  },
+  "pages": {
+    "hubspot": {
+      "title": "HubSpot Integrations & Automation",
+      "description": "Clean implementations, custom objects, CRM automation, and lightweight integrations that fit real teams.",
+      "ogImage": "/og/hubspot.png",
+      "themeColor": "#0ea5e9",
+      "sections": [
+        {
+          "type": "hero",
+          "eyebrow": "Services",
+          "heading": "HubSpot done right",
+          "subheading": "From data model to forms and workflows — shipped with clarity and maintainability.",
+          "cta": { "label": "Book a call", "href": "/contact" }
+        },
+        {
+          "type": "bullets",
+          "heading": "What I deliver",
+          "items": [
+            { "title": "Custom Objects", "text": "Model your business cleanly with properties and associations that scale." },
+            { "title": "Workflows & Automation", "text": "Reliable sequences for lead routing, SLAs, and lifecycle stages." },
+            { "title": "Forms & Tracking", "text": "Conversion-safe forms with attribution and privacy in mind." }
+          ]
+        },
+        { "type": "cta", "heading": "Have a HubSpot backlog?", "cta": { "label": "Let’s prioritize it", "href": "/contact" } }
+      ]
+    },
+    "dataviz": {
+      "title": "Data Visualization & Maps",
+      "description": "D3 and SVG-first visualizations: maps, centerline labels, and interaction that stays legible.",
+      "ogImage": "/og/dataviz.png",
+      "themeColor": "#22c55e",
+      "sections": [
+        {
+          "type": "hero",
+          "eyebrow": "Case studies",
+          "heading": "Readable, interactive dataviz",
+          "subheading": "Choropleths, centerline labeling, and zoomable maps using D3 v7 + SVG.",
+          "cta": { "label": "See projects", "href": "/devProjects" }
+        },
+        {
+          "type": "bullets",
+          "heading": "Highlights",
+          "items": [
+            { "title": "Centerline labels", "text": "Curved labels inside shapes; centroid fallback and truncation." },
+            { "title": "Choropleth maps", "text": "Colorblind-friendly scales, zoom/pan, clamped tooltips." },
+            { "title": "Lean stack", "text": "Vite + ES modules, D3 v7, and plain CSS." }
+          ]
+        },
+        { "type": "cta", "heading": "Have a dataset to explain?", "cta": { "label": "Let’s map it", "href": "/contact" } }
+      ]
+    },
+    "ui-dev": {
+      "title": "UI Development & Prototyping",
+      "description": "Production quality React + Joy UI components, quick modals, and data-first layouts.",
+      "ogImage": "/og/ui-dev.png",
+      "themeColor": "#a78bfa",
+      "sections": [
+        {
+          "type": "hero",
+          "eyebrow": "Frontend",
+          "heading": "Interfaces with momentum",
+          "subheading": "Fast iteration with component registries, data-driven rendering, and accessible defaults.",
+          "cta": { "label": "View UI work", "href": "/devProjects" }
+        },
+        {
+          "type": "bullets",
+          "heading": "Approach",
+          "items": [
+            { "title": "Data-first", "text": "Content JSON drives pages; one deploy updates many routes." },
+            { "title": "Composability", "text": "Block registry maps schema -> components; defaults keep it lean." },
+            { "title": "A11y by default", "text": "Keyboard behavior, aria labels, and contrast baked in." }
+          ]
+        },
+        { "type": "cta", "heading": "Need a working prototype?", "cta": { "label": "Start a sprint", "href": "/contact" } }
+      ]
+    }
+  }
+}
+
