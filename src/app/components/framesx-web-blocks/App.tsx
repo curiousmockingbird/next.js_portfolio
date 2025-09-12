@@ -26,27 +26,19 @@ import Project10 from "./blocks/Nombolo";
 import Project11 from "./blocks/Zip3";
 import Project12 from "./blocks/Dogs";
 
-function ColorSchemeToggle() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) {
-    return null;
-  }
+function HomeButton() {
   return (
-    <>
-      {/* <Toggle/> */}
-      <Typography
-        level="body-xs"
-        className="fixed z-50 top-8 left-8 lg:left-16" // Adjusted classes based on Tailwind's scale
-      >
-        <Link href={"/"}>
-          {" "}
-          <MdArrowBack size={40} />{" "}
+    <Box
+      sx={{ position: 'fixed', top: 16, left: { xs: 12, sm: 16, md: 24 }, zIndex: 30 }}
+    >
+      <Tooltip title="Home" variant="soft" placement="right">
+        <Link href="/" aria-label="Go to home">
+          <IconButton variant="soft" color="neutral" size="lg" sx={{ borderRadius: '50%' }}>
+            <MdArrowBack size={22} />
+          </IconButton>
         </Link>
-      </Typography>
-    </>
+      </Tooltip>
+    </Box>
   );
 }
 
@@ -130,7 +122,7 @@ export default function TeamExample() {
       defaultMode="dark"
     >
       <CssBaseline />
-      <ColorSchemeToggle />
+      <HomeButton />
       <Box
         sx={{
           backgroundColor: '#03082e',
