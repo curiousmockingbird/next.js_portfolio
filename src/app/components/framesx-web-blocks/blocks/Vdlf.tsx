@@ -3,6 +3,8 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
+import Box from "@mui/joy/Box";
+import Chip from "@mui/joy/Chip";
 import { MdArrowForward } from 'react-icons/md';
 import TwoSidedLayout from "../components/TwoSidedLayout";
 import { FaGithub } from 'react-icons/fa';
@@ -10,6 +12,7 @@ import { FaGithub } from 'react-icons/fa';
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import Sheet from "@mui/joy/Sheet";
+import { MdCloud, MdEmail, MdSecurity, MdWeb, MdErrorOutline, MdInfo } from 'react-icons/md';
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -35,46 +38,77 @@ const BasicModal: React.FC = () => {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: 500,
-            borderRadius: "md",
-            p: 3,
+            maxWidth: { xs: 360, sm: 640, md: 760 },
+            width: "100%",
+            maxHeight: "85vh",
+            overflow: "hidden",
+            borderRadius: "lg",
             boxShadow: "lg",
           }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h2"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
+
+          {/* Header */}
+          <Box
+            sx={{
+              px: 3,
+              py: 2.25,
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            }}
           >
-            The solution involved:
-          </Typography>
-          <Typography id="modal-desc">
-            <Typography level="h4">Serverless Function Setup:</Typography>
-            <br></br>Developed a serverless API endpoint using Vercel to send
-            emails via Nodemailer. This allowed a seamless communication channel
-            between the site visitors and the organization’s team members.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">
-              Cross-Origin Resource Sharing (CORS) Configuration:
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
+                Contact Form Integration — Details
+              </Typography>
+              <Chip size="sm" variant="soft" color="primary">Overview</Chip>
+            </Box>
+            <Typography level="body-sm" textColor="text.secondary">
+              Key aspects of the serverless email handler and frontend wiring.
             </Typography>
-            <br></br>Implemented proper CORS handling to ensure secure and
-            successful API requests from the WordPress site to the Vercel-hosted
-            backend. Utilized custom CORS middleware for flexibility and
-            consistency across requests.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">Frontend Integration:</Typography>
-            <br></br>Modified the Vue.js contact form on the WordPress site to
-            interact with the Vercel API, ensuring the payload structure matched
-            and implementing error handling for smoother user experience.
-          </Typography>
+          </Box>
+
+          {/* Content */}
+          <Box sx={{ p: 3, overflowY: 'auto' }} id="modal-desc">
+            <Typography level="h4" sx={{ mb: 1 }}>Key Aspects</Typography>
+            <Box
+              component="ul"
+              role="list"
+              sx={{
+                listStyle: 'none',
+                p: 0,
+                m: 0,
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 1.25,
+              }}
+            >
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Typography level="body-sm"><b>Serverless API:</b> Vercel function handles submissions and secrets via env vars.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdEmail size={18} /></Box>
+                <Typography level="body-sm"><b>Email delivery:</b> Nodemailer setup with templated messages and basic validation.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSecurity size={18} /></Box>
+                <Typography level="body-sm"><b>CORS:</b> Custom middleware to allow the WordPress origin and block others.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdWeb size={18} /></Box>
+                <Typography level="body-sm"><b>Frontend:</b> Vue contact form posts JSON; payload shape aligned with API.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdErrorOutline size={18} /></Box>
+                <Typography level="body-sm"><b>Error handling:</b> User‑friendly messages and retries on transient failures.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Typography level="body-sm"><b>DX/ops:</b> Minimal config, clear logs, and simple local testing.</Typography>
+              </Box>
+            </Box>
+          </Box>
         </Sheet>
       </Modal>
     </React.Fragment>

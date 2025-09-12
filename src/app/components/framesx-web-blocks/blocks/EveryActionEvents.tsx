@@ -3,6 +3,8 @@ import * as React from "react";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
+import Box from "@mui/joy/Box";
+import Chip from "@mui/joy/Chip";
 import { MdArrowForward } from 'react-icons/md';
 import TwoSidedLayout from "../components/TwoSidedLayout";
 import { FaGithub } from 'react-icons/fa';
@@ -10,6 +12,7 @@ import { FaGithub } from 'react-icons/fa';
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import Sheet from "@mui/joy/Sheet";
+import { MdCloud, MdSchedule, MdToggleOn, MdInfo, MdBolt, MdSecurity, MdLayers } from 'react-icons/md';
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -35,54 +38,82 @@ const BasicModal: React.FC = () => {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: 500,
-            maxHeight: "85vh", // Set a maximum height for the modal
-            overflowY: "auto", // Enable vertical scrolling if content exceeds maxHeight
-            borderRadius: "md",
-            p: 3,
+            maxWidth: { xs: 360, sm: 640, md: 760 },
+            width: "100%",
+            maxHeight: "85vh",
+            overflow: "hidden",
+            borderRadius: "lg",
             boxShadow: "lg",
           }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h2"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
+
+          {/* Header */}
+          <Box
+            sx={{
+              px: 3,
+              py: 2.25,
+              bgcolor: 'primary.softBg',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            }}
           >
-            The solution involved:
-          </Typography>
-          <Typography id="modal-desc">
-            <Typography level="h4">
-              Chronological Ordering and Data Retrieval:
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
+                EveryAction Events — Details
+              </Typography>
+              <Chip size="sm" variant="soft" color="primary">Overview</Chip>
+            </Box>
+            <Typography level="body-sm" textColor="text.secondary">
+              Key aspects of the event list integration, performance, and UX.
             </Typography>
-            <br></br>Created a proxy server endpoint to securely fetch event
-            data from the EveryAction API. The API response was then sorted by
-            the startDate field, ensuring that events appear in chronological
-            order and providing a clear sequence for users.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">
-              Pagination Logic:
-            </Typography>
-            <br></br>Implemented a pagination feature in the Vue.js component
-            to control how many events are displayed at once. This included
-            tracking the current page state, determining if more data was
-            available, and appending new events incrementally to improve
-            performance and user navigation.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">Enhanced User Experience (UX):</Typography>
-            <br></br>Included meaningful loading states, error handling, and
-            minimal but informative styling. Buttons and text markers guide
-            users through potential actions—such as viewing more events or
-            retrying a failed data fetch—while preserving the overall flow of
-            the page.
-          </Typography>
+          </Box>
+
+          {/* Content */}
+          <Box sx={{ p: 3, overflowY: 'auto' }} id="modal-desc">
+            <Typography level="h4" sx={{ mb: 1 }}>Key Aspects</Typography>
+            <Box
+              component="ul"
+              role="list"
+              sx={{
+                listStyle: 'none',
+                p: 0,
+                m: 0,
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 1.25,
+              }}
+            >
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Typography level="body-sm"><b>Data retrieval:</b> Proxy server fetches events from EveryAction securely.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSchedule size={18} /></Box>
+                <Typography level="body-sm"><b>Ordering:</b> Results sorted by startDate for clear chronology.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdToggleOn size={18} /></Box>
+                <Typography level="body-sm"><b>Pagination:</b> Page state and incremental loading for smoother browsing.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdBolt size={18} /></Box>
+                <Typography level="body-sm"><b>Performance:</b> Appends new events efficiently without blocking UI.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Typography level="body-sm"><b>UX:</b> Loading, error states, and clear actions to view more or retry.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSecurity size={18} /></Box>
+                <Typography level="body-sm"><b>Security:</b> Keeps API credentials server-side and enforces request constraints.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Typography level="body-sm"><b>Stack:</b> Vue + TypeScript frontend, Node/Express proxy.</Typography>
+              </Box>
+            </Box>
+          </Box>
         </Sheet>
       </Modal>
     </React.Fragment>

@@ -1,17 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import * as React from 'react';
-import Button from '@mui/joy/Button';
+import * as React from "react";
+import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
-import Typography from '@mui/joy/Typography';
+import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
-import TwoSidedLayout from '../components/TwoSidedLayout';
+import { MdArrowForward } from 'react-icons/md';
+import TwoSidedLayout from "../components/TwoSidedLayout";
 import { FaGithub } from 'react-icons/fa';
 // import Dialog from '../components/Dialog'
-import Modal from '@mui/joy/Modal';
-import ModalClose from '@mui/joy/ModalClose';
-import Sheet from '@mui/joy/Sheet';
-import { MdQrCodeScanner, MdTableChart, MdAssignmentTurnedIn, MdSpeed, MdHourglassEmpty, MdEmail, MdVerified } from 'react-icons/md';
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import Sheet from "@mui/joy/Sheet";
+import {
+  MdMap,
+  MdToggleOn,
+  MdStorage,
+  MdLayers,
+  MdTextFields,
+  MdAccessibilityNew,
+  MdWarningAmber,
+  MdArticle,
+} from 'react-icons/md';
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -22,7 +32,7 @@ const BasicModal: React.FC = () => {
         color="neutral"
         onClick={() => {
           setOpen(true);
-          logButtonClick("Learn More (Gala Ticketing System)");
+          logButtonClick("Learn More (Cambridge Dogs)");
         }}
       >
         Learn More
@@ -57,14 +67,16 @@ const BasicModal: React.FC = () => {
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-              <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
-                Gala Ticketing System — Details
+              <Typography
+                component="h2"
+                id="modal-title"
+                level="h3"
+                fontWeight="xl"
+              >
+                Cambridge Dogs — Project Details
               </Typography>
               <Chip size="sm" variant="soft" color="primary">Overview</Chip>
             </Box>
-            <Typography level="body-sm" textColor="text.secondary">
-              End‑to‑end flow: tickets, delivery, scanning, and check‑in updates.
-            </Typography>
           </Box>
 
           {/* Content */}
@@ -83,32 +95,36 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdQrCodeScanner size={18} /></Box>
-                <Typography level="body-sm"><b>QR scanning:</b> HTML5 QR library for fast, camera‑based scans on phones.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdMap size={18} /></Box>
+                <Typography level="body-sm"><b>Purpose:</b> Visualize Cambridge neighborhoods and place a single, readable label inside each shape.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdAssignmentTurnedIn size={18} /></Box>
-                <Typography level="body-sm"><b>Validation:</b> Apps Script parses IDs, checks status, and updates attendance.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdToggleOn size={18} /></Box>
+                <Typography level="body-sm"><b>Modes:</b> Toggle “Name” vs “Breed”; tooltip shows top three values.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdTableChart size={18} /></Box>
-                <Typography level="body-sm"><b>Sheets:</b> Looks up across multiple tabs; robust column detection.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdStorage size={18} /></Box>
+                <Typography level="body-sm"><b>Data:</b> Local GeoJSON neighborhoods + CSV of dogs; source: Cambridge GIS FeatureServer.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSpeed size={18} /></Box>
-                <Typography level="body-sm"><b>Efficiency:</b> Debounced scans prevent duplicates; smooth processing.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Typography level="body-sm"><b>Stack:</b> Vite, ES modules, D3 v7, SVG textPath, CSS; topojson-client optional.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdHourglassEmpty size={18} /></Box>
-                <Typography level="body-sm"><b>UX:</b> Clear success/error messages and a loading indicator.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdTextFields size={18} /></Box>
+                <Typography level="body-sm"><b>Labeling:</b> Custom centerline utility with centroid fallback and truncation.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdEmail size={18} /></Box>
-                <Typography level="body-sm"><b>Delivery:</b> Tickets generated and emailed; reliable delivery pipeline.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
+                <Typography level="body-sm"><b>Accessibility:</b> Focusable paths, ARIA labels, live tooltip updates, high contrast, keyboard support.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdVerified size={18} /></Box>
-                <Typography level="body-sm"><b>Integrity:</b> Prevents duplicate check‑ins; consistent state in Sheets.</Typography>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdWarningAmber size={18} /></Box>
+                <Typography level="body-sm"><b>Limitations:</b> Ties A→Z; very short centerlines use centroid; degenerate polygons may omit labels.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdArticle size={18} /></Box>
+                <Typography level="body-sm"><b>Files:</b> index.html, src/main.js, src/utils/centerline.js, src/styles.css, src/data/*.</Typography>
               </Box>
             </Box>
           </Box>
@@ -116,7 +132,7 @@ const BasicModal: React.FC = () => {
       </Modal>
     </React.Fragment>
   );
-}
+};
 
 const logButtonClick = async (buttonName: string) => {
   try {
@@ -130,48 +146,48 @@ const logButtonClick = async (buttonName: string) => {
   }
 };
 
-export default function GalaTicketingSystem() {
+export default function Dogs() {
   return (
+    <div id="dogs">
     <TwoSidedLayout
-      // box1logo="/qr.svg"
-      // box2logo="/apps_script.svg"
-      // box3logo="/sendgrid.svg"
-      // box4logo="/EA.png"
-      technologies={['HTML5 QR Code', 'Google Apps Script', 'sendrgrid']}
-      alt="QR ticket (screenshot)"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1738809253/samples/graphic_design_work/devProjects/Gala_wh3xyo.jpg"
+      technologies={['Vite', 'JavaScript (ESM)', 'D3 v7', 'SVG', 'topojson-client', 'CSS', 'ArcGIS FeatureServer']}
+      alt="Cambridge Dogs app (SVG map with curved labels)"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1757648037/samples/graphic_design_work/devProjects/Screenshot_2025-09-11_at_11.32.26_PM_z05a4v.png"
     >
+
       <Typography
         level="h1"
         fontWeight="xl"
         lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Event Registration System
+        Cambridge Dogs
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-      Registration system to streamline the check-in process at an event using QR codes. I developed the entire event ticketing system, including ticket generation, successful delivery, and QR code scanning app for check-in.      </Typography>
+        Visualizing most frequent dog “Name” or most frequent “Breed” in each Cambridge, MA neighborhood on an interactive SVG map. Hover or tap a neighborhood to see the top three values. Built with Vite, D3 v7, and SVG textPath.
+      </Typography>
       <BasicModal />
       <Button
         size="lg"
         component="a"
-        href="https://github.com/curiousmockingbird/QRgenerator_for_gala"
+        href="https://cambridge-dogs.vercel.app/"
         target="_blank"
-        startDecorator={<FaGithub size={35} />}
-        onClick={() => logButtonClick("Repo (QR generator)")}
+        startDecorator={<MdArrowForward size={35} />}
+        onClick={() => logButtonClick("Deployment (Dogs)")}
       >
-        Repo (QR generator)
+        Deployment
       </Button>
       <Button
         size="lg"
         component="a"
-        href="https://github.com/curiousmockingbird/QRscanner_for_gala"
+        href="https://github.com/curiousmockingbird/cambridge_dogs"
         target="_blank"
         startDecorator={<FaGithub size={35} />}
-        onClick={() => logButtonClick("Repo (QR scanner)")}
+        onClick={() => logButtonClick("Repo (Dogs)")}
       >
-        Repo (QR scanner)
+        Repo
       </Button>
     </TwoSidedLayout>
+      </div>
   );
 }
