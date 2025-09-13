@@ -43,18 +43,18 @@ export function SectionRenderer({ sections }: { sections: Section[] }) {
                 <Bullets {...s} />
               </Transition>
             );
-          case "cta":
-            return (
-              <Transition
-                key={`cta-${i}`}
-                show={isMounted}
-                enter={`transition-opacity transform duration-700 ${delayClass}`}
-                enterFrom="opacity-0 translate-y-2"
-                enterTo="opacity-100 translate-y-0"
-              >
-                <CallToAction {...s} />
-              </Transition>
-            );
+          // case "cta":
+          //   return (
+          //     <Transition
+          //       key={`cta-${i}`}
+          //       show={isMounted}
+          //       enter={`transition-opacity transform duration-700 ${delayClass}`}
+          //       enterFrom="opacity-0 translate-y-2"
+          //       enterTo="opacity-100 translate-y-0"
+          //     >
+          //       <CallToAction {...s} />
+          //     </Transition>
+          //   );
           default:
             return null;
         }

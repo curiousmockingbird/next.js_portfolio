@@ -1,7 +1,7 @@
 {
   "site": {
     "baseUrl": "https://haroldeveloper.tech",
-    "brand": "Harol Developer"
+    "brand": "HarolDeveloper"
   },
   "pages": {
     "forHubspot": {
@@ -26,7 +26,7 @@
             { "title": "Forms & Tracking", "text": "Conversion-safe forms with attribution and privacy in mind." }
           ]
         },
-        { "type": "cta", "heading": "See how I build it", "cta": { "label": "Explore projects", "href": "/forHubspot/projects" } }
+        { "type": "cta", "heading": "See full list of projects", "cta": { "label": "Explore projects", "href": "/forHubspot/projects" } }
       ],
       "projects": ["Nombolo","GalaTicketingSystem","Vdlf","EveryActionEvents"]
     },
