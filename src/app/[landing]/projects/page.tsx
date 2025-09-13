@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import ProjectsClient from "./ProjectsClient";
 import data from "@/content/landings.json" assert { type: "json" };
 
@@ -31,8 +31,15 @@ export function generateMetadata({ params }: Params): Metadata {
       type: "website",
     },
     twitter: { card: "summary_large_image" },
-    themeColor: page.themeColor || "#03082e",
     robots: { index: true, follow: true },
+  };
+}
+
+export function generateViewport({ params }: Params): Viewport {
+  const page = (data as any).pages?.[params.landing];
+  if (!page) return {};
+  return {
+    themeColor: page.themeColor || "#03082e",
   };
 }
 
@@ -41,4 +48,3 @@ export default function LandingProjectsPage({ params }: Params) {
   if (!page || !Array.isArray(page.projects)) return notFound();
   return <ProjectsClient landing={params.landing} />;
 }
-

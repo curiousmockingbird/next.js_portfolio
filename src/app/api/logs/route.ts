@@ -6,17 +6,19 @@ export async function POST(request: Request) {
     }
 
     try {
-        const { buttonName } = await request.json();
+        const body = await request.json().catch(() => ({}));
+        const { buttonName, source, label, meta, path } = body || {};
 
-        if (!buttonName) {
-            return new Response("Missing button name", { status: 400 });
-        }
+        const finalLabel: string = label || buttonName || "(no-label)";
+        const finalSource: string = source || "unknown";
 
+        // Log structured info to Vercel logs
+        console.log(
+          `🔘 Button Click [${finalSource}] ${finalLabel}` + (path ? ` @ ${path}` : ""),
+          meta ? { meta } : ""
+        );
 
-        // Log button click & visitor info to Vercel logs
-        console.log(`🔘 Button Click Logged: ${buttonName}`);
-
-        return NextResponse.json({ status: 200, message: `Button click logged: ${buttonName}` });
+        return NextResponse.json({ status: 200, message: `Button click logged: ${finalLabel}`, source: finalSource });
     } catch (error: any) {
         return new Response(error.message, { status: 500 });
     }

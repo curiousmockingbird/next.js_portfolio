@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react";
 import { CssVarsProvider } from "@mui/joy/styles";
 import Box from "@mui/joy/Box";
@@ -10,6 +11,7 @@ import Tooltip from "@mui/joy/Tooltip";
 import { MdArrowBack } from "react-icons/md";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import Link from "@mui/joy/Link";
+import { logFromApp } from "./utils/logger";
 // import Toggle from './components/Toggle'
 
 import framesxTheme from "./theme";
@@ -33,7 +35,13 @@ function HomeButton() {
     >
       <Tooltip title="Home" variant="soft" placement="right">
         <Link href="/" aria-label="Go to home">
-          <IconButton variant="soft" color="neutral" size="lg" sx={{ borderRadius: '50%' }}>
+          <IconButton
+            variant="soft"
+            color="neutral"
+            size="lg"
+            sx={{ borderRadius: '50%' }}
+            onClick={() => logFromApp('Home')}
+          >
             <MdArrowBack size={22} />
           </IconButton>
         </Link>
@@ -177,7 +185,7 @@ export default function TeamExample() {
                 key={p.label}
                 variant={currentPage === i ? 'solid' : 'soft'}
                 color={currentPage === i ? 'primary' : 'neutral'}
-                onClick={() => scrollToIndex(i)}
+                onClick={() => { logFromApp(`Nav: ${p.label}`, { toIndex: i }); scrollToIndex(i); }}
                 sx={{ cursor: 'pointer' }}
               >
                 {p.label}
@@ -208,7 +216,7 @@ export default function TeamExample() {
               aria-label={`Go to ${p.label}`}
               variant={currentPage === index ? 'solid' : 'soft'}
               color={currentPage === index ? 'primary' : 'neutral'}
-              onClick={() => scrollToIndex(index)}
+              onClick={() => { logFromApp(`Dot: ${p.label}`, { toIndex: index }); scrollToIndex(index); }}
               sx={{
                 borderRadius: '50%',
                 '--IconButton-size': '12px',
@@ -233,10 +241,10 @@ export default function TeamExample() {
           zIndex: 20,
         }}
       >
-        <Button size="sm" variant="soft" startDecorator={<MdKeyboardArrowUp />} onClick={goPrev} disabled={currentPage === 0}>
+        <Button size="sm" variant="soft" startDecorator={<MdKeyboardArrowUp />} onClick={() => { logFromApp('Prev', { fromIndex: currentPage }); goPrev(); }} disabled={currentPage === 0}>
           Prev
         </Button>
-        <Button size="sm" variant="solid" endDecorator={<MdKeyboardArrowDown />} onClick={goNext} disabled={currentPage === pages.length - 1}>
+        <Button size="sm" variant="solid" endDecorator={<MdKeyboardArrowDown />} onClick={() => { logFromApp('Next', { fromIndex: currentPage }); goNext(); }} disabled={currentPage === pages.length - 1}>
           Next
         </Button>
       </Box>

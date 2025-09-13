@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from "react";
+import { logBlockClick as logButtonClick } from "../utils/logger";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
@@ -81,17 +82,7 @@ import TwoSidedLayout from "../components/TwoSidedLayout";
 //   );
 // };
 
-const logButtonClick = async (buttonName: string) => {
-  try {
-    await fetch("/api/logs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ buttonName }),
-    });
-  } catch (error) {
-    console.error("Error logging button click:", error);
-  }
-};
+// logging handled via ../utils/logger as logButtonClick
 
 export default function Nombolo() {
   return (
