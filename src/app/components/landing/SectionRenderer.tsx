@@ -101,16 +101,16 @@ function Bullets({ heading, items }: { heading?: string; items: { title: string;
   );
 }
 
-function CallToAction({ heading, cta }: { heading: string; cta: CTA }) {
-  return (
-    <section className="container mx-auto max-w-5xl px-4 text-center py-8 md:py-10 lg:py-10">
-      <h2 className="mb-3 text-2xl md:text-3xl font-semibold">{heading}</h2>
-      <a
-        href={cta.href}
-        className="inline-flex items-center rounded-lg border border-white/15 bg-white/5 px-5 py-3 font-medium hover:bg-white/10 transition"
-      >
-        {cta.label}
-      </a>
-    </section>
-  );
-}
+// function CallToAction({ heading, cta }: { heading: string; cta: CTA }) {
+//   return (
+//     <section className="container mx-auto max-w-5xl px-4 text-center py-8 md:py-10 lg:py-10">
+//       <h2 className="mb-3 text-2xl md:text-3xl font-semibold">{heading}</h2>
+//       <a
+//         href={cta.href}
+//         className="inline-flex items-center rounded-lg border border-white/15 bg-white/5 px-5 py-3 font-medium hover:bg-white/10 transition"
+//       >
+//         {cta.label}
+//       </a>
+//     </section>
+//   );
+// }

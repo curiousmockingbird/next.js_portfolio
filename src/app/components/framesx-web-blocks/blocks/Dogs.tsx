@@ -143,7 +143,7 @@ export default function Dogs() {
     <TwoSidedLayout
       technologies={['Vite', 'JavaScript (ESM)', 'D3 v7', 'SVG', 'topojson-client', 'CSS', 'ArcGIS FeatureServer']}
       alt="Cambridge Dogs app (SVG map with curved labels)"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1757648037/samples/graphic_design_work/devProjects/Screenshot_2025-09-11_at_11.32.26_PM_z05a4v.png"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1757784784/samples/graphic_design_work/devProjects/dog_ouiyc0.jpg"
     >
 
       <Typography
