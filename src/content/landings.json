@@ -4,7 +4,7 @@
     "brand": "Harol Developer"
   },
   "pages": {
-    "hubspot": {
+    "forHubspot": {
       "title": "HubSpot Integrations & Automation",
       "description": "Clean implementations, custom objects, CRM automation, and lightweight integrations that fit real teams.",
       "ogImage": "/og/hubspot.png",
@@ -13,9 +13,9 @@
         {
           "type": "hero",
           "eyebrow": "Services",
-          "heading": "HubSpot done right",
+          "heading": "Full-stack done right",
           "subheading": "From data model to forms and workflows — shipped with clarity and maintainability.",
-          "cta": { "label": "View related projects", "href": "/hubspot/projects" }
+          "cta": { "label": "View featured projects", "href": "/forHubspot/projects" }
         },
         {
           "type": "bullets",
@@ -26,9 +26,9 @@
             { "title": "Forms & Tracking", "text": "Conversion-safe forms with attribution and privacy in mind." }
           ]
         },
-        { "type": "cta", "heading": "See how I build it", "cta": { "label": "Explore projects", "href": "/hubspot/projects" } }
+        { "type": "cta", "heading": "See how I build it", "cta": { "label": "Explore projects", "href": "/forHubspot/projects" } }
       ],
-      "projects": ["EveryActionEvents", "GalaTicketingSystem", "gtm"]
+      "projects": ["Nombolo","GalaTicketingSystem","Vdlf","EveryActionEvents"]
     },
     "dataviz": {
       "title": "Data Visualization & Maps",

@@ -1,9 +1,6 @@
 "use client";
 import * as React from "react";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Container from "@mui/joy/Container";
-import Typography from "@mui/joy/Typography";
+import { Transition } from "@headlessui/react";
 
 type CTA = { label: string; href: string };
 type Section =
@@ -12,81 +9,108 @@ type Section =
   | { type: "cta"; heading: string; cta: CTA };
 
 export function SectionRenderer({ sections }: { sections: Section[] }) {
+  const [isMounted, setIsMounted] = React.useState(false);
+  React.useEffect(() => setIsMounted(true), []);
+
+  const delays = ["", "delay-150", "delay-300", "delay-500"]; // mirrors HomeClient staggered feel
+
   return (
-    <Box component="main" sx={{ py: { xs: 4, md: 8 } }}>
+    <main className="h-full min-h-0 flex flex-col py-6 md:py-10 lg:py-8">
       {sections.map((s, i) => {
+        const delayClass = delays[Math.min(i, delays.length - 1)];
         switch (s.type) {
           case "hero":
-            return <Hero key={i} {...s} />;
+            return (
+              <Transition
+                key={`hero-${i}`}
+                show={isMounted}
+                enter={`transition-opacity transform duration-700 ${delayClass}`}
+                enterFrom="opacity-0 translate-y-2"
+                enterTo="opacity-100 translate-y-0"
+              >
+                <Hero {...s} />
+              </Transition>
+            );
           case "bullets":
-            return <Bullets key={i} {...s} />;
+            return (
+              <Transition
+                key={`bullets-${i}`}
+                show={isMounted}
+                enter={`transition-opacity transform duration-700 ${delayClass}`}
+                enterFrom="opacity-0 translate-y-2"
+                enterTo="opacity-100 translate-y-0"
+              >
+                <Bullets {...s} />
+              </Transition>
+            );
           case "cta":
-            return <CallToAction key={i} {...s} />;
+            return (
+              <Transition
+                key={`cta-${i}`}
+                show={isMounted}
+                enter={`transition-opacity transform duration-700 ${delayClass}`}
+                enterFrom="opacity-0 translate-y-2"
+                enterTo="opacity-100 translate-y-0"
+              >
+                <CallToAction {...s} />
+              </Transition>
+            );
           default:
             return null;
         }
       })}
-    </Box>
+    </main>
   );
 }
 
 function Hero({ eyebrow, heading, subheading, cta }: { eyebrow?: string; heading: string; subheading?: string; cta?: CTA }) {
   return (
-    <Container sx={{ textAlign: "center", py: { xs: 6, md: 10 } }}>
+    <section className="container mx-auto max-w-5xl px-4 text-center py-8 md:py-12 lg:py-10">
       {eyebrow && (
-        <Typography level="body-sm" sx={{ color: "primary.plainColor", mb: 1 }}>
-          {eyebrow}
-        </Typography>
+        <p className="mb-2 text-sm font-medium uppercase tracking-wide text-[var(--accent-color)]">{eyebrow}</p>
       )}
-      <Typography level="h1" sx={{ mb: 1 }}>{heading}</Typography>
+      <h1 className="mb-2 text-4xl md:text-5xl font-bold">{heading}</h1>
       {subheading && (
-        <Typography level="body-lg" textColor="text.secondary" sx={{ maxWidth: 780, mx: "auto", mb: 2 }}>
-          {subheading}
-        </Typography>
+        <p className="mx-auto mb-4 max-w-3xl text-base md:text-lg opacity-80">{subheading}</p>
       )}
       {cta && (
-        <Button component="a" href={cta.href} size="lg" variant="solid">
+        <a
+          href={cta.href}
+          className="inline-flex items-center rounded-lg bg-[var(--accent-color)] px-5 py-3 font-medium text-white hover:opacity-90 transition"
+        >
           {cta.label}
-        </Button>
+        </a>
       )}
-    </Container>
+    </section>
   );
 }
 
 function Bullets({ heading, items }: { heading?: string; items: { title: string; text: string }[] }) {
   return (
-    <Container sx={{ py: { xs: 4, md: 6 } }}>
-      {heading && (
-        <Typography level="h2" sx={{ textAlign: "center", mb: 3 }}>
-          {heading}
-        </Typography>
-      )}
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr 1fr" },
-          gap: 2,
-        }}
-      >
+    <section className="container mx-auto max-w-5xl px-4 py-6 md:py-8 lg:py-8">
+      {heading && <h2 className="mb-6 text-center text-2xl md:text-3xl font-semibold">{heading}</h2>}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {items.map((it, idx) => (
-          <Box key={idx} sx={{ p: 2, borderRadius: "md", bgcolor: "background.level1", border: "1px solid", borderColor: "divider" }}>
-            <Typography level="title-lg" sx={{ mb: 0.5 }}>{it.title}</Typography>
-            <Typography level="body-sm" textColor="text.secondary">{it.text}</Typography>
-          </Box>
+          <div key={idx} className="rounded-lg border border-white/10 bg-white/5 p-4">
+            <h3 className="mb-1 text-lg font-semibold">{it.title}</h3>
+            <p className="text-sm opacity-80">{it.text}</p>
+          </div>
         ))}
-      </Box>
-    </Container>
+      </div>
+    </section>
   );
 }
 
 function CallToAction({ heading, cta }: { heading: string; cta: CTA }) {
   return (
-    <Container sx={{ textAlign: "center", py: { xs: 6, md: 8 } }}>
-      <Typography level="h2" sx={{ mb: 1 }}>{heading}</Typography>
-      <Button component="a" href={cta.href} size="lg" variant="soft">
+    <section className="container mx-auto max-w-5xl px-4 text-center py-8 md:py-10 lg:py-10">
+      <h2 className="mb-3 text-2xl md:text-3xl font-semibold">{heading}</h2>
+      <a
+        href={cta.href}
+        className="inline-flex items-center rounded-lg border border-white/15 bg-white/5 px-5 py-3 font-medium hover:bg-white/10 transition"
+      >
         {cta.label}
-      </Button>
-    </Container>
+      </a>
+    </section>
   );
 }
-
