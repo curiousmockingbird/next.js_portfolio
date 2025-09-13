@@ -13,8 +13,16 @@ This repository contains my personal portfolio website. It showcases projects, a
 
 ## Prerequisites
 
-- **Node.js** `>=18`
+- **Node.js** 20 LTS (recommended)
 - **npm** (comes with Node.js)
+
+This repo includes an `.nvmrc` set to Node 20. If you use `nvm`, you can match the version with:
+
+```bash
+nvm use           # uses the version in .nvmrc
+# If not installed yet:
+nvm install       # installs and then uses Node 20 per .nvmrc
+```
 
 ## Installation
 
@@ -63,7 +71,7 @@ LOGTAIL_SOURCE_TOKEN=your_logtail_token
 ```
 
 - `GITHUB_TOKEN` is used in `GithubStats.tsx` for authenticated requests to the GitHub API.
-- `SMTP_*` variables and `EMAIL_USER` configure Nodemailer in `src/app/api/contact/route.tsx`.
+- `SMTP_*` variables and `EMAIL_USER` configure Nodemailer in `src/app/api/contact/route.ts`.
 - `LOGTAIL_SOURCE_TOKEN` is optional and used for request logging in `middleware.ts` and the location API route.
 
 ## Testing

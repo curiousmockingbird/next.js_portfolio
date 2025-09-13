@@ -21,6 +21,16 @@ const nextConfig = {
       },
       ],
   },
+  // Silence webpack cache warnings when @mui/icons-material isn't installed
+  webpack: (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@mui/icons-material/package.json': false,
+      '@mui/icons-material': false,
+    };
+    return config;
+  },
 };
 
 module.exports = nextConfig;
