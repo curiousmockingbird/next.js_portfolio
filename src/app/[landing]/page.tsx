@@ -54,7 +54,7 @@ export default function LandingPage({ params }: Params) {
       <Header imageSrc="/hm.svg" />
       </div>
       {/* Content fills remaining space and scrolls if needed */}
-      <div className="flex-1 w-full overflow-y-auto">
+      <div className="flex-1 w-full overflow-y-auto md:overflow-hidden">
       <SectionRenderer sections={page.sections || []} />
       </div>
     </div>

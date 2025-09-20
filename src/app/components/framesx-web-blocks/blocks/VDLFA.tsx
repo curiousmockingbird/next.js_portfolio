@@ -4,28 +4,30 @@ import { logBlockClick as logButtonClick } from "../utils/logger";
 import Button from "@mui/joy/Button";
 // import Link from '@mui/joy/Link';
 import Typography from "@mui/joy/Typography";
-import { MdArrowForward, MdHandyman } from 'react-icons/md';
+import Box from "@mui/joy/Box";
+import Chip from "@mui/joy/Chip";
+import { MdArrowForward, MdHandyman, MdWeb, MdSpeed, MdAccessibilityNew, MdCloud, MdSecurity, MdLayers, MdInfo } from 'react-icons/md';
 import TwoSidedLayout from "../components/TwoSidedLayout";
 // import Dialog from '../components/Dialog'
-// import Modal from "@mui/joy/Modal";
-// import ModalClose from "@mui/joy/ModalClose";
-// import Sheet from "@mui/joy/Sheet";
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import Sheet from "@mui/joy/Sheet";
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      {/* <Button
+      <Button
         variant="outlined"
         color="neutral"
         onClick={() => {
-          logButtonClick("Learn more");
           setOpen(true);
+          logButtonClick("Learn More (VDLFA)");
         }}
       >
         Learn More
-      </Button> */}
-      {/* <Modal
+      </Button>
+      <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
         open={open}
@@ -35,48 +37,83 @@ const BasicModal: React.FC = () => {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: 500,
-            borderRadius: "md",
-            p: 3,
+            maxWidth: { xs: 360, sm: 640, md: 760 },
+            width: "100%",
+            maxHeight: "85vh",
+            overflow: "hidden",
+            borderRadius: "lg",
             boxShadow: "lg",
           }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h2"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
+
+          {/* Header */}
+          <Box
+            sx={{
+              px: 3,
+              py: 2.25,
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            }}
           >
-            The solution involved:
-          </Typography>
-          <Typography id="modal-desc">
-            <Typography level="h4">Serverless Function Setup:</Typography>
-            <br></br>Developed a serverless API endpoint using Vercel to send
-            emails via Nodemailer. This allowed a seamless communication channel
-            between the site visitors and the organization’s team members.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">
-              Cross-Origin Resource Sharing (CORS) Configuration:
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
+                VDLFA — Project Details
+              </Typography>
+              <Chip size="sm" variant="soft" color="primary">Overview</Chip>
+            </Box>
+            <Typography level="body-sm" textColor="text.secondary">
+              Revamp focused on a modern, fast, and accessible experience with an editor‑friendly workflow.
             </Typography>
-            <br></br>Implemented proper CORS handling to ensure secure and
-            successful API requests from the WordPress site to the Vercel-hosted
-            backend. Utilized custom CORS middleware for flexibility and
-            consistency across requests.
-          </Typography>
-          <br></br>
-          <Typography id="modal-desc">
-            <Typography level="h4">Frontend Integration:</Typography>
-            <br></br>Modified the Vue.js contact form on the WordPress site to
-            interact with the Vercel API, ensuring the payload structure matched
-            and implementing error handling for smoother user experience.
-          </Typography>
+          </Box>
+
+          {/* Content */}
+          <Box sx={{ p: 3, overflowY: 'auto' }} id="modal-desc">
+            <Typography level="h4" sx={{ mb: 1 }}>Key Aspects</Typography>
+            <Box
+              component="ul"
+              role="list"
+              sx={{
+                listStyle: 'none',
+                p: 0,
+                m: 0,
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 1.25,
+              }}
+            >
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdWeb size={18} /></Box>
+                <Typography level="body-sm"><b>Frontend:</b> Custom WordPress theme + Vue/TS components (events, forms, UI widgets).</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
+                <Typography level="body-sm"><b>Performance:</b> Optimized media, code‑splitting, and lazy assets; faster LCP.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
+                <Typography level="body-sm"><b>Accessibility:</b> WCAG‑aligned semantics, focus order, and contrast improvements.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Typography level="body-sm"><b>Integrations:</b> Serverless form handling on Vercel; secure proxy for external APIs.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSecurity size={18} /></Box>
+                <Typography level="body-sm"><b>Security:</b> CORS rules, input validation, and safe API boundaries.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Typography level="body-sm"><b>Design system:</b> Reusable components, spacing/typography tokens, consistent breakpoints.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Typography level="body-sm"><b>Editor UX:</b> Clear templates and content blocks for non‑technical updates.</Typography>
+              </Box>
+            </Box>
+          </Box>
         </Sheet>
-      </Modal> */}
+      </Modal>
     </React.Fragment>
   );
 };
@@ -88,7 +125,7 @@ export default function Vdlfa() {
     <TwoSidedLayout
       technologies={['WordPress', 'Vue', 'typescript', 'Vercel', 'node.js', 'Figma']}
       alt="Contact form screenshot"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1743780926/samples/graphic_design_work/devProjects/revamp_lkrkua.jpg"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1758403239/samples/graphic_design_work/devProjects/Screenshot_2025-09-20_at_4.18.52_PM_swdxz2.png"
     >
 
       <Typography

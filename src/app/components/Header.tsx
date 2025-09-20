@@ -7,11 +7,20 @@ interface HeaderProps {
 
 export default function Header({ imageSrc }: HeaderProps) {
   return (
-    <Link href="/" className="flex flex-col items-center justify-center" style={{ height: "25vh" }}>
-      <div>
-        <Image src={imageSrc} alt="Your SVG" width={200} height={200} priority />
+    <Link href="/" className="h-[22vh] md:h-[22vh] lg:h-[18vh] p-4">
+      <div className="flex items-center justify-center">
+        <Image
+          src={imageSrc}
+          alt="Your SVG"
+          width={180}
+          height={180}
+          priority
+          
+        />
       </div>
-      <h1>harolDeveloper — Full-Stack</h1>
+      <div className="flex items-center justify-center">
+      <h1 className=" text-base md:text-lg lg:text-base">harolDeveloper — Full-Stack</h1>
+      </div>
     </Link>
   );
 }

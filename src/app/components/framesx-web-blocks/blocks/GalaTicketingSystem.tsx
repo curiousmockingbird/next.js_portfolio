@@ -84,31 +84,31 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdQrCodeScanner size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdQrCodeScanner size={18} /></Box>
                 <Typography level="body-sm"><b>QR scanning:</b> HTML5 QR library for fast, camera‑based scans on phones.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdAssignmentTurnedIn size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdAssignmentTurnedIn size={18} /></Box>
                 <Typography level="body-sm"><b>Validation:</b> Apps Script parses IDs, checks status, and updates attendance.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdTableChart size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdTableChart size={18} /></Box>
                 <Typography level="body-sm"><b>Sheets:</b> Looks up across multiple tabs; robust column detection.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSpeed size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
                 <Typography level="body-sm"><b>Efficiency:</b> Debounced scans prevent duplicates; smooth processing.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdHourglassEmpty size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdHourglassEmpty size={18} /></Box>
                 <Typography level="body-sm"><b>UX:</b> Clear success/error messages and a loading indicator.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdEmail size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdEmail size={18} /></Box>
                 <Typography level="body-sm"><b>Delivery:</b> Tickets generated and emailed; reliable delivery pipeline.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdVerified size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdVerified size={18} /></Box>
                 <Typography level="body-sm"><b>Integrity:</b> Prevents duplicate check‑ins; consistent state in Sheets.</Typography>
               </Box>
             </Box>

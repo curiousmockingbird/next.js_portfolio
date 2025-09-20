@@ -85,31 +85,31 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdDarkMode size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdDarkMode size={18} /></Box>
                 <Typography level="body-sm"><b>UI:</b> Dark theme, high‑contrast typography, centered header, card layout.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdToggleOn size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdToggleOn size={18} /></Box>
                 <Typography level="body-sm"><b>Modes:</b> Toggle between ZIP3 map and Payment Method donut chart.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdMap size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdMap size={18} /></Box>
                 <Typography level="body-sm"><b>Responsive SVG:</b> Dynamic viewBox adapts; taller aspect for portrait screens.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdColorLens size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdColorLens size={18} /></Box>
                 <Typography level="body-sm"><b>Colors:</b> Viridis for map (colorblind‑friendly); Tableau10 for payment methods.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdInfo size={18} /></Box>
                 <Typography level="body-sm"><b>Tooltip:</b> Shows ZIP3/method, total, and share; clamped to container.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdOpenWith size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdOpenWith size={18} /></Box>
                 <Typography level="body-sm"><b>Interaction:</b> Zoom and pan on the map; legend/UI remain fixed.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdDonutLarge size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdDonutLarge size={18} /></Box>
                 <Typography level="body-sm"><b>Donut View:</b> Payment method shares with categorical palette and legend.</Typography>
               </Box>
             </Box>

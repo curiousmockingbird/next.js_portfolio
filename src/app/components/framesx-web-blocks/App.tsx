@@ -54,13 +54,13 @@ export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const pages = [
-    <Project12 key="Project12" />,
-    <Project11 key="Project11" />,
-    <Project04 key="Project04" />,
-    <Project01 key="Project01" />,
-    <Project02 key="Project02" />,
     <Project09 key="Project09" />,
     <Project10 key="Project10" />,
+    <Project04 key="Project04" />,
+    <Project02 key="Project02" />,
+    <Project12 key="Project12" />,
+    <Project11 key="Project11" />,
+    <Project01 key="Project01" />,
     <Project05 key="Project05" />,
     <Project03 key="Project03" />,
     <Project07 key="Project07" />,
@@ -71,12 +71,12 @@ export default function TeamExample() {
 
   const pageMeta = React.useMemo(
     () => [
+      { label: "VDLFA" },
       { label: "Cambridge Dogs" },
       { label: "Contributions by Zip3" },
       { label: "Event List" },
       { label: "Contact Form Integration" },
       { label: "Event Registration System" },
-      { label: "VDLFA" },
       { label: "Nombolo" },
       { label: "Trey Savage" },
       { label: "Harold Designer" },

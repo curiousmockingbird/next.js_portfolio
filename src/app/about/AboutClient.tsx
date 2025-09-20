@@ -86,7 +86,7 @@ const AboutText = () => (
       modern deployments (Vercel, WP Engine), pairing clean UX with reliable
       engineering.
     </p>
-    <p className="mb-4">
+    {/* <p className="mb-4">
       Currently, I work as a contractor with Wisconsin&apos;s leading grassroots
       immigrant rights organization,{" "}
       <span className="font-bold underline">
@@ -94,7 +94,7 @@ const AboutText = () => (
       </span>
       , where I build and maintain digital solutions that empower communities
       and drive social change.
-    </p>
+    </p> */}
   </>
 );
 

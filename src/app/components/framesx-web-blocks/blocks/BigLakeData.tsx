@@ -4,7 +4,9 @@ import { logBlockClick as logButtonClick } from "../utils/logger";
 import Button from '@mui/joy/Button';
 // import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
-import { MdArrowForward } from 'react-icons/md';
+import Box from "@mui/joy/Box";
+import Chip from "@mui/joy/Chip";
+import { MdArrowForward, MdWeb, MdSpeed, MdAccessibilityNew, MdInfo, MdCloud, MdLayers } from 'react-icons/md';
 import ForWordPress from '../components/ForWordPress';
 import Modal from '@mui/joy/Modal';
 import ModalClose from '@mui/joy/ModalClose';
@@ -14,9 +16,16 @@ const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   return (
     <React.Fragment>
-      {/* <Button variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-        Learn more
-      </Button> */}
+      <Button
+        variant="outlined"
+        color="neutral"
+        onClick={() => {
+          setOpen(true);
+          logButtonClick("Learn More (Big Lake Data)");
+        }}
+      >
+        Learn More
+      </Button>
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
@@ -27,33 +36,77 @@ const BasicModal: React.FC = () => {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth: 500,
-            borderRadius: 'md',
-            p: 3,
+            maxWidth: { xs: 360, sm: 640, md: 760 },
+            width: '100%',
+            maxHeight: '85vh',
+            overflow: 'hidden',
+            borderRadius: 'lg',
             boxShadow: 'lg',
           }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h4"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
-          >
-            Technologies used:
-          </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>Image Management:</Typography> Cloudinary
-          </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>React Tools:</Typography> TanStack
-          </Typography>
-          <Typography id="modal-desc" color="success">
-            <Typography level='h4'>HTTP Client Libraries:</Typography> Axios
-          </Typography>
 
+          {/* Header */}
+          <Box
+            sx={{
+              px: 3,
+              py: 2.25,
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
+                Big Lake Data — Project Details
+              </Typography>
+              <Chip size="sm" variant="soft" color="primary">Overview</Chip>
+            </Box>
+            <Typography level="body-sm" textColor="text.secondary">
+              Marketing site for an analytics team; clean IA, performance, and accessibility.
+            </Typography>
+          </Box>
+
+          {/* Content */}
+          <Box sx={{ p: 3, overflowY: 'auto' }} id="modal-desc">
+            <Typography level="h4" sx={{ mb: 1 }}>Key Aspects</Typography>
+            <Box
+              component="ul"
+              role="list"
+              sx={{
+                listStyle: 'none',
+                p: 0,
+                m: 0,
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 1.25,
+              }}
+            >
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdWeb size={18} /></Box>
+                <Typography level="body-sm"><b>CMS:</b> Squarespace customization with consistent sections and typography.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Typography level="body-sm"><b>IA/content:</b> Structured pages for services, team, and contact funnels.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
+                <Typography level="body-sm"><b>Performance:</b> Optimized images and assets; fast, lightweight pages.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
+                <Typography level="body-sm"><b>Accessibility:</b> Clear heading order, contrast, and keyboard focus.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Typography level="body-sm"><b>Integrations:</b> Forms and analytics hooks (GA/Search Console) where applicable.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Typography level="body-sm"><b>Brand:</b> Consistent visual style aligned with an analytics audience.</Typography>
+              </Box>
+            </Box>
+          </Box>
         </Sheet>
       </Modal>
     </React.Fragment>
@@ -82,10 +135,7 @@ export default function BigLake() {
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://www.biglakedata.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (BLD)")}> 
-        Visit
-      </Button>
-      <Button size='sm' >
-        Technology: Squarespace
+        Deployment
       </Button>
     </ForWordPress>
     </div>

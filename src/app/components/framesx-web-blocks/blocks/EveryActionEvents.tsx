@@ -85,31 +85,31 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
                 <Typography level="body-sm"><b>Data retrieval:</b> Proxy server fetches events from EveryAction securely.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSchedule size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSchedule size={18} /></Box>
                 <Typography level="body-sm"><b>Ordering:</b> Results sorted by startDate for clear chronology.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdToggleOn size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdToggleOn size={18} /></Box>
                 <Typography level="body-sm"><b>Pagination:</b> Page state and incremental loading for smoother browsing.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdBolt size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdBolt size={18} /></Box>
                 <Typography level="body-sm"><b>Performance:</b> Appends new events efficiently without blocking UI.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdInfo size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdInfo size={18} /></Box>
                 <Typography level="body-sm"><b>UX:</b> Loading, error states, and clear actions to view more or retry.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSecurity size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSecurity size={18} /></Box>
                 <Typography level="body-sm"><b>Security:</b> Keeps API credentials server-side and enforces request constraints.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
                 <Typography level="body-sm"><b>Stack:</b> Vue + TypeScript frontend, Node/Express proxy.</Typography>
               </Box>
             </Box>

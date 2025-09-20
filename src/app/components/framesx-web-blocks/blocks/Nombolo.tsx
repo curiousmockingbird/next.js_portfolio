@@ -93,31 +93,31 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSmartphone size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSmartphone size={18} /></Box>
                 <Typography level="body-sm"><b>Frontend:</b> React Native + Expo; responsive UI, smooth navigation, and gesture interactions.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSpeed size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
                 <Typography level="body-sm"><b>Performance:</b> Optimized lists, memoization, and lazy loading for a responsive feel.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
                 <Typography level="body-sm"><b>Backend:</b> Node.js services on AWS with REST endpoints and auth.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdStorage size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdStorage size={18} /></Box>
                 <Typography level="body-sm"><b>Database:</b> MongoDB data model for users, content, and activity.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdSecurity size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSecurity size={18} /></Box>
                 <Typography level="body-sm"><b>Security:</b> Token‑based auth, secure API calls, and protected routes.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
                 <Typography level="body-sm"><b>Accessibility:</b> Color contrast, larger tap targets, and screen‑reader labels.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
                 <Typography level="body-sm"><b>Stack:</b> Expo, React Native, AWS, Node.js, MongoDB.</Typography>
               </Box>
             </Box>
@@ -158,7 +158,7 @@ export default function Nombolo() {
         startDecorator={<MdArrowForward size={35} />}
         onClick={() => logButtonClick("View (Nombolo)")}
       >
-        View
+        Visit
       </Button>
 
     </TwoSidedLayout>

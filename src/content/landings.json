@@ -4,32 +4,42 @@
     "brand": "HarolDeveloper"
   },
   "pages": {
-    "forHubspot": {
-      "title": "HubSpot Integrations & Automation",
-      "description": "Clean implementations, custom objects, CRM automation, and lightweight integrations that fit real teams.",
+    "for_supply_trace": {
+      "title": "Senior Frontend (React/Next.js) for Open-Access Supply Chains",
+      "description": "Frontend architecture in React/Next.js + TypeScript; accessible, global UX for diverse users; collaboration with a Python/FastAPI backend; modern CSS with performance and reliability in mind; familiarity with Docker/Terraform/GCP.",
       "ogImage": "/og/hubspot.png",
       "themeColor": "#0ea5e9",
       "sections": [
         {
           "type": "hero",
-          "eyebrow": "Services",
-          "heading": "Full-stack done right",
-          "subheading": "From data model to forms and workflows — shipped with clarity and maintainability.",
-          "cta": { "label": "View featured projects", "href": "/forHubspot/projects" }
+          "eyebrow": "For Supply Trace",
+          "heading": "Full-stack architecture for\never-growing teams",
+          "subheading": "React/Next.js + TypeScript, modern CSS, and inclusive design to turn\n complex data into clear, actionable interfaces.",
+          "cta": { "label": "View featured projects", "href": "/for_supply_trace/projects" }
         },
         {
           "type": "bullets",
           "heading": "What I deliver",
           "items": [
-            { "title": "Custom Objects", "text": "Model your business cleanly with properties and associations that scale." },
-            { "title": "Workflows & Automation", "text": "Reliable sequences for lead routing, SLAs, and lifecycle stages." },
-            { "title": "Forms & Tracking", "text": "Conversion-safe forms with attribution and privacy in mind." }
+            {
+              "title": "React/Next.js Architecture",
+              "text": "SSR/ISR routing, data-fetching patterns, performance budgets, and design-system integration for rapid, reliable product delivery."
+            },
+            {
+              "title": "Accessible, Global UI",
+              "text": "WCAG-compliant semantics, keyboard/focus/ARIA patterns, localization & RTL support so NGOs and clients can succeed anywhere."
+            },
+            {
+              "title": "APIs & Platform Integration",
+              "text": "Tight API integrations and GCP services; CI/CD with Docker/Terraform to keep releases predictable."
+            }
           ]
         },
-        { "type": "cta", "heading": "See full list of projects", "cta": { "label": "Explore projects", "href": "/forHubspot/projects" } }
+        { "type": "cta", "heading": "See full list of projects", "cta": { "label": "Explore projects", "href": "/for_supply_trace/projects" } }
       ],
-      "projects": ["Nombolo","GalaTicketingSystem","Vdlf","EveryActionEvents"]
-    },
+      "projects": ["VDLFA","Nombolo","BigLakeData","SalesRaods","Zip3","GalaTicketingSystem","Vdlf","EveryActionEvents"]
+    }
+  },
     "dataviz": {
       "title": "Data Visualization & Maps",
       "description": "D3 and SVG-first visualizations: maps, centerline labels, and interaction that stays legible.",
@@ -83,4 +93,4 @@
       "projects": ["Vdlf", "EveryActionEvents", "GalaTicketingSystem"]
     }
   }
-}
+
