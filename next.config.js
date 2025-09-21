@@ -21,6 +21,20 @@ const nextConfig = {
       },
       ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/forHubspot',
+        destination: '/for_supply_trace',
+        permanent: true,
+      },
+      {
+        source: '/forhubspot',
+        destination: '/for_supply_trace',
+        permanent: true,
+      },
+    ];
+  },
   // Silence webpack cache warnings when @mui/icons-material isn't installed
   webpack: (config) => {
     config.resolve = config.resolve || {};
