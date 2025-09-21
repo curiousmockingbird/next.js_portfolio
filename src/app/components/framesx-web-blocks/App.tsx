@@ -58,31 +58,31 @@ export default function TeamExample() {
     <Project10 key="Project10" />,
     <Project04 key="Project04" />,
     <Project02 key="Project02" />,
-    <Project12 key="Project12" />,
     <Project11 key="Project11" />,
     <Project01 key="Project01" />,
-    <Project05 key="Project05" />,
-    <Project03 key="Project03" />,
     <Project07 key="Project07" />,
     <Project06 key="Project06" />,
     <Project08 key="Project08" />,
+    <Project12 key="Project12" />,
+    <Project05 key="Project05" />,
+    <Project03 key="Project03" />,
     // Add more components as needed, each with a unique key
   ];
 
   const pageMeta = React.useMemo(
     () => [
       { label: "VDLFA" },
-      { label: "Cambridge Dogs" },
-      { label: "Contributions by Zip3" },
-      { label: "Event List" },
-      { label: "Contact Form Integration" },
-      { label: "Event Registration System" },
       { label: "Nombolo" },
-      { label: "Trey Savage" },
-      { label: "Harold Designer" },
+      { label: "Event List" },
+      { label: "Event Registration System" },
+      { label: "Contributions by Zip3" },
+      { label: "Contact Form Integration" },
       { label: "Sales Raods" },
       { label: "Big Lake Data" },
       { label: "GTM" },
+      { label: "Cambridge Dogs" },
+      { label: "Trey Savage" },
+      { label: "Harold Designer" },
     ],
     []
   );
@@ -94,11 +94,11 @@ export default function TeamExample() {
   // }, );
 
   const clientName = React.useMemo(() => {
-    if (currentPage === 0) return "Personal Project";
-    if (currentPage >= 1 && currentPage < 6) return "Client: Voces de la Frontera";
-    if (currentPage === 6) return "Client: Nombolo";
-    if (currentPage >= 6 && currentPage  < 9) return "Personal Projects";
-    return "Client: Slingshot Content";
+    if (currentPage === 0) return "Client: Voces de la Frontera";
+    if (currentPage === 1) return "Nombolo";
+    if (currentPage >= 2 && currentPage < 6) return "Client: Voces de la Frontera";
+    if (currentPage >= 6 && currentPage  < 9) return "Client: Slingshot Content";
+    return "Personal Project";
   }, [currentPage]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
