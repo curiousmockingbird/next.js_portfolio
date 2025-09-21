@@ -38,8 +38,7 @@
         { "type": "cta", "heading": "See full list of projects", "cta": { "label": "Explore projects", "href": "/for_supply_trace/projects" } }
       ],
       "projects": ["VDLFA","Nombolo","BigLakeData","SalesRaods","Zip3","GalaTicketingSystem","Vdlf","EveryActionEvents"]
-    }
-  },
+    },
     "dataviz": {
       "title": "Data Visualization & Maps",
       "description": "D3 and SVG-first visualizations: maps, centerline labels, and interaction that stays legible.",
@@ -93,4 +92,4 @@
       "projects": ["Vdlf", "EveryActionEvents", "GalaTicketingSystem"]
     }
   }
-
+}
