@@ -7,21 +7,9 @@ import Image from 'next/image';
 import Box from '@mui/system/Box';
 import Button from '@mui/joy/Button';
 import Toggle from '@/app/components/Toggle';
-import type { IconType } from 'react-icons';
-import {
-  SiNextdotjs,
-  SiReact,
-  SiJavascript,
-  SiTypescript,
-  SiNodedotjs,
-  SiTailwindcss,
-  SiWordpress,
-  SiVercel,
-  SiVuedotjs,
-  SiSendgrid,
-  SiReactquery,
-  SiGoogle,
-} from 'react-icons/si';
+// Note: We attempted react-icons brand set, but some environments
+// lack the 'react-icons/si' subset at build time. We use local SVGs
+// in /public for reliability, with graceful text fallbacks.
 
 const logButtonClick = async (buttonName: string) => {
   try {
@@ -140,7 +128,7 @@ const skills: Skill[] = [
   { label: 'Next.js', src: '/next-js.svg', href: 'https://nextjs.org' },
   { label: 'React', src: '/react.svg', href: 'https://react.dev' },
   { label: 'JavaScript', src: '/javascript.svg', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { label: 'TypeScript' },
+  { label: 'TypeScript', src: '/typescript.svg', href: 'https://www.typescriptlang.org' },
   { label: 'Node.js', src: '/node.png', href: 'https://nodejs.org' },
   { label: 'Tailwind CSS', src: '/tailwind.svg', href: 'https://tailwindcss.com' },
   { label: 'WordPress', src: '/wordpress.svg', href: 'https://wordpress.org' },
@@ -153,32 +141,8 @@ const skills: Skill[] = [
   // Add more here as assets are added to /public (e.g., Prisma, Postgres, Stripe, NextAuth)
 ];
 
-const normalize = (s: string) => s.trim().toLowerCase();
-
-const iconRegistry: Record<string, IconType> = {
-  'next.js': SiNextdotjs,
-  react: SiReact,
-  javascript: SiJavascript,
-  typescript: SiTypescript,
-  'node.js': SiNodedotjs,
-  'tailwind css': SiTailwindcss,
-  wordpress: SiWordpress,
-  vercel: SiVercel,
-  'vue.js': SiVuedotjs,
-  sendgrid: SiSendgrid,
-  'react query': SiReactquery,
-  'tanstack query': SiReactquery,
-  'apps script': SiGoogle,
-  'google apps script': SiGoogle,
-};
-
 const SkillBadge = ({ skill }: { skill: Skill }) => {
-  const Icon = iconRegistry[normalize(skill.label)];
-  const content = Icon ? (
-    <div className="w-14 h-14 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 grid place-items-center">
-      <Icon size={28} aria-hidden="true" />
-    </div>
-  ) : skill.src ? (
+  const content = skill.src ? (
     <Image src={skill.src} width={56} height={56} alt={skill.label} />
   ) : (
     <div className="w-14 h-14 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 grid place-items-center text-sm font-medium">
