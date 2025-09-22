@@ -63,9 +63,9 @@ export default function TeamExample() {
     <Project07 key="Project07" />,
     <Project06 key="Project06" />,
     <Project08 key="Project08" />,
-    <Project12 key="Project12" />,
     <Project05 key="Project05" />,
     <Project03 key="Project03" />,
+    <Project12 key="Project12" />,
     // Add more components as needed, each with a unique key
   ];
 
@@ -80,9 +80,9 @@ export default function TeamExample() {
       { label: "Sales Raods" },
       { label: "Big Lake Data" },
       { label: "GTM" },
-      { label: "Cambridge Dogs" },
       { label: "Trey Savage" },
       { label: "Harold Designer" },
+      { label: "Cambridge Dogs" },
     ],
     []
   );

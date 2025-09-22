@@ -137,7 +137,7 @@ export default function EveryActionEvents() {
         lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Event List
+        Event integration
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
       Implemented pagination in a Vue.js component that fetches event data from the EveryAction API via a proxy endpoint. Users can load and browse events in smaller, more manageable batches—improving both performance and user experience.{" "}
