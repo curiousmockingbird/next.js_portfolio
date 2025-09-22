@@ -99,12 +99,13 @@ const RotatingImage: React.FC = () => {
 const AboutText = () => (
   <>
     <p className="mb-4 leading-relaxed">
-      Full-stack JavaScript developer with a strong design foundation and a
+      {/* Full-stack JavaScript developer with a strong design foundation and a
       record of shipping accessible, fast, production apps. I’ve delivered tech
       solutions across small startups, consulting agencies, and statewide
       nonprofits. I work across React/Next.js, TypeScript, Node/Express, and
       modern deployments (Vercel, WP Engine), pairing clean UX with reliable
-      engineering.
+      engineering. */}
+      I’m Harold Mesa, a full-stack developer and designer who thrives at turning complex requirements into clean, production-ready web systems. I pair a designer’s eye (4+ years in the graphic/illustration industry) with solid engineering practices—versioned code, clear docs, and performance budgets—to deliver interfaces that are fast, accessible, and maintainable.
     </p>
     {/* <p className="mb-4">
       Currently, I work as a contractor with Wisconsin&apos;s leading grassroots
@@ -129,24 +130,30 @@ const skills: Skill[] = [
   { label: 'React', src: '/react.svg', href: 'https://react.dev' },
   { label: 'JavaScript', src: '/javascript.svg', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   { label: 'TypeScript', src: '/typescript.svg', href: 'https://www.typescriptlang.org' },
-  { label: 'Node.js', src: '/node.png', href: 'https://nodejs.org' },
+  { label: 'Node.js', src: '/node.svg', href: 'https://nodejs.org' },
   { label: 'Tailwind CSS', src: '/tailwind.svg', href: 'https://tailwindcss.com' },
   { label: 'WordPress', src: '/wordpress.svg', href: 'https://wordpress.org' },
   { label: 'Vercel', src: '/vercel.svg', href: 'https://vercel.com' },
-  { label: 'Vue.js', src: '/vue-js.svg', href: 'https://vuejs.org' },
+  { label: 'Vue.js', src: '/vue-js.jpeg', href: 'https://vuejs.org' },
   { label: 'SendGrid', src: '/sendgrid.svg', href: 'https://sendgrid.com' },
   { label: 'Apps Script', src: '/apps_script.svg', href: 'https://workspace.google.com/products/apps-script/' },
   { label: 'TanStack Query', src: '/tan_stack.png', href: 'https://tanstack.com/query/latest' },
-  { label: 'EveryAction', src: '/everyaction.png', href: 'https://www.ngpvan.com/product/everyaction/' },
+  // { label: 'EveryAction', src: '/everyaction.png', href: 'https://www.ngpvan.com/product/everyaction/' },
   // Add more here as assets are added to /public (e.g., Prisma, Postgres, Stripe, NextAuth)
 ];
 
 const SkillBadge = ({ skill }: { skill: Skill }) => {
   const content = skill.src ? (
-    <Image src={skill.src} width={56} height={56} alt={skill.label} />
+    <Image className="block" src={skill.src} width={56} height={56} alt={skill.label} />
   ) : (
     <div className="w-14 h-14 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 grid place-items-center text-sm font-medium">
       {skill.label.split(' ').map((w) => w[0]).join('').slice(0, 3)}
+    </div>
+  );
+
+  const iconBox = (
+    <div className="w-full h-16 flex items-center justify-center">
+      {content}
     </div>
   );
 
@@ -155,21 +162,21 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
       href={skill.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-md"
+      className="flex flex-col items-center w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-md"
       aria-label={skill.label}
     >
-      {content}
-      <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span>
+      {iconBox}
+      {/* <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span> */}
     </a>
   ) : (
-    <div className="flex flex-col items-center" aria-label={skill.label}>
-      {content}
+    <div className="flex flex-col items-center w-full" aria-label={skill.label}>
+      {iconBox}
       <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span>
     </div>
   );
 
   return (
-    <li className="m-1">
+    <li className="m-1 w-full">
       {wrapped}
     </li>
   );
