@@ -4,6 +4,7 @@ import { CssVarsProvider } from "@mui/joy/styles";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
+import Avatar from "@mui/joy/Avatar";
 import CssBaseline from "@mui/joy/CssBaseline";
 import Typography from "@mui/joy/Typography";
 import Chip from "@mui/joy/Chip";
@@ -165,15 +166,28 @@ export default function TeamExample() {
                 gap: 2,
               }}
             >
-              {categories.map(({ client, count }) => (
-                <Card key={client} variant="soft" sx={{ bgcolor: 'neutral.softBg', cursor: 'pointer' }} onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}>
-                  <CardContent>
-                    <Typography level="h4" sx={{ mb: 0.5 }}>{client}</Typography>
-                    <Typography level="body-sm" sx={{ opacity: 0.8 }}>{count} project{count === 1 ? '' : 's'}</Typography>
-                    <Button size="sm" variant="solid" sx={{ mt: 1 }}>View projects</Button>
-                  </CardContent>
-                </Card>
-              ))}
+              {categories.map(({ client, count }) => {
+                const preview = allProjects.filter((p) => p.client === client).slice(0, 4);
+                const more = Math.max(count - preview.length, 0);
+                const initials = (label: string) => label.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                return (
+                  <Card key={client} variant="soft" sx={{ bgcolor: 'neutral.softBg', cursor: 'pointer' }} onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}>
+                    <CardContent>
+                      <Typography level="h4" sx={{ mb: 0.5 }}>{client}</Typography>
+                      <Typography level="body-sm" sx={{ opacity: 0.8, mb: 1 }}>{count} project{count === 1 ? '' : 's'}</Typography>
+                      <Box sx={{ display: 'flex', gap: 0.75, alignItems: 'center', flexWrap: 'wrap' }} aria-label={`${client} project previews`}>
+                        {preview.map((p) => (
+                          <Avatar key={p.label} size="sm" variant="soft">{initials(p.label)}</Avatar>
+                        ))}
+                        {more > 0 && (
+                          <Avatar size="sm" variant="soft">+{more}</Avatar>
+                        )}
+                      </Box>
+                      <Button size="sm" variant="solid" sx={{ mt: 1 }}>View projects</Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </Box>
           </Box>
         </Box>
@@ -213,6 +227,11 @@ export default function TeamExample() {
               {clientName}
             </Chip>
           )}
+          <Box sx={{ display: 'flex', gap: 1, pointerEvents: 'auto' }}>
+            <Button size="sm" variant="soft" onClick={() => { setView('overview'); setSelectedClient(null); setCurrentPage(0); }} startDecorator={<MdArrowBack />}>
+              Back to overview
+            </Button>
+          </Box>
           <Box
             role="navigation"
             aria-label="Project quick navigation"
