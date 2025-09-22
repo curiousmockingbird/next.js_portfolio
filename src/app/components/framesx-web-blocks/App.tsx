@@ -17,7 +17,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import Link from "@mui/joy/Link";
 import { logFromApp } from "./utils/logger";
 // import Toggle from './components/Toggle'
-
+import Image from "next/image";
 import framesxTheme from "./theme";
 import ContactFormIntegration from "./blocks/Vdlf";
 import EventRegistrationSystem from "./blocks/GalaTicketingSystem";
@@ -86,7 +86,7 @@ export default function TeamExample() {
   ];
 
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
-    'Nombolo': { src: '/home.jpg', alt: 'Nombolo projects cover' },
+    'Nombolo': { src: '/nombolo.png', alt: 'Nombolo projects cover'},
     'Voces de la Frontera': { src: '/everyaction.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/home.jpg', alt: 'Slingshot Content projects cover' },
     'Personal Project': { src: '/profile_pic.jpg', alt: 'Personal projects cover' },
@@ -166,7 +166,7 @@ export default function TeamExample() {
           }}
         >
           <Box sx={{ width: '100%', maxWidth: 1000, px: { xs: 1, sm: 2 } }}>
-            <Typography level="h3" sx={{ mb: 2, color: '#fff' }}>Projects by Client</Typography>
+            <Typography level="h3" sx={{ mb: 2, color: '#fff', textAlign:'center' }}>Projects by Client</Typography>
             <Box
               sx={{
                 display: 'grid',
@@ -180,11 +180,20 @@ export default function TeamExample() {
                   <Card
                     key={client}
                     variant="outlined"
-                    sx={{ cursor: 'pointer', overflow: 'hidden', minHeight: 180, position: 'relative' }}
+                    sx={{ cursor: 'pointer', overflow: 'hidden', position: 'relative', aspectRatio: '1 / 1' }}
                     onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
                   >
                     <CardCover>
-                      <img src={cover.src} alt={cover.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
+                        <Image
+                          src={cover.src}
+                          alt={cover.alt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                          priority={false}
+                        />
+                      </Box>
                     </CardCover>
                     <CardCover sx={{
                       background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)'
