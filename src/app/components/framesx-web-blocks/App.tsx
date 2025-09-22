@@ -5,6 +5,7 @@ import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Avatar from "@mui/joy/Avatar";
+import CardCover from "@mui/joy/CardCover";
 import CssBaseline from "@mui/joy/CssBaseline";
 import Typography from "@mui/joy/Typography";
 import Chip from "@mui/joy/Chip";
@@ -83,6 +84,13 @@ export default function TeamExample() {
     'Slingshot Content',
     'Personal Project',
   ];
+
+  const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
+    'Nombolo': { src: '/home.jpg', alt: 'Nombolo projects cover' },
+    'Voces de la Frontera': { src: '/everyaction.png', alt: 'Voces de la Frontera projects cover' },
+    'Slingshot Content': { src: '/home.jpg', alt: 'Slingshot Content projects cover' },
+    'Personal Project': { src: '/profile_pic.jpg', alt: 'Personal projects cover' },
+  };
 
   const categories = React.useMemo(() => {
     const counts: Record<Project['client'], number> = {
@@ -167,22 +175,23 @@ export default function TeamExample() {
               }}
             >
               {categories.map(({ client, count }) => {
-                const preview = allProjects.filter((p) => p.client === client).slice(0, 4);
-                const more = Math.max(count - preview.length, 0);
-                const initials = (label: string) => label.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                const cover = clientCovers[client] || { src: '/home.jpg', alt: `${client} cover` };
                 return (
-                  <Card key={client} variant="soft" sx={{ bgcolor: 'neutral.softBg', cursor: 'pointer' }} onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}>
-                    <CardContent>
-                      <Typography level="h4" sx={{ mb: 0.5 }}>{client}</Typography>
-                      <Typography level="body-sm" sx={{ opacity: 0.8, mb: 1 }}>{count} project{count === 1 ? '' : 's'}</Typography>
-                      <Box sx={{ display: 'flex', gap: 0.75, alignItems: 'center', flexWrap: 'wrap' }} aria-label={`${client} project previews`}>
-                        {preview.map((p) => (
-                          <Avatar key={p.label} size="sm" variant="soft">{initials(p.label)}</Avatar>
-                        ))}
-                        {more > 0 && (
-                          <Avatar size="sm" variant="soft">+{more}</Avatar>
-                        )}
-                      </Box>
+                  <Card
+                    key={client}
+                    variant="outlined"
+                    sx={{ cursor: 'pointer', overflow: 'hidden', minHeight: 180, position: 'relative' }}
+                    onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
+                  >
+                    <CardCover>
+                      <img src={cover.src} alt={cover.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </CardCover>
+                    <CardCover sx={{
+                      background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)'
+                    }} />
+                    <CardContent sx={{ position: 'relative' }}>
+                      <Typography level="h4" sx={{ mb: 0.5, color: '#fff' }}>{client}</Typography>
+                      <Typography level="body-sm" sx={{ opacity: 0.95, color: '#fff' }}>{count} project{count === 1 ? '' : 's'}</Typography>
                       <Button size="sm" variant="solid" sx={{ mt: 1 }}>View projects</Button>
                     </CardContent>
                   </Card>
