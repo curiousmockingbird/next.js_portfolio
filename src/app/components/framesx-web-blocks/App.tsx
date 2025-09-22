@@ -4,7 +4,6 @@ import { CssVarsProvider } from "@mui/joy/styles";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
-import Avatar from "@mui/joy/Avatar";
 import CardCover from "@mui/joy/CardCover";
 import CssBaseline from "@mui/joy/CssBaseline";
 import Typography from "@mui/joy/Typography";
@@ -58,11 +57,11 @@ export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [view, setView] = React.useState<'overview' | 'detail'>("overview");
   const [selectedClient, setSelectedClient] = React.useState<
-    'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Project' | null
+    'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | null
   >(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
 
-  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Project'; node: React.ReactNode };
+  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode };
   const allProjects: Project[] = [
     { label: 'VDLFA', client: 'Voces de la Frontera', node: <VDLFA /> },
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
@@ -73,23 +72,30 @@ export default function TeamExample() {
     { label: 'Sales Raods', client: 'Slingshot Content', node: <SalesRaods /> },
     { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
     { label: 'GTM', client: 'Slingshot Content', node: <GTM /> },
-    { label: 'Trey Savage', client: 'Personal Project', node: <TreySavage /> },
-    { label: 'Harold Designer', client: 'Personal Project', node: <HaroldDesigner /> },
-    { label: 'Cambridge Dogs', client: 'Personal Project', node: <CambridgeDogs /> },
+    { label: 'Trey Savage', client: 'Personal Projects', node: <TreySavage /> },
+    { label: 'Harold Designer', client: 'Personal Projects', node: <HaroldDesigner /> },
+    { label: 'Cambridge Dogs', client: 'Personal Projects', node: <CambridgeDogs /> },
   ];
 
   const clientOrder: Array<Project['client']> = [
     'Nombolo',
     'Voces de la Frontera',
     'Slingshot Content',
-    'Personal Project',
+    'Personal Projects',
   ];
 
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
     'Nombolo': { src: '/nombolo.png', alt: 'Nombolo projects cover'},
-    'Voces de la Frontera': { src: '/everyaction.png', alt: 'Voces de la Frontera projects cover' },
-    'Slingshot Content': { src: '/home.jpg', alt: 'Slingshot Content projects cover' },
-    'Personal Project': { src: '/profile_pic.jpg', alt: 'Personal projects cover' },
+    'Voces de la Frontera': { src: '/vdlf.png', alt: 'Voces de la Frontera projects cover' },
+    'Slingshot Content': { src: '/js.jpeg', alt: 'Slingshot Content projects cover' },
+    'Personal Projects': { src: '/profile_pic.jpg', alt: 'Personal Projectss cover' },
+  };
+
+  const clientTaglines: Record<Project['client'], string> = {
+    'Nombolo': 'Portland, OR based startup on a mission to better connect people',
+    'Voces de la Frontera': 'Civic engagement and events tooling',
+    'Slingshot Content': 'Full-stack JavaScript developer',
+    'Personal Projects': 'Solo experiments and demos',
   };
 
   const categories = React.useMemo(() => {
@@ -97,7 +103,7 @@ export default function TeamExample() {
       'Nombolo': 0,
       'Voces de la Frontera': 0,
       'Slingshot Content': 0,
-      'Personal Project': 0,
+      'Personal Projects': 0,
     };
     allProjects.forEach((p) => { counts[p.client] += 1; });
     return clientOrder.map((client) => ({ client, count: counts[client] }));
@@ -122,7 +128,7 @@ export default function TeamExample() {
   // }, );
 
   const clientName = React.useMemo(() => {
-    return selectedClient ? (selectedClient === 'Personal Project' ? 'Personal Projects' : `Client: ${selectedClient}`) : '';
+    return selectedClient ? (selectedClient === 'Personal Projects' ? 'Personal Projectss' : `Client: ${selectedClient}`) : '';
   }, [selectedClient]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
@@ -180,7 +186,16 @@ export default function TeamExample() {
                   <Card
                     key={client}
                     variant="outlined"
-                    sx={{ cursor: 'pointer', overflow: 'hidden', position: 'relative', aspectRatio: '1 / 1' }}
+                    sx={{
+                      cursor: 'pointer',
+                      overflow: 'hidden',
+                      position: 'relative',
+                      aspectRatio: '1 / 1',
+                      transition: 'transform 150ms ease, box-shadow 150ms ease',
+                      '&:hover': { boxShadow: 'lg', transform: 'translateY(-2px)' },
+                    }}
+                    role="button"
+                    aria-label={`${client}: ${count} project${count === 1 ? '' : 's'}. View projects.`}
                     onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
                   >
                     <CardCover>
@@ -190,7 +205,7 @@ export default function TeamExample() {
                           alt={cover.alt}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          style={{ objectFit: 'cover' }}
+                          style={{ objectFit: 'contain' }}
                           priority={false}
                         />
                       </Box>
@@ -198,10 +213,35 @@ export default function TeamExample() {
                     <CardCover sx={{
                       background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)'
                     }} />
-                    <CardContent sx={{ position: 'relative' }}>
-                      <Typography level="h4" sx={{ mb: 0.5, color: '#fff' }}>{client}</Typography>
-                      <Typography level="body-sm" sx={{ opacity: 0.95, color: '#fff' }}>{count} project{count === 1 ? '' : 's'}</Typography>
-                      <Button size="sm" variant="solid" sx={{ mt: 1 }}>View projects</Button>
+                    <CardContent
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 0.5,
+                        p: 1.5,
+                      }}
+                    >
+                      <Typography level="h4" sx={{ color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,.6)' }}>
+                        {client}
+                      </Typography>
+                      <Typography level="body-sm" sx={{ color: 'rgba(255,255,255,0.9)' }}>
+                        {clientTaglines[client]}
+                      </Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
+                        <Chip
+                          size="sm"
+                          variant="soft"
+                          color="neutral"
+                          sx={{ bgcolor: 'rgba(255,255,255,0.18)', color: '#fff', backdropFilter: 'blur(2px)' }}
+                        >
+                          {count} project{count === 1 ? '' : 's'}
+                        </Chip>
+                        <Typography level="body-sm" sx={{ color: '#fff' }}>View projects →</Typography>
+                      </Box>
                     </CardContent>
                   </Card>
                 );
