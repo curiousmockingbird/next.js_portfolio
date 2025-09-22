@@ -2,6 +2,8 @@
 import * as React from "react";
 import { CssVarsProvider } from "@mui/joy/styles";
 import Box from "@mui/joy/Box";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
 import CssBaseline from "@mui/joy/CssBaseline";
 import Typography from "@mui/joy/Typography";
 import Chip from "@mui/joy/Chip";
@@ -15,18 +17,18 @@ import { logFromApp } from "./utils/logger";
 // import Toggle from './components/Toggle'
 
 import framesxTheme from "./theme";
-import Project01 from "./blocks/Vdlf";
-import Project02 from "./blocks/GalaTicketingSystem";
-import Project03 from "./blocks/HarolDesigner";
-import Project04 from "./blocks/EveryActionEvents";
-import Project05 from "./blocks/TreySavage";
-import Project06 from "./blocks/BigLakeData";
-import Project07 from "./blocks/SalesRaods";
-import Project08 from "./blocks/gtm";
-import Project09 from "./blocks/VDLFA";
-import Project10 from "./blocks/Nombolo";
-import Project11 from "./blocks/Zip3";
-import Project12 from "./blocks/Dogs";
+import ContactFormIntegration from "./blocks/Vdlf";
+import EventRegistrationSystem from "./blocks/GalaTicketingSystem";
+import HaroldDesigner from "./blocks/HarolDesigner";
+import EventList from "./blocks/EveryActionEvents";
+import TreySavage from "./blocks/TreySavage";
+import BigLakeData from "./blocks/BigLakeData";
+import SalesRaods from "./blocks/SalesRaods";
+import GTM from "./blocks/gtm";
+import VDLFA from "./blocks/VDLFA";
+import Nombolo from "./blocks/Nombolo";
+import ContributionsByZip3 from "./blocks/Zip3";
+import CambridgeDogs from "./blocks/Dogs";
 
 function HomeButton() {
   return (
@@ -52,39 +54,56 @@ function HomeButton() {
 
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
+  const [view, setView] = React.useState<'overview' | 'detail'>("overview");
+  const [selectedClient, setSelectedClient] = React.useState<
+    'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Project' | null
+  >(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
-  const pages = [
-    <Project09 key="Project09" />,
-    <Project10 key="Project10" />,
-    <Project04 key="Project04" />,
-    <Project02 key="Project02" />,
-    <Project11 key="Project11" />,
-    <Project01 key="Project01" />,
-    <Project07 key="Project07" />,
-    <Project06 key="Project06" />,
-    <Project08 key="Project08" />,
-    <Project05 key="Project05" />,
-    <Project03 key="Project03" />,
-    <Project12 key="Project12" />,
-    // Add more components as needed, each with a unique key
+
+  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Project'; node: React.ReactNode };
+  const allProjects: Project[] = [
+    { label: 'VDLFA', client: 'Voces de la Frontera', node: <VDLFA /> },
+    { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
+    { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
+    { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
+    { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
+    { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
+    { label: 'Sales Raods', client: 'Slingshot Content', node: <SalesRaods /> },
+    { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
+    { label: 'GTM', client: 'Slingshot Content', node: <GTM /> },
+    { label: 'Trey Savage', client: 'Personal Project', node: <TreySavage /> },
+    { label: 'Harold Designer', client: 'Personal Project', node: <HaroldDesigner /> },
+    { label: 'Cambridge Dogs', client: 'Personal Project', node: <CambridgeDogs /> },
   ];
 
+  const clientOrder: Array<Project['client']> = [
+    'Nombolo',
+    'Voces de la Frontera',
+    'Slingshot Content',
+    'Personal Project',
+  ];
+
+  const categories = React.useMemo(() => {
+    const counts: Record<Project['client'], number> = {
+      'Nombolo': 0,
+      'Voces de la Frontera': 0,
+      'Slingshot Content': 0,
+      'Personal Project': 0,
+    };
+    allProjects.forEach((p) => { counts[p.client] += 1; });
+    return clientOrder.map((client) => ({ client, count: counts[client] }));
+  }, []);
+
+  const projectsForClient = React.useMemo(() => {
+    if (!selectedClient) return [] as Project[];
+    return allProjects.filter((p) => p.client === selectedClient);
+  }, [selectedClient]);
+
+  const pages = projectsForClient.map((p) => React.cloneElement(p.node as React.ReactElement, { key: p.label }));
+
   const pageMeta = React.useMemo(
-    () => [
-      { label: "VDLFA" },
-      { label: "Nombolo" },
-      { label: "Event List" },
-      { label: "Event Registration System" },
-      { label: "Contributions by Zip3" },
-      { label: "Contact Form Integration" },
-      { label: "Sales Raods" },
-      { label: "Big Lake Data" },
-      { label: "GTM" },
-      { label: "Trey Savage" },
-      { label: "Harold Designer" },
-      { label: "Cambridge Dogs" },
-    ],
-    []
+    () => projectsForClient.map((p) => ({ label: p.label })),
+    [projectsForClient]
   );
 
   //   // if (currentPage === 0) return "#5c24c9;";
@@ -94,12 +113,8 @@ export default function TeamExample() {
   // }, );
 
   const clientName = React.useMemo(() => {
-    if (currentPage === 0) return "Client: Voces de la Frontera";
-    if (currentPage === 1) return "Nombolo";
-    if (currentPage >= 2 && currentPage < 6) return "Client: Voces de la Frontera";
-    if (currentPage >= 6 && currentPage  < 9) return "Client: Slingshot Content";
-    return "Personal Project";
-  }, [currentPage]);
+    return selectedClient ? (selectedClient === 'Personal Project' ? 'Personal Projects' : `Client: ${selectedClient}`) : '';
+  }, [selectedClient]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight } = e.currentTarget;
@@ -131,6 +146,38 @@ export default function TeamExample() {
     >
       <CssBaseline />
       <HomeButton />
+      {view === 'overview' ? (
+        <Box
+          sx={{
+            backgroundColor: '#03082e',
+            minHeight: '100vh',
+            display: 'grid',
+            placeItems: 'center',
+            p: 2,
+          }}
+        >
+          <Box sx={{ width: '100%', maxWidth: 1000, px: { xs: 1, sm: 2 } }}>
+            <Typography level="h3" sx={{ mb: 2, color: '#fff' }}>Projects by Client</Typography>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 2,
+              }}
+            >
+              {categories.map(({ client, count }) => (
+                <Card key={client} variant="soft" sx={{ bgcolor: 'neutral.softBg', cursor: 'pointer' }} onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}>
+                  <CardContent>
+                    <Typography level="h4" sx={{ mb: 0.5 }}>{client}</Typography>
+                    <Typography level="body-sm" sx={{ opacity: 0.8 }}>{count} project{count === 1 ? '' : 's'}</Typography>
+                    <Button size="sm" variant="solid" sx={{ mt: 1 }}>View projects</Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      ) : (
       <Box
         sx={{
           backgroundColor: '#03082e',
@@ -161,9 +208,11 @@ export default function TeamExample() {
             pointerEvents: 'none',
           }}
         >
-          <Chip size="md" variant="soft" color="primary" sx={{ pointerEvents: 'auto' }}>
-            {clientName}
-          </Chip>
+          {selectedClient && (
+            <Chip size="md" variant="soft" color="primary" sx={{ pointerEvents: 'auto' }}>
+              {clientName}
+            </Chip>
+          )}
           <Box
             role="navigation"
             aria-label="Project quick navigation"
@@ -196,7 +245,9 @@ export default function TeamExample() {
 
         {pages}
       </Box>
+      )}
       {/* Right nav dots (clickable) */}
+      {view === 'detail' && (
       <Box
         sx={{
           position: "fixed",
@@ -228,8 +279,10 @@ export default function TeamExample() {
           </Tooltip>
         ))}
       </Box>
+      )}
 
       {/* Bottom center next/prev controls */}
+      {view === 'detail' ? (
       <Box
         sx={{
           position: 'fixed',
@@ -248,6 +301,25 @@ export default function TeamExample() {
           Next
         </Button>
       </Box>
+      ) : (
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: 16,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            gap: 1,
+            zIndex: 20,
+          }}
+        >
+          {selectedClient ? (
+            <Button size="sm" variant="solid" onClick={() => setView('detail')}>
+              View {selectedClient} projects
+            </Button>
+          ) : null}
+        </Box>
+      )}
     </CssVarsProvider>
   );
 }
