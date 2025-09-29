@@ -96,35 +96,35 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdMap size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdMap size={18} /></Box>
                 <Typography level="body-sm"><b>Purpose:</b> Visualize Cambridge neighborhoods and place a single, readable label inside each shape.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdToggleOn size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdToggleOn size={18} /></Box>
                 <Typography level="body-sm"><b>Modes:</b> Toggle “Name” vs “Breed”; tooltip shows top three values.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdStorage size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdStorage size={18} /></Box>
                 <Typography level="body-sm"><b>Data:</b> Local GeoJSON neighborhoods + CSV of dogs; source: Cambridge GIS FeatureServer.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
                 <Typography level="body-sm"><b>Stack:</b> Vite, ES modules, D3 v7, SVG textPath, CSS; topojson-client optional.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdTextFields size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdTextFields size={18} /></Box>
                 <Typography level="body-sm"><b>Labeling:</b> Custom centerline utility with centroid fallback and truncation.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
                 <Typography level="body-sm"><b>Accessibility:</b> Focusable paths, ARIA labels, live tooltip updates, high contrast, keyboard support.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdWarningAmber size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdWarningAmber size={18} /></Box>
                 <Typography level="body-sm"><b>Limitations:</b> Ties A→Z; very short centerlines use centroid; degenerate polygons may omit labels.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'primary.solidColor', mt: '2px' }}><MdArticle size={18} /></Box>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdArticle size={18} /></Box>
                 <Typography level="body-sm"><b>Files:</b> index.html, src/main.js, src/utils/centerline.js, src/styles.css, src/data/*.</Typography>
               </Box>
             </Box>
