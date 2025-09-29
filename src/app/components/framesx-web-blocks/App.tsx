@@ -13,6 +13,7 @@ import IconButton from "@mui/joy/IconButton";
 import Tooltip from "@mui/joy/Tooltip";
 import { MdArrowBack } from "react-icons/md";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Link from "@mui/joy/Link";
 import { logFromApp } from "./utils/logger";
 // import Toggle from './components/Toggle'
@@ -60,6 +61,7 @@ export default function TeamExample() {
     'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | null
   >(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const carouselRef = React.useRef<HTMLDivElement | null>(null);
 
   type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode };
   const allProjects: Project[] = [
@@ -69,7 +71,7 @@ export default function TeamExample() {
     { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
-    { label: 'Sales Raods', client: 'Slingshot Content', node: <SalesRaods /> },
+    { label: 'Sales Roads', client: 'Slingshot Content', node: <SalesRaods /> },
     { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
     { label: 'GTM', client: 'Slingshot Content', node: <GTM /> },
     { label: 'Trey Savage', client: 'Personal Projects', node: <TreySavage /> },
@@ -85,9 +87,9 @@ export default function TeamExample() {
   ];
 
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
-    'Nombolo': { src: '/nombolo.png', alt: 'Nombolo projects cover'},
-    'Voces de la Frontera': { src: '/vdlf.png', alt: 'Voces de la Frontera projects cover' },
-    'Slingshot Content': { src: '/js.jpeg', alt: 'Slingshot Content projects cover' },
+    'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
+    'Voces de la Frontera': { src: '/vdlf copy.png', alt: 'Voces de la Frontera projects cover' },
+    'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
     'Personal Projects': { src: '/profile_pic.jpg', alt: 'Personal Projectss cover' },
   };
 
@@ -147,6 +149,14 @@ export default function TeamExample() {
   const goNext = () => scrollToIndex(Math.min(currentPage + 1, pages.length - 1));
   const goPrev = () => scrollToIndex(Math.max(currentPage - 1, 0));
 
+  const scrollCarousel = (dir: 'left' | 'right') => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+    logFromApp('Carousel scroll', { direction: dir });
+  };
+
   // src/app/components/framesx-web-blocks/App.tsx
   React.useEffect(() => {
     document.body.classList.add("framesx-app");
@@ -173,79 +183,133 @@ export default function TeamExample() {
         >
           <Box sx={{ width: '100%', maxWidth: 1000, px: { xs: 1, sm: 2 } }}>
             <Typography level="h3" sx={{ mb: 2, color: '#fff', textAlign:'center' }}>Projects by Client</Typography>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                gap: 2,
-              }}
-            >
-              {categories.map(({ client, count }) => {
-                const cover = clientCovers[client] || { src: '/home.jpg', alt: `${client} cover` };
-                return (
-                  <Card
-                    key={client}
-                    variant="outlined"
-                    sx={{
-                      cursor: 'pointer',
-                      overflow: 'hidden',
-                      position: 'relative',
-                      aspectRatio: '1 / 1',
-                      transition: 'transform 150ms ease, box-shadow 150ms ease',
-                      '&:hover': { boxShadow: 'lg', transform: 'translateY(-2px)' },
-                    }}
-                    role="button"
-                    aria-label={`${client}: ${count} project${count === 1 ? '' : 's'}. View projects.`}
-                    onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
-                  >
-                    <CardCover>
-                      <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
-                        <Image
-                          src={cover.src}
-                          alt={cover.alt}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          style={{ objectFit: 'contain' }}
-                          priority={false}
-                        />
-                      </Box>
-                    </CardCover>
-                    <CardCover sx={{
-                      background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)'
-                    }} />
-                    <CardContent
+            <Box sx={{ position: 'relative' }}>
+              <IconButton
+                aria-label="Scroll left"
+                variant="soft"
+                color="neutral"
+                onClick={() => scrollCarousel('left')}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: { xs: 4, sm: 8 },
+                  transform: 'translateY(-50%)',
+                  zIndex: 2,
+                  boxShadow: 'sm',
+                  display: { xs: 'none', sm: 'inline-flex' },
+                }}
+              >
+                <MdChevronLeft size={22} />
+              </IconButton>
+
+              <IconButton
+                aria-label="Scroll right"
+                variant="soft"
+                color="neutral"
+                onClick={() => scrollCarousel('right')}
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: { xs: 4, sm: 8 },
+                  transform: 'translateY(-50%)',
+                  zIndex: 2,
+                  boxShadow: 'sm',
+                  display: { xs: 'none', sm: 'inline-flex' },
+                }}
+              >
+                <MdChevronRight size={22} />
+              </IconButton>
+
+              <Box
+                ref={carouselRef}
+                role="region"
+                aria-label="Clients carousel"
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  gap: 2,
+                  overflowX: { xs: 'visible', sm: 'auto' },
+                  overflowY: { xs: 'visible', sm: 'hidden' },
+                  scrollSnapType: { xs: 'none', sm: 'x mandatory' },
+                  scrollBehavior: 'smooth',
+                  pb: 1,
+                  px: 1,
+                  mx: { xs: 0, sm: 0 },
+                  '&::-webkit-scrollbar': { display: 'none' },
+                  WebkitOverflowScrolling: 'touch',
+                }}
+              >
+                {categories.map(({ client, count }) => {
+                  const cover = clientCovers[client] || { src: '/home.jpg', alt: `${client} cover` };
+                  return (
+                    <Card
+                      key={client}
+                      variant="outlined"
                       sx={{
-                        position: 'absolute',
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 0.5,
-                        p: 1.5,
+                        cursor: 'pointer',
+                        overflow: 'hidden',
+                        position: 'relative',
+                        aspectRatio: '1 / 1',
+                        width: { xs: '100%', sm: 'auto' },
+                        minWidth: { xs: '100%', sm: '60%', md: '45%' },
+                        flex: { xs: '0 1 auto', sm: '0 0 auto' },
+                        scrollSnapAlign: { sm: 'center' },
+                        transition: 'transform 150ms ease, box-shadow 150ms ease',
+                        '&:hover': { boxShadow: 'lg', transform: 'translateY(-2px)' },
                       }}
+                      role="button"
+                      aria-label={`${client}: ${count} project${count === 1 ? '' : 's'}. View projects.`}
+                      onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
                     >
-                      <Typography level="h4" sx={{ color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,.6)' }}>
-                        {client}
-                      </Typography>
-                      <Typography level="body-sm" sx={{ color: 'rgba(255,255,255,0.9)' }}>
-                        {clientTaglines[client]}
-                      </Typography>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
-                        <Chip
-                          size="sm"
-                          variant="soft"
-                          color="neutral"
-                          sx={{ bgcolor: 'rgba(255,255,255,0.18)', color: '#fff', backdropFilter: 'blur(2px)' }}
-                        >
-                          {count} project{count === 1 ? '' : 's'}
-                        </Chip>
-                        <Typography level="body-sm" sx={{ color: '#fff' }}>View projects →</Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                      <CardCover>
+                        <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
+                          <Image
+                            src={cover.src}
+                            alt={cover.alt}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 45vw"
+                            style={{ objectFit: 'contain' }}
+                            priority={false}
+                          />
+                        </Box>
+                      </CardCover>
+                      <CardCover sx={{
+                        background: 'linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)'
+                      }} />
+                      <CardContent
+                        sx={{
+                          position: 'absolute',
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 0.5,
+                          p: 1.5,
+                        }}
+                      >
+                        <Typography level="h4" sx={{ color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,.6)' }}>
+                          {client}
+                        </Typography>
+                        <Typography level="body-sm" sx={{ color: 'rgba(255,255,255,0.9)' }}>
+                          {clientTaglines[client]}
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
+                          <Chip
+                            size="sm"
+                            variant="soft"
+                            color="neutral"
+                            sx={{ bgcolor: 'rgba(255,255,255,0.18)', color: '#fff', backdropFilter: 'blur(2px)' }}
+                          >
+                            {count} project{count === 1 ? '' : 's'}
+                          </Chip>
+                          <Typography level="body-sm" sx={{ color: '#fff' }}>View projects →</Typography>
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </Box>
             </Box>
           </Box>
         </Box>
