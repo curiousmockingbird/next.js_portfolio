@@ -56,10 +56,7 @@ const Contact = () => {
     }
 
     return (
-        <>
-            <div >
-                <Toggle />
-                <main className='h-full main grid lg:grid-cols-2'>
+                <main className='h-full min-h-screen main grid lg:grid-cols-2 items-center'>
                     <div className='flex flex-col justify-center items-center'>
                         <div className='pb-2 lg:pb-0'><h2>You can also find me on:</h2></div>
                         <div className='flex justify-center items-center'>
@@ -169,8 +166,6 @@ const Contact = () => {
                         </Transition>
                     </div>
                 </main>
-            </div>
-        </>
     );
 }
 

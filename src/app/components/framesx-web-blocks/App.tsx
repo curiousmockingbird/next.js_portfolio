@@ -154,7 +154,7 @@ export default function TeamExample() {
       {view === 'overview' ? (
         <Box
           sx={{
-            backgroundColor: '#03082e',
+            backgroundColor: 'black',
             minHeight: '100vh',
             display: 'grid',
             placeItems: 'center',

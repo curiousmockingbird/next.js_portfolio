@@ -12,28 +12,31 @@ type HomeButtonProps = {
   href?: string;
   tooltip?: string;
   ariaLabel?: string;
+  inline?: boolean;
 };
 
 export default function HomeButton({
   href = '/',
   tooltip = 'Home',
   ariaLabel = 'Go to home',
+  inline = false,
 }: HomeButtonProps) {
-  return (
-    <Box
-      sx={{
-        position: 'fixed',
+  const boxSx = inline
+    ? { position: 'static' as const }
+    : {
+        position: 'fixed' as const,
         top: 16,
-        // Mobile: center horizontally; larger screens: align with content container
         left: {
           xs: '50%',
-          sm: '1.5rem', // matches px-6
-          lg: 'calc((100vw - min(100vw, 1280px)) / 2 + 3rem)', // container gutter + lg:px-12
+          sm: '50%',
+          lg: 'calc((100vw - min(100vw, 1280px)) / 2 + 3rem)',
         },
         transform: { xs: 'translateX(-50%)', sm: 'none' },
         zIndex: 30,
-      }}
-    >
+      };
+
+  return (
+    <Box sx={boxSx}>
       <Tooltip title={tooltip} variant="soft" placement="right">
         <Link href={href} aria-label={ariaLabel}>
           <IconButton

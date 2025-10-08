@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ imageSrc }: HeaderProps) {
   return (
-    <Link href="/" className="h-[22vh] md:h-[22vh] lg:h-[18vh] p-12">
+    <div className="h-[22vh] md:h-[22vh] lg:h-[18vh] p-12">
       <div className="flex items-center justify-center">
         <Image
           src={imageSrc}
@@ -21,6 +21,6 @@ export default function Header({ imageSrc }: HeaderProps) {
       <div className="flex items-center justify-center">
       <h1 className=" text-base md:text-lg lg:text-base">harolDeveloper — Full-Stack</h1>
       </div>
-    </Link>
+    </div>
   );
 }

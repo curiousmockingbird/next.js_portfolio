@@ -237,6 +237,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
             enterTo="opacity-100"
           >
             <section className="p-8 rounded-lg">
+              <HomeButton inline />
               <h1 className="text-2xl font-semibold mb-3">About Me</h1>
               <AboutText />
             </section>
@@ -276,6 +277,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
   <main className="max-w-screen-xl mx-auto px-6 lg:px-12 mt-8">
 
+    <HomeButton />
     <Box className="grid md:grid-cols-2 gap-6 mt-8 items-center">
       <div>
         <Transition
@@ -333,6 +335,7 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
           enterTo="opacity-100"
         >
           <div>
+            <HomeButton  />
             <Image
               className="rounded-full ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm"
               src="/profile_pic.jpg"
@@ -391,7 +394,6 @@ export default function AboutClient() {
 
   return (
     <>
-      <HomeButton />
       {isMobile && <MobileLayout isMounted={isMounted} />}
       {isTablet && <TabletLayout isMounted={isMounted} />}
       {!isMobile && !isTablet && <DesktopLayout isMounted={isMounted} />}
