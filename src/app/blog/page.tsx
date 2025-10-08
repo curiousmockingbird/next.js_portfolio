@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
-import HeaderClient from "@/app/components/HeaderClient";
+// import HeaderClient from "@/app/components/HeaderClient";
+import HomeButton from "../components/HomeButton";
 
 export const metadata: Metadata = {
   title: "Blog | HarolDeveloper",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
-      <HeaderClient />
+      <HomeButton/>
       <BlogClient />
     </>
   );

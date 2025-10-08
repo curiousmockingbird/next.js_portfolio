@@ -27,8 +27,8 @@ export default function HomeButton({
         position: 'fixed' as const,
         top: 16,
         left: {
-          xs: '50%',
-          sm: '50%',
+          xs: 'calc((100vw - min(100vw, 1280px)) / 2 + 3rem)',
+          sm: 'calc((100vw - min(100vw, 1280px)) / 2 + 3rem)',
           lg: 'calc((100vw - min(100vw, 1280px)) / 2 + 3rem)',
         },
         transform: { xs: 'translateX(-50%)', sm: 'none' },

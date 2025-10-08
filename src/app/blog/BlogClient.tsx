@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Image from "next/image";
-import Toggle from "./../components/Toggle";
+// import Toggle from "./../components/Toggle";
 
 export default function Home() {
   const [post, setPosts] = useState<
@@ -94,7 +94,6 @@ export default function Home() {
 
   return (
     <div>
-      <Toggle />
       <SkeletonTheme baseColor="#202020" highlightColor="#444">
         <h1 className="text-center p-10 text-lg lg:text-lg font-bold">
           I enjoy writing about what I learn and about my journey as a developer on

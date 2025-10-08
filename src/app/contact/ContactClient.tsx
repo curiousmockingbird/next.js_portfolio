@@ -7,8 +7,8 @@ import { Fragment, useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 // import Typography from '@mui/joy/Typography';
 // import Link from '@mui/joy/Link';
-import Toggle from './../components/Toggle';
-
+// import Toggle from './../components/Toggle';
+import HomeButton from '../components/HomeButton';
 interface FormValues {
     name: string;
     email: string;
@@ -57,6 +57,7 @@ const Contact = () => {
 
     return (
                 <main className='h-full min-h-screen main grid lg:grid-cols-2 items-center'>
+                  <HomeButton/>
                     <div className='flex flex-col justify-center items-center'>
                         <div className='pb-2 lg:pb-0'><h2>You can also find me on:</h2></div>
                         <div className='flex justify-center items-center'>
@@ -69,7 +70,7 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center items-center">
-                        <h4 className="mb-4 text-center">Got Questions, Ideas, or Just Want to Say Hi?<br /> Drop Me an Email at <span className='font-bold text-2xl '>hola@haroldeveloper.tech</span><br /> I am All Ears (and Inbox)!</h4>
+                        <h4 className="mb-4 text-center">Got questions, ideas, or just want to say hi?<br /> Drop me an email at <span className='font-bold text-2xl '>hola@haroldeveloper.tech</span></h4>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-3/4">
                             <div>
                             </div>
