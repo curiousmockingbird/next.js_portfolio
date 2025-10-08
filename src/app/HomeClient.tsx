@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
-// import Header from './components/Header';
 import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from 'react-icons/md';
+
 
 const Icon = ({ path, size = 40, className = '' }: { path: string; size?: number; className?: string }) => (
   <svg
@@ -84,8 +84,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='flex flex-col flex-1'>
-          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5 flex-grow justify-center'>
+    <main className='flex flex-col flex-1 lg:min-h-screen lg:justify-center'>
+          <div className='grid grid-rows-auto lg:grid-cols-3 mx-auto w-full lg:w-4/5 flex-grow justify-center lg:content-center'>
           <Transition
           show={isMounted}
           enter="transition-opacity duration-700"
@@ -131,7 +131,7 @@ export default function Home() {
           description='Navigating the digital odyssey through my lens'/>
           </Transition>
 
-          <Transition
+          {/* <Transition
           show={isMounted}
           enter="transition-opacity duration-700 delay-700"
           enterFrom="opacity-0"
@@ -152,7 +152,7 @@ export default function Home() {
           enterFrom="opacity-0"
           enterTo="opacity-100"
           >   
-          </Transition>
+          </Transition> */}
           </div>           
     </main>
   )

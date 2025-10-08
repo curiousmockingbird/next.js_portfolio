@@ -6,6 +6,7 @@ import TanStackProvider from './components/providers/TanStackProvider'
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from './components/HeaderClient';
+import ChatWidget from './components/ChatWidget';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -44,6 +45,7 @@ export default function RootLayout({
             {children}
           </TanStackProvider>
         </ThemeProvider>
+        <ChatWidget />
         <Analytics />
         <SpeedInsights />
       </body>
