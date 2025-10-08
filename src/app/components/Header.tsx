@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ imageSrc }: HeaderProps) {
   return (
-    <Link href="/" className="h-[22vh] md:h-[22vh] lg:h-[18vh] p-4">
+    <Link href="/" className="h-[22vh] md:h-[22vh] lg:h-[18vh] p-12">
       <div className="flex items-center justify-center">
         <Image
           src={imageSrc}

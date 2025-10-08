@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
 // import Header from './components/Header';
-import Toggle from '@/app/components/Toggle';
 import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from 'react-icons/md';
 
 const Icon = ({ path, size = 40, className = '' }: { path: string; size?: number; className?: string }) => (
@@ -86,8 +85,7 @@ export default function Home() {
 
   return (
     <main className='flex flex-col flex-1'>
-          <Toggle/>
-          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5 flex-grow'>
+          <div className='grid grid-rows-auto lg:grid-cols-2 mx-auto w-full lg:w-4/5 flex-grow justify-center'>
           <Transition
           show={isMounted}
           enter="transition-opacity duration-700"

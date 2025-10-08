@@ -14,8 +14,8 @@ import Tooltip from "@mui/joy/Tooltip";
 import { MdArrowBack } from "react-icons/md";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import Link from "@mui/joy/Link";
 import { logFromApp } from "./utils/logger";
+import HomeButton from "../HomeButton";
 // import Toggle from './components/Toggle'
 import Image from "next/image";
 import framesxTheme from "./theme";
@@ -32,27 +32,7 @@ import Nombolo from "./blocks/Nombolo";
 import ContributionsByZip3 from "./blocks/Zip3";
 import CambridgeDogs from "./blocks/Dogs";
 
-function HomeButton() {
-  return (
-    <Box
-      sx={{ position: 'fixed', top: 16, left: { xs: 12, sm: 16, md: 24 }, zIndex: 30 }}
-    >
-      <Tooltip title="Home" variant="soft" placement="right">
-        <Link href="/" aria-label="Go to home">
-          <IconButton
-            variant="soft"
-            color="neutral"
-            size="lg"
-            sx={{ borderRadius: '50%' }}
-            onClick={() => logFromApp('Home')}
-          >
-            <MdArrowBack size={22} />
-          </IconButton>
-        </Link>
-      </Tooltip>
-    </Box>
-  );
-}
+// HomeButton moved to reusable component src/app/components/HomeButton.tsx
 
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);

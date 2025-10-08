@@ -6,10 +6,8 @@ import { Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Box from '@mui/system/Box';
 import Button from '@mui/joy/Button';
-import Toggle from '@/app/components/Toggle';
-// Note: We attempted react-icons brand set, but some environments
-// lack the 'react-icons/si' subset at build time. We use local SVGs
-// in /public for reliability, with graceful text fallbacks.
+// import Toggle from '@/app/components/Toggle';
+import HomeButton from '@/app/components/HomeButton';
 
 const logButtonClick = async (buttonName: string) => {
   try {
@@ -176,18 +174,60 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
   );
 
   return (
-    <li className="m-1 w-full">
+    <li className="m-1 shrink-0">
       {wrapped}
     </li>
   );
 };
 
+const ScrollingSkills = () => {
+  return (
+    <div className="w-full relative overflow-hidden py-2" aria-label="Technology stack">
+      <ul className="marquee" role="list">
+        {skills.map((skill) => (
+          <SkillBadge key={`a-${skill.label}`} skill={skill} />
+        ))}
+        {skills.map((skill) => (
+          <SkillBadge key={`b-${skill.label}`} skill={skill} />
+        ))}
+      </ul>
+      <style jsx>{`
+        .marquee {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem; /* matches Tailwind gap-6 */
+          width: max-content; /* shrink to content for smooth loop */
+          animation: scroll var(--scroll-duration, 30s) linear infinite;
+        }
+
+        /* Soft fade on edges for a nicer effect */
+        div[aria-label='Technology stack'] {
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* Pause scrolling on hover */
+        div[aria-label='Technology stack']:hover .marquee {
+          animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee { animation: none; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
   <main className='h-full' id="0">
-    <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
-      <Box className="flex justify-center items-center" id="1">
-        <Toggle />
-      </Box>
+    <div className="max-w-screen-xl mx-auto px-6 lg:px-12 lg:min-h-screen lg:flex lg:flex-col lg:justify-center">
+
       <Box className="grid lg:grid-cols-2 gap-8">
         <div>
           <Transition
@@ -222,11 +262,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
         enterTo="opacity-100"
       >
         <Box className="flex flex-col items-center justify-center gap-4 w-full">
-          <ul className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6" aria-label="Technology stack">
-            {skills.map((skill) => (
-              <SkillBadge key={skill.label} skill={skill} />
-            ))}
-          </ul>
+          <ScrollingSkills />
           <div className="flex items-center justify-center gap-3 flex-wrap w-full">
             <LinkedInButton />
             <GithubButton />
@@ -239,7 +275,6 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
 
 const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
   <main className="max-w-screen-xl mx-auto px-6 lg:px-12 mt-8">
-    <Toggle />
 
     <Box className="grid md:grid-cols-2 gap-6 mt-8 items-center">
       <div>
@@ -276,11 +311,7 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
       enterTo="opacity-100"
     >
       <Box className="flex flex-col items-center justify-center gap-4 my-8 w-full">
-        <ul className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6" aria-label="Technology stack">
-          {skills.map((skill) => (
-            <SkillBadge key={skill.label} skill={skill} />
-          ))}
-        </ul>
+        <ScrollingSkills />
         <div className="flex items-center justify-center gap-3 flex-wrap w-full">
           <LinkedInButton />
           <GithubButton />
@@ -292,7 +323,6 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
 
 const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
   <main className="max-w-screen-md mx-auto px-4 mt-8">
-    <Toggle />
 
     <Box>
       <div className="flex items-center justify-center mt-2">
@@ -322,11 +352,7 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
         enterTo="opacity-100"
       >
         <Box className="flex flex-col items-center justify-center gap-4 w-full">
-          <ul className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4" aria-label="Technology stack">
-            {skills.map((skill) => (
-              <SkillBadge key={skill.label} skill={skill} />
-            ))}
-          </ul>
+          <ScrollingSkills />
           <div className="flex items-center justify-center gap-3 w-full">
             <LinkedInButton />
             <GithubButton />
@@ -365,6 +391,7 @@ export default function AboutClient() {
 
   return (
     <>
+      <HomeButton />
       {isMobile && <MobileLayout isMounted={isMounted} />}
       {isTablet && <TabletLayout isMounted={isMounted} />}
       {!isMobile && !isTablet && <DesktopLayout isMounted={isMounted} />}
