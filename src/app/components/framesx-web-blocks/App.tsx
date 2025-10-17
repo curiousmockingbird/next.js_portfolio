@@ -45,11 +45,11 @@ export default function TeamExample() {
 
   type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode };
   const allProjects: Project[] = [
-    { label: 'VDLFA', client: 'Voces de la Frontera', node: <VDLFA /> },
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
-    { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
-    { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
+    { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
+    { label: 'VDLFA', client: 'Voces de la Frontera', node: <VDLFA /> },
+    { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
     { label: 'Sales Roads', client: 'Slingshot Content', node: <SalesRaods /> },
     { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
@@ -103,11 +103,6 @@ export default function TeamExample() {
     [projectsForClient]
   );
 
-  //   // if (currentPage === 0) return "#5c24c9;";
-  //   // if (currentPage > 0 && currentPage < 5) return "#eb4e6a";
-  //   // if (currentPage >= 5 && currentPage  < 8) return "#00b145";
-  //   return "#2841b1";
-  // }, );
 
   const clientName = React.useMemo(() => {
     return selectedClient ? (selectedClient === 'Personal Projects' ? 'Personal Projectss' : `Client: ${selectedClient}`) : '';
@@ -150,18 +145,18 @@ export default function TeamExample() {
       defaultMode="dark"
     >
       <CssBaseline />
-      <HomeButton />
       {view === 'overview' ? (
         <Box
-          sx={{
-            backgroundColor: 'black',
-            minHeight: '100vh',
-            display: 'grid',
-            placeItems: 'center',
-            p: 2,
-          }}
+        sx={{
+          backgroundColor: 'black',
+          minHeight: '100vh',
+          display: 'grid',
+          placeItems: 'center',
+          p: 2,
+        }}
         >
           <Box sx={{ width: '100%', maxWidth: 1000, px: { xs: 1, sm: 2 } }}>
+        <HomeButton inline />
             <Typography level="h3" sx={{ mb: 2, color: '#fff', textAlign:'center' }}>Projects by Client</Typography>
             <Box sx={{ position: 'relative' }}>
               <IconButton

@@ -237,7 +237,7 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
             enterTo="opacity-100"
           >
             <section className="p-8 rounded-lg">
-              <HomeButton  />
+              <HomeButton inline  />
               <h1 className="text-2xl font-semibold mb-3">About Me</h1>
               <AboutText />
             </section>
