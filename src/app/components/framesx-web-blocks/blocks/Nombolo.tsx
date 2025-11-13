@@ -147,7 +147,7 @@ export default function Nombolo() {
         Rewards App
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Mobile application built with React Native, implementing interactive UI components and optimizing performance for seamless user experience{" "}
+        Collaborated with Nombolo as a React Native intern, helping to implement interactive UI components, optimizing performance, and build a rewards feature{" "}
       </Typography>
       <BasicModal />
       <Button
