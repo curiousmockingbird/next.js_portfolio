@@ -31,6 +31,7 @@ import VDLFA from "./blocks/VDLFA";
 import Nombolo from "./blocks/Nombolo";
 import ContributionsByZip3 from "./blocks/Zip3";
 import CambridgeDogs from "./blocks/Dogs";
+import C3 from "./blocks/C3";
 
 // HomeButton moved to reusable component src/app/components/HomeButton.tsx
 
@@ -46,11 +47,12 @@ export default function TeamExample() {
   type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode };
   const allProjects: Project[] = [
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
-    { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
+    { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 /> },
+    { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA /> },
     { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
-    { label: 'VDLFA', client: 'Voces de la Frontera', node: <VDLFA /> },
     { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
+    { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
     { label: 'Sales Roads', client: 'Slingshot Content', node: <SalesRaods /> },
     { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
     { label: 'GTM', client: 'Slingshot Content', node: <GTM /> },
@@ -60,8 +62,8 @@ export default function TeamExample() {
   ];
 
   const clientOrder: Array<Project['client']> = [
-    'Nombolo',
     'Voces de la Frontera',
+    'Nombolo',
     'Slingshot Content',
     'Personal Projects',
   ];
@@ -70,7 +72,7 @@ export default function TeamExample() {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
     'Voces de la Frontera': { src: '/vdlf copy.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
-    'Personal Projects': { src: '/profile_pic.jpg', alt: 'Personal Projectss cover' },
+    'Personal Projects': { src: '/profile_pic.jpg', alt: 'Personal Projects cover' },
   };
 
   const clientTaglines: Record<Project['client'], string> = {
