@@ -1,52 +1,45 @@
-// import { NextResponse } from "next/server";
-// import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-// export async function middleware(request: NextRequest) {
-//   // Extract visitor details
-//   const ip = request.headers.get("x-forwarded-for") || "Unknown IP";
-//   const country = request.headers.get("x-vercel-ip-country") || "Unknown Country";
-//   const region = request.headers.get("x-vercel-ip-country-region") || "Unknown Region";
-//   const userAgent = request.headers.get("user-agent") || "Unknown User-Agent";
+// Block obvious bot/scanner paths (php, cgi-bin, wordpress, backups, etc.)
+const BLOCKED_PATTERNS: RegExp[] = [
+  /\.php($|\?|\/)/i,
+  /\.asp(x)?($|\?|\/)/i,
+  /\.cgi($|\?|\/)/i,
+  /\.bak($|\?|\/)/i,
+  /\.save($|\?|\/)/i,
+  /^\/cgi-bin(\/|$)/i,
+  /^\/wp-(admin|login\.php|includes|content)(\/|$)/i,
+  /^\/phpmyadmin(\/|$)/i,
+  /^\/server-status(\/|$)/i,
+  /^\/public\//i, // common probe like /public/phpinfo.php
+];
 
-//   // Log visitor info to Vercel logs
-//   console.log(`🌍 Visitor Info: IP: ${ip}, Country: ${country}, Region: ${region}, Device: ${userAgent}`);
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-//   // Send logs to BetterStack (Logtail)
-//   await fetch("https://in.logtail.com", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": `Bearer ${process.env.LOGTAIL_SOURCE_TOKEN}`, // Store in .env.local
-//     },
-//     body: JSON.stringify({
-//       message: `Visitor on Home Page`,
-//       ip,
-//       country,
-//       region,
-//       userAgent,
-//       timestamp: new Date(),
-//     }),
-//   });
+  // Skip Next.js internal and static asset requests quickly
+  if (
+    pathname.startsWith("/_next/") ||
+    pathname.startsWith("/favicon") ||
+    pathname.startsWith("/assets/") ||
+    pathname.match(/\.(?:png|jpg|jpeg|gif|svg|webp|ico|css|js|txt|json|map)$/i)
+  ) {
+    return NextResponse.next();
+  }
 
-//   // Continue request handling
-//   const response = NextResponse.next();
-//   response.headers.set("Cache-Control", "no-store"); // Prevent caching
-//   return response;
-// }
+  // Return a fast 404 for obviously invalid/probe paths to reduce log noise
+  if (BLOCKED_PATTERNS.some((re) => re.test(pathname))) {
+    return new NextResponse("Not Found", {
+      status: 404,
+      headers: { "Cache-Control": "no-store" },
+    });
+  }
 
-// // ✅ Ensures middleware only runs on `/` (home page)
-// export const config = {
-//   matcher: ["/"],
-// };
+  return NextResponse.next();
+}
 
-// // export async function middleware(request: NextRequest) {
-// //   console.log("✅ Middleware is running!"); // Debug log
-
-// //   const response = NextResponse.next();
-// //   return response;
-// // }
-
-// // // Ensure middleware only runs on home page (/)
-// // export const config = {
-// //   matcher: ["/"],
-// // };
+// Run for all routes
+export const config = {
+  matcher: ["/:path*"],
+};
