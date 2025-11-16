@@ -17,6 +17,12 @@ const BLOCKED_PATTERNS: RegExp[] = [
   /^\/public\//i, // common probe like /public/phpinfo.php
 ];
 
+// WordPress-specific probes that we answer with 410 Gone
+const WORDPRESS_PATTERNS: RegExp[] = [
+  /^\/wp-(admin|includes|content)(\/|$)/i,
+  /^\/xmlrpc\.php$/i,
+];
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -28,6 +34,14 @@ export function middleware(request: NextRequest) {
     pathname.match(/\.(?:png|jpg|jpeg|gif|svg|webp|ico|css|js|txt|json|map)$/i)
   ) {
     return NextResponse.next();
+  }
+
+  // Return a fast 410 for explicit WordPress probes
+  if (WORDPRESS_PATTERNS.some((re) => re.test(pathname))) {
+    return new NextResponse("Gone", {
+      status: 410,
+      headers: { "Cache-Control": "no-store" },
+    });
   }
 
   // Return a fast 404 for obviously invalid/probe paths to reduce log noise
