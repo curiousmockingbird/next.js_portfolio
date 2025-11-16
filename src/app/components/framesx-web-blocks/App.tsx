@@ -72,7 +72,7 @@ export default function TeamExample() {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
     'Voces de la Frontera': { src: '/vdlf copy.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
-    'Personal Projects': { src: '/profile_pic.jpg', alt: 'Personal Projects cover' },
+    'Personal Projects': { src: '/curious_mockingbird_pic.jpg', alt: 'Personal Projects cover' },
   };
 
   const clientTaglines: Record<Project['client'], string> = {
