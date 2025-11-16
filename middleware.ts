@@ -8,6 +8,8 @@ const BLOCKED_PATTERNS: RegExp[] = [
   /\.cgi($|\?|\/)/i,
   /\.bak($|\?|\/)/i,
   /\.save($|\?|\/)/i,
+  /\.env($|\?|\/)/i,
+  /sftp-config\.json($|\?|\/)/i,
   /^\/cgi-bin(\/|$)/i,
   /^\/wp-(admin|login\.php|includes|content)(\/|$)/i,
   /^\/phpmyadmin(\/|$)/i,
@@ -33,6 +35,15 @@ export function middleware(request: NextRequest) {
     return new NextResponse("Not Found", {
       status: 404,
       headers: { "Cache-Control": "no-store" },
+    });
+  }
+
+  // Block non-GET/HEAD methods to non-API routes (common bot POST probes like xmlrpc.php)
+  const method = request.method.toUpperCase();
+  if (!pathname.startsWith("/api/") && !["GET", "HEAD"].includes(method)) {
+    return new NextResponse("Method Not Allowed", {
+      status: 405,
+      headers: { "Allow": "GET, HEAD" },
     });
   }
 
