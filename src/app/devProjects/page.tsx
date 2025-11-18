@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import DevProjectsClient from './DevProjectsClient';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Dev Projects | HarolDeveloper',
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function DevProjectsPage() {
-  return <DevProjectsClient />;
+  return (
+    <Suspense fallback={null}>
+      <DevProjectsClient />
+    </Suspense>
+  );
 }
