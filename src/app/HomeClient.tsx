@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import MyTransition from '@/app/components/Transition'
 import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from 'react-icons/md';
+import ScrollingSkills from '@/app/components/ScrollingSkills';
 
 
 const Icon = ({ path, size = 40, className = '' }: { path: string; size?: number; className?: string }) => (
@@ -86,6 +87,7 @@ export default function Home() {
   return (
     <main className='flex flex-col flex-1 lg:min-h-screen lg:justify-center'>
           <div className='grid grid-rows-auto lg:grid-cols-3 mx-auto w-full lg:w-4/5 flex-grow justify-center lg:content-center'>
+          
           <Transition
           show={isMounted}
           enter="transition-opacity duration-700"
@@ -131,6 +133,12 @@ export default function Home() {
           description='Navigating the digital odyssey through my lens'/>
           </Transition>
 
+          <div className='col-span-full lg:col-span-3 flex justify-center py-2'>
+            <div className='w-full'>
+              <ScrollingSkills />
+            </div>
+          </div>
+
           {/* <Transition
           show={isMounted}
           enter="transition-opacity duration-700 delay-700"
@@ -153,7 +161,7 @@ export default function Home() {
           enterTo="opacity-100"
           >   
           </Transition> */}
-          </div>           
+          </div>
     </main>
   )
 }
