@@ -35,6 +35,8 @@ import C3 from "./blocks/C3";
 
 // HomeButton moved to reusable component src/app/components/HomeButton.tsx
 
+import { useSearchParams } from "next/navigation";
+
 export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [view, setView] = React.useState<'overview' | 'detail'>("overview");
@@ -43,18 +45,20 @@ export default function TeamExample() {
   >(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const carouselRef = React.useRef<HTMLDivElement | null>(null);
+  const pendingProjectSlugRef = React.useRef<string | null>(null);
 
-  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode };
+  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects'; node: React.ReactNode; slug?: string };
   const allProjects: Project[] = [
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
-    { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 /> },
-    { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA /> },
+    // C3 block: expose an addressable slug
+    { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
+    { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlf-action' },
     { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
     { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
     { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
-    { label: 'Sales Roads', client: 'Slingshot Content', node: <SalesRaods /> },
-    { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData /> },
+    { label: 'Sales Roads', client: 'Slingshot Content', node: <SalesRaods />, slug: 'sales-roads' },
+    { label: 'Big Lake Data', client: 'Slingshot Content', node: <BigLakeData />, slug: 'big-lake-data' },
     { label: 'GTM', client: 'Slingshot Content', node: <GTM /> },
     { label: 'Trey Savage', client: 'Personal Projects', node: <TreySavage /> },
     { label: 'Harold Designer', client: 'Personal Projects', node: <HaroldDesigner /> },
@@ -139,6 +143,47 @@ export default function TeamExample() {
     document.body.classList.add("framesx-app");
     return () => document.body.classList.remove("framesx-app");
   }, []);
+
+  // Support deep-linking via query params: ?project=c3 (optional ?client=<slug>)
+  const searchParams = useSearchParams();
+  React.useEffect(() => {
+    const maybeProject = searchParams?.get('project');
+    const maybeClient = searchParams?.get('client');
+
+    // Fallback: allow #project=c3 in the hash
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    const hashProject = hash.startsWith('#project=') ? hash.split('=')[1] : null;
+
+    const projectSlug = (maybeProject || hashProject)?.toLowerCase();
+    if (!projectSlug) return;
+
+    const target = allProjects.find(p => (p.slug || p.label.toLowerCase().replace(/\s+/g, '-')) === projectSlug);
+    if (!target) return;
+
+    pendingProjectSlugRef.current = projectSlug;
+    setSelectedClient(target.client);
+    setView('detail');
+    setCurrentPage(0);
+  // We only want to respond to initial params; eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // After switching to the client detail view, scroll to the target project by slug
+  React.useEffect(() => {
+    const slug = pendingProjectSlugRef.current;
+    if (!slug) return;
+    if (view !== 'detail') return;
+    if (!projectsForClient.length) return;
+
+    const idx = projectsForClient.findIndex(p => (p.slug || p.label.toLowerCase().replace(/\s+/g, '-')) === slug);
+    if (idx >= 0) {
+      // Delay a tick to ensure the container size is final before scrolling
+      requestAnimationFrame(() => {
+        scrollToIndex(idx);
+        setCurrentPage(idx);
+      });
+    }
+    pendingProjectSlugRef.current = null;
+  }, [view, projectsForClient]);
 
   return (
     <CssVarsProvider
