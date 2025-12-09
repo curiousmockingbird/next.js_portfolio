@@ -66,8 +66,26 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
 
 export default function ScrollingSkills() {
   return (
-    <div className="w-full relative overflow-hidden py-2" aria-label="Technology stack">
-      <ul className="marquee" role="list">
+    <div
+      className="w-full relative overflow-hidden py-2"
+      aria-label="Technology stack"
+      style={{
+        WebkitMaskImage:
+          'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+        maskImage:
+          'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+      }}
+    >
+      <ul
+        className="marquee"
+        role="list"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1.5rem',
+          width: 'max-content',
+        }}
+      >
         {skills.map((skill) => (
           <SkillBadge key={`a-${skill.label}`} skill={skill} />
         ))}
@@ -76,19 +94,7 @@ export default function ScrollingSkills() {
         ))}
       </ul>
       <style jsx>{`
-        .marquee {
-          display: flex;
-          align-items: center;
-          gap: 1.5rem; /* matches Tailwind gap-6 */
-          width: max-content; /* shrink to content for smooth loop */
-          animation: scroll var(--scroll-duration, 30s) linear infinite;
-        }
-
-        /* Soft fade on edges for a nicer effect */
-        div[aria-label='Technology stack'] {
-          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-                  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
+        .marquee { animation: scroll var(--scroll-duration, 30s) linear infinite; }
 
         /* Pause scrolling on hover */
         div[aria-label='Technology stack']:hover .marquee {
@@ -100,11 +106,8 @@ export default function ScrollingSkills() {
           to   { transform: translateX(-50%); }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-          .marquee { animation: none; }
-        }
+        @media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
       `}</style>
     </div>
   );
 }
-
