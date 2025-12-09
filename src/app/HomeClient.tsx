@@ -1,12 +1,12 @@
 // import Link from 'next/link'
-'use client'
+"use client";
 // import Image from 'next/image'
-import React, { useEffect, useState } from 'react';
-import { Transition } from '@headlessui/react';
-import MyTransition from '@/app/components/Transition'
-import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from 'react-icons/md';
-import ScrollingSkills from '@/app/components/ScrollingSkills';
-
+import React, { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
+import MyTransition from "@/app/components/Transition";
+import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from "react-icons/md";
+import ScrollingSkills from "@/app/components/ScrollingSkills";
+import Box from "@mui/system/Box";
 
 // const Icon = ({ path, size = 40, className = '' }: { path: string; size?: number; className?: string }) => (
 //   <svg
@@ -49,15 +49,15 @@ import ScrollingSkills from '@/app/components/ScrollingSkills';
 
 const logVisitorLocation = () => {
   try {
-    const success = navigator.sendBeacon('/api/location');
+    const success = navigator.sendBeacon("/api/location");
 
     if (!success) {
-      throw new Error('sendBeacon failed');
+      throw new Error("sendBeacon failed");
     }
 
-    console.log('📍 Visitor location logged successfully');
+    console.log("📍 Visitor location logged successfully");
   } catch (error) {
-    console.error('⚠️ Error logging visitor location:', error);
+    console.error("⚠️ Error logging visitor location:", error);
   }
 };
 
@@ -68,15 +68,15 @@ export default function Home() {
     setIsMounted(true);
 
     // Check if the visitor location has already been logged
-    const hasLogged = sessionStorage.getItem('hasLoggedVisitorLocation');
+    const hasLogged = sessionStorage.getItem("hasLoggedVisitorLocation");
 
     if (!hasLogged) {
       const log = () => {
         logVisitorLocation();
-        sessionStorage.setItem('hasLoggedVisitorLocation', 'true'); // Mark as logged
+        sessionStorage.setItem("hasLoggedVisitorLocation", "true"); // Mark as logged
       };
 
-      if ('requestIdleCallback' in window) {
+      if ("requestIdleCallback" in window) {
         requestIdleCallback(log);
       } else {
         setTimeout(log, 0);
@@ -85,83 +85,64 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='flex flex-col flex-1 lg:min-h-screen lg:justify-center'>
-          <div className='grid grid-rows-auto lg:grid-cols-3 mx-auto w-full lg:w-4/5 flex-grow justify-center lg:content-center'>
-          
-          <Transition
+    <main className="flex flex-col flex-1 lg:min-h-screen lg:justify-center">
+      <div className="grid grid-rows-auto lg:grid-cols-3 mx-auto w-full lg:w-4/5 flex-grow justify-center lg:content-center">
+        <Transition
           show={isMounted}
           enter="transition-opacity duration-700"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          >
-          <div className='flex flex-col items-center py-2'>
-          <MdCode size={40} />
+        >
+          <div className="flex flex-col items-center py-2">
+            <MdCode size={40} />
           </div>
-          <MyTransition 
-          redirectTo='/devProjects'
-          sectionName='Dev Projects'
-          description='Professional projects across the modern full-stack landscape'
-          />            
-          </Transition>
-          
-          <Transition
-                show={isMounted}
-                enter="transition-opacity duration-700 delay-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-            >
-          <div className='flex flex-col items-center py-2'>
-          <MdInfo size={40} />
-          </div>
-          <MyTransition 
-          redirectTo='/about'
-          sectionName='About Me'
-          description='Full-stack developer specializing in JavaScript'/>         
-          </Transition>
+          <MyTransition
+            redirectTo="/devProjects"
+            sectionName="Dev Projects"
+            description="Professional projects across the modern full-stack landscape"
+          />
+        </Transition>
 
-          <Transition
+        <Transition
+          show={isMounted}
+          enter="transition-opacity duration-700 delay-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+        >
+          <div className="flex flex-col items-center py-2">
+            <MdInfo size={40} />
+          </div>
+          <MyTransition
+            redirectTo="/about"
+            sectionName="About Me"
+            description="Full-stack developer specializing in JavaScript"
+          />
+        </Transition>
+
+        <Transition
           show={isMounted}
           enter="transition-opacity duration-700 delay-500"
           enterFrom="opacity-0"
-          enterTo="opacity-100">
-          <div className='flex flex-col items-center py-2'>
-          <MdEditNote size={40} />
-          </div>
-          <MyTransition 
-          redirectTo='/blog'
-          sectionName='My blog'
-          description='Navigating the digital odyssey through my lens'/>
-          </Transition>
-
-          <div className='col-span-full lg:col-span-3 flex justify-center py-2'>
-            <div className='w-full'>
-              <ScrollingSkills />
-            </div>
-          </div>
-
-          {/* <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-700"
-          enterFrom="opacity-0"
           enterTo="opacity-100"
-          >
-          <div className='flex flex-col items-center py-2'>
-          <MdAlternateEmail size={40} />
+        >
+          <div className="flex flex-col items-center py-2">
+            <MdEditNote size={40} />
           </div>
-          <MyTransition 
-          redirectTo='/contact'
-          sectionName='Contact'
-          description=' Have a question or want to work together?'/>
-          </Transition>
-
-          <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-700"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          >   
-          </Transition> */}
-          </div>
+          <MyTransition
+            redirectTo="/blog"
+            sectionName="My blog"
+            description="Navigating the digital odyssey through my lens"
+          />
+        </Transition>
+      </div>
+      <Transition
+        show={isMounted}
+        enter="transition-opacity duration-700 delay-700"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        <ScrollingSkills />
+      </Transition>
     </main>
-  )
+  );
 }
