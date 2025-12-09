@@ -25,3 +25,22 @@ body.light:not(.framesx-app) {
   --text-color: #000;
 }
 
+/* Global marquee animation to ensure consistent behavior across wrappers */
+/* Four-segment seamless scroll; shift by 1/4 width */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+
+.marquee {
+  animation: marquee-scroll var(--scroll-duration, 30s) linear infinite;
+}
+
+/* Pause scrolling on hover of the tech marquee container */
+.tech-marquee:hover .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}

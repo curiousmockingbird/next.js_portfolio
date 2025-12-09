@@ -67,7 +67,7 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
 export default function ScrollingSkills() {
   return (
     <div
-      className="w-full relative overflow-hidden py-2"
+      className="w-full min-w-0 relative overflow-hidden py-2 tech-marquee"
       aria-label="Technology stack"
       style={{
         WebkitMaskImage:
@@ -84,6 +84,7 @@ export default function ScrollingSkills() {
           alignItems: 'center',
           gap: '1.5rem',
           width: 'max-content',
+          willChange: 'transform',
         }}
       >
         {skills.map((skill) => (
@@ -92,22 +93,14 @@ export default function ScrollingSkills() {
         {skills.map((skill) => (
           <SkillBadge key={`b-${skill.label}`} skill={skill} />
         ))}
+        {skills.map((skill) => (
+          <SkillBadge key={`c-${skill.label}`} skill={skill} />
+        ))}
+        {skills.map((skill) => (
+          <SkillBadge key={`d-${skill.label}`} skill={skill} />
+        ))}
       </ul>
-      <style jsx>{`
-        .marquee { animation: scroll var(--scroll-duration, 30s) linear infinite; }
-
-        /* Pause scrolling on hover */
-        div[aria-label='Technology stack']:hover .marquee {
-          animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
-      `}</style>
+      {/* Styling moved to global CSS to avoid scoping issues within transitions */}
     </div>
   );
 }
