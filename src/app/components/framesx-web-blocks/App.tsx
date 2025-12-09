@@ -111,7 +111,7 @@ export default function TeamExample() {
 
 
   const clientName = React.useMemo(() => {
-    return selectedClient ? (selectedClient === 'Personal Projects' ? 'Personal Projectss' : `Client: ${selectedClient}`) : '';
+    return selectedClient ? (selectedClient === 'Personal Projects' ? 'Personal Projects' : `Client: ${selectedClient}`) : '';
   }, [selectedClient]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
@@ -202,7 +202,7 @@ export default function TeamExample() {
           p: 2,
         }}
         >
-          <Box sx={{ width: '100%', maxWidth: 1000, px: { xs: 1, sm: 2 } }}>
+          <Box sx={{ width: '100%', maxWidth: { xs: 1000, md: 1400, lg: 1600 }, px: { xs: 1, sm: 2 } }}>
         <HomeButton inline />
             <Typography level="h3" sx={{ mb: 2, color: '#fff', textAlign:'center' }}>Projects by Client</Typography>
             <Box sx={{ position: 'relative' }}>
