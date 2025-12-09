@@ -85,64 +85,67 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col flex-1 lg:min-h-screen lg:justify-center">
-      <div className="grid grid-rows-auto lg:grid-cols-3 mx-auto w-full lg:w-4/5 flex-grow justify-center lg:content-center">
-        <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          <div className="flex flex-col items-center py-2">
-            <MdCode size={40} />
-          </div>
-          <MyTransition
-            redirectTo="/devProjects"
-            sectionName="Dev Projects"
-            description="Professional projects across the modern full-stack landscape"
-          />
-        </Transition>
+    <main className="flex flex-col min-h-screen justify-center">
+      <div className="mx-auto w-full lg:w-4/5">
+        <div id='one' className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center">
+          <Transition
+            show={isMounted}
+            enter="transition-opacity duration-700"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+          >
+            <div className="flex flex-col items-center py-2">
+              <MdCode size={40} />
+            </div>
+            <MyTransition
+              redirectTo="/devProjects"
+              sectionName="Dev Projects"
+              description="Professional projects across the modern full-stack landscape"
+            />
+          </Transition>
 
-        <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          <div className="flex flex-col items-center py-2">
-            <MdInfo size={40} />
-          </div>
-          <MyTransition
-            redirectTo="/about"
-            sectionName="About Me"
-            description="Full-stack developer specializing in JavaScript"
-          />
-        </Transition>
+          <Transition
+            show={isMounted}
+            enter="transition-opacity duration-700 delay-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+          >
+            <div className="flex flex-col items-center py-2">
+              <MdInfo size={40} />
+            </div>
+            <MyTransition
+              redirectTo="/about"
+              sectionName="About Me"
+              description="Full-stack developer specializing in JavaScript"
+            />
+          </Transition>
 
+          <Transition
+            show={isMounted}
+            enter="transition-opacity duration-700 delay-500"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+          >
+            <div className="flex flex-col items-center py-2">
+              <MdEditNote size={40} />
+            </div>
+            <MyTransition
+              redirectTo="/blog"
+              sectionName="My blog"
+              description="Navigating the digital odyssey through my lens"
+            />
+          </Transition>
+        </div>
         <Transition
+          id='two'
           show={isMounted}
-          enter="transition-opacity duration-700 delay-500"
+          enter="transition-opacity duration-700 delay-700"
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <div className="flex flex-col items-center py-2">
-            <MdEditNote size={40} />
-          </div>
-          <MyTransition
-            redirectTo="/blog"
-            sectionName="My blog"
-            description="Navigating the digital odyssey through my lens"
-          />
+          <ScrollingSkills />
         </Transition>
       </div>
-      <Transition
-        show={isMounted}
-        enter="transition-opacity duration-700 delay-700"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-      >
-        <ScrollingSkills />
-      </Transition>
     </main>
   );
 }
