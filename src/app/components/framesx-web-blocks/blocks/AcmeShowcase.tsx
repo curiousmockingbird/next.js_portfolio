@@ -17,7 +17,7 @@ export default function AcmeShowcase() {
         lineHeight="2.5rem"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        Acme Labs — Marketing Site
+        Cubuntu
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
         Responsive marketing website with reusable components, themeable design system, and
@@ -30,7 +30,7 @@ export default function AcmeShowcase() {
         onClick={() => {}}
         startDecorator={<MdArrowForward size={28} />}
       >
-        View Details
+        Visit
       </Button>
     </TwoSidedLayout>
   );

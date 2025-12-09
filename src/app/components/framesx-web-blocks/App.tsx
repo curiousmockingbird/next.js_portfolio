@@ -42,17 +42,17 @@ export default function TeamExample() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [view, setView] = React.useState<'overview' | 'detail'>("overview");
   const [selectedClient, setSelectedClient] = React.useState<
-    'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Acme Labs' | null
+    'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Cubuntu' | null
   >(null);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const carouselRef = React.useRef<HTMLDivElement | null>(null);
   const pendingProjectSlugRef = React.useRef<string | null>(null);
 
-  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Acme Labs'; node: React.ReactNode; slug?: string };
+  type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Cubuntu'; node: React.ReactNode; slug?: string };
   const allProjects: Project[] = [
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
     // New client and project
-    { label: 'Marketing Site', client: 'Acme Labs', node: <AcmeShowcase />, slug: 'acme-marketing' },
+    { label: 'Marketing Site', client: 'Cubuntu', node: <AcmeShowcase />, slug: 'acme-marketing' },
     // C3 block: expose an addressable slug
     { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
     { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlf-action' },
@@ -69,7 +69,7 @@ export default function TeamExample() {
   ];
 
   const clientOrder: Array<Project['client']> = [
-    'Acme Labs',
+    'Cubuntu',
     'Nombolo',
     'Voces de la Frontera',
     'Slingshot Content',
@@ -80,7 +80,7 @@ export default function TeamExample() {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
     'Voces de la Frontera': { src: '/vdlf copy.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
-    'Acme Labs': { src: '/cubuntu.svg', alt: 'Acme Labs projects cover' },
+    'Cubuntu': { src: '/cubuntu.svg', alt: 'Cubuntu projects cover' },
     'Personal Projects': { src: '/curious_mockingbird_pic.jpg', alt: 'Personal Projects cover' },
   };
 
@@ -88,7 +88,7 @@ export default function TeamExample() {
     'Nombolo': 'Portland, OR based startup on a mission to better connect people',
     'Voces de la Frontera': 'Civic engagement and events tooling',
     'Slingshot Content': 'Full-stack JavaScript developer',
-    'Acme Labs': 'Modern web experiences and rapid prototyping',
+    'Cubuntu': 'Podcast hosting and community platform',
     'Personal Projects': 'Solo experiments and demos',
   };
 
@@ -97,7 +97,7 @@ export default function TeamExample() {
       'Nombolo': 0,
       'Voces de la Frontera': 0,
       'Slingshot Content': 0,
-      'Acme Labs': 0,
+      'Cubuntu': 0,
       'Personal Projects': 0,
     };
     allProjects.forEach((p) => { counts[p.client] += 1; });
@@ -290,7 +290,7 @@ export default function TeamExample() {
                       aria-label={`${client}: ${count} project${count === 1 ? '' : 's'}. View projects.`}
                       onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
                     >
-                      <CardCover>
+                      <CardCover sx={{ bgcolor: '#fff' }}>
                         <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
                           <Image
                             src={cover.src}
