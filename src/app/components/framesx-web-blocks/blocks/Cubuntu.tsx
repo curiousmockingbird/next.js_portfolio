@@ -12,7 +12,7 @@ import TwoSidedLayout from "../components/TwoSidedLayout";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import Sheet from "@mui/joy/Sheet";
-import { FaGithub } from 'react-icons/fa';
+// import { FaGithub } from 'react-icons/fa';
 
 const BasicModal: React.FC = () => {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -23,7 +23,7 @@ const BasicModal: React.FC = () => {
         color="neutral"
         onClick={() => {
           setOpen(true);
-          logButtonClick("Learn More (WebMgmt)");
+          logButtonClick("Learn More (Cubuntu)");
         }}
       >
         Learn More
@@ -124,11 +124,17 @@ const BasicModal: React.FC = () => {
 export default function Cubuntu() {
   return (
     <TwoSidedLayout
-      technologies={['WordPress', 'Vue', 'typescript', 'Vercel', 'node.js', 'Figma']}
+      technologies={[
+        "WordPress",
+        "Vue",
+        "typescript",
+        "Vercel",
+        "node.js",
+        "Figma",
+      ]}
       alt="Modern web page management UI"
       img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1763141462/samples/graphic_design_work/devProjects/Screenshot_2025-11-14_at_12.29.51_PM_nkauh7.png"
     >
-
       <Typography
         level="h1"
         fontWeight="xl"
@@ -138,7 +144,9 @@ export default function Cubuntu() {
         Cubuntu
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Helping non‑technical teams publish quickly without sacrificing performance, accessibility, or brand consistency — combining a flexible content model, a component‑driven UI, and CI/CD for safe, repeatable releases.
+        Full-featured podcast web app & community platform to allow Cubans to imagine a
+        better future for their country. The app includes user authentication, an RSS feed endpoint for
+        podcast syndication, and Git LFS integration to efficiently track and version large audio files.
       </Typography>
       <BasicModal />
       <Button

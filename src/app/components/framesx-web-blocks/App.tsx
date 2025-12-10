@@ -52,7 +52,7 @@ export default function TeamExample() {
   const allProjects: Project[] = [
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
     // New client and project
-    { label: 'Marketing Site', client: 'Cubuntu', node: <AcmeShowcase />, slug: 'acme-marketing' },
+    { label: 'Podcast host & Community Platform', client: 'Cubuntu', node: <AcmeShowcase />, slug: 'acme-marketing' },
     // C3 block: expose an addressable slug
     { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
     { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlf-action' },
