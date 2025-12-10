@@ -135,7 +135,7 @@ export default function Nombolo() {
     <TwoSidedLayout
       technologies={['React Native', 'typescript', 'AWS', 'node.js', 'mongodb', 'expo']}
       alt="Contact form screenshot"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1757461943/samples/graphic_design_work/devProjects/Screenshot_2025-09-09_at_7.51.10_PM_dvnjph.png"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1765410288/samples/graphic_design_work/devProjects/for_nombolo_kvsnqf.png"
     >
 
       <Typography

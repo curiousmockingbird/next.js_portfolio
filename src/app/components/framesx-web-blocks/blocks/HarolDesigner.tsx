@@ -86,8 +86,8 @@ export default function HarolDesigner() {
         A dynamic showcase built with Next.js. This portfolio highlights my work in various graphic design areas. I used libraries like Cloudinary, TanStack, and NodeMailer to provide an engaging user experience.
       </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://haroldesigner-git-main-curiousmockingbirds-projects.vercel.app/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Deployment (GD Portfolio)")}> 
-        Deployment
+      <Button size='lg' component="a" href="https://haroldesigner-git-main-curiousmockingbirds-projects.vercel.app/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (GD Portfolio)")}> 
+        Visit
       </Button>
       <Button size='lg' component="a" href="https://github.com/curiousmockingbird/my_graphic_design_portfolio" target="_blank" startDecorator={<FaGithub size={35} />} onClick={() => logButtonClick("Repo (GD Portfolio)")}> 
         Github repo

@@ -83,7 +83,7 @@ export default function HarolDesigner() {
       A dynamic showcase built with Next.js. This portfolio highlights the work of Trey Savage, an emerging artist born and raised in Milwaukee, Wisconsin.
       </Typography>
       <BasicModal />
-      <Button size='lg' component="a" href="https://treysavage.vercel.app/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Deployment (GD Portfolio)")}> 
+      <Button size='lg' component="a" href="https://treysavage.vercel.app/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (Trey)")}> 
         Deployment
       </Button>
       <Button size='lg' component="a" href="https://github.com/curiousmockingbird/treysavage.git" target="_blank" startDecorator={<FaGithub size={35} />} onClick={() => logButtonClick("Repo (GD Portfolio)")}> 

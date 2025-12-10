@@ -116,7 +116,7 @@ export default function Home() {
             <MyTransition
               redirectTo="/about"
               sectionName="About Me"
-              description="Full-stack developer specializing in JavaScript"
+              description="Full-stack Engineer & Designer"
             />
           </Transition>
 

@@ -104,7 +104,7 @@ const AboutText = () => (
       nonprofits. I work across React/Next.js, TypeScript, Node/Express, and
       modern deployments (Vercel, WP Engine), pairing clean UX with reliable
       engineering. */}
-      I’m Harold Mesa, a full-stack engineering and designer who thrives at turning complex requirements into clean, production-ready web systems. I pair a designer’s eye with solid engineering practices—versioned code, clear docs, and performance optimization—to deliver interfaces that are fast, accessible, and maintainable.
+      I’m Harold Mesa, a full-stack engineer and designer who thrives at turning complex requirements into clean, production-ready web systems. I pair a designer’s eye with solid engineering practices—versioned code, clear docs, and performance optimization—to deliver interfaces that are fast, accessible, and maintainable.
     </p>
     {/* <p className="mb-4">
       Currently, I work as a contractor with Wisconsin&apos;s leading grassroots

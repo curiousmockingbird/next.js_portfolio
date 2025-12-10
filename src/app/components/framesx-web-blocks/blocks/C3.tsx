@@ -147,9 +147,9 @@ export default function Vdlfa() {
         href="https://vdlf.org"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
-        onClick={() => logButtonClick("Deployment (Vdlfa)")}
+        onClick={() => logButtonClick("Visit (Vdlf)")}
       >
-        Deployment
+        Visit
       </Button>
       <Button
         size="lg"

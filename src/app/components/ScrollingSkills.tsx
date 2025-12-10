@@ -12,6 +12,7 @@ type Skill = {
 const skills: Skill[] = [
   { label: 'Next.js', src: '/Next.js.svg', href: 'https://nextjs.org' },
   { label: 'React', src: '/react.svg', href: 'https://react.dev' },
+  { label: 'Storybook', src: '/storybook.svg', href: 'https://storybook.js.org' },
   { label: 'JavaScript', src: '/javascript.png', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   { label: 'TypeScript', src: '/typescript.svg', href: 'https://www.typescriptlang.org' },
   { label: 'Node.js', src: '/node.svg', href: 'https://nodejs.org' },

@@ -135,7 +135,7 @@ export default function BigLake() {
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://www.biglakedata.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (BLD)")}> 
-        Deployment
+        Visit
       </Button>
     </ForWordPress>
     </div>

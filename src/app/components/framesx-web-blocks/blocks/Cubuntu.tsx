@@ -59,12 +59,12 @@ const BasicModal: React.FC = () => {
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
               <Typography component="h2" id="modal-title" level="h3" fontWeight="xl">
-                Modern Web Page Management
+                Cubuntu Technical Overview
               </Typography>
-              <Chip size="sm" variant="soft" color="primary">Overview</Chip>
+              <Chip size="sm" variant="soft" color="primary">Stack</Chip>
             </Box>
             <Typography level="body-sm" textColor="text.secondary">
-              A framework for fast, accessible, and editor‑friendly websites with clear governance and reliable delivery.
+              Architecture, platform choices, and implementation details for the Cubuntu app.
             </Typography>
           </Box>
 
@@ -84,32 +84,28 @@ const BasicModal: React.FC = () => {
               }}
             >
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
+                <Typography level="body-sm"><b>Framework + Runtime:</b> Next.js (App Router) with server and client components; Node.js route handlers; TypeScript throughout.</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
                 <Box sx={{ color: 'white', mt: '2px' }}><MdWeb size={18} /></Box>
-                <Typography level="body-sm"><b>Content model:</b> Block‑based pages and reusable templates in WordPress or headless CMS.</Typography>
-              </Box>
-              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
-                <Typography level="body-sm"><b>Performance:</b> Core Web Vitals budgets, image/CDN optimization, SSR/ISR, and lazy assets.</Typography>
-              </Box>
-              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'white', mt: '2px' }}><MdAccessibilityNew size={18} /></Box>
-                <Typography level="body-sm"><b>Accessibility:</b> WCAG‑aligned structure, keyboard flows, focus management, and contrast.</Typography>
-              </Box>
-              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
-                <Typography level="body-sm"><b>Delivery:</b> CI/CD with preview links, serverless workflows, and edge caching.</Typography>
+                <Typography level="body-sm"><b>UI + Styling:</b> Tailwind CSS v4 with @tailwindcss/postcss; design tokens via @theme in app/globals.css; component overrides for react-h5-audio-player.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
                 <Box sx={{ color: 'white', mt: '2px' }}><MdSecurity size={18} /></Box>
-                <Typography level="body-sm"><b>Governance:</b> Role‑based access, approvals, audit logs, and safe API boundaries.</Typography>
+                <Typography level="body-sm"><b>Auth + Users:</b> next-auth (JWT sessions) with Credentials & Google providers; Prisma Adapter; custom signup verification and password reset flows.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
-                <Box sx={{ color: 'white', mt: '2px' }}><MdLayers size={18} /></Box>
-                <Typography level="body-sm"><b>Design system:</b> Component library with tokens, responsive rules, and editorial guardrails.</Typography>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdCloud size={18} /></Box>
+                <Typography level="body-sm"><b>Database + ORM:</b> PostgreSQL via Prisma; models: User, Account, Session, VerificationToken, Comment (threaded replies).</Typography>
+              </Box>
+              <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
+                <Box sx={{ color: 'white', mt: '2px' }}><MdSpeed size={18} /></Box>
+                <Typography level="body-sm"><b>Realtime + Data Fetching:</b> Pusher Channels for live comments (server triggers + pusher-js) and TanStack React Query for caching/mutations.</Typography>
               </Box>
               <Box component="li" sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, p: 1.25, borderRadius: 'sm', bgcolor: 'background.level1', border: '1px solid', borderColor: 'divider' }}>
                 <Box sx={{ color: 'white', mt: '2px' }}><MdInfo size={18} /></Box>
-                <Typography level="body-sm"><b>Editor UX:</b> Guided blocks, content templates, and staging → review → publish flows.</Typography>
+                <Typography level="body-sm"><b>APIs + Backend:</b> Next.js Route Handlers under app/api/* for register-verify, reset/forgot password, comments CRUD + realtime triggers, users/checks, and RSS from local JSON.</Typography>
               </Box>
             </Box>
           </Box>
@@ -125,15 +121,15 @@ export default function Cubuntu() {
   return (
     <TwoSidedLayout
       technologies={[
-        "WordPress",
-        "Vue",
+        "tailwindcss",
+        "Next.js",
         "typescript",
         "Vercel",
         "node.js",
-        "Figma",
+        "Prisma",
       ]}
       alt="Modern web page management UI"
-      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1763141462/samples/graphic_design_work/devProjects/Screenshot_2025-11-14_at_12.29.51_PM_nkauh7.png"
+      img="https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1765401291/samples/graphic_design_work/devProjects/Screenshot_2025-12-10_at_4.14.19_PM_prkg9q.png"
     >
       <Typography
         level="h1"
@@ -144,7 +140,7 @@ export default function Cubuntu() {
         Cubuntu
       </Typography>
       <Typography fontSize="lg" lineHeight="lg">
-        Full-featured podcast web app & community platform to allow Cubans to imagine a
+        Full-featured podcast web app & community platform for Cubans to dream for a
         better future for their country. The app includes user authentication, an RSS feed endpoint for
         podcast syndication, and Git LFS integration to efficiently track and version large audio files.
       </Typography>
@@ -155,7 +151,7 @@ export default function Cubuntu() {
         href="https://cubuntu.org"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
-        onClick={() => logButtonClick("Deployment (Cubuntu)")}
+        onClick={() => logButtonClick("Visit (Cubuntu)")}
       >
         Visit
       </Button>

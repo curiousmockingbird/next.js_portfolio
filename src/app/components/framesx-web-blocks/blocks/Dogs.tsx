@@ -164,9 +164,9 @@ export default function Dogs() {
         href="https://cambridge-dogs.vercel.app/"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
-        onClick={() => logButtonClick("Deployment (Dogs)")}
+        onClick={() => logButtonClick("Visit (Dogs)")}
       >
-        Deployment
+        Visit
       </Button>
       <Button
         size="lg"

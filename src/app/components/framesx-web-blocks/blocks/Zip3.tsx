@@ -149,9 +149,9 @@ export default function Zip3() {
         href="https://vdlf.org/contribution-map/"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
-        onClick={() => logButtonClick("Deployment (Zip3 contributions)")}
+        onClick={() => logButtonClick("Visit (Zip3 contributions)")}
       >
-        Deployment
+        Visit
       </Button>
       <Button
         size="lg"

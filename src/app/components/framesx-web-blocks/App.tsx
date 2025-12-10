@@ -29,7 +29,7 @@ import SalesRaods from "./blocks/SalesRaods";
 import GTM from "./blocks/gtm";
 import VDLFA from "./blocks/VDLFA";
 import Nombolo from "./blocks/Nombolo";
-import AcmeShowcase from "./blocks/Cubuntu";
+import Cubuntu from "./blocks/Cubuntu";
 import ContributionsByZip3 from "./blocks/Zip3";
 import CambridgeDogs from "./blocks/Dogs";
 import C3 from "./blocks/C3";
@@ -52,7 +52,7 @@ export default function TeamExample() {
   const allProjects: Project[] = [
     { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
     // New client and project
-    { label: 'Podcast host & Community Platform', client: 'Cubuntu', node: <AcmeShowcase />, slug: 'acme-marketing' },
+    { label: 'Podcast host & Community Platform', client: 'Cubuntu', node: <Cubuntu />, slug: 'acme-marketing' },
     // C3 block: expose an addressable slug
     { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
     { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlf-action' },
@@ -78,7 +78,7 @@ export default function TeamExample() {
 
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
-    'Voces de la Frontera': { src: '/vdlf copy.png', alt: 'Voces de la Frontera projects cover' },
+    'Voces de la Frontera': { src: 'https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1765408707/samples/graphic_design_work/devProjects/Screenshot_2025-12-10_at_6.18.15_PM_ibisiv.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
     'Cubuntu': { src: '/cubuntu.svg', alt: 'Cubuntu projects cover' },
     'Personal Projects': { src: '/curious_mockingbird_pic.jpg', alt: 'Personal Projects cover' },

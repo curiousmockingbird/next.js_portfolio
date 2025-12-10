@@ -139,7 +139,7 @@ export default function SalesRoads() {
       </Typography>
       <BasicModal />
       <Button size='lg' component="a" href="https://salesroads.com/" target="_blank" startDecorator={<MdArrowForward size={35} />} onClick={() => logButtonClick("Visit (SalesRoads)")}> 
-        Deployment
+        Visit
       </Button>
     </ForWordPress>
     </div>

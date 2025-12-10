@@ -149,9 +149,9 @@ export default function EveryActionEvents() {
         href="https://vdlf.org/#event-list"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
-        onClick={() => logButtonClick("Deployment (Events)")}
+        onClick={() => logButtonClick("Visit (Events)")}
       >
-        Deployment
+        Visit
       </Button>
       <Button
         size="lg"
