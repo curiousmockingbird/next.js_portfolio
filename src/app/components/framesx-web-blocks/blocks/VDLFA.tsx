@@ -122,6 +122,7 @@ const BasicModal: React.FC = () => {
 
 export default function Vdlfa() {
   return (
+    <div id="vdlfa">
     <TwoSidedLayout
       technologies={['WordPress', 'Vue', 'typescript', 'Vercel', 'node.js', 'Figma']}
       alt="Contact form screenshot"
@@ -161,5 +162,6 @@ export default function Vdlfa() {
         Prototype (Figma)
       </Button>
     </TwoSidedLayout>
+  </div>
   );
 }

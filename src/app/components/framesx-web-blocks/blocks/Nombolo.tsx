@@ -132,6 +132,7 @@ const BasicModal: React.FC = () => {
 
 export default function Nombolo() {
   return (
+    <div id="nombolo">
     <TwoSidedLayout
       technologies={['React Native', 'typescript', 'AWS', 'node.js', 'mongodb', 'expo']}
       alt="Contact form screenshot"
@@ -162,5 +163,6 @@ export default function Nombolo() {
       </Button>
 
     </TwoSidedLayout>
+    </div>
   );
 }

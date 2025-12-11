@@ -119,6 +119,7 @@ const BasicModal: React.FC = () => {
 
 export default function Cubuntu() {
   return (
+    <div id="cubuntu">
     <TwoSidedLayout
       technologies={[
         "tailwindcss",
@@ -166,5 +167,6 @@ export default function Cubuntu() {
         Theme repo
       </Button> */}
     </TwoSidedLayout>
+  </div>
   );
 }

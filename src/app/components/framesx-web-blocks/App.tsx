@@ -50,12 +50,12 @@ export default function TeamExample() {
 
   type Project = { label: string; client: 'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Cubuntu'; node: React.ReactNode; slug?: string };
   const allProjects: Project[] = [
-    { label: 'Nombolo', client: 'Nombolo', node: <Nombolo /> },
+    { label: 'Nombolo', client: 'Nombolo', node: <Nombolo />, slug: 'nombolo' },
     // New client and project
-    { label: 'Podcast host & Community Platform', client: 'Cubuntu', node: <Cubuntu />, slug: 'acme-marketing' },
+    { label: 'Podcast host & Community Platform', client: 'Cubuntu', node: <Cubuntu />, slug: 'cubuntu' },
     // C3 block: expose an addressable slug
     { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
-    { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlf-action' },
+    { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlfa' },
     { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
     { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
