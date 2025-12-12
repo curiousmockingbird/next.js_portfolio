@@ -123,6 +123,7 @@ const BasicModal: React.FC = () => {
 
 export default function Vdlfa() {
   return (
+    <div id="C3">
     <TwoSidedLayout
       technologies={['WordPress', 'Vue', 'typescript', 'Vercel', 'node.js', 'Figma']}
       alt="Modern web page management UI"
@@ -162,5 +163,6 @@ export default function Vdlfa() {
         Theme repo
       </Button>
     </TwoSidedLayout>
+    </div>
   );
 }
