@@ -146,7 +146,7 @@ export default function Zip3() {
       <Button
         size="lg"
         component="a"
-        href="https://vdlf.org/contribution-map/"
+        href="https://zip3-contributions.vercel.app/"
         target="_blank"
         startDecorator={<MdArrowForward size={35} />}
         onClick={() => logButtonClick("Visit (Zip3 contributions)")}
