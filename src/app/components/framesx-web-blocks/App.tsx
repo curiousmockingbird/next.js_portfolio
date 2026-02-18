@@ -69,9 +69,9 @@ export default function TeamExample() {
   ];
 
   const clientOrder: Array<Project['client']> = [
-    'Nombolo',
     'Voces de la Frontera',
     'Slingshot Content',
+    'Nombolo',
     'Cubuntu',
     'Personal Projects',
   ];
