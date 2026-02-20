@@ -56,7 +56,7 @@ export default function TeamExample() {
     // C3 block: expose an addressable slug
     { label: 'VDLF', client: 'Voces de la Frontera', node: <C3 />, slug: 'vdlf' },
     { label: 'VDLF Action', client: 'Voces de la Frontera', node: <VDLFA />, slug: 'vdlfa' },
-    { label: 'Event List', client: 'Voces de la Frontera', node: <EventList /> },
+    { label: 'Event List', client: 'Voces de la Frontera', node: <EventList />, slug: 'event-list' },
     { label: 'Event Registration System', client: 'Voces de la Frontera', node: <EventRegistrationSystem /> },
     { label: 'Contact Form Integration', client: 'Voces de la Frontera', node: <ContactFormIntegration /> },
     { label: 'Contributions by Zip3', client: 'Voces de la Frontera', node: <ContributionsByZip3 /> },
