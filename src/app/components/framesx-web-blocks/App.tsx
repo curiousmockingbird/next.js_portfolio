@@ -44,6 +44,8 @@ export default function TeamExample() {
   const [selectedClient, setSelectedClient] = React.useState<
     'Nombolo' | 'Voces de la Frontera' | 'Slingshot Content' | 'Personal Projects' | 'Cubuntu' | null
   >(null);
+  // Mobile nav: collapse/expand the quick-nav chips
+  const [navOpen, setNavOpen] = React.useState(false);
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const carouselRef = React.useRef<HTMLDivElement | null>(null);
   const pendingProjectSlugRef = React.useRef<string | null>(null);
@@ -122,15 +124,33 @@ export default function TeamExample() {
   }, [selectedClient]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const { scrollTop, clientHeight } = e.currentTarget;
-    const pageIndex = Math.round(scrollTop / clientHeight);
+    const el = e.currentTarget as HTMLDivElement;
+    const { scrollTop, clientHeight } = el;
+    // Account for top padding used to offset the mobile overlay
+    let paddingTop = 0;
+    if (typeof window !== 'undefined') {
+      try {
+        const cs = window.getComputedStyle(el);
+        paddingTop = parseFloat(cs.paddingTop || '0') || 0;
+      } catch {}
+    }
+    const adjusted = Math.max(0, scrollTop - paddingTop);
+    const rawIndex = adjusted / clientHeight;
+    const pageIndex = Math.max(0, Math.min(pages.length - 1, Math.round(rawIndex)));
     setCurrentPage(pageIndex);
   };
 
   const scrollToIndex = (index: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    const top = index * el.clientHeight;
+    let paddingTop = 0;
+    if (typeof window !== 'undefined') {
+      try {
+        const cs = window.getComputedStyle(el);
+        paddingTop = parseFloat(cs.paddingTop || '0') || 0;
+      } catch {}
+    }
+    const top = paddingTop + index * el.clientHeight;
     el.scrollTo({ top, behavior: "smooth" });
   };
 
@@ -350,6 +370,8 @@ export default function TeamExample() {
           overflowY: "scroll",
           scrollSnapType: "y mandatory",
           scrollBehavior: 'smooth',
+          // On small screens, add dynamic top padding so the overlay doesn't cover content
+          pt: { xs: navOpen ? 120 : 64, sm: 0 },
           "& > div": {
             scrollSnapAlign: "start",
           },
@@ -361,33 +383,90 @@ export default function TeamExample() {
         <Box
           sx={{
             position: 'absolute',
-            top: 16,
+            top: { xs: 8, sm: 16 },
             left: 0,
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 1,
+            gap: { xs: 0.5, sm: 1 },
             zIndex: 10,
             px: 2,
-            pointerEvents: 'none',
+            pointerEvents: 'auto',
           }}
         >
-          {selectedClient && (
-            <Chip size="md" variant="soft" color="primary" sx={{ pointerEvents: 'auto' }}>
-              {clientName}
-            </Chip>
-          )}
-          <Box sx={{ display: 'flex', gap: 1, pointerEvents: 'auto' }}>
-            <Button size="sm" variant="soft" onClick={() => { setView('overview'); setSelectedClient(null); setCurrentPage(0); }} startDecorator={<MdArrowBack />}>
-              Back to overview
+          {/* Toolbar row with Back, client label, and Sections toggle (mobile) */}
+          <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
+            <Button
+              size="sm"
+              variant="soft"
+              onClick={() => { setView('overview'); setSelectedClient(null); setCurrentPage(0); setNavOpen(false); }}
+              startDecorator={<MdArrowBack />}
+            >
+              Back
+            </Button>
+            {selectedClient && (
+              <Chip
+                size="sm"
+                variant="soft"
+                color="primary"
+                sx={{
+                  maxWidth: { xs: '55%', sm: 'unset' },
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {clientName}
+              </Chip>
+            )}
+            <Button
+              size="sm"
+              variant={navOpen ? 'solid' : 'soft'}
+              color={navOpen ? 'primary' : 'neutral'}
+              onClick={() => setNavOpen((v) => !v)}
+              sx={{ display: { xs: 'inline-flex', sm: 'none' } }}
+            >
+              Sections
             </Button>
           </Box>
+
+          {/* Quick navigation chips: collapsible on xs, always visible on sm+ */}
+          {navOpen && (
+            <Box
+              role="navigation"
+              aria-label="Project quick navigation"
+              sx={{
+                display: { xs: 'flex', sm: 'none' },
+                gap: 0.75,
+                overflowX: 'auto',
+                maxWidth: '100%',
+                py: 0.5,
+                px: 1,
+                borderRadius: 'sm',
+                bgcolor: 'rgba(16,18,34,0.35)',
+                backdropFilter: 'blur(6px)',
+                pointerEvents: 'auto',
+              }}
+            >
+              {pageMeta.map((p, i) => (
+                <Chip
+                  key={`xs-${p.label}`}
+                  variant={currentPage === i ? 'solid' : 'soft'}
+                  color={currentPage === i ? 'primary' : 'neutral'}
+                  onClick={() => { logFromApp(`Nav: ${p.label}`, { toIndex: i }); scrollToIndex(i); setNavOpen(false); }}
+                  sx={{ cursor: 'pointer' }}
+                >
+                  {p.label}
+                </Chip>
+              ))}
+            </Box>
+          )}
           <Box
             role="navigation"
             aria-label="Project quick navigation"
             sx={{
-              display: 'flex',
+              display: { xs: 'none', sm: 'flex' },
               gap: 0.75,
               overflowX: 'auto',
               maxWidth: '100%',
@@ -401,7 +480,7 @@ export default function TeamExample() {
           >
             {pageMeta.map((p, i) => (
               <Chip
-                key={p.label}
+                key={`sm-${p.label}`}
                 variant={currentPage === i ? 'solid' : 'soft'}
                 color={currentPage === i ? 'primary' : 'neutral'}
                 onClick={() => { logFromApp(`Nav: ${p.label}`, { toIndex: i }); scrollToIndex(i); }}
