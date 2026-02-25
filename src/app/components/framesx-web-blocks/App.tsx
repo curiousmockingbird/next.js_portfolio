@@ -80,7 +80,7 @@ export default function TeamExample() {
 
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
-    'Voces de la Frontera': { src: 'https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1765408707/samples/graphic_design_work/devProjects/Screenshot_2025-12-10_at_6.18.15_PM_ibisiv.png', alt: 'Voces de la Frontera projects cover' },
+    'Voces de la Frontera': { src: '/vdlf.png', alt: 'Voces de la Frontera projects cover' },
     'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
     'Cubuntu': { src: '/cubuntu.svg', alt: 'Cubuntu projects cover' },
     'Personal Projects': { src: '/curious_mockingbird_pic.jpg', alt: 'Personal Projects cover' },
