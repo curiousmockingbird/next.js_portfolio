@@ -42,8 +42,9 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
   - `src/app/components/framesx-web-blocks/utils/logger.ts`
     - Sends `{ event: 'button_click', source, label, meta, path }` to `/api/logs`.
   - `src/app/components/PageViewLogger.tsx` (new)
-    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_* , detected_source } }`.
+    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_* , detected_source, rid, trk } }`.
     - Mounted in `src/app/layout.tsx` so it runs on every page. Uses `navigator.sendBeacon` with a JSON blob, falls back to `fetch`.
+    - Cleans tracking params from the URL after logging (or if already logged): removes `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `trk`, `rid` via `history.replaceState`.
 
 - Client error capture:
   - `src/app/components/ClientErrorReporter.tsx`
@@ -83,7 +84,8 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 
 - Do not send PII by default; use `meta` sparingly and scrub secrets if present.
 - Sampling can be introduced for high‑volume events (e.g., sample a percentage of `button_click`).
- - `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
+- `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
+ - After logging, UTMs are removed from the URL to avoid leaking tracking parameters while preserving attribution in logs.
 
 ## Future Enhancements
 
