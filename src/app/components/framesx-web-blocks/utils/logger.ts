@@ -22,10 +22,9 @@ export async function logButtonClick(source: LogSource, label: string, meta?: Re
   // Local console for quick dev feedback
   // eslint-disable-next-line no-console
   console.log(`[${source}] ${label}`, meta ?? '');
-  return postLog({ source, label, meta });
+  return postLog({ event: 'button_click', source, label, meta });
 }
 
 // Convenience wrappers for callers
 export const logBlockClick = (label: string, meta?: Record<string, any>) => logButtonClick('blocks', label, meta);
 export const logFromApp = (label: string, meta?: Record<string, any>) => logButtonClick('app', label, meta);
-

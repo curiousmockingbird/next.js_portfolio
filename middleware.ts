@@ -61,7 +61,22 @@ export function middleware(request: NextRequest) {
     });
   }
 
-  return NextResponse.next();
+  // Ensure a sessionId cookie exists to correlate logs across requests
+  const res = NextResponse.next();
+  const hasSession = request.cookies.get('sessionId');
+  if (!hasSession) {
+    // Use a stable but opaque session identifier
+    const id = crypto.randomUUID();
+    res.cookies.set('sessionId', id, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/',
+      // 30 days
+      maxAge: 60 * 60 * 24 * 30,
+    });
+  }
+  return res;
 }
 
 // Run for all routes

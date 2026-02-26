@@ -1,18 +1,29 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { headerContext, logError, logInfo, errorToJSON } from "@/lib/logger";
 
 export async function POST(request: Request) {
+  const requestId = crypto.randomUUID();
+  const sessionId = cookies().get("sessionId")?.value;
+  const { ip, country, region, userAgent, path } = headerContext(request);
+  const baseCtx = {
+    route: "/api/location",
+    method: "POST",
+    requestId,
+    sessionId,
+    ip,
+    country,
+    region,
+    userAgent,
+    path,
+  };
+
   try {
-    // Extract visitor details
-    const ip = (request.headers.get("x-forwarded-for") || "").split(",")[0] || "Unknown IP";
-    const country = request.headers.get("x-vercel-ip-country") || "Unknown Country";
-    const region = request.headers.get("x-vercel-ip-country-region") || "Unknown Region";
-    const userAgent = request.headers.get("user-agent") || "Unknown User-Agent";
-
-    // Log visitor details to Vercel logs
-    console.log(`🌍 Visitor Info: IP=${ip}, Country=${country}, Region=${region}, Device=${userAgent}`);
-
-    return NextResponse.json({ status: 200, message: "Visitor location logged" });
+    await logInfo("visitor_location", baseCtx);
+    return NextResponse.json({ status: 200, message: "Visitor location logged", requestId });
   } catch (error: any) {
-    return new Response(error.message, { status: 500 });
+    const err = errorToJSON(error);
+    await logError("api_error", baseCtx, { error: err });
+    return new Response(error?.message || "Internal Server Error", { status: 500, statusText: "Internal Server Error" });
   }
 }
