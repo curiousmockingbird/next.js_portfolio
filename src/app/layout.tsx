@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from './components/HeaderClient';
 import ChatWidget from './components/ChatWidget';
+import ClientErrorReporter from './components/ClientErrorReporter';
 
 // Removed next/font/google to avoid network fetch during build.
 
@@ -45,6 +46,7 @@ export default function RootLayout({
           </TanStackProvider>
         </ThemeProvider>
         <ChatWidget />
+        <ClientErrorReporter />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -72,7 +72,14 @@ LOGTAIL_SOURCE_TOKEN=your_logtail_token
 
 - `GITHUB_TOKEN` is used in `GithubStats.tsx` for authenticated requests to the GitHub API.
 - `SMTP_*` variables and `EMAIL_USER` configure Nodemailer in `src/app/api/contact/route.ts`.
-- `LOGTAIL_SOURCE_TOKEN` is optional and used for request logging in `middleware.ts` and the location API route.
+- `LOGTAIL_SOURCE_TOKEN` enables structured logging to Better Stack (Logtail).
+
+## Structured Logging
+
+- Sends structured events to Better Stack (Logtail) via `@logtail/node`.
+- Correlates events with a `sessionId` cookie (set in `middleware.ts`) and a per-request `requestId`.
+- To enable, set `LOGTAIL_SOURCE_TOKEN` in `.env.local` and redeploy.
+- For details and the event model, see `FEATURES_TRACKER.md`.
 
 ## Testing
 
