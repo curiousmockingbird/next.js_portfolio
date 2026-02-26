@@ -22,6 +22,7 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 - Logger utility: `src/lib/logger.ts`
   - Exposes `logInfo(event, ctx, meta?)`, `logError(event, ctx, meta?)`, `headerContext(request)`, `errorToJSON(err)`.
   - Uses `@logtail/node` when `LOGTAIL_SOURCE_TOKEN` is set; otherwise falls back to `console`.
+  - Adds `referer` from request headers to `headerContext` so all API-enriched events include the HTTP Referer when present.
 
 - Session correlation: `middleware.ts`
   - Ensures an `httpOnly` `sessionId` cookie for all requests (30 days, `SameSite=Lax`, `Secure`).
@@ -40,6 +41,9 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 - Client event tagging:
   - `src/app/components/framesx-web-blocks/utils/logger.ts`
     - Sends `{ event: 'button_click', source, label, meta, path }` to `/api/logs`.
+  - `src/app/components/PageViewLogger.tsx` (new)
+    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_* , detected_source } }`.
+    - Mounted in `src/app/layout.tsx` so it runs on every page. Uses `navigator.sendBeacon` with a JSON blob, falls back to `fetch`.
 
 - Client error capture:
   - `src/app/components/ClientErrorReporter.tsx`
@@ -48,9 +52,13 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 
 ### Event Model (standard fields)
 
-- Core: `event`, `requestId`, `sessionId`, `route`, `method`, `path`, `ip`, `country`, `region`, `userAgent`.
+- Core: `event`, `requestId`, `sessionId`, `route`, `method`, `path`, `ip`, `country`, `region`, `userAgent`, `referer`.
 - Button clicks: `event='button_click'`, plus `source`, `label`, optional `meta`.
 - Visitor location: `event='visitor_location'`.
+- Page view: `event='page_view'`, with `label=<path>` and `meta` fields:
+  - `referrer=document.referrer`.
+  - `utm_source`, `utm_medium`, `utm_campaign` parsed from querystring.
+  - `detected_source` heuristic (prefers `utm_source`; otherwise detects LinkedIn via referrer or in-app browser UA).
 - API errors: `event='api_error'`, includes serialized `error`.
 - Timing: `duration_ms` currently added in `/api/logs` responses; can be incorporated into logs where useful.
 
@@ -68,12 +76,14 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 - Better Stack (Logtail):
   - Filter by `event = 'button_click'` or `event = 'visitor_location'`.
   - Correlate by `sessionId`; pivot by `path`, `country`, or `source`.
+  - For page views, filter `event = 'page_view'` and inspect `meta.referrer` to see sources like LinkedIn or PDF viewers.
   - For errors, filter `event = 'api_error'` and group by `route`.
 
 ### Privacy & Quality Controls
 
 - Do not send PII by default; use `meta` sparingly and scrub secrets if present.
 - Sampling can be introduced for high‑volume events (e.g., sample a percentage of `button_click`).
+ - `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
 
 ## Future Enhancements
 
@@ -93,3 +103,5 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 - `src/app/api/logs/route.ts` (structured logging and correlation)
 - `src/app/api/location/route.ts` (structured logging and correlation)
 - `src/app/components/framesx-web-blocks/utils/logger.ts` (adds `event` field)
+- `src/app/components/PageViewLogger.tsx` (new; client page_view logging)
+- `src/app/layout.tsx` (mounts PageViewLogger)
