@@ -5,7 +5,7 @@ import { headerContext, logError, logInfo, errorToJSON } from "@/lib/logger";
 export async function POST(request: Request) {
   const requestId = crypto.randomUUID();
   const sessionId = cookies().get("sessionId")?.value;
-  const { ip, country, region, userAgent, path } = headerContext(request);
+  const { ip, country, region, userAgent, path, referer } = headerContext(request);
   const baseCtx = {
     route: "/api/location",
     method: "POST",
@@ -16,6 +16,7 @@ export async function POST(request: Request) {
     region,
     userAgent,
     path,
+    referer,
   };
 
   try {

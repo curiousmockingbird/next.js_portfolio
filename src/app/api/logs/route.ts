@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const started = Date.now();
   const requestId = crypto.randomUUID();
   const sessionId = cookies().get("sessionId")?.value;
-  const { ip, country, region, userAgent, path } = headerContext(request);
+  const { ip, country, region, userAgent, path, referer } = headerContext(request);
   const baseCtx = {
     route: "/api/logs",
     method: "POST",
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
     region,
     userAgent,
     path,
+    referer,
   };
 
   try {

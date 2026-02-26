@@ -37,9 +37,10 @@ export function headerContext(request: Request) {
   const country = headers.get('x-vercel-ip-country') || undefined;
   const region = headers.get('x-vercel-ip-country-region') || undefined;
   const userAgent = headers.get('user-agent') || undefined;
+  const referer = headers.get('referer') || undefined;
   const url = new URL(request.url);
   const path = url.pathname;
-  return { ip, country, region, userAgent, path };
+  return { ip, country, region, userAgent, path, referer };
 }
 
 export async function logInfo(event: string, ctx: Ctx = {}, meta?: Ctx) {
@@ -67,4 +68,3 @@ export async function logError(event: string, ctx: Ctx = {}, meta?: Ctx) {
   }
   fallbackLog('error', event, payload);
 }
-
