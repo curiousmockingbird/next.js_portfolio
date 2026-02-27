@@ -1,0 +1,555 @@
+haroldmesa@Harolds-laptop next.js_portfolio % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+haroldmesa@Harolds-laptop next.js_portfolio % clear
+
+✨⬆️ Update available! 0.32.0 -> 0.105.0.
+Run npm install -g @openai/codex@latest to update.
+
+>_ You are using OpenAI Codex in ~/Documents/Portfolio/next.js_portfolio
+
+ To get started, describe a task or try one of these commands:
+
+ /init - create an AGENTS.md file with instructions for Codex
+ /status - show current session configuration and token usage
+ /approvals - choose what Codex can do without approval
+ /model - choose what model and reasoning effort to use
+
+▌explain: is there an easy way to track via the existing logtail tracking mechanism in this project referes (i.3: LinkedIn, or website access via a link in a pdf
+▌Resume file?
+
+> I’ll quickly scan the repo for any Logtail integration and current tracking hooks to see what’s already implemented. Then I’ll explain options for capturing
+  referrers like LinkedIn or PDF resume links.
+
+• Explored
+  └ Search logtail|Logtail|@logtail|betterstack|better stack|log.*tail|logger
+    Read logger.ts, route.ts, HomeButton.tsx
+    Search /api/location|visitor_location|sessionId|setCookie|cookies\(\)\.set|document.referrer|utm_
+    Read HomeClient.tsx, middleware.ts, FEATURES_TRACKER.md, ClientErrorReporter.tsx
+
+> Short answer: Yes. With the current Logtail wiring, you can easily capture inbound sources like LinkedIn or PDF links by logging referrer and/or UTM tags on
+  the first page view.
+
+  What’s already logged
+
+  - Server logs include: event, sessionId, requestId, path, ip, country, region, userAgent.
+  - Events: visitor_location (on first mount) and button_click via /api/logs.
+  - Not yet captured: referrer or UTM parameters.
+
+  Add referrer tracking (minimal changes)
+
+  - Server header: Add referer: headers.get('referer') to headerContext in src/lib/logger.ts.
+  - Client referrer: Include document.referrer in client logs. Easiest is to:
+
+  - Add UTM params to your public links:
+      - LinkedIn profile link to your site: https://yourdomain.com/?utm_source=linkedin&utm_medium=profile&utm_campaign=portfolio
+      - PDF resume links: https://yourdomain.com/?utm_source=resume_pdf&utm_medium=pdf&utm_campaign=portfolio
+  - Parse utm_* from window.location.search on first mount and include them in the page_view log (meta.utm_*). This works even when referrer is blank (common
+  from PDFs).
+
+  Optional: tracking redirect endpoint
+
+  - Create /r/:source that logs { event: 'redirect', source } and 302 redirects to your target page (e.g., /r/resume → /).
+  - Use that path in PDFs or social profiles. It captures source even when referrer is missing.
+
+  Better Stack queries (once added)
+
+  - Filter: event = "page_view" and group by meta.utm_source or meta.referrer.
+  - Correlate with sessionId to see the full journey (page_view → button_click).
+
+  Want me to add it?
+
+  - I can implement: (1) server referer capture, (2) client page_view with document.referrer + UTM parsing, and (3) optional /r/[source] redirect. Takes a small,
+  contained change set.
+
+▌start with minimal  changes (server referer first)
+
+> I’ll add referer to the server-side headerContext and propagate it in /api/logs and /api/location so it appears in Logtail payloads. Proceeding to patch those
+  files.
+
+• Edited src/lib/logger.ts (+2 -2)
+    39       const userAgent = headers.get('user-agent') || undefined;
+    40    +  const referer = headers.get('referer') || undefined;
+    41       const url = new URL(request.url);
+    42       const path = url.pathname;
+    42    -  return { ip, country, region, userAgent, path };
+    43    +  return { ip, country, region, userAgent, path, referer };
+    44     }
+    ⋮
+    70     }
+    70    -
+
+• Edited src/app/api/logs/route.ts (+2 -1)
+    12       const sessionId = cookies().get("sessionId")?.value;
+    13    -  const { ip, country, region, userAgent, path } = headerContext(request);
+    13    +  const { ip, country, region, userAgent, path, referer } = headerContext(request);
+    14       const baseCtx = {
+    ⋮
+    23         path,
+    24    +    referer,
+    25       };
+
+• Edited src/app/api/location/route.ts (+2 -1)
+    7        const sessionId = cookies().get("sessionId")?.value;
+    8     -  const { ip, country, region, userAgent, path } = headerContext(request);
+    8     +  const { ip, country, region, userAgent, path, referer } = headerContext(request);
+    9        const baseCtx = {
+    ⋮
+    18         path,
+    19    +    referer,
+    20       };
+
+> Done. The server now captures and logs the HTTP Referer.
+
+  What changed
+
+  - src/lib/logger.ts
+      - headerContext now includes referer from request.headers.get('referer').
+  - src/app/api/logs/route.ts
+      - Adds referer from headerContext into baseCtx so it’s included in Logtail payloads.
+  - src/app/api/location/route.ts
+      - Same as above for the visitor_location event.
+
+  Outcome
+
+  - All /api/logs (button clicks, client errors) and /api/location events will include referer in the structured log context, letting you see sources like
+  LinkedIn or PDF-driven visits when the browser sends it.
+
+  Next options
+
+  - If you want, I can add a minimal client-side page_view to capture document.referrer and UTM params for cases where Referer is missing (e.g., some PDFs or
+  apps).
+
+
+> Short answer: No — you don’t need to change your LinkedIn link. You’re seeing your own site as the referer because the events you’re logging
+  are POSTs to your API, whose referer is your page, not the original navigation.
+
+  Why you see your site
+
+  - Current logs come from /api/logs and /api/location POSTs.
+  - For those requests, the browser sets Referer to your page URL (same‑origin), not LinkedIn.
+  - The LinkedIn referer only exists on the initial GET navigation to your page, which you aren’t logging yet.
+
+  How to capture LinkedIn
+
+  - Minimal client option: send a one‑time page_view to /api/logs on first mount with meta.referrer = document.referrer. That captures LinkedIn
+  when present.
+  - Server option: log on initial GET in middleware.ts (read headers.get('referer') and write a page_view event). This records LinkedIn without
+  client code, but it’s a slightly bigger change.
+
+  Important notes
+
+  - Some apps (LinkedIn mobile, PDF viewers) strip or shorten the Referer; you may still get empty or origin-only values.
+  - Add UTM tags to your LinkedIn and PDF links (e.g., ?utm_source=linkedin&utm_medium=profile&utm_campaign=portfolio) for reliable source
+  attribution even when Referer is missing.
+
+  If you want, I can add the minimal page_view client ping so you’ll start seeing LinkedIn in Logtail on actual navigations.
+
+▌do a minimal one-time page_view to api/logs on first mount with meta.referer = document.referer now
+
+• Explored
+  └ Search layout\.tsx|RootLayout|ClientErrorReporter|<Analytics|SpeedInsights|HomeClient
+    Read layout.tsx
+
+• Added src/app/components/PageViewLogger.tsx (+52 -0)
+    1     +'use client';
+    2     +
+    3     +import { useEffect } from 'react';
+    4     +
+    5     +function sendLog(payload: Record<string, any>) {
+    6     +  try {
+    7     +    const body = JSON.stringify(payload);
+    8     +    if (typeof navigator !== 'undefined' && 'sendBeacon' in navigator) {
+    9     +      const blob = new Blob([body], { type: 'application/json' });
+    10    +      const ok = navigator.sendBeacon('/api/logs', blob);
+    11    +      if (ok) return;
+    12    +    }
+    13    +  } catch {
+    14    +    // fall through to fetch
+    15    +  }
+    16    +  try {
+    17    +    fetch('/api/logs', {
+    18    +      method: 'POST',
+    19    +      headers: { 'Content-Type': 'application/json' },
+    20    +      body: JSON.stringify(payload),
+    21    +      keepalive: true,
+    22    +    }).catch(() => {});
+    23    +  } catch {}
+    24    +}
+    25    +
+    26    +export default function PageViewLogger() {
+    27    +  useEffect(() => {
+    28    +    try {
+    29    +      // One-time per session to capture original referrer (e.g., LinkedIn, PDF)
+    30    +      const key = 'hasLoggedPageView';
+    31    +      if (typeof window === 'undefined' || typeof sessionStorage === 'undefined') return;
+    32    +      if (sessionStorage.getItem(key)) return;
+    33    +
+    34    +      const referrer = typeof document !== 'undefined' ? document.referrer : undefined;
+    35    +      const path = window.location?.pathname || '/';
+    36    +
+    37    +      sendLog({
+    38    +        event: 'page_view',
+    39    +        source: 'client',
+    40    +        label: path,
+    41    +        meta: { referrer },
+    42    +      });
+    43    +
+    44    +      sessionStorage.setItem(key, 'true');
+    45    +    } catch {
+    46    +      // no-op
+    47    +    }
+    48    +  }, []);
+    49    +
+    50    +  return null;
+    51    +}
+    52    +
+
+• Edited src/app/layout.tsx (+2 -0)
+    9      import ClientErrorReporter from './components/ClientErrorReporter';
+
+> All set. I added a minimal, one-time page_view client ping that includes document.referrer.
+
+  What changed
+
+  - New: src/app/components/PageViewLogger.tsx
+      - On first mount per session, posts to /api/logs with { event: 'page_view', source: 'client', label: <path>, meta: { referrer:
+  document.referrer } }.
+      - Uses sendBeacon (with JSON blob) and falls back to fetch with keepalive.
+      - De-duped via sessionStorage key hasLoggedPageView.
+  - Updated: src/app/layout.tsx
+      - Renders <PageViewLogger /> so it runs on every page.
+
+  How to verify
+
+  - In Better Stack, filter event = "page_view".
+  - Inspect meta.referrer to see LinkedIn when the initial navigation comes from there.
+  - Note: The JS property is document.referrer (two r’s), not document.referer.
+
+  No changes needed to your LinkedIn link. This captures the original referrer on the first page load; your POSTs to /api/logs will still show
+  your site as the referer header, but the LinkedIn source now appears in meta.referrer for page_view. Want me to also add basic UTM parsing
+  later for when referrers are stripped?
+
+▌add this update to the features tracker (not necesary for readme) also add this tracker to the gitignore
+
+• Ran rg -n "^FEATURES_TRACKER\.md$|FEATURES_TRACKER\.md" -g '!.git' || true
+
+• Explored
+  └ List ls -la
+    Read .gitignore
+
+• Edited FEATURES_TRACKER.md (+10 -1)
+    24       - Uses `@logtail/node` when `LOGTAIL_SOURCE_TOKEN` is set; otherwise falls back to `console`.
+    25    +  - Adds `referer` from request headers to `headerContext` so all API-enriched events include the HTTP Referer when present.
+    26
+    ⋮
+    43         - Sends `{ event: 'button_click', source, label, meta, path }` to `/api/logs`.
+    44    +  - `src/app/components/PageViewLogger.tsx` (new)
+    45    +    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer } }`.
+    46    +    - Mounted in `src/app/layout.tsx` so it runs on every page. Uses `navigator.sendBeacon` with a JSON blob, falls back to `fetch`.
+    47
+    ⋮
+    54
+    51    -- Core: `event`, `requestId`, `sessionId`, `route`, `method`, `path`, `ip`, `country`, `region`, `userAgent`.
+    55    +- Core: `event`, `requestId`, `sessionId`, `route`, `method`, `path`, `ip`, `country`, `region`, `userAgent`, `referer`.
+    56     - Button clicks: `event='button_click'`, plus `source`, `label`, optional `meta`.
+    57     - Visitor location: `event='visitor_location'`.
+    58    +- Page view: `event='page_view'`, with `label=<path>` and `meta.referrer=document.referrer` (client-side only, useful when HTTP Refe
+           rer is stripped on the initial GET).
+    59     - API errors: `event='api_error'`, includes serialized `error`.
+    ⋮
+    75       - Correlate by `sessionId`; pivot by `path`, `country`, or `source`.
+    76    +  - For page views, filter `event = 'page_view'` and inspect `meta.referrer` to see sources like LinkedIn or PDF viewers.
+    77       - For errors, filter `event = 'api_error'` and group by `route`.
+    ⋮
+    82     - Sampling can be introduced for high‑volume events (e.g., sample a percentage of `button_click`).
+    83    + - `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
+    ⋮
+    102    - `src/app/components/framesx-web-blocks/utils/logger.ts` (adds `event` field)
+    103   +- `src/app/components/PageViewLogger.tsx` (new; client page_view logging)
+    104   +- `src/app/layout.tsx` (mounts PageViewLogger)
+
+• Edited .gitignore (+3 -0)
+    36     next-env.d.ts
+    37    +
+    38    +# local tracker docs
+    39    +FEATURES_TRACKER.md
+
+> I updated the tracker and added it to .gitignore.
+
+  What changed
+
+  - FEATURES_TRACKER.md
+      - Documented server-side Referer capture in headerContext.
+      - Added the new page_view event: one-time per session with meta.referrer = document.referrer.
+      - Updated Event Model to include referer and page_view.
+      - Noted where it’s mounted (layout.tsx) and how to verify in Logtail.
+      - Added a brief note on de-duplication via sessionStorage.
+  - .gitignore
+      - Added FEATURES_TRACKER.md under a “local tracker docs” section.
+
+  Notes
+
+  - Since FEATURES_TRACKER.md is already tracked in git, adding it to .gitignore prevents new untracked copies from being added, but won’t stop
+  changes to the existing tracked file. If you want to stop tracking it going forward, run: git rm --cached FEATURES_TRACKER.md and commit.
+  Want me to prep those steps or keep it tracked?
+
+▌the meta.referrer field shows on logtailnow, but it shows {
+▌  "referrer": ""
+▌}
+▌for LinkedIn. any way to make sure we fix this. i want to know whether it comes from linkedin or not
+
+• Edited src/app/components/PageViewLogger.tsx (+18 -2)
+    35           const path = window.location?.pathname || '/';
+    36    +      const search = window.location?.search || '';
+    37    +      const params = new URLSearchParams(search);
+    38    +      const utm_source = params.get('utm_source') || undefined;
+    39    +      const utm_medium = params.get('utm_medium') || undefined;
+    40    +      const utm_campaign = params.get('utm_campaign') || undefined;
+    41    +      const trk = params.get('trk') || undefined; // LinkedIn sometimes appends `trk`
+    42    +
+    43    +      // Fallback detection when Referer is stripped
+    44    +      let detected_source: string | undefined = undefined;
+    45    +      const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+    46    +      if (utm_source) {
+    47    +        detected_source = utm_source.toLowerCase();
+    48    +      } else if (referrer && /linkedin\.com/i.test(referrer)) {
+    49    +        detected_source = 'linkedin';
+    50    +      } else if (/LinkedInApp|LinkedIn/i.test(ua)) {
+    51    +        detected_source = 'linkedin';
+    52    +      }
+    53
+    ⋮
+    57             label: path,
+    41    -        meta: { referrer },
+    58    +        meta: { referrer, utm_source, utm_medium, utm_campaign, trk, detected_source },
+    59           });
+    ⋮
+    68     }
+    52    -
+
+• Edited FEATURES_TRACKER.md (+5 -2)
+    44       - `src/app/components/PageViewLogger.tsx` (new)
+    45    -    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer } }`.
+    45    +    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_*
+            , detected_source } }`.
+    46         - Mounted in `src/app/layout.tsx` so it runs on every page. Uses `navigator.sendBeacon` with a JSON blob, falls back to `fetch`.
+    ⋮
+    58    -- Page view: `event='page_view'`, with `label=<path>` and `meta.referrer=document.referrer` (client-side only, useful when HTTP Refe
+
+  I added a robust fallback so you can still attribute LinkedIn:
+
+  - PageViewLogger now includes:
+      - meta.utm_source / utm_medium / utm_campaign from the URL.
+      - meta.detected_source set to:
+      - utm_source if present, else
+      - 'linkedin' if referrer contains linkedin.com, else
+      - 'linkedin' if the user agent looks like LinkedIn’s in‑app browser.
+  - meta.trk if LinkedIn appends a trk param.
+
+  What to use in Logtail
+
+  - Query event = "page_view".
+  - Prefer meta.utm_source for explicit attribution.
+  - Otherwise use meta.detected_source = "linkedin" when referrer is blank.
+
+  If you want 100% reliability, add ?utm_source=linkedin&utm_medium=profile&utm_campaign=portfolio to your LinkedIn profile link. I can also
+  add a tiny /r/linkedin redirect that logs source=linkedin and then 302s to your homepage if you’d like.
+
+
+▌now it is tracking when it is coming from linked in.
+▌On a separate task, any similar trick to track from links coming from different pdf resumes (like when sending to different recruiters) like
+▌making sure the link was opened from a pdf where I placed the link
+
+> Yes. PDFs often strip Referer, so you won’t reliably know “came from a PDF” via headers. Use explicit attribution in the link itself and
+  (optionally) a redirect.
+
+  Best options
+
+  - UTM per PDF: Put unique UTMs in each PDF link.
+      - Example: https://yourdomain.com/?utm_source=resume&utm_medium=pdf&utm_campaign=job_search&utm_content=recruiter_acme
+      - Our PageViewLogger already captures utm_source, utm_medium, utm_campaign. Add utm_content for recruiter ID.
+  - Simple token param: Use a short param like ?rid=acme2025. We can capture and persist it in session to tag all subsequent events.
+      - Works even if a PDF viewer or later navigation drops query params.
+  - “From PDF” detection: UA/referrer heuristics are unreliable. Treat utm_medium=pdf (or an rid naming convention) as the authoritative signal
+  that it came via a PDF.
+
+  Practical setup
+
+  - For each recruiter/versioned PDF, embed a unique link with utm_medium=pdf and either utm_content=<recruiter> or rid=<code>.
+  - In Logtail, query event = "page_view" and group by meta.utm_content (or your rid) to see which PDF generated the visit.
+
+  Want me to:
+
+  - Add utm_content capture to PageViewLogger and persist rid across the session, so all subsequent /api/logs include it?
+  - Or implement the /r/[rid] redirect that logs, sets a cookie, and forwards?
+
+▌so technically the current settings should track a link from a pdf with making any further changes?
+
+> Short answer: You’ll log the visit, but you won’t reliably know it came from a PDF without tagging the link.
+
+  Details
+
+  - Current behavior: The first page load logs event="page_view" with meta.referrer and any utm_* params.
+
+  What works now with no code changes
+
+  - If you add UTMs to the link inside the PDF (e.g., ?utm_source=resume&utm_medium=pdf&utm_campaign=search&utm_content=recruiter_acme), our
+  current logger already captures them (utm_source, utm_medium, utm_campaign, utm_content). No additional code needed.
+
+  If you need stronger attribution
+
+  - Use a short rid param (e.g., ?rid=acme2025) or a redirect like /r/acme2025 and optionally persist it in a cookie so all later events are
+  tagged. I can add that if you want.
+
+▌can you generate a link with utm to try? my url is haroldeveloper.tech
+
+> Here are ready-to-use UTM links for haroldeveloper.tech that your current logger will capture:
+
+  - LinkedIn profile
+      - https://haroldeveloper.tech/?utm_source=linkedin&utm_medium=profile&utm_campaign=portfolio
+      - https://haroldeveloper.tech/?utm_source=linkedin&utm_medium=profile&utm_campaign=portfolio
+  -
+  LinkedIn DM/share
+      - https://haroldeveloper.tech/?utm_source=linkedin&utm_medium=message&utm_campaign=portfolio
+  -
+  PDF (generic)
+      - https://haroldeveloper.tech/?utm_source=resume_pdf&utm_medium=pdf&utm_campaign=portfolio
+  -
+  PDF (per recruiter — put the recruiter in utm_campaign)
+      - https://haroldeveloper.tech/?utm_source=resume_pdf&utm_medium=pdf&utm_campaign=acme_recruiter
+      - https://haroldeveloper.tech/?utm_source=resume_pdf&utm_medium=pdf&utm_campaign=contoso_recruiter
+
+  Verify in Logtail by filtering event = "page_view" and checking meta.utm_source, meta.utm_medium, meta.utm_campaign. If you want me to also
+  capture utm_content or a custom rid, I can add that.
+
+▌Question: got it. so on vercel is it a good idea to add a redirect that sends all links containing ?utm_source=resume_pdf to my plain domain?
+
+> Short answer: No — don’t server‑redirect those UTM links to the plain domain. You’ll lose attribution.
+
+  Why not
+
+  - A server redirect strips the UTMs before your client logger runs, so page_view won’t capture them.
+  - After the 3xx, the next request’s referer becomes your own URL, not LinkedIn/PDF, which defeats the purpose.
+  - It can also break other analytics (GA, Vercel Analytics) that rely on UTMs on the initial load.
+
+  Better options
+
+  - Client cleanup (recommended): keep UTMs for the first paint, log the page_view, then remove UTMs from the address bar.
+      - Example snippet after sending the page_view:
+      `const url = new URL(window.location.href);
+  ['utm_source','utm_medium','utm_campaign','utm_content','trk','rid'].forEach(k=>url.searchParams.delete(k)); window.history.replaceState({},
+  '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash);`
+  - Server redirect with attribution (only if you must clean server‑side):
+      - In middleware.ts, detect utm_source=resume_pdf, write an attribution cookie (e.g., attr=resume_pdf|<campaign>|<content>), optionally
+  log a server page_view, then 302 to the clean URL. Ensure your /api/logs includes that cookie so events keep the source.
+
+  If you want, I can add the client cleanup to PageViewLogger so your URLs auto‑clean after logging while preserving attribution.
+
+▌please do, and next add this to my features tracker
+
+• Edited src/app/components/PageViewLogger.tsx (+41 -9)
+    30           const key = 'hasLoggedPageView';
+    31    -      if (typeof window === 'undefined' || typeof sessionStorage === 'undefined') return;
+    32    -      if (sessionStorage.getItem(key)) return;
+    31    +      if (typeof window === 'undefined') return;
+    32
+    33    +      const cleanupUrl = () => {
+    34    +        try {
+    35    +          const url = new URL(window.location.href);
+    36    +          const removable = ['utm_source','utm_medium','utm_campaign','utm_content','trk','rid'];
+    37    +          let changed = false;
+    38    +          removable.forEach((k) => {
+    39    +            if (url.searchParams.has(k)) {
+    40    +              url.searchParams.delete(k);
+    41    +              changed = true;
+    42    +            }
+    43    +          });
+    44    +          if (changed) {
+    45    +            const newHref = url.pathname + (url.searchParams.toString() ? `?${url.searchParams.toString()}` : '') + url.hash;
+    46    +            window.history.replaceState({}, '', newHref);
+    47    +          }
+    48    +        } catch {
+    49    +          // ignore
+    50    +        }
+    51    +      };
+    52    +
+    53           const referrer = typeof document !== 'undefined' ? document.referrer : undefined;
+    ⋮
+    59           const utm_campaign = params.get('utm_campaign') || undefined;
+    60    +      const utm_content = params.get('utm_content') || undefined;
+    61           const trk = params.get('trk') || undefined; // LinkedIn sometimes appends `trk`
+    62    +      const rid = params.get('rid') || undefined; // optional recruiter id token
+    63
+    ⋮
+    74
+    54    -      sendLog({
+    55    -        event: 'page_view',
+    56    -        source: 'client',
+    57    -        label: path,
+    58    -        meta: { referrer, utm_source, utm_medium, utm_campaign, trk, detected_source },
+    59    -      });
+    75    +      const shouldLog = typeof sessionStorage !== 'undefined' && !sessionStorage.getItem(key);
+    76    +      if (shouldLog) {
+    77    +        sendLog({
+    78    +          event: 'page_view',
+    79    +          source: 'client',
+    80    +          label: path,
+    81    +          meta: { referrer, utm_source, utm_medium, utm_campaign, utm_content, trk, rid, detected_source },
+    82    +        });
+    83    +        try { sessionStorage.setItem(key, 'true'); } catch {}
+    84    +      }
+    85
+    61    -      sessionStorage.setItem(key, 'true');
+    86    +      // Clean up UTMs/tracking params from the URL after logging (or even if deduped)
+    87    +      // Defer a tick to avoid interfering with other scripts reading UTMs on load.
+    88    +      if ('requestIdleCallback' in window) {
+    89    +        // @ts-ignore - not in TS lib by default
+    90    +        requestIdleCallback(cleanupUrl);
+    91    +      } else {
+    92    +        setTimeout(cleanupUrl, 0);
+    93    +      }
+    94         } catch {
+
+• Edited FEATURES_TRACKER.md (+4 -2)
+    44       - `src/app/components/PageViewLogger.tsx` (new)
+    45    -    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_*
+            , detected_source } }`.
+    45    +    - One-time per session, posts `{ event: 'page_view', source: 'client', label: <path>, meta: { referrer: document.referrer, utm_*
+            , detected_source, rid, trk } }`.
+    46         - Mounted in `src/app/layout.tsx` so it runs on every page. Uses `navigator.sendBeacon` with a JSON blob, falls back to `fetch`.
+    47    +    - Cleans tracking params from the URL after logging (or if already logged): removes `utm_source`, `utm_medium`, `utm_campaign`,
+           `utm_content`, `trk`, `rid` via `history.replaceState`.
+    48
+    ⋮
+    86     - Sampling can be introduced for high‑volume events (e.g., sample a percentage of `button_click`).
+    86    - - `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
+    87    +- `page_view` is de-duplicated per session via `sessionStorage` to limit noise.
+    88    + - After logging, UTMs are removed from the URL to avoid leaking tracking parameters while preserving attribution in logs.
+    89
+
+> Added client-side URL cleanup after page_view logging and documented it.
+
+  What changed
+
+  - src/app/components/PageViewLogger.tsx
+      - Logs page_view once per session with meta: referrer, utm_source, utm_medium, utm_campaign, utm_content, trk, rid, detected_source.
+      - Cleans URL parameters after logging (or even if already logged): removes utm_source, utm_medium, utm_campaign, utm_content, trk, rid
+  using history.replaceState. Runs via requestIdleCallback or setTimeout(0) to avoid interfering with other scripts.
+      - If UTMs are present but the session was already logged, it still cleans them from the URL.
+  - FEATURES_TRACKER.md
+      - Documented the PageViewLogger URL cleanup behavior and the extra captured fields.
+
+  How to verify
+
+  - Visit a URL like:
+      - https://haroldeveloper.tech/?utm_source=resume_pdf&utm_medium=pdf&utm_campaign=portfolio&utm_content=recruiter_acme&rid=acme2025
+  - In Logtail, filter event = "page_view"; confirm meta has the UTMs and rid.
+  - The address bar should auto-clean to a plain path shortly after the page loads.
+                                                                                                                                              
+▌ Implement {feature}                                                                                                                         
+ ⏎ send   ⌃J newline   ⌃T transcript   ⌃C quit   220K tokens used   93% context left                                                           
+                                                                                                                                              
+

@@ -4,6 +4,7 @@ import { useState } from 'react'
 // import { useTimeoutFn } from 'react-use'
 // import Link from 'next/link'
 import { useRouter } from 'next/navigation';
+import { logFromApp } from './framesx-web-blocks/utils/logger';
 
 export default function Example({ redirectTo, sectionName, description }: { redirectTo: string, sectionName: string, description: string }) {
     let [isShowing, setIsShowing] = useState(true)
@@ -12,6 +13,18 @@ export default function Example({ redirectTo, sectionName, description }: { redi
 
     const handleClick = () => {
         // setIsShowing(true);
+        try {
+          if (redirectTo === '/about') {
+            // Log nav click to About
+            logFromApp('Nav: About');
+          } else if (redirectTo === '/blog') {
+            // Log nav click to Blog
+            logFromApp('Nav: Blog');
+          } else if (redirectTo === '/devProjects') {
+            // Log nav click to Dev Projects
+            logFromApp('Nav: Dev Projects');
+          }
+        } catch {}
         setTimeout(() => {
           router.push(redirectTo);
         }, 400); // Assuming the transition takes 300ms
