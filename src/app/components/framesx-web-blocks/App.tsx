@@ -81,7 +81,7 @@ export default function TeamExample() {
   const clientCovers: Record<Project['client'], { src: string; alt: string }> = {
     'Nombolo': { src: '/nombolo_copy.png', alt: 'Nombolo projects cover'},
     'Voces de la Frontera': { src: '/vdlf.png', alt: 'Voces de la Frontera projects cover' },
-    'Slingshot Content': { src: '/sc_cover.jpg', alt: 'Slingshot Content projects cover' },
+    'Slingshot Content': { src: 'https://res.cloudinary.com/graphicdesignportfolio/image/upload/v1772165150/Square_blue_2x_hrzttr.png', alt: 'Slingshot Content projects cover' },
     'Cubuntu': { src: '/cubuntu.svg', alt: 'Cubuntu projects cover' },
     'Personal Projects': { src: '/curious_mockingbird_pic.jpg', alt: 'Personal Projects cover' },
   };
@@ -89,7 +89,7 @@ export default function TeamExample() {
   const clientTaglines: Record<Project['client'], string> = {
     'Nombolo': 'Portland, OR based startup on a mission to better connect people',
     'Voces de la Frontera': 'Civic engagement and events tooling',
-    'Slingshot Content': 'Full-stack JavaScript developer',
+    'Slingshot Content': 'Full-stack support for consulting agencies and their clients',
     'Cubuntu': 'Podcast hosting and community platform',
     'Personal Projects': 'Solo experiments and demos',
   };
