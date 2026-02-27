@@ -288,7 +288,7 @@ export default function TeamExample() {
                   WebkitOverflowScrolling: 'touch',
                 }}
               >
-                {categories.map(({ client, count }) => {
+                {categories.map(({ client, count }, idx) => {
                   const cover = clientCovers[client] || { src: '/home.jpg', alt: `${client} cover` };
                   return (
                     <Card
@@ -308,7 +308,13 @@ export default function TeamExample() {
                       }}
                       role="button"
                       aria-label={`${client}: ${count} project${count === 1 ? '' : 's'}. View projects.`}
-                      onClick={() => { setSelectedClient(client); setView('detail'); setCurrentPage(0); }}
+                      onClick={() => {
+                        // Track client card clicks to Logtail via /api/logs
+                        logFromApp('client_card', { client, projects: count, index: idx });
+                        setSelectedClient(client);
+                        setView('detail');
+                        setCurrentPage(0);
+                      }}
                     >
                       <CardCover sx={{ bgcolor: '#fff' }}>
                         <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
