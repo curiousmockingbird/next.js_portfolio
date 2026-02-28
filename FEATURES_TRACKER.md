@@ -31,7 +31,7 @@ Purpose: Provide end‑to‑end, queryable logs that correlate button clicks, AP
 - API routes instrumentation:
   - `src/app/api/logs/route.ts`
     - Generates `requestId` per request and reads `sessionId` cookie.
-    - Extracts `ip`, `country`, `region`, `userAgent`, `path` via `headerContext`.
+    - Extracts `ip`, `country`, `region`, `userAgent`, `path`, `referer` via `headerContext`.
     - Logs structured events (default `event: 'button_click'`) with `{ source, label, meta }`.
     - Returns `{ requestId, duration_ms }` for correlation.
     - On failure logs `event: 'api_error'` with serialized error.

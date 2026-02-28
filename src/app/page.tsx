@@ -9,6 +9,10 @@ const HomeClient = dynamic(() => import('./HomeClient'));
 export const metadata: Metadata = {
   title: 'Home | HarolDeveloper',
   description: 'HarolDeveloper portfolio home page',
+  openGraph: {
+    title: 'Home | HarolDeveloper',
+    description: 'HarolDeveloper portfolio home page',
+  },
 };
 
 export default function Home() {

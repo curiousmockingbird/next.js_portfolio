@@ -6,6 +6,10 @@ import HomeButton from "../components/HomeButton";
 export const metadata: Metadata = {
   title: "Blog | HarolDeveloper",
   description: "Read my latest articles and tutorials.",
+  openGraph: {
+    title: "Blog | HarolDeveloper",
+    description: "Read my latest articles and tutorials.",
+  },
 };
 
 export default function BlogPage() {

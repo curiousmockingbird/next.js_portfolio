@@ -5,6 +5,10 @@ import HeaderClient from '@/app/components/HeaderClient';
 export const metadata: Metadata = {
   title: 'Contact | HarolDeveloper',
   description: 'Get in touch with HarolDeveloper for collaborations or questions.',
+  openGraph: {
+    title: 'Contact | HarolDeveloper',
+    description: 'Get in touch with HarolDeveloper for collaborations or questions.',
+  },
 };
 
 export default function ContactPage() {
