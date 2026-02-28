@@ -120,6 +120,27 @@ const AboutText = () => (
 
 // ScrollingSkills is now a shared component
 
+const ServicesSection = () => (
+  <section className="p-6 rounded-lg">
+    <h2 className="text-xl font-semibold mb-3">Services</h2>
+    <p className="mb-4 text-neutral-700 dark:text-neutral-300">
+      I help teams ship reliable, accessible web products by combining strong UI design with solid engineering. Here’s how I can help:
+    </p>
+    <ul className="list-disc pl-6 space-y-2 text-neutral-800 dark:text-neutral-200">
+      <li><span className="font-medium">React/Next.js application development</span> — SSR/ISR routing, data-fetching patterns, performance budgets, and accessibility.</li>
+      <li><span className="font-medium">TypeScript-first engineering</span> — type‑safe APIs and components for maintainable codebases.</li>
+      <li><span className="font-medium">Design systems & component libraries</span> — Storybook workflows, Joy UI/Tailwind integration, accessible primitives.</li>
+      <li><span className="font-medium">API integration & backend wiring</span> — Node.js services, REST integration, auth, and logging/observability.</li>
+      <li><span className="font-medium">State & data management</span> — TanStack Query patterns, caching, optimistic updates.</li>
+      <li><span className="font-medium">CMS & content platforms</span> — WordPress theming, content modeling, and migration to modern stacks.</li>
+      <li><span className="font-medium">Cloud hosting & CI/CD</span> — Vercel deployments, previews, and performance monitoring.</li>
+      <li><span className="font-medium">Email & notifications</span> — SendGrid templates and transactional flows.</li>
+      <li><span className="font-medium">Automation & internal tools</span> — Google Apps Script for lightweight workflows and dashboards.</li>
+      <li><span className="font-medium">Performance & accessibility audits</span> — Core Web Vitals, semantic structure, keyboard/focus UX.</li>
+    </ul>
+  </section>
+);
+
 const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
   <main className='h-full' id="0">
     <div className="max-w-screen-xl mx-auto px-6 lg:px-12 lg:min-h-screen lg:flex lg:flex-col lg:justify-center">
@@ -164,6 +185,17 @@ const DesktopLayout = ({ isMounted }: { isMounted: boolean }) => (
             <LinkedInButton />
             <GithubButton />
           </div>
+        </Box>
+      </Transition>
+      <Transition
+        id="4"
+        show={isMounted}
+        enter="transition-opacity duration-700 delay-900"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+      >
+        <Box className="mt-6">
+          <ServicesSection />
         </Box>
       </Transition>
     </div>
@@ -214,6 +246,17 @@ const TabletLayout = ({ isMounted }: { isMounted: boolean }) => (
           <LinkedInButton />
           <GithubButton />
         </div>
+      </Box>
+    </Transition>
+    <Transition
+      id="4"
+      show={isMounted}
+      enter="transition-opacity duration-700 delay-900"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+    >
+      <Box className="my-4">
+        <ServicesSection />
       </Box>
     </Transition>
   </main>
@@ -272,6 +315,16 @@ const MobileLayout = ({ isMounted }: { isMounted: boolean }) => (
             <h1 className="text-lg font-semibold mb-2">About Me</h1>
             <AboutText />
           </section>
+        </Transition>
+      </div>
+      <div>
+        <Transition
+          show={isMounted}
+          enter="transition-opacity duration-700 delay-900"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+        >
+          <ServicesSection />
         </Transition>
       </div>
     </Box>
