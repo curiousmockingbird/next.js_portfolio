@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="mt-8 md:mt-12 lg:mt-16">
       <AboutClient />
-    </>
+    </div>
   );
 }
