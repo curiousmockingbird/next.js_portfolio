@@ -123,6 +123,10 @@ const AboutText = () => (
 const ServicesSection = () => {
   const services = [
     {
+      title: 'WordPress development & maintenance',
+      desc: 'Custom themes, headless WP, performance optimization, security hardening, and migrations.',
+    },
+    {
       title: 'React/Next.js application development',
       desc: 'SSR/ISR routing, data-fetching patterns, performance budgets, and accessibility.',
     },
@@ -144,6 +148,7 @@ const ServicesSection = () => {
     { title: 'Email & notifications', desc: 'SendGrid templates and transactional flows.' },
     { title: 'Automation & internal tools', desc: 'Google Apps Script for lightweight workflows and dashboards.' },
     { title: 'Performance & accessibility audits', desc: 'Core Web Vitals, semantics, keyboard/focus UX.' },
+    { title: 'SQL & data modeling', desc: 'PostgreSQL/MySQL schema design, query optimization, indexes, migrations, and reporting.' },
   ];
 
   return (
