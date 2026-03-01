@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Footer from './components/Footer';
 
 const HeaderClient = dynamic(() => import('./components/HeaderClient'));
 const HomeClient = dynamic(() => import('./HomeClient'));
@@ -17,13 +18,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="flex flex-col h-screen">
+    <section className="flex flex-col min-h-screen">
       <HeaderClient />
-      <HomeClient />
-      {/* <div className="animate-marquee flex flex-row items-center gap-6">
-        <LastPlayed />
-        <TopTechHeadline />
-      </div> */}
+      <div className="flex-1 flex flex-col">
+        <HomeClient />
+        {/* <div className="animate-marquee flex flex-row items-center gap-6">
+          <LastPlayed />
+          <TopTechHeadline />
+        </div> */}
+      </div>
+      <Footer />
     </section>
   );
 }

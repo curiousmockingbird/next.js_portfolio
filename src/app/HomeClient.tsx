@@ -85,7 +85,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex flex-col min-h-screen justify-center">
+    <main className="flex-1 flex flex-col justify-center">
       <div className="mx-auto w-full lg:w-4/5">
         <div id='one' className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center">
           <Transition

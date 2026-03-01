@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from './components/HeaderClient';
 import ChatWidget from './components/ChatWidget';
+import ChatLauncher from './components/ChatLauncher';
 import ClientErrorReporter from './components/ClientErrorReporter';
 import PageViewLogger from './components/PageViewLogger';
 
@@ -47,6 +48,7 @@ export default function RootLayout({
           </TanStackProvider>
         </ThemeProvider>
         <ChatWidget />
+        <ChatLauncher />
         <ClientErrorReporter />
         <PageViewLogger />
         <Analytics />
