@@ -88,7 +88,10 @@ export default function Home() {
   return (
     <main className="flex-1 flex flex-col justify-center">
       <div className="mx-auto w-full lg:w-4/5">
-        <div id='one' className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center">
+        <div
+          id="one"
+          className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center"
+        >
           <Transition
             show={isMounted}
             enter="transition-opacity duration-700"
@@ -138,21 +141,15 @@ export default function Home() {
           </Transition>
         </div>
         <Transition
-          id='two'
           show={isMounted}
           enter="transition-opacity duration-700 delay-700"
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >
-          <ScrollingSkills />
-        </Transition>
-        <Transition
-          show={isMounted}
-          enter="transition-opacity duration-700 delay-900"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-        >
-          <ChatLauncher inline />
+          <div className="flex flex-col gap-8">
+            <ScrollingSkills />
+            <ChatLauncher inline />
+          </div>
         </Transition>
       </div>
     </main>

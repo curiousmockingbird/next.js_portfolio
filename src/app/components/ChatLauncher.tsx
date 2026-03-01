@@ -48,7 +48,7 @@ export default function ChatLauncher({ inline = false }: { inline?: boolean }) {
                 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500"
       aria-label="Open chat"
     >
-      Let&apos;s chat!
+      Got a project? Let&apos;s chat!
     </button>
   );
 
