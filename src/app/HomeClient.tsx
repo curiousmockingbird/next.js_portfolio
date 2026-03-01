@@ -7,6 +7,7 @@ import MyTransition from "@/app/components/Transition";
 import { MdCode, MdInfo, MdEditNote, MdAlternateEmail } from "react-icons/md";
 import ScrollingSkills from "@/app/components/ScrollingSkills";
 import Box from "@mui/system/Box";
+import ChatLauncher from "@/app/components/ChatLauncher";
 
 // const Icon = ({ path, size = 40, className = '' }: { path: string; size?: number; className?: string }) => (
 //   <svg
@@ -144,6 +145,14 @@ export default function Home() {
           enterTo="opacity-100"
         >
           <ScrollingSkills />
+        </Transition>
+        <Transition
+          show={isMounted}
+          enter="transition-opacity duration-700 delay-900"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+        >
+          <ChatLauncher inline />
         </Transition>
       </div>
     </main>

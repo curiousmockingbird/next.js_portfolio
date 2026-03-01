@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiHashnode } from 'react-icons/si';
 
 export default function Footer() {
   return (
@@ -16,10 +17,19 @@ export default function Footer() {
         <nav className="flex items-center gap-4 text-sm text-neutral-700 dark:text-neutral-300">
           <a href="/about" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">About</a>
           <a href="/blog" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">Blog</a>
-          <a href="/contact" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">Contact</a>
+          <a href="/devProjects" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">Work</a>
         </nav>
 
         <div className="flex items-center gap-3">
+          <a
+            href="https://harold-mesa.hashnode.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Hashnode blog"
+            className="text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+          >
+            <SiHashnode size={18} />
+          </a>
           <a
             href="https://github.com/curiousmockingbird"
             target="_blank"
@@ -43,4 +53,3 @@ export default function Footer() {
     </footer>
   );
 }
-
