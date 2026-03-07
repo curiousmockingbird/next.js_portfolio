@@ -14,11 +14,11 @@ export default function Footer() {
           <span>Full-stack developer</span>
         </div>
 
-        <nav className="flex items-center gap-4 text-sm text-neutral-700 dark:text-neutral-300">
+        {/* <nav className="flex items-center gap-4 text-sm text-neutral-700 dark:text-neutral-300">
           <a href="/about" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">About</a>
           <a href="/blog" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">Blog</a>
           <a href="/devProjects" className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-sm">Work</a>
-        </nav>
+        </nav> */}
 
         <div className="flex items-center gap-3">
           <a
