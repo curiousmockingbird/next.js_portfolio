@@ -27,7 +27,14 @@ const skills: Skill[] = [
 
 const SkillBadge = ({ skill }: { skill: Skill }) => {
   const content = skill.src ? (
-    <Image className="block" src={skill.src} width={56} height={56} alt={skill.label} />
+    <Image
+      className="block"
+      src={skill.src}
+      width={56}
+      height={56}
+      alt={skill.label}
+      style={{ width: '56px', height: '56px', objectFit: 'contain' }}
+    />
   ) : (
     <div className="w-14 h-14 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 grid place-items-center text-sm font-medium">
       {skill.label.split(' ').map((w) => w[0]).join('').slice(0, 3)}

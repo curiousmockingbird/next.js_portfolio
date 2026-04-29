@@ -11,9 +11,10 @@ export default function Header({ imageSrc }: HeaderProps) {
         <Image
           src={imageSrc}
           alt="Your SVG"
-          width={180}
-          height={180}
+          width={337}
+          height={89}
           priority
+          style={{ width: "180px", height: "auto" }}
         />
         <h1 className="text-base md:text-lg lg:text-base mt-1">harolDeveloper — Full-Stack</h1>
       </div>

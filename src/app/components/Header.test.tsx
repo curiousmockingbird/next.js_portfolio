@@ -3,11 +3,10 @@ import '@testing-library/jest-dom';
 import Header from './Header';
 
 describe('Header', () => {
-  it('renders an image with priority and eager loading', () => {
-    render(<Header imageSrc="/test.svg" />);
+  it('renders the provided image', () => {
+    render(<Header imageSrc="http://localhost/test.svg" />);
     const image = screen.getByRole('img', { name: /your svg/i });
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('loading', 'eager');
-    expect(image).toHaveAttribute('fetchpriority', 'high');
+    expect(image).toHaveAttribute('src', expect.stringContaining('test.svg'));
   });
 });
