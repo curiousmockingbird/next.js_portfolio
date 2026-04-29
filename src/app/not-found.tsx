@@ -11,10 +11,11 @@ export default function NotFound() {
       <Typography level="body-lg" textColor="text.secondary" sx={{ mb: 3 }}>
         The page you’re looking for doesn’t exist.
       </Typography>
-      <Button component={Link} href="/" variant="soft">
-        Back to home
-      </Button>
+      <Link href="/" passHref legacyBehavior>
+        <Button component="a" variant="soft">
+          Back to home
+        </Button>
+      </Link>
     </Container>
   );
 }
-

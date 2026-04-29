@@ -21,6 +21,9 @@ const nextConfig = {
       },
       ],
   },
+  // Enable Turbopack explicitly to coexist with a webpack config
+  // and silence Next.js 16 error about missing turbopack config.
+  turbopack: {},
   async redirects() {
     return [
       {
