@@ -66,7 +66,7 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const mountTimer = window.setTimeout(() => setIsMounted(true), 0);
 
     // Check if the visitor location has already been logged
     const hasLogged = sessionStorage.getItem("hasLoggedVisitorLocation");
@@ -83,6 +83,8 @@ export default function Home() {
         setTimeout(log, 0);
       }
     }
+
+    return () => window.clearTimeout(mountTimer);
   }, []);
 
   return (

@@ -374,7 +374,9 @@ export default function AboutClient() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const mountTimer = window.setTimeout(() => setIsMounted(true), 0);
+
+    return () => window.clearTimeout(mountTimer);
   }, []);
 
   return (

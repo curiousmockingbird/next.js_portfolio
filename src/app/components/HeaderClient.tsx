@@ -26,7 +26,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const saved =
       localStorage.getItem('theme') || getCookie('theme');
     if (saved === 'light' || saved === 'dark') {
-      setTheme(saved);
+      const themeTimer = window.setTimeout(() => setTheme(saved), 0);
+      return () => window.clearTimeout(themeTimer);
     }
   }, []);
 
