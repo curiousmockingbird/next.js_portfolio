@@ -10,6 +10,7 @@ type Skill = {
 };
 
 const skills: Skill[] = [
+  {label: 'CompTIA Security+', src: '/comptia.jpg', href: 'https://www.comptia.org/certifications/security'},
   { label: 'Next.js', src: '/Next.js.svg', href: 'https://nextjs.org' },
   { label: 'React', src: '/react.svg', href: 'https://react.dev' },
   { label: 'Storybook', src: '/storybook.svg', href: 'https://storybook.js.org' },

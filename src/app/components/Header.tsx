@@ -16,7 +16,7 @@ export default function Header({ imageSrc }: HeaderProps) {
           priority
           style={{ width: "180px", height: "auto" }}
         />
-        <h1 className="text-base md:text-lg lg:text-base mt-1">harolDeveloper — Full-Stack</h1>
+        <h1 className="text-base md:text-lg lg:text-base mt-1">Full-Stack & Application Security Analyst</h1>
       </div>
     </div>
   );

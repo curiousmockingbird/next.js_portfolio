@@ -92,7 +92,7 @@ export default function Home() {
       <div className="mx-auto w-full lg:w-4/5">
         <div
           id="one"
-          className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center"
+          className="grid grid-rows-auto lg:grid-cols-2 justify-center lg:content-center"
         >
           <Transition
             show={isMounted}
@@ -105,7 +105,7 @@ export default function Home() {
             </div>
             <MyTransition
               redirectTo="/devProjects"
-              sectionName="Dev Projects"
+              sectionName="Projects"
               description="Professional projects across the modern full-stack landscape"
             />
           </Transition>
@@ -122,11 +122,11 @@ export default function Home() {
             <MyTransition
               redirectTo="/about"
               sectionName="About Me"
-              description="Full-stack Engineer & Designer"
+              description="Full-stack developer & Application Security Analyst"
             />
           </Transition>
 
-          <Transition
+          {/* <Transition
             show={isMounted}
             enter="transition-opacity duration-700 delay-500"
             enterFrom="opacity-0"
@@ -140,7 +140,7 @@ export default function Home() {
               sectionName="My blog"
               description="Navigating the digital odyssey through my lens"
             />
-          </Transition>
+          </Transition> */}
         </div>
         <Transition
           show={isMounted}
