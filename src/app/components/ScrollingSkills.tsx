@@ -6,24 +6,23 @@ import React from 'react';
 type Skill = {
   label: string;
   src?: string;
-  href?: string;
 };
 
 const skills: Skill[] = [
-  {label: 'CompTIA Security+', src: '/comptia.jpg', href: 'https://www.comptia.org/certifications/security'},
-  { label: 'Next.js', src: '/Next.js.svg', href: 'https://nextjs.org' },
-  { label: 'React', src: '/react.svg', href: 'https://react.dev' },
-  { label: 'Storybook', src: '/storybook.svg', href: 'https://storybook.js.org' },
-  { label: 'JavaScript', src: '/javascript.png', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { label: 'TypeScript', src: '/typescript.svg', href: 'https://www.typescriptlang.org' },
-  { label: 'Node.js', src: '/node.svg', href: 'https://nodejs.org' },
-  { label: 'Tailwind CSS', src: '/tailwind.svg', href: 'https://tailwindcss.com' },
-  { label: 'WordPress', src: '/wordpress.svg', href: 'https://wordpress.org' },
-  { label: 'Vercel', src: '/vercel.svg', href: 'https://vercel.com' },
-  { label: 'Vue.js', src: '/vue-js.jpeg', href: 'https://vuejs.org' },
-  { label: 'SendGrid', src: '/sendgrid.svg', href: 'https://sendgrid.com' },
-  { label: 'Apps Script', src: '/apps_script.svg', href: 'https://workspace.google.com/products/apps-script/' },
-  { label: 'TanStack Query', src: '/tan_stack.png', href: 'https://tanstack.com/query/latest' },
+  {label: 'CompTIA Security+', src: '/comptia.jpg'},
+  { label: 'Next.js', src: '/Next.js.svg' },
+  { label: 'React', src: '/react.svg' },
+  { label: 'Storybook', src: '/storybook.svg' },
+  { label: 'JavaScript', src: '/javascript.png' },
+  { label: 'TypeScript', src: '/typescript.svg' },
+  { label: 'Node.js', src: '/node.svg' },
+  { label: 'Tailwind CSS', src: '/tailwind.svg' },
+  { label: 'WordPress', src: '/wordpress.svg' },
+  { label: 'Vercel', src: '/vercel.svg' },
+  { label: 'Vue.js', src: '/vue-js.jpeg' },
+  { label: 'SendGrid', src: '/sendgrid.svg' },
+  { label: 'Apps Script', src: '/apps_script.svg' },
+  { label: 'TanStack Query', src: '/tan_stack.png' },
 ];
 
 const SkillBadge = ({ skill }: { skill: Skill }) => {
@@ -48,27 +47,12 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
     </div>
   );
 
-  const wrapped = skill.href ? (
-    <a
-      href={skill.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex flex-col items-center w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-500 rounded-md"
-      aria-label={skill.label}
-    >
-      {iconBox}
-      {/* <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span> */}
-    </a>
-  ) : (
-    <div className="flex flex-col items-center w-full" aria-label={skill.label}>
-      {iconBox}
-      <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span>
-    </div>
-  );
-
   return (
     <li className="m-1 shrink-0">
-      {wrapped}
+      <div className="flex flex-col items-center w-full" aria-label={skill.label}>
+        {iconBox}
+        {/* <span className="mt-2 text-xs text-neutral-600 dark:text-neutral-300">{skill.label}</span> */}
+      </div>
     </li>
   );
 };

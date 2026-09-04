@@ -21,26 +21,28 @@ export default function Example({
     const router = useRouter();
     // let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500)
 
-    const handleClick = () => {
-        // setIsShowing(true);
-        try {
-          if (redirectTo === '/about') {
+	    const handleClick = () => {
+	        // setIsShowing(true);
+	        try {
+	          if (redirectTo === '/about') {
             // Log nav click to About
             logFromApp('Nav: About');
           } else if (redirectTo === '/devProjects') {
             // Log nav click to Dev Projects
             logFromApp('Nav: Dev Projects');
-          }
-        } catch {}
-	        setTimeout(() => {
-            if (target === "_blank") {
-              window.open(redirectTo, "_blank", "noopener,noreferrer");
-              return;
-            }
+	          }
+	        } catch {}
 
-	          router.push(redirectTo);
-	        }, 400); // Assuming the transition takes 300ms
-	      };
+          if (target === "_blank") {
+            window.open(redirectTo, "_blank", "noopener,noreferrer");
+            return;
+          }
+
+          setIsShowing(false)
+		        setTimeout(() => {
+		          router.push(redirectTo);
+		        }, 400); // Assuming the transition takes 300ms
+		      };
 
     return (
         <div className="flex flex-col items-center py-2">
@@ -56,13 +58,10 @@ export default function Example({
                     leaveTo="opacity-0 scale-95 "
                 >
                         
-            <div>
-            <button
-                onClick={() => {
-                    setIsShowing(false)
-                    handleClick()
-                }}
-        className="backface-visibility-hidden flex transform items-center rounded-full px-3 py-2 text-sm font-medium transition hover:scale-105 focus:outline-none">
+	            <div>
+	            <button
+	                onClick={handleClick}
+	        className="backface-visibility-hidden flex transform items-center rounded-full px-3 py-2 text-sm font-medium transition hover:scale-105 focus:outline-none">
         <div className="group rounded-lg border border-transparent transition-colors">
           <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 ">
           <h2 className={`text-2xl font-semibold`}>
