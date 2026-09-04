@@ -1,49 +1,42 @@
-// // app/api/hashnode/route.ts
-// export async function GET() {
-//   const query = `
-//     query Publication {
-//       publication(host: "harold-mesa.hashnode.dev") {
-//         posts(first: 10) {
-//           edges {
-//             node {
-//               coverImage { url }
-//               title
-//               brief
-//               url
-//               updatedAt
-//               publishedAt
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `;
-
-//   try {
-//     const res = await fetch("https://gql.hashnode.com", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ query }),
-//     });
-
-//     const json = await res.json();
-//     const articles = json.data.publication.posts.edges;
-
-//     return Response.json(articles);
-//   } catch (error) {
-//     return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
-//       status: 500,
-//     });
-//   }
-// }
 export const dynamic = "force-dynamic";
 
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+type HashnodePostEdge = {
+  node: {
+    coverImage: { url: string | null } | null;
+    title: string | null;
+    brief: string | null;
+    url: string | null;
+    updatedAt: string | null;
+    publishedAt: string | null;
+  };
+};
+
+type HashnodeResponse = {
+  data?: {
+    publication?: {
+      posts?: {
+        edges?: HashnodePostEdge[];
+      };
+    } | null;
+  };
+  errors?: {
+    message?: string;
+    extensions?: {
+      code?: string;
+    };
+  }[];
+};
+
+const HASHNODE_ENDPOINT = "https://gql.hashnode.com";
+const HASHNODE_PUBLICATION_HOST =
+  process.env.HASHNODE_PUBLICATION_HOST ?? "harold-mesa.hashnode.dev";
+
+export async function GET() {
   const query = `
-    query Publication {
-      publication(host: "harold-mesa.hashnode.dev") {
+    query Publication($host: String!) {
+      publication(host: $host) {
         posts(first: 10) {
           edges {
             node {
@@ -61,24 +54,78 @@ export async function GET(request: Request) {
   `;
 
   try {
-    const res = await fetch("https://gql.hashnode.com", {
+    const headers: HeadersInit = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+
+    if (process.env.HASHNODE_TOKEN) {
+      headers.Authorization = process.env.HASHNODE_TOKEN;
+    }
+
+    const res = await fetch(HASHNODE_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
+      headers,
+      body: JSON.stringify({
+        query,
+        variables: { host: HASHNODE_PUBLICATION_HOST },
+      }),
       cache: "no-store",
+      redirect: "follow",
     });
 
     if (!res.ok) {
-      return new NextResponse("Failed to fetch from Hashnode", { status: res.status });
+      return NextResponse.json(
+        { error: "Failed to fetch from Hashnode." },
+        { status: res.status }
+      );
     }
 
-    const json = await res.json();
-    const articles = json.data.publication.posts.edges;
+    const contentType = res.headers.get("content-type") ?? "";
 
-    return NextResponse.json(articles);
-  } catch (error: any) {
+    if (!contentType.includes("application/json")) {
+      return NextResponse.json(
+        {
+          error:
+            "Hashnode did not return JSON. GraphQL API reads now require Hashnode Pro access for the publication.",
+          redirectUrl: res.url,
+        },
+        { status: 403 }
+      );
+    }
+
+    const json = (await res.json()) as HashnodeResponse;
+
+    if (json.errors?.length) {
+      return NextResponse.json(
+        {
+          error: json.errors
+            .map((error) => error.message)
+            .filter(Boolean)
+            .join(" "),
+          errors: json.errors,
+        },
+        { status: 502 }
+      );
+    }
+
+    const articles = json.data?.publication?.posts?.edges;
+
+    if (!articles) {
+      return NextResponse.json(
+        {
+          error: `No posts were returned for ${HASHNODE_PUBLICATION_HOST}. Check the publication host and API access.`,
+        },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ posts: articles });
+  } catch (error) {
     console.error("Error in /api/hashnode:", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
-

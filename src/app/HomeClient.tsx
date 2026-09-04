@@ -92,7 +92,7 @@ export default function Home() {
       <div className="mx-auto w-full lg:w-4/5">
         <div
           id="one"
-          className="grid grid-rows-auto lg:grid-cols-2 justify-center lg:content-center"
+          className="grid grid-rows-auto lg:grid-cols-3 justify-center lg:content-center"
         >
           <Transition
             show={isMounted}
@@ -126,7 +126,7 @@ export default function Home() {
             />
           </Transition>
 
-          {/* <Transition
+          <Transition
             show={isMounted}
             enter="transition-opacity duration-700 delay-500"
             enterFrom="opacity-0"
@@ -136,11 +136,12 @@ export default function Home() {
               <MdEditNote size={40} />
             </div>
             <MyTransition
-              redirectTo="/blog"
+              redirectTo="https://curious-mockingbird.hashnode.dev"
               sectionName="My blog"
               description="Navigating the digital odyssey through my lens"
+              target="_blank"
             />
-          </Transition> */}
+          </Transition>
         </div>
         <Transition
           show={isMounted}

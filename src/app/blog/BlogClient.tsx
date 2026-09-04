@@ -5,20 +5,30 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Image from "next/image";
 // import Toggle from "./../components/Toggle";
 
+type HashnodePost = {
+  coverImage: { url: string | null } | null;
+  title: string | null;
+  brief: string | null;
+  url: string | null;
+  updatedAt: string | null;
+  publishedAt: string | null;
+};
+
+type HashnodePostEdge = {
+  node: HashnodePost;
+};
+
+type HashnodeApiResponse =
+  | HashnodePostEdge[]
+  | {
+      posts?: HashnodePostEdge[];
+      error?: string;
+    };
+
 export default function Home() {
-  const [post, setPosts] = useState<
-    {
-      node: {
-        coverImage: { url: string | null };
-        title: string | null;
-        brief: string | null;
-        url: string | null;
-        updatedAt: string | null;
-        publishedAt: string | null;
-      };
-    }[]
-  >([]);
+  const [posts, setPosts] = useState<HashnodePost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,14 +37,32 @@ export default function Home() {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
-        const result = await response.json();
-        result.sort(
-          (a: any, b: any) =>
-            new Date(a.node.publishedAt ?? 0).getTime() -
-            new Date(b.node.publishedAt ?? 0).getTime()
-        );
-        setPosts(result);
+
+        const result = (await response.json()) as HashnodeApiResponse;
+
+        if (!response.ok) {
+          throw new Error(
+            Array.isArray(result)
+              ? "Failed to fetch posts."
+              : result.error ?? "Failed to fetch posts."
+          );
+        }
+
+        const edges = Array.isArray(result) ? result : result.posts ?? [];
+        const sortedPosts = edges
+          .map((edge) => edge.node)
+          .sort(
+            (a, b) =>
+              new Date(b.publishedAt ?? 0).getTime() -
+              new Date(a.publishedAt ?? 0).getTime()
+          );
+
+        setPosts(sortedPosts);
+        setError(null);
       } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Failed to fetch posts.";
+        setError(message);
         console.error("Failed to fetch posts:", error);
       } finally {
         setLoading(false);
@@ -49,7 +77,7 @@ export default function Home() {
     return `${date.toLocaleDateString()}`;
   }, []);
 
-  const PostCard = ({ post }: { post: any }) => (
+  const PostCard = ({ post }: { post: HashnodePost }) => (
     <div className="p-4 w-full ">
       <a
         href={post.url || "#"}
@@ -58,7 +86,7 @@ export default function Home() {
         rel="noopener noreferrer"
       >
         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transform transition-all hover:scale-105">
-          {post.coverImage.url ? (
+          {post.coverImage?.url ? (
             <Image
               className="lg:h-52 w-full object-cover object-center"
               src={post.coverImage.url}
@@ -74,15 +102,25 @@ export default function Home() {
               {post.title || <Skeleton width={200} />}
             </h1>
             <p className="text-sm text-gray-600">
-              Updated: {post.updatedAt ? formatDate(post.updatedAt) : "No update yet"}
+              Updated:{" "}
+              {post.updatedAt ? formatDate(post.updatedAt) : "No update yet"}
             </p>
             <p className="text-sm text-gray-600 mb-3">
-              Published: {post.publishedAt ? formatDate(post.publishedAt) : <Skeleton width={100} />}
+              Published:{" "}
+              {post.publishedAt ? (
+                formatDate(post.publishedAt)
+              ) : (
+                <Skeleton width={100} />
+              )}
             </p>
             <p className="text-gray-400 leading-tight">
-              {post.brief
-                ? `${post.brief.substring(0, 100)}${post.brief.length > 100 ? "..." : ""}`
-                : <Skeleton count={2} />}
+              {post.brief ? (
+                `${post.brief.substring(0, 100)}${
+                  post.brief.length > 100 ? "..." : ""
+                }`
+              ) : (
+                <Skeleton count={2} />
+              )}
               <br />
               <span className="text-cyan-500">Read article</span>
             </p>
@@ -101,6 +139,7 @@ export default function Home() {
             href="https://hashnode.com/"
             className="underline underline-offset-8 ml-1"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Hashnode
           </a>
@@ -110,11 +149,19 @@ export default function Home() {
             <Skeleton height={500} count={1} />
           </div>
         )}
+        {error && !loading && (
+          <p className="mx-auto max-w-2xl px-10 text-center text-sm text-red-400">
+            {error}
+          </p>
+        )}
         <section className="text-gray-300 body-font">
           <div className="container mx-auto">
             <div className="flex flex-wrap justify-center">
-              {post.map((c, index) => (
-                <PostCard key={index} post={c.node} />
+              {posts.map((post, index) => (
+                <PostCard
+                  key={post.url ?? post.title ?? post.publishedAt ?? index}
+                  post={post}
+                />
               ))}
             </div>
           </div>

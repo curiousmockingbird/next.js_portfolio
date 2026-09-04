@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
-      <HomeButton/>
+      {/* <HomeButton/> */}
       <BlogClient />
     </>
   );

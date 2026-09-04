@@ -1,12 +1,22 @@
 'use client'
 import { Transition } from '@headlessui/react'
-import { useState } from 'react'
+import { type HTMLAttributeAnchorTarget, useState } from 'react'
 // import { useTimeoutFn } from 'react-use'
 // import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { logFromApp } from './framesx-web-blocks/utils/logger';
 
-export default function Example({ redirectTo, sectionName, description }: { redirectTo: string, sectionName: string, description: string }) {
+export default function Example({
+  redirectTo,
+  sectionName,
+  description,
+  target,
+}: {
+  redirectTo: string,
+  sectionName: string,
+  description: string,
+  target?: HTMLAttributeAnchorTarget,
+}) {
     let [isShowing, setIsShowing] = useState(true)
     const router = useRouter();
     // let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500)
@@ -17,18 +27,20 @@ export default function Example({ redirectTo, sectionName, description }: { redi
           if (redirectTo === '/about') {
             // Log nav click to About
             logFromApp('Nav: About');
-          } else if (redirectTo === '/blog') {
-            // Log nav click to Blog
-            logFromApp('Nav: Blog');
           } else if (redirectTo === '/devProjects') {
             // Log nav click to Dev Projects
             logFromApp('Nav: Dev Projects');
           }
         } catch {}
-        setTimeout(() => {
-          router.push(redirectTo);
-        }, 400); // Assuming the transition takes 300ms
-      };
+	        setTimeout(() => {
+            if (target === "_blank") {
+              window.open(redirectTo, "_blank", "noopener,noreferrer");
+              return;
+            }
+
+	          router.push(redirectTo);
+	        }, 400); // Assuming the transition takes 300ms
+	      };
 
     return (
         <div className="flex flex-col items-center py-2">
